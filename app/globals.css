@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-main: #002f55;
+  --bg-alt: #ffffff;
+  --accent-primary: #e21a1a;
+  --accent-electric: #0066a1;
+  --accent-neon: #525252;
+  --text-main: #002f55;
+  --text-soft: #525252;
+  --grid-line: rgba(82, 82, 82, 0.16);
+  --surface-border: rgba(0, 47, 85, 0.08);
+  --surface-radius: 12px;
+  --surface-shadow: 0 4px 24px rgba(0, 47, 85, 0.06);
+  --section-padding: 80px;
+  --section-padding-y: 80px;
+  --container-max: 1240px;
+  --header-slot: calc(81px + env(safe-area-inset-top, 0px));
+  --font-heading: "IBM Plex Sans", Verdana, Geneva, Tahoma, sans-serif;
+  --font-body: Verdana, Geneva, Tahoma, sans-serif;
+  --layout-max: 1560px;
+  /* Горизонтальный воздух у края вьюпорта; не уменьшает «полные» 1560px за счёт padding внутри колонки. */
+  --page-inline-gutter: clamp(16px, 4vw, 60px);
+  --layout-gutter: 60px;
+  --header-height: var(--header-slot);
+  --page-hero-max-height: 1100px;
+  --page-hero-breadcrumb-offset: 52px;
+  --page-hero-height: min(
+    calc(100svh - var(--header-slot) - var(--page-hero-breadcrumb-offset)),
+    var(--page-hero-max-height)
+  );
+  /* Hero на /project/*: высота от ширины (16:9), без ручных clamp по брейкпоинтам */
+  --project-hero-aspect-ratio: 16 / 9;
+  --project-hero-min-height: 360px;
+  --project-hero-max-height: 520px;
+  --project-hero-height: clamp(
+    var(--project-hero-min-height),
+    56.25vw,
+    var(--project-hero-max-height)
+  );
+  --heading-h1-size: clamp(1.75rem, 1.05rem + 2.8vw, 3.125rem);
+  --heading-h2-size: clamp(1.375rem, 1rem + 2.5vw, 3.125rem);
+  /* Эталон: карточки проектов на главной (ProjectProductShowcase) → страницы /project/* */
+  --showcase-title-size: clamp(1.125rem, 0.85rem + 1.8vw, 2rem);
+  --showcase-title-line-height: 1.18;
+  --showcase-title-tracking: -0.025em;
+  --showcase-body-size: var(--body-text-size);
+  --showcase-body-line-height: 1.62;
+  --showcase-emphasis-size: var(--body-text-size);
+  --showcase-emphasis-line-height: 1.55;
+  --showcase-label-size: clamp(0.8125rem, 1.05vw, 0.9375rem);
+  --body-text-size: 1rem;
+  --body-text-line-height: 1.6;
+  --section-title-rule-width: clamp(88px, 14vw, 140px);
+  --section-title-rule-gradient: linear-gradient(
+    90deg,
+    #e21a1a 0%,
+    #c41515 55%,
+    rgba(226, 26, 26, 0.18) 100%
+  );
+  --cookie-banner-offset: 0px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--text-main);
+  background: #ffffff;
+  overflow-x: clip;
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-family: var(--font-heading-next), var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  font-size: var(--heading-h1-size);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: var(--heading-h2-size);
+  line-height: 1.15;
+}
+
+p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: var(--body-text-size);
+  line-height: var(--body-text-line-height);
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.skipToMain {
+  position: absolute;
+  left: -9999px;
+  z-index: 200;
+  padding: 12px 16px;
+  background: #002f55;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  border-radius: 4px;
+}
+
+.skipToMain:focus {
+  left: max(16px, env(safe-area-inset-left, 0));
+  top: max(12px, env(safe-area-inset-top, 0));
+  outline: 3px solid #e21a1a;
+  outline-offset: 2px;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --layout-gutter: 24px;
+  }
+}
+
+@media (max-width: 980px) {
+  :root {
+    --header-slot: calc(73px + env(safe-area-inset-top, 0px));
+    --showcase-title-size: clamp(1.125rem, 0.9rem + 2.2vw, 1.625rem);
+    --showcase-title-line-height: 1.2;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --body-text-size: 14px;
+    --body-text-line-height: 1.6;
+    --showcase-body-line-height: 1.6;
+    --showcase-emphasis-line-height: 1.6;
+  }
+
+  :where(p) {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 880px) {
+  :root {
+    --page-hero-breadcrumb-offset: 48px;
+    /* Не тянуть hero на почти весь экран — высота от ширины (16:9) с полом и потолком */
+    --page-hero-height: clamp(360px, 56.25vw, 520px);
+    --page-hero-max-height: 520px;
+  }
+}

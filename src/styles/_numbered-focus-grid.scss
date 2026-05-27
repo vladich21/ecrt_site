@@ -1,0 +1,46 @@
+@use "@/styles/breakpoints" as bp;
+
+// Нумерованная сетка «цифра + текст» — эталон: purchase-page .focusGrid
+@mixin container {
+  list-style: none;
+  margin: clamp(20px, 3vw, 28px) 0 0;
+  padding: clamp(4px, 1vw, 8px) 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(28px, 4.5vw, 56px);
+  row-gap: clamp(20px, 3vw, 32px);
+}
+
+@mixin item {
+  display: flex;
+  gap: clamp(16px, 2.2vw, 22px);
+  align-items: center;
+  margin: 0;
+  padding: 0 0 clamp(20px, 2.8vw, 28px);
+}
+
+@mixin digit {
+  flex-shrink: 0;
+  min-width: 1.15em;
+  font-size: clamp(2rem, 4vw, 2.65rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(0, 26, 46, 0.34);
+}
+
+@mixin text {
+  margin: 0;
+  padding-top: 6px;
+  font-size: var(--body-text-size);
+  line-height: 1.55;
+  font-weight: 600;
+  color: var(--ecrt-navy, #001a2e);
+}
+
+@mixin down-single-column {
+  @include bp.down(bp.$bp-md) {
+    grid-template-columns: 1fr;
+  }
+}

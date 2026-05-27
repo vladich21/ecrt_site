@@ -1,0 +1,34 @@
+{
+  "ui": {
+    "aboutProject": "О проекте",
+    "keyPoints": "Ключевые тезисы",
+    "details": "Детализация",
+    "keyParameters": "Ключевые параметры",
+    "engineeringContext": "Инженерный контекст",
+    "confirmedFacts": "Подтвержденные факты",
+    "gallery": "Иллюстрации и материалы",
+    "galleryNote": "Изображения подготовлены из внутренних презентаций. Для внешней публикации требуется дополнительное согласование материалов.",
+    "heroAltSuffix": "— проект АО ИЦ ЖТ",
+    "galleryImageAlt": "{title} — изображение {index}",
+    "segment": "Сегмент",
+    "period": "Период",
+    "indicator": "Индикатор",
+    "hsrSegment": "ВСМ"
+  },
+  "meta": {
+    "titleSuffix": "АО ИЦ ЖТ",
+    "descriptionFallback": "Инжиниринговый центр железнодорожного транспорта."
+  },
+  "slider": {
+    "carouselLabel": "Фото: {title}",
+    "previousPhoto": "Предыдущее фото",
+    "nextPhoto": "Следующее фото",
+    "photoChoice": "Выбор фото",
+    "photoOf": "Фото {index} из {total}"
+  },
+  "trackV25Field": {
+    "tabListLabel": "Этапы технологического внедрения",
+    "stageTabLabel": "Этап {number}",
+    "photosPlaceholder": "Фотоматериалы этапа будут добавлены."
+  }
+}

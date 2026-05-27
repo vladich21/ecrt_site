@@ -1,0 +1,62 @@
+{
+  "hero": {
+    "title": "Join us in advancing innovation on Russia’s railways",
+    "lead": "Design documentation development to support technological sovereignty"
+  },
+  "culture": {
+    "title": "You’ll thrive here if you:",
+    "bullets": [
+      "Enjoy working in a collaborative team where your voice matters and you respect colleagues’ viewpoints",
+      "Can work in an atmosphere of trust, without constant oversight, and understand the importance of your work",
+      "Want to engineer some of Russia’s most forward-looking railway technologies"
+    ]
+  },
+  "benefits": {
+    "titleBefore": "What ",
+    "titleAccent": "every colleague receives:",
+    "items": [
+      {
+        "icon": "dms",
+        "title": "Private healthcare (DMS)",
+        "body": "A voluntary medical programme with emergency home visits, dentistry, outpatient care, and more. Coverage kicks in once probation finishes."
+      },
+      {
+        "icon": "schedule",
+        "title": "Flexible hours",
+        "body": "Flexible start and end times, plus one remote working day after the probation period."
+      },
+      {
+        "icon": "edu",
+        "title": "Training & conferences",
+        "body": "Sponsored coursework and attendance at specialist conferences aligned with your role."
+      },
+      {
+        "icon": "social",
+        "title": "Employee benefits bundle",
+        "body": "Monthly commuting allowance plus financial support tied to statutory annual leave (from two years at the company onward) alongside other perk programmes."
+      },
+      {
+        "icon": "sport",
+        "title": "Corporate sports",
+        "body": "Volleyball and badminton activities with colleagues."
+      },
+      {
+        "icon": "it",
+        "title": "Accredited IT employer",
+        "body": "ECRT is listed in Russia’s accredited IT roster, unlocking nationwide support measures for peers in the tech sector."
+      }
+    ]
+  },
+  "vacancies": {
+    "titleBefore": "Where to browse vacancies and ",
+    "titleAccent": "apply",
+    "hhCta": "Browse every vacancy on hh.ru"
+  },
+  "cta": {
+    "title": "Write to us directly",
+    "body": "We keep track of roles that open during projects. Send your CV — we will tell you about pipeline hiring and our plans for the next six months.",
+    "emailCta": "Write to us",
+    "emailBtn": "{{email}}",
+    "hhCard": "Employer profile on hh.ru"
+  }
+}

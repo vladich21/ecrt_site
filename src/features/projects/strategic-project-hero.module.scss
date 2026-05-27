@@ -1,0 +1,66 @@
+@use "@/styles/project-hero-shell" as ph;
+
+.strHero {
+  @include ph.frame;
+  @include ph.full-bleed;
+}
+
+.strHeroMedia {
+  @include ph.media-shell;
+}
+
+.strHeroImg {
+  @include ph.fill-img;
+}
+
+.strHeroGradient {
+  @include ph.gradient;
+}
+
+.strHeroText {
+  @include ph.content;
+}
+
+.strHeroPhase {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 180, 180, 0.95);
+}
+
+.strHeroHeading {
+  margin: 0;
+  color: #ffffff;
+  font-size: var(--showcase-title-size);
+  font-weight: 800;
+  line-height: var(--showcase-title-line-height);
+  letter-spacing: var(--showcase-title-tracking);
+  text-wrap: balance;
+}
+
+.strHeroPhase + .strHeroHeading {
+  margin-top: clamp(8px, 1.8vw, 14px);
+}
+
+.strHeroLead {
+  margin: clamp(14px, 2vw, 18px) 0 0;
+  color: rgba(232, 242, 255, 0.96);
+  font-size: var(--showcase-body-size);
+  font-weight: 400;
+  line-height: var(--showcase-body-line-height);
+}
+
+@media (max-width: 980px) {
+  .strHeroText {
+    padding: clamp(16px, 4vw, 24px);
+    padding-top: clamp(56px, 10vw, 72px);
+    padding-left: clamp(18px, 4vw, 32px);
+    padding-right: clamp(18px, 4vw, 32px);
+  }
+
+  .strHeroLead {
+    margin-top: clamp(12px, 2.5vw, 18px);
+  }
+}

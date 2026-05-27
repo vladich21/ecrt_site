@@ -1,0 +1,135 @@
+.section {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+  padding: var(--section-padding-y, 80px) 32px var(--section-padding-y, 80px);
+}
+
+.titleFrame {
+  border-block: 1px solid rgba(0, 47, 85, 0.12);
+  padding: 32px 24px;
+  margin-bottom: 52px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+  font-size: var(--heading-h2-size);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #3d4e60;
+  padding: 18px 0;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.logosArea {
+  width: 100%;
+}
+
+.logoRow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px 32px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Одинаковая рамка под каждый логотип: одна ширина и высота слота. */
+.logoSlot {
+  flex: 0 0 auto;
+  width: 240px;
+  height: 80px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+}
+
+/* Логотип Синара - в 2x от стандартного слота 240x80. */
+.logoSlot2x {
+  height: 160px;
+  padding: 16px 20px;
+}
+
+.logoFrame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.logoImg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 56px 24px 64px;
+  }
+
+  .titleFrame {
+    padding: 28px 16px;
+    margin-bottom: 44px;
+  }
+
+  .title {
+    padding-bottom: 14px;
+  }
+
+  .logoSlot {
+    width: 200px;
+    height: 72px;
+  }
+
+  .logoSlot2x {
+    height: 132px;
+  }
+
+  .logoRow {
+    gap: 20px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 48px 20px 56px;
+  }
+
+  .title {
+    font-size: var(--heading-h2-size);
+  }
+
+  .titleFrame {
+    padding: 24px 12px;
+    margin-bottom: 40px;
+  }
+
+  .logoSlot {
+    width: min(100%, 260px);
+    height: 68px;
+  }
+
+  .logoSlot2x {
+    height: 120px;
+  }
+}

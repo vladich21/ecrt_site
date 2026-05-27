@@ -1,0 +1,127 @@
+{
+  "chronology": {
+    "title": "Company history",
+    "body": ""
+  },
+  "milestones": {
+    "listLabel": "Company milestones",
+    "items": [
+      {
+        "iso": "2019",
+        "date": "2019",
+        "title": "Establishment of the engineering centre",
+        "text": "Russian Railways (RZD) and the Sinara group of companies incorporated the Railway Transport Engineering Centre.",
+        "imageAlt": "Signing of RZD-Sinara joint engineering agreement."
+      },
+      {
+        "iso": "2020",
+        "date": "2020",
+        "title": "Domestic high-speed rolling stock programme",
+        "text": "Launch of domestic high-speed train development programme."
+      },
+      {
+        "iso": "2021",
+        "date": "2021",
+        "title": "Infrastructure development centre established",
+        "text": "A new infrastructure development track opened; catenary and permanent-way programmes commenced.",
+        "imageAlt": "Catenary systems and permanent-way development projects."
+      },
+      {
+        "iso": "2022",
+        "date": "2022",
+        "title": "Forward-looking projects centre established",
+        "text": "A new innovative rolling-stock development track opened. Hydrogen and hybrid locomotive programmes launched."
+      },
+      {
+        "iso": "2023",
+        "date": "2023",
+        "title": "ECRT trials at the VNIIZHT Experimental Ring",
+        "text": "Endurance trials began on ECRT-developed permanent-way engineered for an accumulated gross tonnage of 2.5 billion tonnes, on the VNIIZHT Experimental Ring."
+      },
+      {
+        "iso": "2024",
+        "date": "2024",
+        "title": "High-speed train technical design completed",
+        "text": "Core technical solutions for the EVS-360 programme were developed."
+      },
+      {
+        "iso": "2025",
+        "date": "2025",
+        "title": "ECRT trials on the RZD network",
+        "text": "Field trials began on ECRT-developed permanent-way engineered for an accumulated gross tonnage of 2.5 billion tonnes — on a section of the Krasnoyarsk Railway, an RZD branch."
+      },
+      {
+        "iso": "2026",
+        "date": "2026",
+        "title": "Working design completed and high-speed train production started",
+        "text": "Engineering documentation for the EVS-360 programme was completed; carbody fabrication started at the Ural Locomotives plant."
+      }
+    ]
+  },
+  "future": {
+    "title": "Russia’s train of the future",
+    "lead": "High-speed electric rolling stock is being built at the Ural Locomotives plant. The engineering solutions developed by ECRT match world-class benchmarks and, for several subsystems, exceed them.\n\nCommercial service readiness is planned for 2028.",
+    "videoAria": "Night-time animation of a high-speed train in an urban skyline."
+  },
+  "flagship": {
+    "tagYears": "2024 - 2030",
+    "sectionTitle": "Main line\nMoscow - Saint Petersburg",
+    "sectionLead": "",
+    "marks": ["HSL-1"],
+    "title": "",
+    "description": "We deliver the core technical solutions for Russia’s first high-speed main line: rolling stock, catenary, and rail fastening.",
+    "ctaCase": "View case study",
+    "ctaDirections": "All programmes",
+    "mapAlt": "Infographic of the first high-speed main line route: stations and design-speed segments.",
+    "facts": [
+      {
+        "num": "400",
+        "unit": "km/h max",
+        "title": "Demonstration speed",
+        "body": "Aerodynamic profile, a domestically produced traction motor, and unique components designed for climates with large temperature swings."
+      },
+      {
+        "num": "679",
+        "unit": "km of line",
+        "title": "Main line length",
+        "body": "New track on a concrete subgrade and modernisation of sections in Moscow and Saint Petersburg."
+      },
+      {
+        "num": "2:15",
+        "unit": "city-to-city",
+        "title": "Moscow ↔ St Petersburg",
+        "body": "More than 2 hours saved in journey time compared with the Sapsan EMU."
+      }
+    ]
+  },
+  "projects": {
+    "title": "Main projects",
+    "ctaMore": "Learn more",
+    "evsHomeShowcaseDescription": "Development of rolling stock for the high-speed main line. ECRT prepares the specification and conceptual, technical, and detailed design documentation; manufacturing takes place at the Ural Locomotives plant (part of the Sinara Transport Machines group).",
+    "metricListAria": "Key programme indicators",
+    "metricLabels": {
+      "period": "Horizon",
+      "keyMetric": "Key indicator",
+      "status": "Status",
+      "segment": "Segment",
+      "okrPeriod": "R&D window",
+      "stage": "Programme phase",
+      "programFocus": "Programme emphasis"
+    },
+    "showcaseEvsTitle": "High-speed EVS‑360 electric train",
+    "showcaseContactVsm1Title": "Catenary systems for HSL‑1",
+    "showcaseContactVsm1Description": "The KS-400 catenary subsystem delivers reliable power transfer to train pantographs at speeds up to 400 km/h.",
+    "showcaseVsm1TrackTitle": "Permanent-way elements for HSL‑1",
+    "showcaseVsm1TrackDescription": "ECRT is developing ballasted-track rail fastenings for the Moscow–Saint Petersburg high-speed main line.",
+    "showcaseTrackV25Title": "Permanent-way structural elements (Path V2.5)",
+    "showcaseLowIntensityTitle": "Rolling stock for low-traffic lines",
+    "showcaseOperationSupportTitle": "Operations support - Sapsan and Lastochka EMUs",
+    "showcaseOperationSupportDescriptions": [
+      "Support for operation of German-built Sapsan high-speed EMUs and ES1 Lastochka regional electric trains.",
+      "The project includes engineering support for structural changes to Sapsan and Lastochka trains as part of import substitution and to improve passenger comfort."
+    ]
+  },
+  "ecosystemPartners": {
+    "title": "Company partners"
+  }
+}

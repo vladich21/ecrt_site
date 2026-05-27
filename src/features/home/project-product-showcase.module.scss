@@ -1,0 +1,265 @@
+.productShowcase {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 6vw, 86px);
+  width: 100%;
+  margin: 0;
+}
+
+.productSlide {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.14fr) minmax(300px, 0.86fr);
+  gap: clamp(30px, 5vw, 72px);
+  align-items: center;
+  min-height: clamp(390px, 44vw, 560px);
+  padding: clamp(10px, 2vw, 20px) 0;
+  overflow: visible;
+}
+
+.productSlideReverse {
+  grid-template-columns: minmax(300px, 0.86fr) minmax(0, 1.14fr);
+}
+
+.productSlideReverse .productMediaLink,
+.productSlideReverse .productMediaStatic {
+  order: 2;
+}
+
+.productSlideReverse .productCopy {
+  order: 1;
+}
+
+.productMediaLink {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+  text-decoration: none;
+}
+
+.productMediaStatic {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+
+/* Общее поле превью: одна ширина и соотношение 900×620 для всех слайдов */
+.productMediaFrame {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 900 / 620;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 14px;
+  background: linear-gradient(160deg, #f0f4f9 0%, #e4ecf4 100%);
+}
+
+.productMediaImg {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1) translateZ(0);
+  transition: transform 0.8s cubic-bezier(0.22, 0.8, 0.28, 1);
+}
+
+.productMediaLink:hover .productMediaImg,
+.productMediaLink:focus-visible .productMediaImg {
+  transform: scale(1.045) translateZ(0);
+}
+
+.productMediaLink:focus-visible {
+  outline: 2px solid rgba(11, 111, 214, 0.85);
+  outline-offset: 3px;
+}
+
+.productCta:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.95);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgba(0, 47, 85, 0.45);
+}
+
+.productCopy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: clamp(16px, 3vw, 38px) 0;
+}
+
+.productTitle {
+  margin: 0;
+  color: #002f55;
+  font-size: var(--showcase-title-size);
+  font-weight: 800;
+  line-height: var(--showcase-title-line-height);
+  letter-spacing: var(--showcase-title-tracking);
+  text-wrap: balance;
+}
+
+.productDescription {
+  margin: clamp(16px, 2.4vw, 22px) 0 0;
+  padding: 0;
+  color: #30475c;
+  font-size: var(--showcase-body-size);
+  font-weight: 400;
+  line-height: var(--showcase-body-line-height);
+}
+
+.productDescription + .productDescription {
+  margin-top: clamp(12px, 2vw, 16px);
+}
+
+/* Метрики: минималистичная типографика под описанием, без карточек и боковых полос */
+.productMetricList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(18px, 3vw, 36px);
+  row-gap: clamp(14px, 2.2vw, 20px);
+  width: 100%;
+  max-width: min(760px, 100%);
+  margin: clamp(18px, 2.8vw, 26px) 0 0;
+  padding: clamp(14px, 2.2vw, 20px) 0 0;
+  list-style: none;
+  border-top: 1px solid rgba(0, 47, 85, 0.09);
+}
+
+.productMetricItem {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  height: 100%;
+}
+
+.productMetricBanner {
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: clamp(6px, 1.2vw, 8px);
+  min-height: 0;
+  height: auto;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.productMetricTerm {
+  margin: 0;
+  padding: 0;
+  font-size: var(--showcase-label-size);
+  font-weight: 600;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-transform: none;
+  color: rgba(48, 71, 92, 0.62);
+}
+
+.productMetricValue {
+  display: block;
+  margin: 0;
+  font-size: var(--showcase-emphasis-size);
+  font-weight: 700;
+  line-height: 1.38;
+  letter-spacing: -0.02em;
+  color: #002f55;
+  text-wrap: balance;
+}
+
+.productCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  margin-top: clamp(22px, 3.2vw, 34px);
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: linear-gradient(165deg, #002f55 0%, #001a2e 94%);
+  border: 1px solid rgba(0, 102, 161, 0.35);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  text-transform: none;
+  box-shadow: 0 6px 22px rgba(0, 47, 85, 0.26);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.productCta:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+  border-color: rgba(220, 236, 252, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 47, 85, 0.32);
+}
+
+@media (max-width: 980px) {
+  .productSlide,
+  .productSlideReverse {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    gap: clamp(16px, 4vw, 28px);
+    padding: clamp(8px, 2vw, 16px) 0;
+  }
+
+  .productMetricList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .productTitle {
+    line-height: var(--showcase-title-line-height);
+  }
+
+  .productDescription {
+    margin-top: clamp(12px, 2.5vw, 18px);
+  }
+
+  .productSlideReverse .productMediaLink,
+  .productSlideReverse .productMediaStatic,
+  .productSlideReverse .productCopy {
+    order: initial;
+  }
+
+  .productCopy {
+    padding: clamp(4px, 2vw, 16px) 0;
+  }
+
+  .productCta {
+    margin-top: clamp(18px, 3vw, 28px);
+  }
+}
+
+@media (max-width: 640px) {
+  .productShowcase {
+    gap: clamp(28px, 7vw, 48px);
+    margin-top: clamp(16px, 3.5vw, 28px);
+  }
+
+  .productSlide {
+    padding: 0;
+  }
+
+  .productMetricList {
+    grid-template-columns: 1fr;
+    margin-top: clamp(14px, 2.5vw, 20px);
+    padding-top: clamp(12px, 2vw, 16px);
+  }
+
+  .productMediaFrame {
+    border-radius: 12px;
+  }
+}

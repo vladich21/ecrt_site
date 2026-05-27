@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "defaultTitle": "ECRT"
+  },
+  "breadcrumbs": {
+    "a11y": "Breadcrumb navigation",
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "careers": "Careers",
+    "purchase": "Procurement",
+    "documents": "Documents",
+    "contacts": "Contacts",
+    "privacy": "Privacy policy"
+  },
+  "pageTitles": {
+    "about": "About - ECRT",
+    "projects": "Projects - ECRT",
+    "careers": "Careers - ECRT",
+    "purchase": "Procurement - ECRT",
+    "documents": "Documents - ECRT",
+    "contacts": "Contacts - ECRT",
+    "privacy": "Personal data processing policy - ECRT"
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "mainNav": "Main navigation",
+    "languageChoice": "Interface language",
+    "brandHome": "Engineering Centre for Rail Transport - home",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "heroVideo": "Background video: engineering and motion, no sound"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "careers": "Careers",
+    "purchase": "Procurement",
+    "documents": "Documents",
+    "contacts": "Contacts"
+  },
+  "hero": {
+    "lead": "Engineering Centre for\nRail Transport",
+    "title": "New technological\nrailway superstructure",
+    "ctaDirections": "Projects",
+    "ctaProjects": "Our projects",
+    "ctaAbout": "About the centre"
+  },
+  "heroStats": {
+    "heading": "Key centre metrics",
+    "lead": "From design and testing to deployment of next-generation rail transport solutions.",
+    "labels": {
+      "years": "years in railway transport engineering",
+      "projects": "projects & R&D works",
+      "directions": "R&D centres",
+      "team": "engineers, designers & industrial designers"
+    }
+  },
+  "loading": {
+    "page": "Loading…"
+  },
+  "error": {
+    "title": "Display error",
+    "body": "Part of the page failed to load. Try refreshing or come back later.",
+    "retry": "Try again"
+  },
+  "lang": {
+    "ru": "Ru",
+    "en": "En"
+  },
+  "header": {
+    "brandLines": "Engineering\nCentre for\nRail\nTransport"
+  },
+  "cookies": {
+    "title": "We use cookies",
+    "message": "By continuing to use this site, you agree to cookies and web analytics. Learn more in our",
+    "policyLink": "personal data processing policy",
+    "accept": "Accept all",
+    "reject": "Decline"
+  },
+  "footer": {
+    "contacts": "Contacts",
+    "company": "Joint Stock Company «Engineering Centre for Rail Transport»",
+    "addressLine1": "121205, Moscow, Skolkovo, Bolshoy Blvd 40",
+    "addressLine2": "+7 (495) 909-17-99",
+    "sections": "Site sections",
+    "official": "Official resources",
+    "rzdTitle": "Careers at Russian Railways",
+    "rzdSub": "Vacancies and careers",
+    "skAlt": "Skolkovo resident"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "title": "Documents",
+  "intro": "Official documents, policies, and materials of JSC Rail Transport Engineering Centre.",
+  "officialNote": "Bodies of most filings are legally issued in Russian. English wording here is provided for clarity; bilingual or English PDF editions are labelled in filenames where available.",
+  "ruOriginalLabel": "Official filing title (RU)",
+  "linkSuffixA11y": " - PDF on ecrt.ru",
+  "openPdfHint": "Open PDF",
+  "tabListLabel": "Documentation sections",
+  "tabs": {
+    "anticorruption": {
+      "label": "Anti-corruption policy",
+      "paragraphs": [
+        "All employees of JSC Rail Transport Engineering Centre (the Company) adhere to zero tolerance of corruption in any form. The Company informs personnel about Russian anti-corruption legislation and liability for corruption-related offences, and regularly explains anti-corruption measures applied in the Company.",
+        "If you become aware of violations of anti-corruption or information-security requirements by Company employees, attempts to induce corruption-related offences, or other questionable actions by Company employees or counterparties that may indicate such violations, please report them to the authorised anti-corruption officer:"
+      ],
+      "contactPhoneLabel": "Phone",
+      "contactPhone": "+7 (495) 909-17-99",
+      "contactEmailLabel": "Email",
+      "contactEmail": "Compliance@ecrt.ru",
+      "contractorNote": "Counterparties are reminded that any agreement with the Company must include a signed anti-corruption clause (approved by Russian Railways Order No. 146r of 28 January 2016). Amendments to this clause are not permitted."
+    },
+    "quality": {
+      "label": "Quality management system",
+      "groups": {
+        "policies": {
+          "title": "Policies"
+        },
+        "certificates": {
+          "title": "Certificates"
+        }
+      }
+    },
+    "labor": {
+      "label": "Occupational safety",
+      "lead": "Special assessment of working conditions (SOUT) results"
+    },
+    "hotline": {
+      "label": "Hotline",
+      "items": [
+        "The anti-corruption hotline of JSC Rail Transport Engineering Centre enables reporting of corruption facts, including bribery, abuse of office, commercial bribery, or other unlawful use of an employee's position to obtain benefits. Exercising the right to report must not violate the rights and freedoms of others.",
+        "The hotline is operated to ensure proper response to reports of corruption within the Company.",
+        "Reports are accepted by phone at +7 (495) 909-17-99, by email at compliance@ecrt.ru, and by post marked for the authorised anti-corruption officer at: 121205, Moscow, Skolkovo Innovation Centre, 5 Bolshoy Boulevard, floor 5, premises 5.01.",
+        "Email and postal submissions must include the substance of the report and applicant details as required by the Company's hotline procedure. Failure to provide required personal data or comply with submission rules may result in the report being treated as anonymous."
+      ]
+    }
+  }
+}

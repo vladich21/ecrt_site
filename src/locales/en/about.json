@@ -1,0 +1,24 @@
+{
+  "leadership": {
+    "spineLabel": "ECRT",
+    "name": "Alexander Kireytsev",
+    "role": "General Director",
+    "quote": "The mission of JSC ECRT is to create modern, safe, and reliable solutions for railway rolling stock, as well as subsystems and infrastructure assets, using advanced technologies.\n\nWe will keep building competencies step by step until our developments rank among the best in the world.",
+    "photoAlt": "Alexander Kireytsev — General Director of JSC ECRT."
+  },
+  "hero": {
+    "title": "About us",
+    "tagline": "We study best practice from global industry leaders and build advanced innovation in railway transport.",
+    "imageAlt": "Engineering Centre for Rail Transport — ECRT office and team"
+  },
+  "pillars": {
+    "title": "Core areas of work",
+    "subtitle": "",
+    "items": [
+      "Rolling stock development",
+      "Rail infrastructure development",
+      "Research into forward‑looking priorities",
+      "Import substitution of technical solutions on the railway network"
+    ]
+  }
+}

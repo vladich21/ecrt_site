@@ -1,0 +1,88 @@
+{
+  "hero": {
+    "title": "Projects",
+    "tagline": "Programmes spanning high-speed trainsets, catenary systems, and complementary infrastructure-from requirements through trials and industrial ramp-up.",
+    "imageAlt": "ECRT projects — high-speed rolling stock, catenary and rail infrastructure"
+  },
+  "directions": {
+    "title": "Areas of activity",
+    "intro": "We engineer innovative onboard and train-level solutions for a high‑speed fleet, focused on passenger comfort, accessibility, and richer cabin services. Those subsystems converge in a modular, distributed train control backbone built around a unified Russian‑developed hardware‑and‑software platform with intelligent traction, supervisory, and diagnostic functions across multiple rolling-stock configurations.",
+    "groups": {
+      "cab-displays-controls": {
+        "title": "Driver-cab supervisory and indication systems",
+        "detail": "We have engineered an integrated suite of controllers and onboard computers that delivers centralised surveillance and traction control for high-speed trains that may be operated single‑handed."
+      },
+      "onboard-energy": {
+        "title": "Auxiliary onboard power supply architecture",
+        "detail": "Intelligent power distribution strategies tailor energy delivery to auxiliary consumers while reacting to instantaneous load swings and monitored equipment condition."
+      },
+      "microclimate-passenger": {
+        "title": "Microclimate conditioning for saloons and onboard service spaces",
+        "detail": "Active climate management for passenger saloons and service rooms keeps occupants comfortable throughout the itinerary. Built around a networked controller, the system continuously adapts airflow, humidity, and temperature thresholds to prevailing weather and real‑time occupancy."
+      },
+      "microclimate-driver": {
+        "title": "Microclimate conditioning in driver cabs",
+        "detail": "Dedicated cab climate management ensures ergonomically safe zones for locomotive crews, using supervisory hardware that tracks exterior weather and trims cab comfort setpoints accordingly."
+      },
+      "traction-force": {
+        "title": "Traction provisioning for high-speed trains",
+        "detail": "Advanced torque blending supports launch, cruising, and coasting manoeuvres within passenger‑comfort envelopes. Adaptive logic inside the programmable traction controller allocates effort across motors and axle sets in real time."
+      },
+      "traction-aero": {
+        "title": "Assessment of aerodynamic performance",
+        "detail": "High‑fidelity CFD studies capture trainset envelopes at target line speeds plus crosswind spectra. Outputs feed traction sizing so acceleration profiles remain within specification."
+      },
+      "onboard-infotainment": {
+        "title": "Passenger-facing information & entertainment networks",
+        "detail": "We designed mission‑critical infotainment and crew information systems interconnected over a hardened onboard Ethernet/IP backbone to improve service workflows and traveller convenience."
+      },
+      "traction-drive": {
+        "title": "Traction converters and motor control",
+        "detail": "Field‑oriented traction control maximises adhesion utilisation while guarding against wheel slip. Dedicated hardware supervises inverter health throughout the traction chain."
+      },
+      "braking": {
+        "title": "Brake blending and retardation coordination",
+        "detail": "Service and emergency retardation blending respects safety margins and ride quality. Programmable brake management coordinates friction and electrodynamic sources down to standstill and parking brake application."
+      },
+      "onboard-diagnostics": {
+        "title": "Onboard trainset diagnostic suite",
+        "detail": "Centralised condition monitoring ingests signals from vehicle buses and edge devices, persisting timelines in optimised embedded databases tuned for deterministic IO access."
+      },
+      "operational-safety": {
+        "title": "Ensuring safe operation of the high-speed EMU",
+        "detail": "Hardware and software systems integrate the high-speed train with infrastructure that includes modern interval-regulation signalling, increasing line capacity and train speeds while maintaining the required level of functional safety."
+      },
+      "emc": {
+        "title": "Electromagnetic compatibility of the trainset and its systems",
+        "detail": "Shielding and filtering strategies keep command, control, and IT equipment immune to internal radiated disturbances experienced during high‑speed duty."
+      },
+      "electrical-safety": {
+        "title": "Electrical safety and conducted emissions stewardship",
+        "detail": "Design rules bound conducted and radiated emissions from power electronics whilst enforcing touch‑safe segregation for maintainers onboard."
+      },
+      "tamper-protection": {
+        "title": "Physical and logical safeguards against unauthorised access",
+        "detail": "Layered protections lock down consoles, diagnostics ports, and service interfaces so only authorised staff can manipulate safety‑critical endpoints or export sensitive data."
+      },
+      "human-machine-interface": {
+        "title": "Human-machine interface engineering",
+        "detail": "We harmonise interaction patterns across passengers and train staff with accessible input modalities and interactive surfaces aligned with contemporary UX expectations inside rolling stock shells."
+      },
+      "infrastructure-diagnosis": {
+        "title": "Infrastructure sensing from onboard diagnostic channels",
+        "detail": "Vibration signatures captured on running gear are streamed into analytics kernels that classify track and civil asset stresses for predictive maintenance pipelines."
+      },
+      "air-sanitation": {
+        "title": "Air sanitisation and filtration regimes",
+        "detail": "UV‑assisted treatment cycles sanitise conditioned air whilst supervisory logic modulates lamp duty alongside HVAC states to extend UV source life without compromising biosecurity goals."
+      },
+      "thermal-monitoring-traction": {
+        "title": "Thermal supervision of motors, gearboxes, and journal boxes",
+        "detail": "Distributed temperature probes let the onboard microprocessor cluster infer mechanical wear states for rotating machinery long before hard failures appear."
+      }
+    }
+  },
+  "showcase": {
+    "title": "Featured programmes"
+  }
+}

@@ -1,0 +1,44 @@
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: clip;
+  background: #ffffff;
+  padding-bottom: var(--cookie-banner-offset, 0px);
+}
+
+/* main растягивается, чтобы футер оставался внизу экрана при коротком контенте */
+.mainReveal {
+  position: relative;
+  z-index: 1;
+  flex: 1 0 auto;
+  background: #ffffff;
+  box-shadow: 0 32px 64px rgba(15, 23, 42, 0.1);
+}
+
+/* Крошки поверх первого блока страницы (тёмный hero): отступы как у контента, блок не по центру колонкой */
+.breadcrumbsOverHero {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 14;
+  box-sizing: border-box;
+  /* Чуть больший отступ слева, как у legacy-макета Tilda (~44px → согласуем с нашим gutter) */
+  padding-left: max(var(--page-inline-gutter), 16px);
+  padding-right: max(var(--page-inline-gutter), 16px);
+  pointer-events: none;
+}
+
+.breadcrumbsOverHero > * {
+  pointer-events: auto;
+}
+
+/* Страницы без полноэкранного hero: белая полоса под шапкой, поток документа */
+.breadcrumbsInFlow {
+  position: relative;
+  z-index: 4;
+  background: #ffffff;
+}

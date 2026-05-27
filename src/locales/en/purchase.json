@@ -1,0 +1,43 @@
+{
+  "hero": {
+    "kicker": "Procurement",
+    "title": "Procurement",
+    "lead": "Transparent procedures for selecting suppliers of goods, works, and services for ECRT."
+  },
+  "goal": {
+    "title": "Purpose and principles",
+    "body": "The main goal of procurement at ECRT is the efficient and timely provision of goods, works, and services required by the company.",
+    "items": [
+      "Compliance with Russian procurement legislation.",
+      "Equal access for participants and documented procedure stages.",
+      "Economic justification of supplier and contractor selection."
+    ]
+  },
+  "legal": {
+    "title": "Legal framework",
+    "body": "Procurement is carried out in accordance with Federal Law No. 223-FZ of 18 July 2011, related regulations, and ECRT internal policies."
+  },
+  "platforms": {
+    "title": "Official information sources",
+    "lead": "ECRT procurement information",
+    "eis": {
+      "title": "Unified procurement information system",
+      "body": "The official public procurement portal under Russian law.",
+      "href": "https://zakupki.gov.ru",
+      "cta": "Open zakupki.gov.ru"
+    },
+    "rts": {
+      "title": "RTS-tender platform",
+      "body": "Electronic trading platform used for ECRT procurement procedures.",
+      "href": "https://www.rts-tender.ru",
+      "cta": "Open rts-tender.ru"
+    }
+  },
+  "competitive": {
+    "body": "Requests, complaints, and proposals regarding completed procurement procedures may be sent to:"
+  },
+  "compliance": {
+    "email": "compliance@ecrt.ru",
+    "emailLabel": "Write to compliance@ecrt.ru"
+  }
+}

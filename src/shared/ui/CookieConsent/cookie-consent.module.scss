@@ -1,0 +1,179 @@
+.banner {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  z-index: 120;
+  transform: translateX(-50%);
+  width: min(calc(100% - 20px), var(--layout-max, 1560px));
+  box-sizing: border-box;
+  padding: 0 max(10px, env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom, 0))
+    max(10px, env(safe-area-inset-left));
+  pointer-events: none;
+}
+
+.card {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 2.5vw, 28px);
+  padding: 14px clamp(16px, 2vw, 24px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: var(--bg-main, #002f55);
+  box-shadow: 0 14px 40px rgba(0, 47, 85, 0.38);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.copy {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.title {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+}
+
+.text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.policyLink {
+  color: #7ec8ff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.policyLink:hover {
+  color: #ffffff;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(118px, 1fr));
+  flex-shrink: 0;
+  gap: 8px;
+  min-width: min(100%, 260px);
+}
+
+.acceptBtn,
+.rejectBtn {
+  border-radius: 4px;
+  padding: 7px 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.acceptBtn {
+  border: none;
+  color: #ffffff;
+  background: var(--accent-primary, #e21a1a);
+}
+
+.acceptBtn:hover {
+  background: #e83232;
+}
+
+.acceptBtn:active {
+  transform: scale(0.98);
+  opacity: 0.92;
+}
+
+.acceptBtn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.rejectBtn {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+.rejectBtn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #ffffff;
+}
+
+.rejectBtn:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+.rejectBtn:focus-visible {
+  outline: 2px solid var(--accent-electric, #0066a1);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .acceptBtn,
+  .rejectBtn {
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .acceptBtn:active,
+  .rejectBtn:active {
+    transform: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .banner {
+    width: min(calc(100% - 16px), var(--layout-max, 1560px));
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0));
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .actions {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .acceptBtn,
+  .rejectBtn {
+    width: 100%;
+    min-width: 0;
+    padding: 8px 10px;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 14px;
+  }
+
+  .text {
+    font-size: 12px;
+  }
+
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}

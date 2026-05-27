@@ -1,0 +1,38 @@
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.wrap button {
+  margin: 0;
+  padding: 6px 9px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  border-radius: 4px;
+  opacity: 0.75;
+}
+
+.wrap button:hover,
+.wrap button:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--accent-primary, #e21a1a);
+  outline-offset: 2px;
+}
+
+.wrap button.active {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sep {
+  opacity: 0.45;
+  user-select: none;
+}

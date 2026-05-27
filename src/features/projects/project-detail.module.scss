@@ -1,0 +1,455 @@
+@use "@/styles/numbered-focus-grid" as nfg;
+@use "@/styles/project-hero-shell" as ph;
+
+.page {
+  width: min(92%, var(--container-max));
+  margin: 0 auto;
+  padding: var(--section-padding-y, 80px) 0 var(--section-padding-y, 80px);
+}
+
+.hero h1 {
+  margin: 0;
+  margin-top: 10px;
+  font-size: var(--heading-h1-size);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.code {
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+}
+
+.lead {
+  margin-top: 15px;
+  max-width: 74ch;
+  font-size: var(--body-text-size);
+  line-height: 1.62;
+  font-weight: 400;
+}
+
+.details {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+.block {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(6, 22, 46, 0.78);
+  padding: 16px;
+}
+
+.block h2 {
+  font-size: var(--heading-h2-size);
+  margin-bottom: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.gallery h2 {
+  font-size: var(--heading-h2-size);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.gallery {
+  margin-top: 22px;
+}
+
+.grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 13px;
+}
+
+.block p {
+  margin-bottom: 9px;
+}
+
+.block ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-soft);
+}
+
+.block li {
+  margin-bottom: 7px;
+}
+
+.mediaCard {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  position: relative;
+  min-height: 220px;
+}
+
+.note {
+  margin-top: 13px;
+  font-size: 14px;
+}
+
+/* Стратегические проекты (КС-400): статический hero + отчёт */
+.pageStrategic {
+  width: min(94%, calc(var(--container-max) + 32px));
+  margin: 0 auto;
+  padding: 0 0 var(--section-padding-y, 80px);
+  box-sizing: border-box;
+}
+
+.strReportShell {
+  --str-navy: #001a2e;
+  --str-blue: #002f55;
+  --str-red: #e21a1a;
+  --str-red-deep: #c41515;
+  margin-top: clamp(52px, 6vw, 72px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5.5vw, 80px);
+}
+
+.strReportShellContinued {
+  margin-top: clamp(36px, 5vw, 52px);
+  padding-top: clamp(28px, 4vw, 44px);
+  border-top: 1px solid rgba(0, 47, 85, 0.1);
+}
+
+.strReportSection {
+  margin: 0;
+  padding-top: clamp(28px, 4vw, 44px);
+  border-top: 1px solid rgba(0, 47, 85, 0.1);
+}
+
+.strReportSection:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.strReportSectionHead {
+  text-align: left;
+  max-width: min(920px, 100%);
+  margin: 0 0 clamp(22px, 3.5vw, 32px);
+}
+
+.strReportTitle {
+  margin: 0 0 clamp(12px, 2vw, 16px);
+  font-size: var(--showcase-title-size);
+  font-weight: 800;
+  letter-spacing: var(--showcase-title-tracking);
+  line-height: var(--showcase-title-line-height);
+  color: var(--str-blue);
+}
+
+.strReportTitleRule {
+  display: block;
+  width: var(--section-title-rule-width);
+  height: 3px;
+  margin-top: 14px;
+  border-radius: 2px;
+  background: var(--section-title-rule-gradient);
+}
+
+.strReportDeck {
+  margin: clamp(14px, 2.2vw, 20px) 0 0;
+  font-size: var(--showcase-body-size);
+  line-height: var(--showcase-body-line-height);
+  font-weight: 500;
+  color: rgba(36, 56, 72, 0.82);
+}
+
+.strReportProse {
+  max-width: min(86ch, 100%);
+}
+
+.strReportParagraph {
+  margin: 0;
+  padding: 0;
+  font-size: var(--showcase-body-size);
+  line-height: var(--showcase-body-line-height);
+  font-weight: 500;
+  color: rgba(36, 56, 72, 0.82);
+}
+
+.strReportSection .strReportParagraph:first-of-type {
+  margin-top: clamp(10px, 2.2vw, 16px);
+}
+
+.strReportSection .strMetricsGrid + .strReportParagraph,
+.strReportSection .strReportList + .strReportParagraph {
+  margin-top: clamp(14px, 2.5vw, 20px);
+}
+
+.strReportParagraph + .strReportParagraph {
+  margin-top: 14px;
+}
+
+.strConfigurationsSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 1.14fr) minmax(280px, 0.86fr);
+  gap: clamp(28px, 4.5vw, 56px);
+  align-items: center;
+  margin-top: clamp(20px, 3vw, 32px);
+}
+
+.strConfigurationsMedia {
+  margin: 0;
+  min-width: 0;
+}
+
+.strConfigurationsMediaFrame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  width: 100%;
+  aspect-ratio: 900 / 620;
+  min-height: clamp(220px, 35vw, 400px);
+}
+
+.strConfigurationsMediaImg {
+  object-fit: contain;
+  object-position: center;
+}
+
+.strConfigurationsFocusList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2.8vw, 32px);
+  min-width: 0;
+}
+
+.strConfigurationsFocusList .strFocusItem {
+  @include nfg.item;
+  padding-bottom: 0;
+}
+
+.strConfigurationsFocusList .strFocusDigit {
+  @include nfg.digit;
+}
+
+.strConfigurationsFocusList .strFocusItemText {
+  @include nfg.text;
+  color: var(--str-navy);
+}
+
+.strReportList {
+  margin: clamp(14px, 2.2vw, 20px) 0 0;
+  padding-left: 1.25em;
+  max-width: min(86ch, 100%);
+
+  li {
+    margin-bottom: 10px;
+    font-size: var(--showcase-body-size);
+    line-height: var(--showcase-body-line-height);
+    font-weight: 500;
+    color: rgba(36, 56, 72, 0.82);
+  }
+
+  li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.strMetricsGrid {
+  list-style: none;
+  margin: clamp(20px, 3vw, 28px) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2.2vw, 22px);
+}
+
+.strMetricItem {
+  margin: 0;
+  padding: clamp(18px, 2.5vw, 24px);
+  border-radius: 14px;
+  border: 1px solid rgba(0, 47, 85, 0.1);
+  background: linear-gradient(165deg, rgba(0, 47, 85, 0.04) 0%, rgba(0, 47, 85, 0.01) 100%);
+}
+
+.strMetricValue {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+}
+
+.strMetricNumber {
+  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--str-blue);
+}
+
+.strMetricUnit {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--str-red);
+}
+
+.strMetricLabel {
+  margin: clamp(10px, 1.6vw, 14px) 0 0;
+  font-size: var(--showcase-label-size);
+  line-height: 1.55;
+  font-weight: 600;
+  color: rgba(36, 56, 72, 0.82);
+}
+
+/* Ключевые тезисы — сетка с цифрами (как purchase-page .focusGrid) */
+.strFocusGrid {
+  @include nfg.container;
+  margin-top: 0;
+}
+
+.strFocusItem {
+  @include nfg.item;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.strFocusDigit {
+  @include nfg.digit;
+}
+
+.strFocusItemText {
+  @include nfg.text;
+  color: var(--str-navy);
+}
+
+.strPresentationNote {
+  margin: clamp(8px, 2vw, 16px) 0 0;
+  padding-top: clamp(20px, 3vw, 28px);
+  border-top: 1px solid rgba(0, 47, 85, 0.08);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #6a7985;
+}
+
+@media (max-width: 880px) {
+  .strFocusGrid {
+    @include nfg.down-single-column;
+  }
+
+  .strFocusItem:last-child {
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 980px) {
+  .strConfigurationsSplit {
+    grid-template-columns: 1fr;
+    gap: clamp(16px, 4vw, 28px);
+  }
+
+  .strConfigurationsMediaFrame {
+    border-radius: 12px;
+    min-height: clamp(200px, 52vw, 320px);
+  }
+
+  .evsHeroContent {
+    padding: clamp(16px, 4vw, 24px);
+    padding-top: clamp(56px, 10vw, 72px);
+  }
+
+  .evsHeroLead {
+    margin-top: clamp(12px, 2.5vw, 18px);
+  }
+
+  .strReportParagraph + .strReportParagraph {
+    margin-top: clamp(12px, 2.5vw, 18px);
+  }
+
+  .strMetricsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .strMetricsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .strMetricNumber {
+    font-size: clamp(1.65rem, 6vw, 2.25rem);
+  }
+}
+
+.heroFillImg {
+  @include ph.fill-img;
+}
+
+.evsHeroMedia {
+  @include ph.media-shell;
+}
+
+.evsHeroGradient {
+  @include ph.gradient;
+}
+
+.evsHero {
+  @include ph.frame;
+  border-radius: 16px;
+}
+
+.pageEvs .evsHero {
+  @include ph.full-bleed;
+}
+
+.evsHeroContent {
+  @include ph.content;
+}
+
+.galleryFillImg {
+  object-fit: cover;
+}
+
+/* Страница catalog-проектов — светлая сетка + блок отчёта */
+.pageEvs {
+  width: min(94%, calc(var(--container-max) + 32px));
+  margin: 0 auto;
+  padding: 0 0 var(--section-padding-y, 80px);
+  box-sizing: border-box;
+}
+
+.pageEvs .evsHero h1 {
+  margin: 0;
+  font-size: var(--showcase-title-size);
+  font-weight: 800;
+  line-height: var(--showcase-title-line-height);
+  color: #ffffff;
+  letter-spacing: var(--showcase-title-tracking);
+  text-wrap: balance;
+}
+
+.evsHeroLead {
+  margin: clamp(14px, 2vw, 18px) 0 0;
+  font-size: var(--showcase-body-size);
+  line-height: var(--showcase-body-line-height);
+  font-weight: 400;
+  color: rgba(232, 242, 255, 0.96);
+}
+
+/* Светлый блок «Математическое моделирование» на странице Путь V2.5 */
+.trackModelingBand {
+  margin-top: clamp(36px, 5vw, 52px);
+  padding-top: clamp(28px, 4vw, 44px);
+  border-top: 1px solid rgba(0, 47, 85, 0.1);
+}

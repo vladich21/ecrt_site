@@ -1,0 +1,518 @@
+{
+  "ui": {
+    "aboutProject": "About the project",
+    "keyPoints": "Key points",
+    "details": "Details",
+    "keyParameters": "Key parameters",
+    "engineeringContext": "Engineering context",
+    "confirmedFacts": "Confirmed facts",
+    "gallery": "Illustrations and materials",
+    "galleryNote": "Images are prepared from internal presentations. Additional approval is required before external publication.",
+    "heroAltSuffix": "— ECRT project",
+    "galleryImageAlt": "{title} — image {index}",
+    "segment": "Segment",
+    "period": "Period",
+    "indicator": "Indicator",
+    "hsrSegment": "HSR"
+  },
+  "meta": {
+    "titleSuffix": "ECRT",
+    "descriptionFallback": "Engineering Centre for Rail Transport."
+  },
+  "slider": {
+    "carouselLabel": "Photos: {title}",
+    "previousPhoto": "Previous photo",
+    "nextPhoto": "Next photo",
+    "photoChoice": "Photo selection",
+    "photoOf": "Photo {index} of {total}"
+  },
+  "trackV25Field": {
+    "tabListLabel": "Technology deployment stages",
+    "stageTabLabel": "Stage {number}",
+    "photosPlaceholder": "Stage photo materials will be added."
+  },
+  "catalog": {
+    "evs-360": {
+      "title": "High-speed electric train EVS-360",
+      "code": "EVS 360",
+      "statusLabel": "Active development",
+      "segment": "VSM",
+      "year": "2019 – 2028",
+      "metric": "R&D · VSM",
+      "description": "High-speed electric train platform for VSM main lines: a joint engineering and production programme with phased delivery of trains for testing and certification.",
+      "facts": [
+        "Joint work by ECRT and an industrial partner on design, manufacturing, and testing.",
+        "Calendar milestones and phase distribution are shown in the charts below; design documentation readiness metrics are updated in internal reporting.",
+        "A dedicated engineering workstream covers calculations of components, loads, and track–rolling stock interaction."
+      ],
+      "details": [
+        "The EVS 360 project covers not only train development but also analytical verification of infrastructure interface elements: clamps, fastening nodes, track superstructure, and train–track interaction scenarios.",
+        "Analytical models help assess rolling stock loads on components, track dynamics, design stiffness of fastenings, component durability, and node behaviour within the track superstructure in advance.",
+        "The public page presents materials designed to remain stable across updates: cycle priorities, a development chart for subsystems, an integrated programme schedule, and examples of calculation workstreams. Detailed metrics are not published to avoid becoming outdated between releases."
+      ]
+    },
+    "project-0007-hydrogen": {
+      "title": "Hydrogen locomotive",
+      "code": "0007",
+      "statusLabel": "Project frozen",
+      "segment": "Low-carbon solutions",
+      "year": "reference 2024",
+      "metric": "2024 archive",
+      "description": "Project materials are available for reference; visuals and data require separate approval before publication.",
+      "facts": [
+        "Status: no active phase",
+        "Used in demonstration and analytical scenarios",
+        "Content is updated after separate confirmation"
+      ],
+      "details": [
+        "The hydrogen traction rolling stock project is in a frozen state and retained for reference.",
+        "Only approved publication of archived materials and 2024 reference data is permitted for external use.",
+        "The project's technological context remains relevant for low-carbon transport scenarios and follow-on research."
+      ]
+    },
+    "project-0009-low-intensity": {
+      "title": "Rolling stock for low-traffic lines",
+      "code": "0009",
+      "statusLabel": "Technical documentation in development",
+      "segment": "Passenger services on Russian Railways network",
+      "year": "2024 – 2030",
+      "metric": "58 / 126 seats",
+      "description": "Development of rail buses for sections of the Russian Railways network with low traffic intensity.",
+      "facts": [
+        "Single-car multiple unit: 58 seats, design capacity 93",
+        "Two-section multiple unit: 126 seats, design capacity 192",
+        "Technical requirements development stage cost: RUB 20 million, duration 5 months"
+      ],
+      "details": [
+        "Work is carried out under the protocol of the meeting with First Deputy General Director of Russian Railways S. A. Kobzev dated 21 March 2024, No. SK-42/pr.",
+        "On 11 July 2024, technical requirements development was included in the R&D plan.",
+        "The project aims to replace the retiring RA1 and RA2 rail bus fleet on low-traffic lines."
+      ]
+    },
+    "vsm-1-track-elements": {
+      "title": "Track structure elements for VSM-1",
+      "code": "VSM-1",
+      "statusLabel": "Testing",
+      "segment": "VSM",
+      "year": "2025 – 2027",
+      "metric": "Sablino – Tosno",
+      "description": "ECRT develops rail fastenings for ballasted track on the Moscow – St Petersburg high-speed main line.",
+      "facts": [
+        "Design documentation for the fastening node has been assigned release \"O\"",
+        "Testing and installation at the Sablino – Tosno test site — through end of 2026",
+        "Planned completion of work on variable-stiffness sections — March 2027"
+      ],
+      "details": [
+        "ECRT is developing an intermediate rail fastening node for VSM-1 and track superstructure elements for variable-stiffness sections.",
+        "Laboratory, bench, and preliminary tests have been completed; work at the test site is being prepared.",
+        "Conformity certificate for the VSM-1 fastening node is planned for September 2026."
+      ]
+    },
+    "track-resource-2-5b": {
+      "title": "Track V2.5",
+      "code": "R2.5",
+      "statusLabel": "Testing",
+      "segment": "Freight services on Russian Railways network",
+      "year": "2021 – 2027",
+      "metric": "2.5 billion tonnes",
+      "description": "Development of track structure and maintenance technologies providing 2.5 billion gross tonnes of throughput capacity.",
+      "facts": [
+        "ECRT — track structure developer, programme integrator, and coordinator",
+        "Target resource: 2.5 billion gross tonnes of throughput",
+        "R&D and maintenance technology deployment period: 2021 – 2026"
+      ],
+      "details": [
+        "The programme aims to optimise track structure life-cycle cost by extending throughput between capital and intermediate maintenance cycles.",
+        "The project involves PCB I, leading research organisations, and manufacturers of track superstructure elements.",
+        "Installation of new structures on heavily loaded sections of Russian Railways is planned from 2027."
+      ]
+    }
+  },
+  "strategic": {
+    "ks-400-model": {
+      "title": "Mathematical model of catenary–pantograph interaction",
+      "status": "In progress",
+      "period": "2022 – 2026",
+      "teaser": "Development of a mathematical model of the catenary and dynamic current collection by rolling stock — for design and operation on Russian Railways, including the Moscow – St Petersburg VSM.",
+      "description": "The model describes catenary suspension dynamics and interaction with pantographs. It is used in developing technical solutions, designing, and operating the catenary on electrified sections of the Russian Railways network, including the Moscow – St Petersburg high-speed line.",
+      "bullets": [
+        "Selection of rational parameters for catenary nodes and structures at design speeds and current collection requirements.",
+        "Refinement of requirements for the catenary product range and validation of adopted engineering solutions through model-based calculations."
+      ],
+      "sections": [
+        {
+          "title": "Model purpose",
+          "paragraphs": [
+            "The model is intended to determine (and refine) the most rational parameters of catenary nodes and structures while meeting current collection quality requirements at design speeds.",
+            "Performing calculations will refine requirements for the catenary product range and confirm the validity of adopted technical solutions."
+          ]
+        },
+        {
+          "title": "Scope of application",
+          "paragraphs": [
+            "Used in developing technical solutions, designing, and operating the catenary on all electrified sections of the Russian Railways network, including the Moscow – St Petersburg high-speed line."
+          ]
+        },
+        {
+          "title": "Visualisation: EVS-360 pantograph prototype and KS-400 catenary suspension",
+          "paragraphs": [
+            "The illustrations show modelling of interaction between the EVS-360 pantograph prototype and the KS-400 catenary suspension."
+          ]
+        }
+      ],
+      "details": []
+    },
+    "ks-400-catenary": {
+      "title": "KS-400 product range",
+      "status": "Production launch",
+      "period": "2021 – 2027",
+      "teaser": "R&D on the KS-400 catenary product range for VSM: structures, testing, and a pilot site at the VNIIZHT experimental ring under emergency operating modes.",
+      "description": "The product range is designed for building the KS-400 railway catenary, providing reliable transfer of electrical energy from traction substations and line-side power supply equipment to electric rolling stock pantographs at train speeds up to 400 km/h.\n\nPrototype trials on the VNIIZHT experimental ring were completed in 2026; design documentation has been assigned release «O1». ECRT and Russian Railways are now working together to put KS-400 catenary components into production.",
+      "bullets": [
+        "Under the R&D programme, ECRT has developed structural elements, anchorage nodes, supporting and fixing structures, fittings and droppers, insulators, and structures for earthing and the return traction network of KS-400.",
+        "Prototype samples have been manufactured; preliminary, operational, and acceptance tests have been conducted with iterative improvement of design documentation and successful acceptance commissions."
+      ],
+      "sections": [
+        {
+          "title": "R&D scope and testing",
+          "paragraphs": [
+            "Development of the KS-400 catenary product range is carried out for the Moscow – St Petersburg VSM.",
+            "Under the R&D programme, ECRT specialists developed structural elements, anchorage nodes, supporting and fixing structures, fittings and droppers, insulators, and structures for earthing and the return traction network of the KS-400 catenary. Prototype samples were manufactured; preliminary, operational, and acceptance tests of product range elements were conducted.",
+            "Design documentation was continuously refined throughout the work, enabling successful acceptance commissions."
+          ]
+        },
+        {
+          "title": "KS-400 catenary pilot site at the VNIIZHT experimental ring",
+          "paragraphs": [
+            "Particular attention was given to the KS-400 catenary pilot site at the VNIIZHT experimental ring.",
+            "ECRT specialists, including using the developed mathematical model, together with the Russian Railways construction division, obtained unique results in high-precision catenary suspension adjustment and precise construction and installation work, achieving design positions within tight tolerances."
+          ]
+        },
+        {
+          "title": "Operational testing and emergency modes",
+          "paragraphs": [
+            "At the VNIIZHT experimental ring, operational tests included experiments analysing KS-400 catenary suspension behaviour under emergency operating modes."
+          ]
+        }
+      ],
+      "details": []
+    }
+  },
+  "reports": {
+    "evs-360": {
+      "focusHeading": "Development priorities",
+      "focusIntro": "The focus of the upcoming cycle is to complete detailed design in key areas, manufacture and assemble the first train, prepare for testing, and establish the basis for the second train in line with the overall programme schedule.",
+      "focusBullets": [
+        "Complete working documentation and agreed packages for production and assembly.",
+        "Complete production and assembly stages for the first train and proceed to commissioning.",
+        "Prepare and approve acceptance test programmes and methods.",
+        "Synchronise work on the second train with the approved delivery and assembly calendar."
+      ],
+      "characteristicsHeading": "Train characteristics",
+      "characteristicsIntro": "The electric train is being developed for operation on the Moscow – St Petersburg VSM at speeds up to 360 km/h. It features dual-system operation for 3 kV DC and 25 kV AC, an eight-car consist with double-traction capability, and operation at temperatures from −40 to +40 °C.",
+      "characteristicsBullets": [
+        "Four service classes: first, business, comfort, and standard, plus two compartment types in the leading car.",
+        "Design is developed with modern trends and operating experience of the Sapsan electric train in mind."
+      ],
+      "characteristicsMetrics": [
+        { "value": "360", "unit": "km/h", "label": "Maximum operating speed on VSM" },
+        { "value": "8", "unit": "cars", "label": "Consist with double-traction capability" },
+        { "value": "455", "unit": "passengers", "label": "Total passenger capacity" },
+        { "value": "−40…+40", "unit": "°C", "label": "Operating temperature range" }
+      ],
+      "scheduleHeading": "Schedule and key milestones",
+      "scheduleIntro": "ECRT is the lead developer — design documentation has been developed since 2020 under contract with Russian Railways. Design follows an agreed work plan; in April 2024 a contract was signed for delivery of two lead prototypes with fixed deadlines for transferring design documentation to the manufacturer.",
+      "scheduleParagraphs": [
+        "Completion of detailed design, release of working design documentation, and start of assembly of the first electric train are planned for Q1 2026. A full test programme will be conducted on two lead prototypes."
+      ],
+      "scheduleMetrics": [
+        { "value": "Q1 2026", "unit": "", "label": "Plan: complete detailed design, release working design documentation, and start assembly of the first train" },
+        { "value": "16.02.2028", "unit": "", "label": "Planned completion of acceptance tests for two lead prototypes" },
+        { "value": "16.03.2028", "unit": "", "label": "Planned conformity certificate (TR CU 002/2011)" }
+      ],
+      "scaleHeading": "Programme scale",
+      "scaleIntro": "Domestic companies are prioritised for project implementation; new designs and technologies are being developed for individual systems. The electric train manufacturer is Ural Locomotives; Transmashholding enterprises and more than 160 Russian organisations are involved in the project.",
+      "scaleMetrics": [
+        { "value": "36", "unit": "systems", "label": "New systems for the high-speed electric train" },
+        { "value": ">10 000", "unit": "parts", "label": "Components in the train structure" },
+        { "value": "≥85", "unit": "%", "label": "Planned share of domestically sourced parts" },
+        { "value": "160+", "unit": "organisations", "label": "Enterprises, research institutes, and design bureaus involved in development and production" }
+      ],
+      "sourceNote": "Characteristics and indicators — based on materials from the round table \"On the readiness of Russian industry sectors for the Moscow – St Petersburg VSM project\", Federation Council, 9 December 2024."
+    },
+    "vsm-1-track-elements": {
+      "sections": [
+        {
+          "id": "fastening",
+          "title": "Intermediate rail fastening node for VSM-1",
+          "paragraphs": [
+            "ECRT is carrying out a comprehensive programme to develop an intermediate rail fastening node for the VSM-1 track superstructure."
+          ],
+          "bullets": [
+            "benchmarking of analogues completed and prototype selected; a full set of design documentation developed;",
+            "prototype samples manufactured; laboratory, bench, and preliminary tests conducted — documentation assigned release \"O\";",
+            "samples manufactured for installation at the Sablino – Tosno test site on the October Railway;",
+            "production launch of the node under GOST 33477-2015 is in progress."
+          ],
+          "metrics": [
+            {
+              "value": "September 2026",
+              "unit": "",
+              "label": "Planned conformity certificate for the VSM-1 fastening node"
+            },
+            {
+              "value": "end of 2026",
+              "unit": "",
+              "label": "Installation of prototype samples and testing at the Sablino – Tosno test site"
+            }
+          ]
+        },
+        {
+          "id": "variable-stiffness",
+          "title": "Track superstructure elements for variable-stiffness sections",
+          "paragraphs": [
+            "In parallel, development and manufacture of elements for variable-stiffness sections is under way. At PMS-88, track panel assembly is in progress for installation and testing at the Sablino – Tosno test site; acceptance tests with release \"O1\" are being conducted."
+          ],
+          "bullets": [
+            "design documentation developed for the concrete sleeper and the additional rail fastening node ICP 5;",
+            "a full test programme completed, including preliminary (factory) tests; documentation assigned release \"O\";",
+            "prototype track superstructure elements delivered for track panel assembly (PMS-88)."
+          ],
+          "metrics": [
+            {
+              "value": "March 2027",
+              "unit": "",
+              "label": "Planned completion date"
+            }
+          ]
+        }
+      ],
+      "calculations": {
+        "heading": "Mathematical modelling and design calculations",
+        "intro": "For the EVS 360 programme, the calculation framework links the train, track, and fastening elements — from clamp geometry to node behaviour within the track superstructure.",
+        "directions": [
+          {
+            "title": "Clamp calculations",
+            "body": "Optimisation of clamp geometry considering durability, natural frequency, and clamping force. Design stiffness of the fastening node is assessed separately."
+          },
+          {
+            "title": "Track–rolling stock interaction",
+            "body": "Calculation of rolling stock loads on the node, accounting for track dynamics and various train–infrastructure interaction scenarios."
+          },
+          {
+            "title": "Node calculations",
+            "body": "Verification of the fastening node for strength and durability using a computational mesh and an engineering contact model of the components."
+          },
+          {
+            "title": "Node within the track structure",
+            "body": "Calculation of the node within the track superstructure, assessing rail stiffness and the elastic modulus of the sub-rail foundation."
+          }
+        ]
+      }
+    },
+    "project-0009-low-intensity": {
+      "configurationAlt": "Rolling stock configuration diagram for low-traffic lines",
+      "sections": [
+        {
+          "id": "about",
+          "group": "intro",
+          "title": "About the project",
+          "paragraphs": [
+            "ECRT, commissioned by Russian Railways, is developing low-floor rolling stock for operation on low-traffic lines of Russian Railways. The approved working designation of the model range under development is: rail bus RA11 — single-car version; rail bus RA12 — two-car version; rail bus RA13 — two-car version with enhanced-comfort car interiors.",
+            "A technical specification for RA12 has been developed; detailed design is in progress.",
+            "Forecast serial production volumes for rail buses are 300 cars (75 cars per year over 4 years) for operation on low-traffic lines of the Russian Railways network.",
+            "Creating modern rolling stock for passenger services on low-traffic sections of the Russian Railways network addresses the acute social challenge of transport accessibility to remote settlements for residents across the country."
+          ]
+        },
+        {
+          "id": "configurations",
+          "group": "details",
+          "title": "Rolling stock configurations",
+          "bulletsPlacement": "slot",
+          "paragraphs": [
+            "Based on analysis of route network data and passenger traffic volumes on low-activity railway lines, development and deployment of two rolling stock types is planned:"
+          ],
+          "bullets": [
+            "For routes up to 50 km in length, a single-car multiple unit with a power plant based on a rechargeable energy storage system and an auxiliary diesel-generator unit; 58 seats and a design capacity (seated plus 3 persons/m² standing on free floor area) of 93 passengers in a 3rd-class interior layout (3+2 seating);",
+            "For routes over 50 km in length, a two-section multiple unit with a booster section containing two diesel-generator units; 126 seats and a design capacity of 192 passengers in a 3rd-class interior layout."
+          ],
+          "metrics": [
+            {
+              "value": "58",
+              "unit": "→ 93",
+              "label": "Single-car multiple unit: seats and design capacity, passengers"
+            },
+            {
+              "value": "126",
+              "unit": "→ 192",
+              "label": "Two-section multiple unit: seats and design capacity, passengers"
+            },
+            {
+              "value": "up to 50",
+              "unit": "km",
+              "label": "Single-car configuration routes"
+            }
+          ]
+        },
+        {
+          "id": "platform",
+          "group": "details",
+          "title": "Platform requirements",
+          "paragraphs": [
+            "A key parameter for both rolling stock types is a reduced floor height providing barrier-free access (without steps or stairs) for passengers boarding and alighting on railway lines equipped with low passenger platforms at a nominal height of 200 mm. Boarding from ground level is also envisaged."
+          ],
+          "metrics": [
+            {
+              "value": "200",
+              "unit": "mm",
+              "label": "Nominal height of low passenger platforms"
+            }
+          ]
+        },
+        {
+          "id": "context",
+          "group": "details",
+          "title": "Programme context",
+          "paragraphs": [
+            "Russian Railways has initiated a project to create low-floor rolling stock for operation on low-traffic sections of the Russian Railways network.",
+            "New rolling stock is being created to replace the retiring rail bus fleet: the existing DT1, RA1, and RA2 diesel train fleet will be withdrawn from service between 2030 and 2040 upon reaching end of service life, while production of the RA3 modification developed as a replacement was halted by Transmashholding (TMH) in 2022 due to unavailability of key components (underfloor power plant). Resumption of production of this rolling stock is not planned in the medium term. TMH is currently developing a low-floor rolling stock platform of three or more cars, whose operation on low-traffic lines is inefficient.",
+            "In view of this, Russian Railways has decided to develop rolling stock in single-car and two-car configurations in-house, meeting the requirements for operation on low-traffic lines.",
+            "The Russian Railways network currently totals 85.6 thousand kilometres. Of these, 360 lines totalling 15.47 thousand km are low-traffic sections. Nearly half of all low-traffic lines have social and defence significance. Marketing research also indicates a need to organise services on new routes on low-traffic lines, requiring new rolling stock. A fundamentally new rolling stock type is therefore required for efficient operation on low-traffic sections."
+          ],
+          "metrics": [
+            {
+              "value": "2030",
+              "unit": "– 2040",
+              "label": "Withdrawal period for the DT1, RA1, and RA2 fleet"
+            }
+          ]
+        },
+        {
+          "id": "participants",
+          "group": "details",
+          "title": "Project participants",
+          "paragraphs": ["Client — Russian Railways. Developer — ECRT."]
+        }
+      ]
+    },
+    "track-resource-2-5b": {
+      "sections": [
+        {
+          "id": "about",
+          "group": "intro",
+          "title": "About the project",
+          "paragraphs": [
+            "ECRT has established a dedicated unit for developing advanced track infrastructure solutions. Under the Russian Railways programme to create a track structure and maintenance technologies providing 2.5 billion gross tonnes of throughput, the unit acts as developer of the structure, its elements, and maintenance regulations, and as coordinator of all project participants.",
+            "The programme goal is to reduce track life-cycle cost on heavily loaded sections by extending throughput between capital and intermediate track maintenance cycles. R&D and deployment of maintenance technologies for the innovative track structure are carried out in 2021–2026."
+          ]
+        },
+        {
+          "id": "focus",
+          "group": "intro",
+          "title": "Main workstreams",
+          "bulletLayout": "focusGrid",
+          "bullets": [
+            "Development of track structure elements with improved operational and resource characteristics;",
+            "Addressing the integrated challenge of synergising technical characteristics of track elements within a unified structure;",
+            "Creating a maintenance and monitoring system enabling effective reliability of the track structure."
+          ]
+        },
+        {
+          "id": "requirements",
+          "group": "details",
+          "title": "Maintenance schemes",
+          "paragraphs": [
+            "Preliminary maintenance schemes are defined by the Technical Requirements for track structure and maintenance system.",
+            "Key target indicators:"
+          ],
+          "metrics": [
+            {
+              "value": "2.5",
+              "unit": "billion t",
+              "label": "Target gross throughput between capital track maintenance cycles"
+            },
+            {
+              "value": "225 → 450",
+              "unit": "million t",
+              "label": "Throughput between intermediate maintenance cycles"
+            },
+            {
+              "value": "233 → 350",
+              "unit": "million t",
+              "label": "For sections with complex alignment and profile"
+            }
+          ]
+        },
+        {
+          "id": "partners",
+          "group": "details",
+          "title": "Competence ecosystem",
+          "paragraphs": [
+            "The project is complex and research-intensive; leading Russian competence centres have been engaged across the following areas:"
+          ],
+          "bullets": [
+            "infrastructure design bureau (PCB I);",
+            "specialist research organisations and higher education institutions: VNIIZHT, RUT (MIIT), PGUPS, SGUPS, ICT VEIP, and Peter the Great St. Petersburg Polytechnic University;",
+            "manufacturers and developers of track superstructure elements and structures: EVRAZ, Novosibirsk and Murom switch plants, RZDstroy, BetElTrans (BET), and others."
+          ]
+        },
+        {
+          "id": "rollout",
+          "group": "details",
+          "title": "Rollout outlook",
+          "paragraphs": [
+            "Installation (rollout) of new track structures, identified as most effective according to the technical and economic justification, is planned to begin on heavily loaded sections of the Russian Railways network from 2027.",
+            "All heavily loaded sections of the Russian Railways network — more than 17 thousand km — are prospective rollout sites for the developed innovative track structure."
+          ]
+        }
+      ],
+      "fieldWorks": {
+        "heading": "Technology deployment",
+        "intro": "Three sequential stages: track panel assembly at a track maintenance depot, subgrade preparation using cold recycling technology, and panel installation on the Krasnoyarsk Railway line.",
+        "stages": [
+          {
+            "id": "assembly",
+            "title": "Track panel assembly at the track maintenance depot",
+            "description": "Assembly of the track panel with ECRT-developed fastenings at the track maintenance depot (TMD)."
+          },
+          {
+            "id": "sub-ballast",
+            "title": "Subgrade preparation and protective layer installation",
+            "description": "Preparation for removal of the existing track panel and subsequent installation of a new sub-ballast protective layer using cold recycling technology. The protective layer installation process was developed by ECRT."
+          },
+          {
+            "id": "laying",
+            "title": "Track panel installation on the line",
+            "description": "Installation of the track panel with ECRT-developed fastenings on the Zaozerny – Kamala section of the Krasnoyarsk Railway."
+          }
+        ]
+      },
+      "modeling": {
+        "heading": "Mathematical modelling and track structure calculations",
+        "intro": "Mathematical modelling receives substantial attention during project implementation. A suite of mathematical models has been developed and is used for design and calculations of innovative track structures; all models have been validated based on experiments by VNIIZHT, MIIT, and ICT VEIP.",
+        "blocks": [
+          {
+            "title": "Determination of loads on the track, its nodes, and elements",
+            "body": "Modelling of forces applied by rolling stock to rails and nodes; contact zones and the integrated loading picture along the section under consideration are assessed."
+          },
+          {
+            "title": "Track structure calculation",
+            "body": "Finite-element model of a track superstructure section: rails, sleepers, ballast bed, and support constraints; loads and boundary conditions are applied to verify the bearing capacity of the scheme."
+          },
+          {
+            "title": "Calculation of track nodes and elements",
+            "body": "Detailed verification of fastening nodes and element joints for stress–strain state; contact nodes of components and reactions in zones of maximum stress concentration are considered."
+          },
+          {
+            "title": "Geotechnical calculations",
+            "body": "Cross-sections of the embankment or foundation divided into finite elements: loads from the track superstructure, boundary conditions, and stress (or displacement) distribution in the soil mass."
+          },
+          {
+            "title": "Optimisation of track structure and element parameters",
+            "body": "Comparison of fastening element and track superstructure geometry variants against target indicators (stress state, node stiffness, etc.); results are presented as charts and reference node geometry."
+          }
+        ]
+      }
+    }
+  }
+}

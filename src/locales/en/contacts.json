@@ -1,0 +1,24 @@
+{
+  "formHeading": "Feedback",
+  "phoneLabel": "Phone",
+  "phoneDisplay": "+7 (495) 909-17-99",
+  "mailLabel": "E-mail",
+  "mailDisplay": "info@ecrt.ru",
+  "legalHeading": "Legal address",
+  "legalLines": [
+    "121205, Moscow, Skolkovo, 40 Bolshoy Boulevard",
+    "Reg.: internal territory, Mozhaysky municipal district"
+  ],
+  "officeHeading": "Business address",
+  "officeLines": [
+    "121205, Moscow, Skolkovo, 40 Bolshoy Boulevard"
+  ],
+  "corpDetailsHeading": "Registration & activity classifications",
+  "corpDetailsLines": [
+    "TIN (Russia) - 7708357508",
+    "OKVED 72.19 - other research & experimental development in natural sciences & engineering",
+    "IT-sector activity classifier: 1.02"
+  ],
+  "formAsideA11y": "Phone, mail and premises",
+  "mapA11y": "JSC Rail Transport Engineering Centre office map - Skolkovo"
+}

@@ -1,0 +1,258 @@
+/* Единый акцент хронологии (полоса, точки, даты .when) */
+$chronology-accent: #c41515;
+
+.wrapper {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.timeline {
+  position: relative;
+  --timeline-marker-col: 42px;
+  padding: 4px 0 12px;
+}
+
+/* Дорожка только под полосой прогресса; позиция/высота задаются измерением (первая → последняя веха) */
+.spineTrack {
+  pointer-events: none;
+  position: absolute;
+  left: calc(var(--timeline-marker-col) / 2);
+  width: 8px;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.spineProgressClip {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.spineProgress {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 2px;
+  background: $chronology-accent;
+  will-change: transform;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--timeline-marker-col) minmax(0, 1fr);
+  gap: clamp(14px, 2.5vw, 22px);
+  align-items: start;
+  padding: 0 0 clamp(24px, 4vw, 36px);
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  .markerCol {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 4px;
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 2;
+  }
+
+  .content {
+    min-width: 0;
+    padding: 2px 0 0;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  /* Одна точка на оси: белая «капсула» до вехи → заливка акцентом */
+  .marker {
+    display: block;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid color-mix(in srgb, #{$chronology-accent} 55%, transparent);
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 47, 85, 0.05);
+    transition:
+      background 0.28s ease,
+      border-color 0.28s ease,
+      box-shadow 0.28s ease;
+
+    &[data-filled='true'] {
+      background: $chronology-accent;
+      border-color: $chronology-accent;
+      box-shadow: none;
+    }
+  }
+
+  .when {
+    display: block;
+    font-size: clamp(17px, 2vw, 20px);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $chronology-accent;
+    margin-bottom: 6px;
+  }
+
+  .stepTitle {
+    margin: 0;
+    font-size: clamp(17px, 2.1vw, 20px);
+    font-weight: 700;
+    line-height: 1.34;
+    color: #062539;
+    letter-spacing: -0.015em;
+  }
+
+  .blurb {
+    margin: 8px 0 0;
+    font-size: var(--body-text-size);
+    line-height: var(--body-text-line-height);
+    color: #556b7f;
+    max-width: 56ch;
+  }
+
+  &.stepHasPhoto .figure {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+    margin-top: 12px;
+    max-width: min(390px, 90%);
+    width: 100%;
+  }
+}
+
+.figure {
+  margin: 0;
+  align-self: start;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 47, 85, 0.1);
+  background: #f2f6fa;
+  max-height: 270px;
+}
+
+.figureImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 270px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Десктоп: ось по центру, текст и фото по разные стороны */
+@media (min-width: 768px) {
+  .spineTrack {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .step {
+    grid-template-columns: minmax(0, 1fr) 42px minmax(0, 1fr);
+    grid-template-rows: auto;
+    column-gap: clamp(12px, 2vw, 20px);
+    row-gap: 0;
+
+    .markerCol {
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: center;
+    }
+
+    &.stepEven {
+      .content {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: end;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      .figure {
+        grid-column: 3;
+        grid-row: 1;
+        justify-self: start;
+        max-width: min(372px, 100%);
+        width: 100%;
+      }
+    }
+
+    &.stepOdd {
+      .content {
+        grid-column: 3;
+        grid-row: 1;
+        justify-self: start;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .figure {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: end;
+        max-width: min(372px, 100%);
+        width: 100%;
+      }
+    }
+
+    &.stepHasPhoto .figure {
+      grid-row: 1;
+      margin-top: 0;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .timeline {
+    --timeline-marker-col: 38px;
+  }
+
+  .step {
+    gap: clamp(12px, 3vw, 16px);
+    padding-bottom: clamp(20px, 5vw, 28px);
+  }
+
+  .step .markerCol {
+    padding-top: 2px;
+  }
+
+  .step .when {
+    font-size: clamp(15px, 3.8vw, 17px);
+  }
+
+  .step .stepTitle {
+    font-size: clamp(16px, 4.2vw, 18px);
+  }
+
+  .step.stepHasPhoto .figure {
+    max-width: min(330px, 90%);
+    max-height: 225px;
+  }
+
+  .figureImg {
+    max-height: 225px;
+  }
+}

@@ -1,0 +1,467 @@
+@use "@/styles/numbered-focus-grid" as nfg;
+
+.aboutRoot {
+  --ecrt-navy: #001a2e;
+  --ecrt-blue: #002f55;
+  --ecrt-blue-bright: #0066a1;
+  --ecrt-red: #e21a1a;
+  --ecrt-red-deep: #c41515;
+  --ecrt-surface: #f0f4f9;
+  --ecrt-surface-alt: #e8f0f8;
+  width: 100%;
+}
+
+/* ——— Руководство: в стиле светлой части страницы ——— */
+.leadership {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: var(--section-padding-y, 80px) 0 0;
+  border-top: 1px solid rgba(0, 47, 85, 0.12);
+}
+
+.leadershipInner {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 1.06fr);
+  gap: clamp(28px, 5vw, 48px);
+  align-items: center;
+}
+
+.leadershipVisual {
+  min-width: 0;
+}
+
+.leadershipPhotoWrap {
+  position: relative;
+  margin: 0;
+}
+
+.leadershipPhotoMesh {
+  position: absolute;
+  top: clamp(-12px, -2vw, -6px);
+  left: clamp(10%, 6vw, 18%);
+  width: clamp(140px, 42%, 260px);
+  height: clamp(120px, 28%, 220px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    repeating-linear-gradient(125deg, rgba(0, 102, 161, 0.08) 0, rgba(0, 102, 161, 0.08) 1px, transparent 1px, transparent 13px),
+    repeating-linear-gradient(35deg, rgba(0, 47, 85, 0.06) 0, rgba(0, 47, 85, 0.06) 1px, transparent 1px, transparent 15px);
+}
+
+.leadershipPhotoFigure {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--ecrt-surface-alt);
+  border: 1px solid rgba(0, 47, 85, 0.1);
+  box-shadow:
+    0 16px 40px rgba(0, 47, 85, 0.1),
+    0 2px 8px rgba(0, 26, 46, 0.06);
+}
+
+.leadershipPhoto {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
+.leadershipBody {
+  min-width: 0;
+}
+
+.leadershipName {
+  margin: 0 0 10px;
+  font-family: var(--font-body);
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--ecrt-blue);
+}
+
+.leadershipBody .pillarsHeadRule {
+  margin-bottom: clamp(14px, 2.2vw, 20px);
+}
+
+.leadershipRole {
+  margin: 0 0 clamp(18px, 3vw, 28px);
+  font-size: clamp(13px, 1.6vw, 16px);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ecrt-blue-bright);
+  text-transform: lowercase;
+}
+
+.leadershipBody .pillarCard {
+  padding-top: 0;
+}
+
+.leadershipBody .pillarText {
+  white-space: pre-line;
+}
+
+/* ——— Контент под hero ——— */
+.contentShell {
+  position: relative;
+  width: 100%;
+}
+
+.wrap {
+  position: relative;
+  box-sizing: border-box;
+  width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
+  max-width: none;
+  margin: 0 auto;
+  padding: var(--section-padding-y, 80px) 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, 7vw, 80px);
+}
+
+.sectionHead {
+  text-align: left;
+  max-width: min(820px, 100%);
+  margin: 0 0 clamp(28px, 4vw, 40px);
+}
+
+.pillarsHeading {
+  margin: 0 0 clamp(12px, 2vw, 16px);
+  font-size: var(--heading-h2-size);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--ecrt-blue);
+}
+
+.sectionSubtitle {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.55vw, 1.05rem);
+  line-height: 1.55;
+  font-weight: 500;
+  color: rgba(36, 56, 72, 0.82);
+}
+
+/* Направления: открытая вёрстка, без рамок и «карточек» — тёплый текст + красные акценты */
+.pillars {
+  margin: 0;
+}
+
+.pillarsHead {
+  margin-bottom: 0;
+}
+
+.pillarsHead .sectionSubtitle {
+  margin-top: clamp(14px, 2.2vw, 20px);
+}
+
+.pillarsHeadRule {
+  display: block;
+  width: var(--section-title-rule-width);
+  height: 3px;
+  margin-top: 14px;
+  border-radius: 2px;
+  background: var(--section-title-rule-gradient);
+}
+
+.pillarGrid {
+  @include nfg.container;
+  margin-top: 0;
+  padding-top: clamp(22px, 3vw, 30px);
+}
+
+.pillarCard {
+  @include nfg.item;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.pillarCard .storyBlockIndex {
+  @include nfg.digit;
+}
+
+.pillarText {
+  @include nfg.text;
+}
+
+/* ——— История: без «коробки», на всю ширину колонки ——— */
+.storySection {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.storyHeadRow {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2.5vw, 22px);
+  margin-bottom: clamp(28px, 4vw, 40px);
+  max-width: min(920px, 100%);
+}
+
+
+.storyTitles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.storyHeading {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.28;
+  color: var(--ecrt-blue);
+}
+
+.storyLead {
+  margin: 0 0 clamp(14px, 2vw, 18px);
+  font-size: clamp(0.95rem, 1.55vw, 1.05rem);
+  line-height: 1.52;
+  font-weight: 500;
+  color: rgba(36, 56, 72, 0.85);
+}
+
+/* Номера шагов — только типографика, без круга и без красного акцента */
+.storyBlockIndex {
+  flex-shrink: 0;
+  align-self: flex-start;
+  min-width: 1.1em;
+  font-size: clamp(2rem, 4.2vw, 2.85rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(0, 26, 46, 0.34);
+}
+
+.storyBlocks {
+  list-style: none;
+  margin: 0 0 clamp(28px, 4vw, 36px);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.storyBlock {
+  display: flex;
+  gap: clamp(16px, 2.5vw, 22px);
+  align-items: flex-start;
+  padding: clamp(22px, 3.5vw, 32px) 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  border-top: 1px solid rgba(0, 47, 85, 0.09);
+
+  &:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+.storyBlockBody {
+  min-width: 0;
+  flex: 1;
+}
+
+.storyBlockTitle {
+  margin: 0 0 10px;
+  font-size: clamp(1rem, 1.65vw, 1.1rem);
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--ecrt-navy);
+}
+
+.storyBlockText {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.5vw, 1.04rem);
+  line-height: 1.68;
+  font-weight: 400;
+  color: #2c4154;
+}
+
+.storyCtaWrap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.storyCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(180deg, var(--ecrt-red) 0%, var(--ecrt-red-deep) 100%);
+  border: 1px solid rgba(226, 26, 26, 0.45);
+  box-shadow:
+    0 6px 20px rgba(196, 21, 21, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow:
+      0 10px 28px rgba(196, 21, 21, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+}
+
+@media (max-width: 880px) {
+  .leadershipInner {
+    grid-template-columns: 1fr;
+    gap: clamp(24px, 6vw, 32px);
+    align-items: stretch;
+  }
+
+  .leadershipVisual {
+    width: 100%;
+    max-width: min(520px, 100%);
+    margin-inline: auto;
+  }
+
+  .leadershipBody {
+    width: 100%;
+  }
+
+  .pillarGrid {
+    @include nfg.down-single-column;
+  }
+
+  .pillarCard:last-child {
+    padding-bottom: 0;
+  }
+
+  .storyCtaWrap {
+    justify-content: stretch;
+  }
+
+  .storyCta {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrap {
+    padding: clamp(40px, 10vw, 56px) 0;
+    gap: clamp(36px, 8vw, 52px);
+  }
+
+  .sectionHead {
+    margin-bottom: clamp(20px, 5vw, 28px);
+  }
+
+  .pillarsHeading {
+    font-size: var(--heading-h2-size);
+  }
+
+  .pillarGrid {
+    padding-top: clamp(16px, 4vw, 22px);
+    row-gap: clamp(16px, 4vw, 22px);
+  }
+
+  .pillarCard {
+    gap: clamp(16px, 2.2vw, 22px);
+    align-items: center;
+    padding-bottom: clamp(20px, 2.8vw, 28px);
+  }
+
+  .pillarCard .storyBlockIndex {
+    font-size: clamp(2rem, 4vw, 2.65rem);
+    padding-top: 0;
+  }
+
+  .pillarText {
+    padding-top: 6px;
+    font-size: var(--body-text-size);
+    line-height: 1.55;
+  }
+
+  .leadership {
+    padding-top: clamp(36px, 9vw, 48px);
+  }
+
+  .leadershipVisual {
+    max-width: 100%;
+  }
+
+  .leadershipPhotoFigure {
+    border-radius: 10px;
+  }
+
+  .leadershipPhotoMesh {
+    left: clamp(6%, 4vw, 12%);
+    width: clamp(120px, 38%, 220px);
+    height: clamp(100px, 24%, 180px);
+  }
+
+  .leadershipName {
+    font-size: clamp(22px, 6.5vw, 30px);
+  }
+
+  .leadershipRole {
+    margin-bottom: clamp(14px, 4vw, 20px);
+  }
+
+  .storyHeading {
+    font-size: clamp(1.25rem, 5.2vw, 1.5rem);
+  }
+
+  .storyLead,
+  .sectionSubtitle {
+    font-size: var(--body-text-size);
+    line-height: var(--body-text-line-height);
+  }
+
+  .storyBlock {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: clamp(10px, 3vw, 14px);
+    padding: clamp(18px, 4.5vw, 24px) 0;
+  }
+
+  .storyBlockIndex {
+    min-width: 2ch;
+    font-size: clamp(1.45rem, 5.5vw, 1.85rem);
+    line-height: 1.05;
+    padding-top: 2px;
+  }
+
+  .storyBlockTitle {
+    font-size: clamp(0.95rem, 4vw, 1.05rem);
+  }
+
+  .storyBlockText {
+    font-size: var(--body-text-size);
+    line-height: var(--body-text-line-height);
+  }
+}
+

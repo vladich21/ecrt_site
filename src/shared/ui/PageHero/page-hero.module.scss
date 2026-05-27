@@ -1,0 +1,130 @@
+.hero {
+  --page-hero-bg: #050b14;
+
+  position: relative;
+  isolation: isolate;
+  height: var(--page-hero-height);
+  max-height: var(--page-hero-max-height);
+  min-height: var(--page-hero-height);
+  overflow: hidden;
+  background: var(--page-hero-bg);
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.heroMediaShell {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.heroMediaShell > span {
+  position: absolute !important;
+  inset: -12% 0 !important;
+  width: 100% !important;
+  height: 124% !important;
+  display: block !important;
+}
+
+.heroMedia {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: var(
+    --page-hero-scrim,
+    linear-gradient(
+      118deg,
+      rgba(0, 26, 46, 0.94) 0%,
+      rgba(0, 30, 54, 0.78) min(46vw, 52%),
+      rgba(0, 47, 85, 0.38) 72%,
+      rgba(0, 47, 85, 0.12) 100%
+    )
+  );
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(28px, 5vh, 64px) clamp(24px, 5vw, 64px);
+  box-sizing: border-box;
+}
+
+.heroCopy {
+  width: 100%;
+  max-width: min(720px, 100%);
+}
+
+.heroTitle {
+  margin: 0;
+  font-size: var(--heading-h1-size);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #f0f6fc;
+  text-wrap: balance;
+  text-shadow:
+    0 2px 28px rgba(0, 0, 0, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.heroLead {
+  margin: clamp(16px, 2.5vw, 22px) 0 0;
+  max-width: min(62ch, 100%);
+  font-size: var(--body-text-size);
+  line-height: var(--body-text-line-height);
+  font-weight: 600;
+  color: rgba(240, 246, 252, 0.93);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.38);
+}
+
+@media (max-width: 880px) {
+  .overlay {
+    align-items: flex-end;
+    padding: clamp(20px, 4vw, 28px) clamp(20px, 5vw, 32px);
+    padding-bottom: clamp(24px, 5vw, 36px);
+  }
+
+  .heroCopy {
+    max-width: none;
+    text-align: center;
+  }
+
+  .heroTitle {
+    max-width: 22ch;
+    margin-inline: auto;
+  }
+
+  .heroLead {
+    max-width: 38ch;
+    margin-inline: auto;
+  }
+
+  .scrim {
+    background: var(
+      --page-hero-scrim-mobile,
+      linear-gradient(
+        180deg,
+        rgba(0, 26, 46, 0.38) 0%,
+        rgba(0, 26, 46, 0.82) 52%,
+        rgba(0, 26, 46, 0.94) 100%
+      )
+    );
+  }
+}

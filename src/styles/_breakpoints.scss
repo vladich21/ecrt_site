@@ -1,0 +1,19 @@
+// Shared breakpoint widths — import in module.scss: @use '@/styles/breakpoints' as bp;
+$bp-xs: 480px;
+$bp-sm: 768px;
+$bp-md: 880px;
+$bp-lg: 1024px;
+$bp-xl: 1200px;
+$bp-nav-desktop: 1441px;
+
+@mixin down($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin up($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}

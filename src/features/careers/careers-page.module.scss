@@ -1,0 +1,411 @@
+@use "@/styles/numbered-focus-grid" as nfg;
+
+.careersRoot {
+  --ecrt-blue: #002f55;
+  --ecrt-navy: #001a2e;
+  --ecrt-blue-bright: #0066a1;
+  --ecrt-red: #e21a1a;
+  --ecrt-red-deep: #c41515;
+  width: 100%;
+}
+
+.contentShell {
+  width: 100%;
+  position: relative;
+}
+
+/* Как раньше: тёплый фон под блоком после hero, чтобы контент не «висел» на чистом белом. */
+.careersRoot .contentShell {
+  background: #fdfcfa;
+}
+
+.wrap {
+  box-sizing: border-box;
+  width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
+  max-width: none;
+  margin: 0 auto;
+  padding-top: 100px;
+  padding-bottom: var(--section-padding-y, 80px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 6vw, 100px);
+}
+
+.section {
+  margin: 0;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.2fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+}
+
+.twoColSticky {
+  position: sticky;
+  top: calc(var(--header-height, 72px) + 16px);
+}
+
+.sideTitle {
+  margin: 0;
+  font-size: clamp(22px, 2.9vw, 32px);
+  font-weight: 800;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  color: var(--ecrt-blue);
+}
+
+/* Блок про культуру — в той же типографике и сетке, что «Основные направления работы» на about */
+.culturePanel {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.culturePanelTitle {
+  margin: 0 0 clamp(12px, 2vw, 16px);
+  font-size: var(--heading-h2-size);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--ecrt-blue);
+  text-wrap: balance;
+}
+
+.culturePanelRule {
+  display: block;
+  width: var(--section-title-rule-width);
+  height: 3px;
+  margin-top: 14px;
+  margin-bottom: 0;
+  border-radius: 2px;
+  background: var(--section-title-rule-gradient);
+}
+
+.cultureSteps {
+  @include nfg.container;
+  margin-top: 0;
+  padding-top: clamp(22px, 3vw, 30px);
+}
+
+.cultureStep {
+  @include nfg.item;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.cultureStepIndex {
+  @include nfg.digit;
+}
+
+.cultureStepText {
+  @include nfg.text;
+}
+
+@media (max-width: 880px) {
+  .cultureSteps {
+    @include nfg.down-single-column;
+  }
+
+  .cultureStep:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.pullQuote {
+  margin: 0 0 clamp(18px, 2.8vw, 26px);
+  padding: clamp(14px, 2vw, 22px) 0 clamp(18px, 2.5vw, 24px);
+  border-left: 4px solid var(--ecrt-red);
+  padding-left: clamp(14px, 2.2vw, 22px);
+  font-size: clamp(1.02rem, 1.72vw, 1.22rem);
+  font-weight: 600;
+  line-height: 1.52;
+  color: rgba(0, 26, 46, 0.88);
+  font-style: italic;
+}
+
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2.2vw, 22px);
+  font-size: clamp(0.92rem, 1.42vw, 1.03rem);
+  line-height: 1.62;
+  font-weight: 500;
+  color: #3a3632;
+
+  p {
+    margin: 0;
+  }
+
+  strong {
+    font-weight: 720;
+    color: #27231f;
+  }
+}
+
+.sectionHeadCenter {
+  text-align: center;
+  max-width: min(760px, 100%);
+  margin: 0 auto;
+}
+
+.sectionTitleMain {
+  margin: clamp(16px, 2.6vw, 24px) 0 0;
+  font-size: var(--heading-h2-size);
+  font-weight: 800;
+  line-height: 1.14;
+  letter-spacing: -0.025em;
+  color: var(--ecrt-blue);
+}
+
+.sectionHeadCenter .sectionTitleMain {
+  margin-top: 0;
+}
+
+.sectionRule {
+  display: inline-block;
+  width: var(--section-title-rule-width);
+  height: 3px;
+  margin-top: clamp(14px, 2vw, 18px);
+  border-radius: 2px;
+  background: var(--section-title-rule-gradient);
+}
+
+.titleAccent {
+  color: var(--ecrt-red);
+}
+
+.benefitsGrid {
+  box-sizing: border-box;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  column-gap: clamp(16px, 2.8vw, 32px);
+  row-gap: clamp(20px, 3.2vw, 36px);
+  margin-top: clamp(26px, 4vw, 40px);
+}
+
+/*
+ * Десктоп: первый ряд — 4 равные ячейки (высота ряда = по самому высокому; карточки тянутся).
+ * Нижние две — только середина сетки (колонки 2 и 3), без растягивания на ½ ширины; пары боковых пустых колонок визуально центрируют блок.
+ */
+@media (min-width: 961px) {
+  .benefitsGrid .benefitCard:nth-child(5) {
+    grid-column: 2 / 3;
+    justify-self: stretch;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .benefitsGrid .benefitCard:nth-child(6) {
+    grid-column: 3 / 4;
+    justify-self: stretch;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 960px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .benefitsGrid .benefitCard:nth-child(n) {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 680px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 440px) {
+  .benefitsGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.benefitCard {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  justify-self: stretch;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(16px, 2.6vw, 22px);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 47, 85, 0.1);
+  background: rgba(255, 252, 248, 0.96);
+  box-shadow: 0 2px 20px rgba(0, 47, 85, 0.04);
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+
+  &:hover {
+    border-color: rgba(226, 26, 26, 0.22);
+    box-shadow: 0 10px 32px rgba(196, 21, 21, 0.08);
+  }
+
+  h3 {
+    flex-shrink: 0;
+    margin: 0 0 8px;
+    font-size: clamp(0.95rem, 1.42vw, 1.06rem);
+    font-weight: 750;
+    line-height: 1.26;
+    color: var(--ecrt-navy);
+  }
+
+  p {
+    flex: 1 1 auto;
+    min-height: 0;
+    margin: 0;
+    font-size: clamp(0.84rem, 1.34vw, 0.93rem);
+    line-height: 1.52;
+    font-weight: 500;
+    color: rgba(54, 50, 46, 0.88);
+  }
+}
+
+.benefitIcon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 12px;
+  color: var(--ecrt-red);
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.vacanciesCtaWrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin: clamp(20px, 3vw, 32px) 0 clamp(26px, 4vw, 40px);
+}
+
+.ctaCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.88fr);
+  gap: clamp(24px, 4vw, 40px);
+  align-items: center;
+  padding: clamp(28px, 4.5vw, 44px);
+  border-radius: 14px;
+  /* Как `.mainBlock` в ContactsFooter.module.scss ($footer-bg) */
+  background: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.ctaTitle {
+  margin: 0;
+  font-size: clamp(24px, 3.4vw, 36px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #f3f7fc;
+}
+
+.ctaBody {
+  margin: clamp(12px, 2vw, 16px) 0 0;
+  font-size: clamp(0.92rem, 1.45vw, 1.04rem);
+  line-height: 1.58;
+  font-weight: 500;
+  color: rgba(232, 240, 250, 0.85);
+  max-width: 48ch;
+}
+
+.ctaActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-size: 0.94rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    filter 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(120, 178, 236, 0.95);
+    outline-offset: 3px;
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.btnPrimary {
+  background: linear-gradient(
+    165deg,
+    var(--ecrt-red) 0%,
+    var(--ecrt-red-deep) 92%
+  );
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(196, 21, 21, 0.22);
+
+  &:hover {
+    filter: brightness(1.06);
+  }
+}
+
+.externalIcon {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .ctaCard {
+    grid-template-columns: 1fr;
+  }
+
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+
+  .twoColSticky {
+    position: relative;
+    top: auto;
+  }
+}
+

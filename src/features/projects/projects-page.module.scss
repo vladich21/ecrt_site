@@ -1,0 +1,131 @@
+.projectsRoot {
+  --ecrt-blue: #002f55;
+  --ecrt-navy: #001a2e;
+  --ecrt-blue-bright: #0066a1;
+  --ecrt-red: #e21a1a;
+  --ecrt-red-deep: #c41515;
+  width: 100%;
+}
+
+.projectsHeroMedia {
+  object-position: 55% 42%;
+}
+
+.contentShell {
+  position: relative;
+  width: 100%;
+}
+
+.wrap {
+  box-sizing: border-box;
+  width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
+  max-width: none;
+  margin: 0 auto;
+  padding: 100px 0 var(--section-padding-y, 80px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(52px, 7vw, 140px);
+}
+
+.section {
+  margin: 0;
+}
+
+.directionsSection {
+  padding-bottom: clamp(8px, 1.5vw, 16px);
+}
+
+.directionsIntro.sectionHead {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 0 clamp(14px, 2vw, 80px);
+}
+
+.directionsPageTitle {
+  margin: 0 0 clamp(12px, 2vw, 16px);
+  font-size: var(--heading-h2-size);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--ecrt-blue);
+}
+
+/* То же шкало, что заголовок направлений — блок витрины «Основные проекты» на /projects */
+.projectsShowcaseTitle {
+  margin: 0;
+  max-width: min(28ch, 100%);
+  font-size: var(--heading-h2-size);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-wrap: balance;
+  color: var(--ecrt-blue);
+}
+
+.directionsLead {
+  margin: clamp(8px, 1.6vw, 14px) 0 0;
+  max-width: none;
+  font-size: clamp(0.93rem, 1.72vw, 1.035rem);
+  line-height: 1.62;
+  font-weight: 500;
+  color: rgba(0, 26, 46, 0.82);
+}
+
+.sectionHead {
+  max-width: min(820px, 100%);
+  margin: 0 0 clamp(22px, 3.5vw, 32px);
+}
+
+.sectionTitle {
+  margin: 0 0 clamp(12px, 2vw, 16px);
+  font-size: var(--heading-h2-size);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--ecrt-blue);
+}
+
+.sectionRule {
+  display: block;
+  width: var(--section-title-rule-width);
+  height: 3px;
+  margin-top: 14px;
+  border-radius: 2px;
+  background: var(--section-title-rule-gradient);
+}
+
+.showcaseLead {
+  margin: 0 0 clamp(10px, 1.6vw, 16px);
+  font-size: clamp(0.98rem, 1.6vw, 1.06rem);
+  line-height: 1.62;
+  font-weight: 500;
+  color: #3a3530;
+  max-width: min(65ch, 100%);
+}
+
+.showcaseSection {
+  margin: 0;
+}
+
+.showcaseList {
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 880px) {
+  .directionsPageTitle {
+    font-size: var(--heading-h2-size);
+  }
+
+  .projectsShowcaseTitle {
+    max-width: none;
+    letter-spacing: -0.025em;
+  }
+
+  .projectsHeroMedia {
+    object-position: 62% center;
+  }
+}
+
+
+

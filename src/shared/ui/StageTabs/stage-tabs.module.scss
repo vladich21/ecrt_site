@@ -1,0 +1,60 @@
+.stageTabList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1.5vw, 16px);
+}
+
+.stageTab {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: clamp(10px, 1.6vw, 14px) clamp(14px, 2vw, 20px);
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  color: rgba(0, 47, 85, 0.42);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.stageTab:hover {
+  color: rgba(0, 47, 85, 0.72);
+}
+
+.stageTabActive {
+  color: var(--stage-tab-active-color, #001a2e);
+  border-bottom-color: var(--stage-tab-accent-color, #e21a1a);
+}
+
+.stageTabLabel {
+  font-family: var(--font-body);
+  font-size: var(--body-text-size);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+
+.stageTab:focus-visible {
+  outline: 2px solid rgba(11, 111, 214, 0.85);
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .stageTabList {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .stageTab {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0, 47, 85, 0.08);
+  }
+
+  .stageTabActive {
+    border-bottom-color: rgba(0, 47, 85, 0.08);
+  }
+}

@@ -1,0 +1,227 @@
+@use "@/styles/numbered-focus-grid" as nfg;
+
+.root {
+  --ecrt-navy: #001a2e;
+  --ecrt-blue: #002f55;
+  --ecrt-red: #e21a1a;
+  --ecrt-red-deep: #c41515;
+  width: 100%;
+}
+
+.page {
+  box-sizing: border-box;
+  width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
+  max-width: none;
+  margin: 0 auto;
+  padding-top: clamp(32px, 5vw, 48px);
+  padding-bottom: var(--section-padding-y, 80px);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4vw, 40px);
+}
+
+.section {
+  margin: 0;
+  animation: purchaseSectionIn 0.52s cubic-bezier(0.22, 0.8, 0.28, 1) both;
+}
+
+.section:nth-child(1) {
+  animation-delay: 0.04s;
+}
+
+.section:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.section:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.section:nth-child(4) {
+  animation-delay: 0.22s;
+}
+
+@keyframes purchaseSectionIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sectionHead {
+  max-width: min(920px, 100%);
+  margin: 0 0 clamp(22px, 3.5vw, 32px);
+}
+
+.sectionTitle {
+  margin: 0 0 clamp(12px, 2vw, 16px);
+  font-size: var(--heading-h2-size);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--ecrt-blue);
+}
+
+.sectionTitleRule {
+  display: block;
+  width: var(--section-title-rule-width);
+  height: 3px;
+  margin-top: 14px;
+  border-radius: 2px;
+  background: var(--section-title-rule-gradient);
+}
+
+.sectionLead {
+  margin: 0;
+  max-width: min(86ch, 100%);
+  font-size: var(--body-text-size);
+  line-height: 1.62;
+  font-weight: 500;
+  color: rgba(36, 56, 72, 0.82);
+}
+
+.focusGrid {
+  @include nfg.container;
+}
+
+.focusItem {
+  @include nfg.item;
+}
+
+.focusDigit {
+  @include nfg.digit;
+}
+
+.focusItemText {
+  @include nfg.text;
+}
+
+.platformGrid {
+  margin-top: clamp(18px, 3vw, 24px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.5vw, 20px);
+}
+
+.platformCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: clamp(18px, 2.5vw, 22px);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 47, 85, 0.12);
+  background: linear-gradient(165deg, #ffffff 0%, #f5f9fd 100%);
+  box-shadow: 0 8px 24px rgba(0, 47, 85, 0.06);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(226, 26, 26, 0.28);
+    box-shadow: 0 14px 32px rgba(196, 21, 21, 0.12);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(226, 26, 26, 0.75);
+    outline-offset: 3px;
+  }
+}
+
+.platformTitle {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ecrt-blue);
+}
+
+.platformBody {
+  margin: 0;
+  flex: 1;
+  font-size: var(--body-text-size);
+  line-height: 1.62;
+  font-weight: 500;
+  color: rgba(36, 56, 72, 0.82);
+}
+
+.platformCta {
+  margin-top: 4px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ecrt-red);
+}
+
+.complianceCard {
+  padding: clamp(22px, 3vw, 28px);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 47, 85, 0.12);
+  background: linear-gradient(135deg, rgba(0, 47, 85, 0.04) 0%, #fff 48%);
+}
+
+.complianceTitle {
+  margin: 0 0 clamp(12px, 2vw, 16px);
+  font-size: clamp(1.15rem, 2.1vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  color: var(--ecrt-blue);
+}
+
+.complianceEmail {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 14px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(180deg, var(--ecrt-red) 0%, var(--ecrt-red-deep) 100%);
+  border: 1px solid rgba(226, 26, 26, 0.45);
+  box-shadow: 0 6px 20px rgba(196, 21, 21, 0.22);
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(226, 26, 26, 0.85);
+    outline-offset: 3px;
+  }
+}
+
+@media (max-width: 880px) {
+  .sectionTitle {
+    font-size: var(--heading-h2-size);
+  }
+
+  .focusGrid {
+    @include nfg.down-single-column;
+  }
+
+  .focusItem:last-child {
+    padding-bottom: 0;
+  }
+
+  .platformGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

@@ -1,0 +1,13 @@
+.next
+node_modules
+out
+coverage
+*.log
+.env
+.env.*
+!.env.example
+.vercel
+.lighthouseci
+tsconfig.tsbuildinfo
+.DS_Store
+Thumbs.db

@@ -1,0 +1,34 @@
+{
+  "name": "ecrt-next-site",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "audit:css-modules": "node scripts/css-modules-audit.mjs",
+    "media:webp": "node scripts/convert-images-to-webp.mjs",
+    "media:webm": "node scripts/convert-videos-to-webm.mjs",
+    "perf:lighthouse": "lhci autorun --collect.url=http://localhost:3000 --upload.target=temporary-public-storage"
+  },
+  "dependencies": {
+    "framer-motion": "^12.38.0",
+    "lenis": "^1.3.23",
+    "next": "^15.3.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@lhci/cli": "^0.14.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "eslint": "^9.19.0",
+    "eslint-config-next": "^15.3.2",
+    "sass": "^1.99.0",
+    "sharp": "^0.34.5",
+    "typescript": "^5.7.2"
+  }
+}
