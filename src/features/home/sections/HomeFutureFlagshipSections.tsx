@@ -50,8 +50,8 @@ export function HomeFutureFlagshipSections({ homeCopy }: { homeCopy: HomeCopy })
                 src={flagshipCorridorMap}
                 alt={homeCopy.flagship.mapAlt}
                 fill
-                sizes="(max-width: 1024px) 100vw, min(calc(100vw - 100px), 1400px)"
-                priority
+                sizes="(max-width: 768px) 100vw, 1400px"
+                loading="lazy"
               />
             </div>
             <ScrollRevealBlock className={futureStyles.flagshipText}>

@@ -153,6 +153,7 @@ a {
 
 @media (max-width: 768px) {
   :root {
+    --heading-h1-size: 24px;
     --body-text-size: 14px;
     --body-text-line-height: 1.6;
     --showcase-body-line-height: 1.6;

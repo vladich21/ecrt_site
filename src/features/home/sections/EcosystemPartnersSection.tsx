@@ -24,16 +24,22 @@ export function EcosystemPartnersSection({ title }: EcosystemPartnersSectionProp
           {footerPartnerLogos.map((partner) => (
             <li
               key={partner.id}
-              className={`${partnersStyles.logoSlot} ${partner.id === "sinara" ? partnersStyles.logoSlot2x : ""} ${partner.id === "rzd" ? partnersStyles.logoSlotRzd : ""}`.trim()}
+              className={`${partnersStyles.logoSlot} ${partner.id === "rzd" ? partnersStyles.logoSlotRzd : ""} ${partner.id === "sinara" ? partnersStyles.logoSlotSinara : ""}`.trim()}
             >
               <span className={partnersStyles.logoFrame}>
                 <AssetImage
                   className={partnersStyles.logoImg}
                   src={partner.src}
                   alt={partner.alt}
-                  width={partner.id === "sinara" ? 200 : partner.id === "rzd" ? 132 : 160}
-                  height={48}
-                  sizes={partner.id === "rzd" ? "85px" : "(max-width: 900px) 28vw, 160px"}
+                  width={partner.id === "rzd" ? 132 : partner.id === "sinara" ? 200 : 160}
+                  height={partner.id === "sinara" ? 55 : 60}
+                  sizes={
+                    partner.id === "rzd"
+                      ? "85px"
+                      : partner.id === "sinara"
+                        ? "(max-width: 640px) 40vw, 220px"
+                        : "(max-width: 900px) 28vw, 160px"
+                  }
                 />
               </span>
             </li>

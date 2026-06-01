@@ -9,6 +9,7 @@
     "lint": "next lint",
     "audit:css-modules": "node scripts/css-modules-audit.mjs",
     "media:webp": "node scripts/convert-images-to-webp.mjs",
+    "media:resize": "node scripts/resize-large-webp.mjs",
     "media:webm": "node scripts/convert-videos-to-webm.mjs",
     "perf:lighthouse": "lhci autorun --collect.url=http://localhost:3000 --upload.target=temporary-public-storage"
   },

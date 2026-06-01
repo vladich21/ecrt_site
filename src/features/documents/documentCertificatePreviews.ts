@@ -11,15 +11,15 @@ export type CertificatePreview = {
 
 export const certificatePreviews: readonly CertificatePreview[] = [
   {
-    pdfUrl: "https://ecrt.ru/QM15_31102197_QM15_EN.pdf",
+    pdfUrl: "/documents/QM15_31102197_QM15_EN.pdf",
     image: certIso9001En,
   },
   {
-    pdfUrl: "https://ecrt.ru/QM15_31102197_QM15_RU.pdf",
+    pdfUrl: "/documents/QM15_31102197_QM15_RU.pdf",
     image: certIso9001Ru,
   },
   {
-    pdfUrl: "https://ecrt.ru/QMS15_ISO_9001_RU.pdf",
+    pdfUrl: "/documents/QMS15_ISO_9001_RU.pdf",
     image: certGostIso9001Ru,
   },
 ];

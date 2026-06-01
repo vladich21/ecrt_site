@@ -182,65 +182,67 @@ export const documentSectionOrder: readonly DocumentSectionId[] = [
   'hotline',
 ]
 
+/** Локальные копии официальных файлов в public/documents (источник: ecrt.ru). */
+const documentBase = '/documents'
+
 export const documents: readonly SiteDocumentLink[] = [
   {
-    url: 'https://ecrt.ru/anti_corr.pdf',
+    url: `${documentBase}/anti_corr.pdf`,
     nameRu: 'Антикоррупционная политика',
     nameEn: 'Anti-corruption policy',
     section: 'anticorruption',
   },
   {
-    url: 'https://ecrt.ru/anti_corr_clause.docx',
+    url: `${documentBase}/anti_corr_clause.docx`,
     nameRu: 'Антикоррупционная оговорка',
     nameEn: 'Anti-corruption clause',
     section: 'anticorruption',
     placement: 'afterContractorNote',
   },
   {
-    url: 'https://ecrt.ru/QMS-POL-001-01-politika.pdf',
+    url: `${documentBase}/QMS-POL-001-01-politika.pdf`,
     nameRu: 'Политика в области качества',
     nameEn: 'Quality policy',
     section: 'quality',
     group: 'policies',
   },
   {
-    url: 'https://ecrt.ru/QM15_31102197_QM15_EN.pdf',
+    url: `${documentBase}/QM15_31102197_QM15_EN.pdf`,
     nameRu: 'Сертификат СМК ISO 9001:2015 ENG',
     nameEn: 'ISO 9001:2015 QMS certificate - English edition',
     section: 'quality',
     group: 'certificates',
   },
   {
-    url: 'https://ecrt.ru/QM15_31102197_QM15_RU.pdf',
+    url: `${documentBase}/QM15_31102197_QM15_RU.pdf`,
     nameRu: 'Сертификат СМК ISO 9001:2015 RUS',
     nameEn: 'ISO 9001:2015 QMS certificate - Russian edition',
     section: 'quality',
     group: 'certificates',
   },
   {
-    url: 'https://ecrt.ru/QMS15_ISO_9001_RU.pdf',
+    url: `${documentBase}/QMS15_ISO_9001_RU.pdf`,
     nameRu: 'Сертификат ГОСТ Р ИСО 9001 RUS',
     nameEn: 'GOST R ISO 9001 QMS certificate - Russian edition',
     section: 'quality',
     group: 'certificates',
   },
   {
-    url:
-      'https://ecrt.ru/1628236271_cert_digsig_en15085_jsc_engineering_centre_en_signed_svr-(004).pdf',
+    url: `${documentBase}/1628236271_cert_digsig_en15085_jsc_engineering_centre_en_signed_svr-(004).pdf`,
     nameRu: 'Сертификат соответствия проектирования сварных конструкций по EN 15085-2',
     nameEn: 'EN 15085-2 welded-structure design conformity certificate',
     section: 'quality',
     group: 'certificates',
   },
   {
-    url: 'https://ecrt.ru/perechen.pdf',
+    url: `${documentBase}/perechen.pdf`,
     nameRu: 'Перечень рекомендуемых мероприятий по улучшению условий труда',
     nameEn: 'Recommended workplace-condition improvement measures - activities list',
     section: 'labor',
     group: 'sout',
   },
   {
-    url: 'https://ecrt.ru/vedomost.pdf',
+    url: `${documentBase}/vedomost.pdf`,
     nameRu: 'Сводная ведомость результатов проведения СОУТ',
     nameEn: 'Occupational workplace conditions assessment - summary statement of results',
     section: 'labor',

@@ -1,5 +1,7 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import homeEn from "@/locales/en/home.json";
 import homeRu from "@/locales/ru/home.json";
 import commonEn from "@/locales/en/common.json";
@@ -9,10 +11,23 @@ import siteStyles from "@/shared/ui/SitePageShell/site-page-shell.module.scss";
 import { ScrollRevealBlock } from "@/shared/motion/ScrollReveal";
 
 import type { CommonCopy, HomeCopy, HomeLocale } from "./home-types";
-import { EcosystemPartnersSection } from "./sections/EcosystemPartnersSection";
 import { HeroSection } from "./sections/HeroSection";
-import { HomeFutureFlagshipSections } from "./sections/HomeFutureFlagshipSections";
-import { ProjectProductShowcase } from "./sections/ProjectProductShowcase";
+
+const HomeFutureFlagshipSections = dynamic(
+  () =>
+    import("./sections/HomeFutureFlagshipSections").then((mod) => mod.HomeFutureFlagshipSections),
+  { ssr: true },
+);
+
+const ProjectProductShowcase = dynamic(
+  () => import("./sections/ProjectProductShowcase").then((mod) => mod.ProjectProductShowcase),
+  { ssr: true },
+);
+
+const EcosystemPartnersSection = dynamic(
+  () => import("./sections/EcosystemPartnersSection").then((mod) => mod.EcosystemPartnersSection),
+  { ssr: true },
+);
 
 export function HomePageClient({ locale = "ru" }: { locale?: HomeLocale }) {
   const homeCopy: HomeCopy = locale === "en" ? homeEn : homeRu;

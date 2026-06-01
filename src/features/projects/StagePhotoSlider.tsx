@@ -172,6 +172,7 @@ export function StagePhotoSlider({ stageId, stageTitle, images, sliderUi }: Stag
                   alt=""
                   fill
                   priority={imageIndex === activeIndex}
+                  fullResolution
                   className={styles.photoSlideImg}
                   sizes="(max-width: 900px) 100vw, min(920px, 90vw)"
                 />
@@ -179,13 +180,6 @@ export function StagePhotoSlider({ stageId, stageTitle, images, sliderUi }: Stag
             ))}
           </div>
 
-          {showControls ? (
-            <div className={styles.photoSliderSwipeHint} aria-hidden>
-              <span className={styles.photoSliderSwipeArrow}>‹</span>
-              <span className={styles.photoSliderSwipeText}>{sliderUi.swipeHint}</span>
-              <span className={styles.photoSliderSwipeArrow}>›</span>
-            </div>
-          ) : null}
         </div>
 
         {showControls ? (

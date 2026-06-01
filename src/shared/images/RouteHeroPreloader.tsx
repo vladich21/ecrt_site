@@ -8,7 +8,12 @@ import { preloadStaticImage } from "@/shared/images/preload-static-image";
 
 import { scheduleIdleWork, shouldLimitPreload } from "./network-preload";
 
-/** Прогрев hero текущего маршрута сразу; остальные hero — в idle (для hover-навигации). */
+function isHomePath(pathname: string): boolean {
+  const path = pathname.replace(/\/$/, "") || "/";
+  return path === "/" || path === "/en";
+}
+
+/** Прогрев hero текущего маршрута; остальные hero — в idle (кроме главной). */
 export function RouteHeroPreloader() {
   const pathname = usePathname();
 
@@ -16,7 +21,7 @@ export function RouteHeroPreloader() {
     const current = resolveRouteHeroImage(pathname);
     if (current) preloadStaticImage(current);
 
-    if (shouldLimitPreload()) return;
+    if (shouldLimitPreload() || isHomePath(pathname)) return;
 
     scheduleIdleWork(() => {
       const currentUrl = current ? (typeof current === "string" ? current : current.src) : "";

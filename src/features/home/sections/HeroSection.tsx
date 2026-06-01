@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+import { scheduleIdleWork, shouldLimitPreload } from "@/shared/images/network-preload";
 
 import type { CommonCopy, HomeLocale } from "../home-types";
 
@@ -70,10 +72,23 @@ export function HeroSection({
   locale?: HomeLocale;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [loadHeroVideo, setLoadHeroVideo] = useState(false);
+  const [mobileWebmOnly, setMobileWebmOnly] = useState(false);
   const stats = getStats(commonCopy);
   const pathPrefix = locale === "en" ? "/en" : "";
 
   useEffect(() => {
+    const mobile = window.matchMedia("(max-width: 768px)").matches;
+    setMobileWebmOnly(mobile);
+    if (!mobile && !shouldLimitPreload()) {
+      setLoadHeroVideo(true);
+      return;
+    }
+    scheduleIdleWork(() => setLoadHeroVideo(true));
+  }, []);
+
+  useEffect(() => {
+    if (!loadHeroVideo) return;
     const video = videoRef.current;
     if (!video) return;
     video.muted = true;
@@ -83,7 +98,7 @@ export function HeroSection({
     const onGesture = () => play();
     document.addEventListener("pointerdown", onGesture, { capture: true, once: true });
     return () => document.removeEventListener("pointerdown", onGesture, true);
-  }, []);
+  }, [loadHeroVideo]);
 
   const onEnded = useCallback(() => {
     videoRef.current?.pause();
@@ -98,14 +113,22 @@ export function HeroSection({
           autoPlay
           muted
           playsInline
-          preload="metadata"
+          preload={loadHeroVideo ? "metadata" : "none"}
           controls={false}
           disablePictureInPicture
           onEnded={onEnded}
           aria-hidden
         >
-          <source src={HERO_VIDEO_WEBM_SRC} type="video/webm" />
-          <source src={HERO_VIDEO_MP4_SRC} type="video/mp4" />
+          {loadHeroVideo ? (
+            mobileWebmOnly ? (
+              <source src={HERO_VIDEO_WEBM_SRC} type="video/webm" />
+            ) : (
+              <>
+                <source src={HERO_VIDEO_WEBM_SRC} type="video/webm" />
+                <source src={HERO_VIDEO_MP4_SRC} type="video/mp4" />
+              </>
+            )
+          ) : null}
         </video>
         <div className={heroStyles.scrim} aria-hidden />
         <div className={heroStyles.overlay}>

@@ -160,8 +160,6 @@ export function ProjectProductShowcase({
         const descriptionParagraphs =
           slide.descriptions ?? (slide.description ? [slide.description] : []);
 
-        const isAboveFold = index === 0;
-
         const imageFrame = (
           <span className={bentoStyles.productMediaFrame}>
             <AssetImage
@@ -169,9 +167,8 @@ export function ProjectProductShowcase({
               src={imageSrc(slide.image)}
               alt=""
               fill
-              sizes="(max-width: 980px) 100vw, min(56vw, 920px)"
-              priority={isAboveFold}
-              loading={isAboveFold ? undefined : "lazy"}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) min(92vw, 720px), 920px"
+              loading="lazy"
             />
           </span>
         );

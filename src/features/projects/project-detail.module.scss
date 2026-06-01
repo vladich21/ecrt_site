@@ -433,12 +433,30 @@
   text-wrap: balance;
 }
 
-.evsHeroLead {
+.pageEvs .evsHeroLead {
   margin: clamp(14px, 2vw, 18px) 0 0;
+  max-width: 52ch;
   font-size: var(--showcase-body-size);
   line-height: var(--showcase-body-line-height);
   font-weight: 400;
   color: rgba(232, 242, 255, 0.96);
+}
+
+@media (max-width: 768px) {
+  .pageEvs .evsHero {
+    min-height: max(var(--project-hero-min-height), 72vw);
+  }
+
+  .pageEvs .evsHeroContent {
+    padding-top: calc(var(--header-slot, 72px) + 52px);
+    padding-bottom: clamp(20px, 5vw, 28px);
+  }
+
+  .pageEvs .evsHeroLead {
+    max-width: none;
+    font-size: clamp(0.875rem, 3.4vw, 1rem);
+    line-height: 1.55;
+  }
 }
 
 /* Светлый блок «Математическое моделирование» на странице Путь V2.5 */

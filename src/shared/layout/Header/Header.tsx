@@ -17,6 +17,7 @@ import styles from "./header.module.scss";
 const CSS_HEADER_HEIGHT_VAR = "--header-slot";
 const SCROLL_TOP_PIN_PX = 48;
 const SCROLL_DIRECTION_THRESHOLD_PX = 8;
+const MOBILE_HEADER_PIN_MQ = "(max-width: 768px)";
 
 function publishHeaderHeightToCss(headerRoot: HTMLElement) {
   const measured = Math.round(headerRoot.getBoundingClientRect().height);
@@ -94,9 +95,17 @@ export function Header() {
   }, [pathname]);
 
   useEffect(() => {
+    const mobileMq = window.matchMedia(MOBILE_HEADER_PIN_MQ);
+
     const onScroll = () => {
       const nextScrollY = window.scrollY;
       setScrollY(nextScrollY);
+
+      if (mobileMq.matches) {
+        setScrollRetracted(false);
+        previousScrollY.current = nextScrollY;
+        return;
+      }
 
       if (nextScrollY <= SCROLL_TOP_PIN_PX) {
         setScrollRetracted(false);

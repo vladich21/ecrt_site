@@ -1,7 +1,6 @@
 import { preload } from "react-dom";
 
 import leadershipPhoto from "@/assets/about/kireytsev-general-director.webp";
-import flagshipCorridorMap from "@/assets/home/magnific_3007658625.webp";
 import evs360LaunchPhoto from "@/assets/presentation/openart-gpt-image-2-edit-1_1777462551743_196f02f7.webp";
 import img33 from "@/assets/presentation/img-33.webp";
 import img36 from "@/assets/presentation/img-36.webp";
@@ -10,7 +9,6 @@ import trainProductionPhoto from "@/assets/presentation/произв-поезд�
 import krasnoyarskTrials from "@/assets/presentation/Красноярские жд испытания.webp";
 import vniizhtRing from "@/assets/presentation/Экспериментальное кольцо ВНИИЖТ.webp";
 import milestone201906Signing from "@/assets/presentation/milestone-2019-06-signing.webp";
-import { footerPartnerLogos } from "@/data/footerPartners";
 import { getProjectPageImages } from "@/data/project-page-images";
 import { projectShowcaseImages } from "@/data/projectMedia";
 
@@ -31,14 +29,11 @@ const showcaseImages = Object.values(projectShowcaseImages).filter(
   (image): image is StaticImageLike => Boolean(image),
 );
 
-/** Только above-the-fold на главной — карта магистрали. */
-const homeCriticalImages: StaticImageLike[] = [flagshipCorridorMap];
+/** На главной критичный preload не нужен — hero без картинки; карта и витрина lazy. */
+const homeCriticalImages: StaticImageLike[] = [];
 
-/** Ниже первого экрана — отложенный прогрев на клиенте. */
-const homeDeferredImages: StaticImageLike[] = [
-  ...showcaseImages,
-  ...footerPartnerLogos.map((partner) => partner.src),
-];
+/** Ниже первого экрана — не прогреваем на idle (lazy при скролле). */
+const homeDeferredImages: StaticImageLike[] = [];
 
 const aboutDeferredImages: StaticImageLike[] = timelinePhotos;
 
