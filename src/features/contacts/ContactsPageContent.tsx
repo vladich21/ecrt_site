@@ -7,6 +7,7 @@ import { withLocalePath } from "@/shared/layout/SiteShell/site-shell-utils";
 
 import type { HomeLocale } from "@/features/home/home-types";
 
+import { LazyYandexMapEmbed } from "./LazyYandexMapEmbed";
 import styles from "./contacts-page.module.scss";
 
 type ContactsCopy = typeof contactsCopyRu;
@@ -67,16 +68,7 @@ export function ContactsPageContent({ locale }: ContactsPageContentProps) {
 
         <section className={styles.mapSurface} aria-label={copy.mapA11y}>
           <div className={styles.mapGrid}>
-            <div className={styles.mapFrame}>
-              <iframe
-                className={styles.mapEmbed}
-                title={copy.mapA11y}
-                src={mapEmbedSrc}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
+            <LazyYandexMapEmbed src={mapEmbedSrc} title={copy.mapA11y} />
           </div>
         </section>
       </div>

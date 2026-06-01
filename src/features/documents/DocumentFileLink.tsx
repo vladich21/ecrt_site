@@ -13,6 +13,7 @@ type DocumentFileLinkProps = {
   title: string;
   secondaryLabel?: string | null;
   a11ySuffix?: string;
+  locale?: "ru" | "en";
 };
 
 const badgeClassByKind: Record<DocumentFileKind, string> = {
@@ -27,9 +28,10 @@ export function DocumentFileLink({
   title,
   secondaryLabel,
   a11ySuffix = "",
+  locale = "ru",
 }: DocumentFileLinkProps) {
   const fileMeta = documentFileMetaFromUrl(doc.url);
-  const kindLabel = documentFileKindLabel(fileMeta.kind);
+  const kindLabel = documentFileKindLabel(fileMeta.kind, locale);
 
   const ariaLabel = secondaryLabel
     ? `${title}. ${secondaryLabel}. ${kindLabel}${a11ySuffix}`

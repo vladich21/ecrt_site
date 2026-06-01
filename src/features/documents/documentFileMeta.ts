@@ -12,27 +12,43 @@ const extensionToKind: Record<string, DocumentFileKind> = {
   docx: "docx",
 };
 
-export function documentFileMetaFromUrl(url: string): DocumentFileMeta {
-  try {
-    const pathname = new URL(url).pathname;
-    const fileName = decodeURIComponent(pathname.split("/").pop() ?? "document");
-    const extension = fileName.includes(".")
-      ? (fileName.split(".").pop()?.toLowerCase() ?? "")
-      : "";
+function pathnameFromDocumentUrl(url: string): string {
+  const raw = url.trim();
+  if (!raw) return "";
 
-    return {
-      fileName,
-      extension,
-      kind: extensionToKind[extension] ?? "other",
-    };
-  } catch {
-    return { fileName: "document", extension: "", kind: "other" };
+  if (/^https?:\/\//i.test(raw)) {
+    try {
+      return new URL(raw).pathname;
+    } catch {
+      return "";
+    }
   }
+
+  const withoutQuery = raw.split(/[?#]/)[0] ?? raw;
+  return withoutQuery.startsWith("/") ? withoutQuery : `/${withoutQuery}`;
 }
 
-export function documentFileKindLabel(kind: DocumentFileKind): string {
+export function documentFileMetaFromUrl(url: string): DocumentFileMeta {
+  const pathname = pathnameFromDocumentUrl(url);
+  if (!pathname) {
+    return { fileName: "document", extension: "", kind: "other" };
+  }
+
+  const fileName = decodeURIComponent(pathname.split("/").pop() ?? "document");
+  const extension = fileName.includes(".")
+    ? (fileName.split(".").pop()?.toLowerCase() ?? "")
+    : "";
+
+  return {
+    fileName,
+    extension,
+    kind: extensionToKind[extension] ?? "other",
+  };
+}
+
+export function documentFileKindLabel(kind: DocumentFileKind, locale: "ru" | "en" = "ru"): string {
   if (kind === "pdf") return "PDF";
-  if (kind === "doc") return "DOC";
-  if (kind === "docx") return "DOCX";
+  if (kind === "doc") return locale === "ru" ? "WORD" : "DOC";
+  if (kind === "docx") return locale === "ru" ? "WORD" : "DOCX";
   return "FILE";
 }

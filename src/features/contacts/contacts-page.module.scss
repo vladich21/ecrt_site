@@ -195,6 +195,15 @@
   box-shadow: inset 0 0 0 1px rgba(0, 47, 85, 0.1);
 }
 
+.mapPlaceholder {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: clamp(404px, 48vh, 500px);
+  border-radius: 10px;
+  background: linear-gradient(165deg, #e8eef4 0%, #f4f7fa 100%);
+  box-shadow: inset 0 0 0 1px rgba(0, 47, 85, 0.1);
+}
+
 @keyframes contactPageIn {
   from {
     opacity: 0;

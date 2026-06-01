@@ -68,6 +68,8 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const previousScrollY = useRef(0);
   const headerRootRef = useRef<HTMLElement | null>(null);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const mobileNavRef = useRef<HTMLElement>(null);
   const brandLines = t("header.brandLines", locale).split("\n");
   const mobileNavId = "site-mobile-nav";
 
@@ -151,8 +153,22 @@ export function Header() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
-  const toggleMenu = useCallback(() => setMenuOpen((open) => !open), []);
+  const closeMenu = useCallback(() => {
+    if (mobileNavRef.current?.contains(document.activeElement)) {
+      menuToggleRef.current?.focus({ preventScroll: true });
+    }
+    setMenuOpen(false);
+  }, []);
+
+  const toggleMenu = useCallback(() => {
+    setMenuOpen((open) => {
+      const next = !open;
+      if (!next && mobileNavRef.current?.contains(document.activeElement)) {
+        menuToggleRef.current?.focus({ preventScroll: true });
+      }
+      return next;
+    });
+  }, []);
 
   const pinnedToViewportTop = scrollY <= SCROLL_TOP_PIN_PX;
   const pinnedHero = isHomePage && pinnedToViewportTop && !scrollRetracted;
@@ -189,7 +205,15 @@ export function Header() {
       <div className={styles.container}>
         <Link href={locale === "en" ? "/en" : "/"} className={styles.brand} aria-label={t("a11y.brandHome", locale)}>
           <span className={styles.brandMark} aria-hidden>
-            <AssetImage src={brandLogo} alt="" width={72} height={72} className={styles.brandMarkImg} sizes="72px" priority />
+            <AssetImage
+              src={brandLogo}
+              alt=""
+              width={72}
+              height={72}
+              className={styles.brandMarkImg}
+              sizes="72px"
+              priority
+            />
           </span>
           <span className={styles.brandText}>
             {brandLines.map((line) => (
@@ -209,6 +233,7 @@ export function Header() {
             <LanguageSwitcher />
           </div>
           <button
+            ref={menuToggleRef}
             type="button"
             className={styles.menuToggle}
             aria-expanded={menuOpen}
@@ -230,10 +255,11 @@ export function Header() {
       />
 
       <nav
+        ref={mobileNavRef}
         id={mobileNavId}
         className={menuOpen ? `${styles.mobileNav} ${styles.mobileNavOpen}` : styles.mobileNav}
         aria-label={t("a11y.mainNav", locale)}
-        aria-hidden={!menuOpen}
+        inert={menuOpen ? undefined : true}
       >
         <div className={styles.mobileNavInner}>
           {navLinks}

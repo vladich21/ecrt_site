@@ -113,6 +113,7 @@ export function DocumentsPageClient({ locale = "ru", documents: docList }: Docum
         title={primary}
         secondaryLabel={secondaryLabel}
         a11ySuffix={a11ySuffix}
+        locale={locale}
       />
     );
   };

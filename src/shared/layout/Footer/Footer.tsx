@@ -25,7 +25,6 @@ export function Footer({ locale }: { locale: Locale }) {
                 height={72}
                 className={styles.companyLogo}
                 sizes="220px"
-                style={{ width: "auto", height: "auto" }}
               />
             </div>
             <p className={styles.muted}>{t("footer.addressLine1", locale)}</p>

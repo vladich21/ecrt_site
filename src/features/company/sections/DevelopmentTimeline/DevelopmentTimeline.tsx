@@ -117,8 +117,8 @@ export function DevelopmentTimeline({ homeCopy }: { homeCopy: HomeCopy }) {
                   width={640}
                   height={400}
                   className={timelineStyles.figureImg}
-                  sizes="(max-width: 900px) 88vw, 640px"
-                  priority={index < 2}
+                  sizes="(max-width: 900px) 88vw, 520px"
+                  loading="lazy"
                 />
               </figure>
             ) : null;

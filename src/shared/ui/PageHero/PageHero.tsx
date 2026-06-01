@@ -1,11 +1,9 @@
 "use client";
 
-import { preload } from "react-dom";
 import type { MotionProps } from "framer-motion";
 import { motion } from "framer-motion";
 import type { StaticImageData } from "next/image";
 
-import { asciiSafeAssetUrl, staticImageUrl } from "@/shared/images/preload-static-image";
 import { heroCopyMotion } from "@/shared/motion/presets";
 import { HeroImage } from "@/shared/ui/HeroImage/HeroImage";
 
@@ -36,8 +34,6 @@ export function PageHero({
 }: PageHeroProps) {
   const alt = imageAlt ?? title;
 
-  preload(asciiSafeAssetUrl(staticImageUrl(image)), { as: "image", fetchPriority: "high" });
-
   const copyContent = (
     <>
       <h1 className={styles.heroTitle} id={headingId}>
@@ -63,7 +59,6 @@ export function PageHero({
                 ? `${styles.heroMedia} ${mediaClassName}`
                 : styles.heroMedia
             }
-            sizes="100vw"
           />
         </div>
         <div className={styles.scrim} aria-hidden />

@@ -5,11 +5,15 @@ import { preload } from "react-dom";
 
 import { asciiSafeAssetUrl, staticImageUrl } from "@/shared/images/preload-static-image";
 
-type HeroImageProps = Omit<ImageProps, "priority" | "unoptimized" | "fetchPriority"> & {
+type HeroImageProps = Omit<ImageProps, "priority" | "unoptimized" | "fetchPriority" | "quality"> & {
   alt: string;
+  quality?: number;
 };
 
-export function HeroImage({ src, alt, ...props }: HeroImageProps) {
+/** LCP-hero: next/image по sizes (мобильный ~750–1080px), не полный исходник. */
+export function HeroImage({ src, alt, quality = 90, sizes, ...props }: HeroImageProps) {
+  const resolvedSizes = sizes ?? "(max-width: 768px) 100vw, min(1400px, 95vw)";
+
   if (typeof src === "string") {
     preload(asciiSafeAssetUrl(src), { as: "image", fetchPriority: "high" });
   } else if (src && typeof src === "object" && "src" in src) {
@@ -22,7 +26,8 @@ export function HeroImage({ src, alt, ...props }: HeroImageProps) {
       src={src}
       alt={alt}
       priority
-      unoptimized
+      quality={quality}
+      sizes={resolvedSizes}
       fetchPriority="high"
     />
   );
