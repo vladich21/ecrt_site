@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo } from "react";
+import { useLayoutEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
@@ -8,10 +8,11 @@ import {
   getBreadcrumbEntries,
   breadcrumbsOverDarkHero,
   breadcrumbsOverlayLayout,
+  breadcrumbsHideTrailingCurrent,
 } from "@/data/breadcrumbItems";
 import { Breadcrumbs } from "@/shared/layout/Breadcrumbs/Breadcrumbs";
+import { PageImagesWarmup } from "@/shared/images/PageImagesWarmup";
 import { RouteHeroPreloader } from "@/shared/images/RouteHeroPreloader";
-import { CookieConsent } from "@/shared/ui/CookieConsent/CookieConsent";
 import { SmoothScrollProvider } from "@/shared/scroll/SmoothScrollProvider";
 import { Footer } from "@/shared/layout/Footer/Footer";
 import { Header } from "@/shared/layout/Header/Header";
@@ -19,6 +20,7 @@ import { Header } from "@/shared/layout/Header/Header";
 import {
   consumeLocaleScrollPosition,
   restoreLocaleScrollPosition,
+  scrollToPageTop,
 } from "./locale-scroll";
 import { localeFromPathname, stripLocalePrefix, t } from "./site-shell-utils";
 import styles from "./site-shell.module.scss";
@@ -33,21 +35,21 @@ export function SiteShell({ children }: { children: ReactNode }) {
     [basePath, locale],
   );
 
-  useEffect(() => {
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
-    }
-  }, []);
-
   useLayoutEffect(() => {
-    const scrollY = consumeLocaleScrollPosition();
-    if (scrollY == null) return;
-    return restoreLocaleScrollPosition(scrollY);
+    const scrollY = consumeLocaleScrollPosition(pathname);
+    if (scrollY != null) {
+      return restoreLocaleScrollPosition(scrollY);
+    }
+
+    if (!window.location.hash) {
+      scrollToPageTop();
+    }
   }, [pathname]);
 
   const hasBreadcrumbs = crumbItems.length > 0;
   const darkHero = breadcrumbsOverDarkHero(basePath);
   const overlayLayout = breadcrumbsOverlayLayout(basePath);
+  const hideTrailingCrumb = breadcrumbsHideTrailingCurrent(basePath);
   const heroBackdrop = hasBreadcrumbs && (darkHero || overlayLayout);
   const breadcrumbVariant = darkHero ? "hero" : overlayLayout ? "compact" : "default";
 
@@ -65,6 +67,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           >
             <Breadcrumbs
               variant={breadcrumbVariant}
+              hideTrailingCurrent={hideTrailingCrumb}
               items={crumbItems}
               locale={locale}
               ariaLabel={t("breadcrumbs.a11y", locale)}
@@ -75,7 +78,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       </main>
       <Footer locale={locale} />
       <RouteHeroPreloader />
-      <CookieConsent />
+      <PageImagesWarmup />
     </div>
     </SmoothScrollProvider>
   );

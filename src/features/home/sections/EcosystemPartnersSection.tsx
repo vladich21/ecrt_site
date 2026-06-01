@@ -1,6 +1,7 @@
 "use client";
 
 import { footerPartnerLogos } from "@/data/footerPartners";
+import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 
 import type { HomeCopy } from "../home-types";
@@ -12,34 +13,33 @@ type EcosystemPartnersSectionProps = {
 
 export function EcosystemPartnersSection({ title }: EcosystemPartnersSectionProps) {
   return (
-    <section className={partnersStyles.section} aria-labelledby="ecosystem-partners-heading">
-      <div className={partnersStyles.titleFrame}>
+    <ScrollRevealSection className={partnersStyles.section} aria-labelledby="ecosystem-partners-heading">
+      <ScrollRevealBlock className={partnersStyles.titleFrame}>
         <h2 id="ecosystem-partners-heading" className={partnersStyles.title}>
           {title}
         </h2>
-      </div>
+      </ScrollRevealBlock>
       <div className={partnersStyles.logosArea}>
         <ul className={partnersStyles.logoRow}>
           {footerPartnerLogos.map((partner) => (
             <li
               key={partner.id}
-              className={`${partnersStyles.logoSlot} ${partner.id === "sinara" ? partnersStyles.logoSlot2x : ""}`.trim()}
+              className={`${partnersStyles.logoSlot} ${partner.id === "sinara" ? partnersStyles.logoSlot2x : ""} ${partner.id === "rzd" ? partnersStyles.logoSlotRzd : ""}`.trim()}
             >
               <span className={partnersStyles.logoFrame}>
                 <AssetImage
                   className={partnersStyles.logoImg}
                   src={partner.src}
                   alt={partner.alt}
-                  width={partner.id === "sinara" ? 200 : 160}
+                  width={partner.id === "sinara" ? 200 : partner.id === "rzd" ? 132 : 160}
                   height={48}
-                  sizes="(max-width: 880px) 40vw, 160px"
-                  loading="lazy"
+                  sizes={partner.id === "rzd" ? "85px" : "(max-width: 900px) 28vw, 160px"}
                 />
               </span>
             </li>
           ))}
         </ul>
       </div>
-    </section>
+    </ScrollRevealSection>
   );
 }

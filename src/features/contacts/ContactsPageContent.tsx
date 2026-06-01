@@ -1,6 +1,9 @@
+import Link from "next/link";
+
 import contactsCopyEn from "@/locales/en/contacts.json";
 import contactsCopyRu from "@/locales/ru/contacts.json";
 import { buildYandexMapEmbedSrc } from "@/data/contactsOfficeMap";
+import { withLocalePath } from "@/shared/layout/SiteShell/site-shell-utils";
 
 import type { HomeLocale } from "@/features/home/home-types";
 
@@ -59,15 +62,6 @@ export function ContactsPageContent({ locale }: ContactsPageContentProps) {
                 </p>
               ))}
             </div>
-
-            <div className={styles.addressBlockSpaced}>
-              <span className={styles.addrLabel}>{copy.corpDetailsHeading}</span>
-              {copy.corpDetailsLines.map((line, index) => (
-                <p key={`corp-${String(index)}`} className={styles.addrLine}>
-                  {line}
-                </p>
-              ))}
-            </div>
           </div>
         </aside>
 
@@ -86,6 +80,22 @@ export function ContactsPageContent({ locale }: ContactsPageContentProps) {
           </div>
         </section>
       </div>
+
+      <section className={styles.corpDetailsSection} aria-label={copy.corpDetailsHeading}>
+        <span className={styles.addrLabel}>{copy.corpDetailsHeading}</span>
+        {copy.corpDetailsLines.map((line, index) => (
+          <p key={`corp-${String(index)}`} className={styles.addrLine}>
+            {line}
+          </p>
+        ))}
+        <p className={styles.addrLine}>
+          {copy.projectsNote.prefix}
+          <Link className={styles.addrLineLink} href={withLocalePath("/projects", locale)}>
+            {copy.projectsNote.linkText}
+          </Link>
+          {copy.projectsNote.suffix}
+        </p>
+      </section>
     </div>
   );
 }

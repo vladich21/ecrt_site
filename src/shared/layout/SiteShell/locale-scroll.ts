@@ -2,16 +2,30 @@ import { scrollToPosition } from "@/shared/scroll/smooth-scroll";
 
 export const LOCALE_SCROLL_KEY = "ecrt-locale-scroll";
 
-export function saveLocaleScrollPosition() {
-  sessionStorage.setItem(LOCALE_SCROLL_KEY, String(window.scrollY));
+type LocaleScrollPayload = {
+  path: string;
+  scrollY: number;
+};
+
+export function saveLocaleScrollPosition(targetPath: string, scrollY = window.scrollY) {
+  const payload: LocaleScrollPayload = { path: targetPath, scrollY };
+  sessionStorage.setItem(LOCALE_SCROLL_KEY, JSON.stringify(payload));
 }
 
-export function consumeLocaleScrollPosition(): number | null {
+export function consumeLocaleScrollPosition(currentPath: string): number | null {
   const raw = sessionStorage.getItem(LOCALE_SCROLL_KEY);
   if (raw == null) return null;
   sessionStorage.removeItem(LOCALE_SCROLL_KEY);
-  const scrollY = Number(raw);
-  return Number.isFinite(scrollY) ? scrollY : null;
+
+  try {
+    const payload = JSON.parse(raw) as LocaleScrollPayload;
+    if (payload.path !== currentPath || !Number.isFinite(payload.scrollY)) {
+      return null;
+    }
+    return payload.scrollY;
+  } catch {
+    return null;
+  }
 }
 
 export function applyScrollPosition(scrollY: number) {
@@ -32,4 +46,8 @@ export function restoreLocaleScrollPosition(scrollY: number) {
   }, 50);
 
   return () => window.clearInterval(timer);
+}
+
+export function scrollToPageTop() {
+  applyScrollPosition(0);
 }

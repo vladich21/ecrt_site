@@ -1,4 +1,8 @@
+"use client";
+
 import type { ReactNode } from "react";
+
+import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
 import styles from "./project-detail.module.scss";
 
@@ -41,63 +45,75 @@ export function ProjectReportSections({
   return (
     <div className={shellClassName}>
       {sections.map((section) => (
-        <section
+        <ScrollRevealSection
           key={section.id}
           className={styles.strReportSection}
           aria-labelledby={`${ariaIdPrefix}-${section.id}-heading`}
         >
-          <header className={styles.strReportSectionHead}>
-            <h2 id={`${ariaIdPrefix}-${section.id}-heading`} className={styles.strReportTitle}>
-              {section.title}
-            </h2>
-            <span className={styles.strReportTitleRule} aria-hidden />
-          </header>
+          <ScrollRevealBlock>
+            <header className={styles.strReportSectionHead}>
+              <h2 id={`${ariaIdPrefix}-${section.id}-heading`} className={styles.strReportTitle}>
+                {section.title}
+              </h2>
+              <span className={styles.strReportTitleRule} aria-hidden />
+            </header>
+          </ScrollRevealBlock>
 
-          {section.paragraphs?.map((paragraph) => (
-            <p key={paragraph} className={styles.strReportParagraph}>
-              {paragraph}
-            </p>
-          ))}
+          {section.paragraphs?.length ? (
+            <ScrollRevealBlock>
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph} className={styles.strReportParagraph}>
+                  {paragraph}
+                </p>
+              ))}
+            </ScrollRevealBlock>
+          ) : null}
 
-          {sectionSlots?.[section.id]}
+          {sectionSlots?.[section.id] ? (
+            <ScrollRevealBlock>{sectionSlots[section.id]}</ScrollRevealBlock>
+          ) : null}
 
           {section.bullets &&
           section.bullets.length > 0 &&
           section.bulletsPlacement !== "slot" ? (
-            section.bulletLayout === "focusGrid" ? (
-              <ul className={styles.strFocusGrid}>
-                {section.bullets.map((bullet, pillarIndex) => (
-                  <li key={bullet} className={styles.strFocusItem}>
-                    <span className={styles.strFocusDigit} aria-hidden>
-                      {(pillarIndex + 1).toString().padStart(2, "0")}
-                    </span>
-                    <p className={styles.strFocusItemText}>{bullet}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <ul className={styles.strReportList}>
-                {section.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
-            )
+            <ScrollRevealBlock>
+              {section.bulletLayout === "focusGrid" ? (
+                <ul className={styles.strFocusGrid}>
+                  {section.bullets.map((bullet, pillarIndex) => (
+                    <li key={bullet} className={styles.strFocusItem}>
+                      <span className={styles.strFocusDigit} aria-hidden>
+                        {(pillarIndex + 1).toString().padStart(2, "0")}
+                      </span>
+                      <p className={styles.strFocusItemText}>{bullet}</p>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <ul className={styles.strReportList}>
+                  {section.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              )}
+            </ScrollRevealBlock>
           ) : null}
 
           {section.metrics && section.metrics.length > 0 ? (
-            <ul className={styles.strMetricsGrid}>
-              {section.metrics.map((metric) => (
-                <li key={metric.label} className={styles.strMetricItem}>
-                  <p className={styles.strMetricValue}>
-                    <span className={styles.strMetricNumber}>{metric.value}</span>
-                    {metric.unit ? <span className={styles.strMetricUnit}>{metric.unit}</span> : null}
-                  </p>
-                  <p className={styles.strMetricLabel}>{metric.label}</p>
-                </li>
-              ))}
-            </ul>
+            <ScrollRevealBlock>
+              <ul className={styles.strMetricsGrid}>
+                {section.metrics.map((metric) => (
+                  <li key={metric.label} className={styles.strMetricItem}>
+                    <p className={styles.strMetricValue}>
+                      <span className={styles.strMetricNumber}>{metric.value}</span>
+                      {metric.unit ? <span className={styles.strMetricUnit}>{metric.unit}</span> : null}
+                    </p>
+                    <p className={styles.strMetricLabel}>{metric.label}</p>
+                  </li>
+                ))}
+              </ul>
+            </ScrollRevealBlock>
           ) : null}
-        </section>
+        </ScrollRevealSection>
       ))}
     </div>
   );

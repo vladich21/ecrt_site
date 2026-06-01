@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { ProjectsPageView } from "@/features/projects/ProjectsPageView";
+import { preloadPageImages } from "@/shared/images/page-image-preload";
 import { preloadRouteHeroImage } from "@/shared/images/route-hero-images";
 import { buildPageMetadata } from "@/shared/seo/build-page-metadata";
 import { PAGE_SEO } from "@/shared/seo/page-seo-copy";
@@ -23,5 +24,6 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function EnProjectsPage() {
   preloadRouteHeroImage("/projects");
+  preloadPageImages("/projects");
   return <ProjectsPageView locale="en" />;
 }

@@ -28,8 +28,10 @@ export function stripLocalePrefix(pathname: string): string {
 export function withLocalePath(pathname: string, locale: Locale): string {
   const ruPath = stripLocalePrefix(pathname);
   if (locale === "ru") return ruPath;
-  if (ruPath.startsWith("/project/")) return `/en${ruPath}`;
-  return enPathByRuPath[ruPath] ?? ruPath;
+  const mapped = enPathByRuPath[ruPath];
+  if (mapped) return mapped;
+  if (ruPath === "/") return "/en";
+  return `/en${ruPath}`;
 }
 
 export function t(key: string, locale: Locale = "ru"): string {

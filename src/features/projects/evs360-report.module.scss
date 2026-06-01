@@ -23,10 +23,10 @@
 
 .reportTitle {
   margin: 0 0 clamp(12px, 2vw, 16px);
-  font-size: var(--showcase-title-size);
+  font-size: var(--heading-h2-size);
   font-weight: 800;
-  letter-spacing: var(--showcase-title-tracking);
-  line-height: var(--showcase-title-line-height);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
   color: var(--ecrt-blue);
 }
 
@@ -126,10 +126,10 @@
 .calculationBody h3 {
   margin: 0;
   color: #001a2e;
-  font-size: 40px;
+  font-size: var(--heading-h2-size);
   font-weight: 800;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .calculationBody p {
@@ -149,11 +149,5 @@
 
   .calculationEntryReverse {
     flex-direction: row-reverse;
-  }
-}
-
-@media (max-width: 720px) {
-  .calculationBody h3 {
-    font-size: clamp(28px, 5vw, 36px);
   }
 }

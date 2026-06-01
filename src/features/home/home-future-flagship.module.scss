@@ -55,6 +55,12 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+
+  &:global(.is-video-playing) {
+    opacity: 1;
+  }
 }
 
 .videoScrim {

@@ -19,7 +19,7 @@
 .homePage {
   --shell-section-y: clamp(48px, 8vw, var(--section-padding-y, 80px));
   padding-top: var(--shell-section-y);
-  padding-bottom: var(--shell-section-y);
+  padding-bottom: 0;
 }
 
 .chronologyFullBleed {

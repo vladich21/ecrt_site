@@ -62,7 +62,6 @@
   padding: clamp(20px, 3vw, 28px);
   border: 1px solid var(--surface-border, rgba(0, 47, 85, 0.12));
   border-radius: var(--surface-radius, 16px);
-  background: linear-gradient(165deg, #ffffff 0%, #f5f8fb 100%);
   box-shadow: var(--surface-shadow, 0 12px 40px rgba(0, 47, 85, 0.06));
 }
 
@@ -103,10 +102,10 @@
 
 .stagePanelTitle {
   margin: 0;
-  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-size: var(--heading-h3-size);
   font-weight: 800;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+  line-height: var(--heading-h3-line-height);
+  letter-spacing: var(--heading-h3-tracking);
   color: var(--doc-navy);
 }
 
@@ -188,9 +187,10 @@
 
 .docGroupTitle {
   margin: clamp(4px, 0.8vw, 8px) 0 0;
-  font-size: clamp(1rem, 1.8vw, 1.12rem);
+  font-size: var(--heading-h3-size);
   font-weight: 800;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--heading-h3-tracking);
+  line-height: var(--heading-h3-line-height);
   color: var(--doc-blue);
 }
 

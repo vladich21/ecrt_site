@@ -6,7 +6,8 @@
   },
   "directions": {
     "title": "Areas of activity",
-    "intro": "We engineer innovative onboard and train-level solutions for a high‑speed fleet, focused on passenger comfort, accessibility, and richer cabin services. Those subsystems converge in a modular, distributed train control backbone built around a unified Russian‑developed hardware‑and‑software platform with intelligent traction, supervisory, and diagnostic functions across multiple rolling-stock configurations.",
+    "moreCta": "Learn more",
+    "intro": "Our core activity is the development of innovative technical solutions applied in creating a high-speed electric train that meets current requirements for comfort, accessibility, ease of use, and a variety of onboard information and entertainment services. Many of these solutions are complex, high-technology systems whose mutual integration and operation are enabled by intelligent control, monitoring, and diagnostic algorithms. These algorithms are implemented through a modular distributed control system built on a unified software-and-hardware platform developed in Russia, enabling control systems of varying configurations, composition, and complexity for any type of rolling stock.",
     "groups": {
       "cab-displays-controls": {
         "title": "Driver-cab supervisory and indication systems",

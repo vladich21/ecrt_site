@@ -24,7 +24,8 @@
     "previousPhoto": "Предыдущее фото",
     "nextPhoto": "Следующее фото",
     "photoChoice": "Выбор фото",
-    "photoOf": "Фото {index} из {total}"
+    "photoOf": "Фото {index} из {total}",
+    "swipeHint": "Листайте влево или вправо"
   },
   "trackV25Field": {
     "tabListLabel": "Этапы технологического внедрения",

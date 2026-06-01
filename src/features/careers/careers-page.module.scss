@@ -24,8 +24,7 @@
   width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
   max-width: none;
   margin: 0 auto;
-  padding-top: 100px;
-  padding-bottom: var(--section-padding-y, 80px);
+  padding: clamp(48px, 8vw, 100px) 0 var(--section-padding-y, 80px);
   display: flex;
   flex-direction: column;
   gap: clamp(40px, 6vw, 100px);
@@ -191,28 +190,28 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: stretch;
-  column-gap: clamp(16px, 2.8vw, 32px);
+  column-gap: clamp(18px, 2.8vw, 36px);
   row-gap: clamp(20px, 3.2vw, 36px);
   margin-top: clamp(26px, 4vw, 40px);
 }
 
+.benefitGridCell {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
 /*
- * Десктоп: первый ряд — 4 равные ячейки (высота ряда = по самому высокому; карточки тянутся).
- * Нижние две — только середина сетки (колонки 2 и 3), без растягивания на ½ ширины; пары боковых пустых колонок визуально центрируют блок.
+ * Десктоп: 4 в первом ряду; нижние две — по центру (колонки 2 и 3), та же ширина, что у верхних.
  */
 @media (min-width: 961px) {
-  .benefitsGrid .benefitCard:nth-child(5) {
+  .benefitsGrid > :nth-child(5) {
     grid-column: 2 / 3;
-    justify-self: stretch;
-    width: 100%;
-    max-width: 100%;
   }
 
-  .benefitsGrid .benefitCard:nth-child(6) {
+  .benefitsGrid > :nth-child(6) {
     grid-column: 3 / 4;
-    justify-self: stretch;
-    width: 100%;
-    max-width: 100%;
   }
 }
 
@@ -221,8 +220,24 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .benefitsGrid .benefitCard:nth-child(n) {
+  .benefitsGrid > :nth-child(n) {
     grid-column: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    padding-top: clamp(28px, 6vw, 40px);
+    padding-bottom: clamp(40px, 8vw, 56px);
+    gap: clamp(32px, 7vw, 48px);
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    padding-top: clamp(24px, 5vw, 32px);
+    padding-bottom: clamp(32px, 7vw, 48px);
+    gap: clamp(28px, 6vw, 40px);
   }
 }
 
@@ -241,10 +256,9 @@
 .benefitCard {
   box-sizing: border-box;
   width: 100%;
+  flex: 1 1 auto;
   min-width: 0;
-  min-height: 0;
-  justify-self: stretch;
-  align-self: stretch;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   padding: clamp(16px, 2.6vw, 22px);
@@ -261,16 +275,20 @@
     box-shadow: 0 10px 32px rgba(196, 21, 21, 0.08);
   }
 
-  h3 {
-    flex-shrink: 0;
-    margin: 0 0 8px;
-    font-size: clamp(0.95rem, 1.42vw, 1.06rem);
-    font-weight: 750;
-    line-height: 1.26;
+  .benefitCardTitle {
+    flex: 0 0 auto;
+    margin: 0 0 6px;
+    font-family: var(--font-heading-next), var(--font-heading);
+    font-size: clamp(0.875rem, 0.78rem + 0.45vw, 1.0625rem);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
     color: var(--ecrt-navy);
+    text-wrap: pretty;
+    overflow-wrap: break-word;
   }
 
-  p {
+  .benefitCardBody {
     flex: 1 1 auto;
     min-height: 0;
     margin: 0;
@@ -318,10 +336,10 @@
 
 .ctaTitle {
   margin: 0;
-  font-size: clamp(24px, 3.4vw, 36px);
+  font-size: var(--heading-h2-size);
   font-weight: 800;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: #f3f7fc;
 }
 

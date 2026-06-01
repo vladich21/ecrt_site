@@ -17,6 +17,17 @@
   align-items: center;
   margin: 0;
   padding: 0 0 clamp(20px, 2.8vw, 28px);
+
+  /* Одна обёртка (ScrollRevealBlock): цифра + текст в одну строку */
+  > *:only-child {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: inherit;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
 }
 
 @mixin digit {

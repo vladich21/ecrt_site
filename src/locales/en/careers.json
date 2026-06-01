@@ -48,13 +48,13 @@
     ]
   },
   "vacancies": {
-    "titleBefore": "Where to browse vacancies and ",
-    "titleAccent": "apply",
+    "titleBefore": "Where to browse ",
+    "titleAccent": "our vacancies",
     "hhCta": "Browse every vacancy on hh.ru"
   },
   "cta": {
     "title": "Write to us directly",
-    "body": "We keep track of roles that open during projects. Send your CV — we will tell you about pipeline hiring and our plans for the next six months.",
+    "body": "",
     "emailCta": "Write to us",
     "emailBtn": "{{email}}",
     "hhCard": "Employer profile on hh.ru"

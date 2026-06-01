@@ -1,5 +1,6 @@
-import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
+"use client";
 
+import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 import imgLoads from "@/assets/presentation/image.webp";
 import imgPathStructure from "@/assets/presentation/Расчет кострукции пути.webp";
 import imgNodes from "@/assets/presentation/Расчте узлов и элементов пути.webp";
@@ -7,6 +8,7 @@ import imgGeo from "@/assets/presentation/Геотехнические расч�
 import imgOptimize1 from "@/assets/presentation/Оптимизация параметров конструкции пути и его элементов1.webp";
 import imgOptimize2 from "@/assets/presentation/Оптимизация параметров конструкции пути и его элементов2.webp";
 import imgOptimize3 from "@/assets/presentation/Оптимизация параметров конструкции пути и его элементов3.webp";
+import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
 import { getTrackV25ModelingCopy, type ProjectDetailLocale } from "./project-detail-locale";
 import styles from "./evs360-report.module.scss";
@@ -28,18 +30,21 @@ export function TrackV25ModelingBlock({ locale = "ru" }: TrackV25ModelingBlockPr
 
   return (
     <div className={styles.root}>
-      <section className={styles.section} aria-labelledby="track-v25-modeling-heading">
-        <div className={styles.reportSectionHead}>
-          <h2 id="track-v25-modeling-heading" className={styles.reportTitle}>
-            {copy.heading}
-          </h2>
-          <span className={styles.reportTitleRule} aria-hidden />
-          <p className={styles.reportDeck}>{copy.intro}</p>
-        </div>
+      <ScrollRevealSection className={styles.section} aria-labelledby="track-v25-modeling-heading">
+        <ScrollRevealBlock>
+          <div className={styles.reportSectionHead}>
+            <h2 id="track-v25-modeling-heading" className={styles.reportTitle}>
+              {copy.heading}
+            </h2>
+            <span className={styles.reportTitleRule} aria-hidden />
+            <p className={styles.reportDeck}>{copy.intro}</p>
+          </div>
+        </ScrollRevealBlock>
         <div className={styles.calculationSeries}>
           {copy.blocks.map((item, itemIndex) => (
-            <article
+            <ScrollRevealBlock
               key={item.title}
+              inView
               className={`${styles.calculationEntry} ${itemIndex % 2 === 1 ? styles.calculationEntryReverse : ""}`}
             >
               <div className={styles.calculationMedia}>
@@ -57,10 +62,10 @@ export function TrackV25ModelingBlock({ locale = "ru" }: TrackV25ModelingBlockPr
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
               </div>
-            </article>
+            </ScrollRevealBlock>
           ))}
         </div>
-      </section>
+      </ScrollRevealSection>
     </div>
   );
 }

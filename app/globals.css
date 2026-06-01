@@ -42,8 +42,11 @@
   );
   --heading-h1-size: clamp(1.75rem, 1.05rem + 2.8vw, 3.125rem);
   --heading-h2-size: clamp(1.375rem, 1rem + 2.5vw, 3.125rem);
-  /* Эталон: карточки проектов на главной (ProjectProductShowcase) → страницы /project/* */
-  --showcase-title-size: clamp(1.125rem, 0.85rem + 1.8vw, 2rem);
+  --heading-h3-size: clamp(1.125rem, 0.85rem + 1.8vw, 2rem);
+  --heading-h3-line-height: 1.18;
+  --heading-h3-tracking: -0.025em;
+  /* Карточки и подзаголовки — тот же масштаб, что h3 */
+  --showcase-title-size: var(--heading-h3-size);
   --showcase-title-line-height: 1.18;
   --showcase-title-tracking: -0.025em;
   --showcase-body-size: var(--body-text-size);
@@ -95,6 +98,12 @@ h2 {
   line-height: 1.15;
 }
 
+h3 {
+  font-size: var(--heading-h3-size);
+  line-height: var(--heading-h3-line-height);
+  letter-spacing: var(--heading-h3-tracking);
+}
+
 p {
   margin: 0;
   color: var(--text-soft);
@@ -137,7 +146,7 @@ a {
 @media (max-width: 980px) {
   :root {
     --header-slot: calc(73px + env(safe-area-inset-top, 0px));
-    --showcase-title-size: clamp(1.125rem, 0.9rem + 2.2vw, 1.625rem);
+    --heading-h3-size: clamp(1.125rem, 0.9rem + 2.2vw, 1.625rem);
     --showcase-title-line-height: 1.2;
   }
 }

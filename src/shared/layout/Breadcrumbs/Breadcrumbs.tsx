@@ -10,6 +10,7 @@ import styles from "./breadcrumbs.module.scss";
 
 type BreadcrumbsProps = {
   variant?: "default" | "hero" | "compact";
+  hideTrailingCurrent?: boolean;
   items: BreadcrumbEntry[];
   locale: "ru" | "en";
   ariaLabel: string;
@@ -17,6 +18,7 @@ type BreadcrumbsProps = {
 
 export function Breadcrumbs({
   variant = "default",
+  hideTrailingCurrent = false,
   items,
   locale,
   ariaLabel,
@@ -28,10 +30,11 @@ export function Breadcrumbs({
         "pl-extra",
         variant === "hero" || variant === "compact" ? styles.navCompact : "",
         variant === "hero" ? styles.navOnHero : "",
+        hideTrailingCurrent ? styles.navHideTrailingCurrent : "",
       ]
         .filter(Boolean)
         .join(" "),
-    [variant],
+    [variant, hideTrailingCurrent],
   );
 
   if (items.length === 0) return null;

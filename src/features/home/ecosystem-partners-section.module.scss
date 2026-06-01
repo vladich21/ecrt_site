@@ -41,7 +41,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 24px 32px;
+  gap: 0;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -56,13 +56,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 12px;
 }
 
 /* Логотип Синара - в 2x от стандартного слота 240x80. */
 .logoSlot2x {
   height: 160px;
-  padding: 16px 20px;
+  padding: 0;
 }
 
 .logoFrame {
@@ -82,6 +81,10 @@
   object-fit: contain;
 }
 
+.logoSlotRzd .logoImg {
+  max-width: 120px;
+}
+
 @media (max-width: 900px) {
   .section {
     padding: 56px 24px 64px;
@@ -96,17 +99,31 @@
     padding-bottom: 14px;
   }
 
+  .logoRow {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 0;
+    max-width: 100%;
+  }
+
   .logoSlot {
-    width: 200px;
-    height: 72px;
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+    height: 52px;
   }
 
   .logoSlot2x {
-    height: 132px;
+    height: 52px;
+    padding: 0;
   }
 
-  .logoRow {
-    gap: 20px 24px;
+  .logoImg {
+    max-height: 40px;
+  }
+
+  .logoSlotRzd .logoImg {
+    max-width: 85px;
   }
 }
 
@@ -124,12 +141,24 @@
     margin-bottom: 40px;
   }
 
+  .logoRow {
+    gap: 0;
+  }
+
   .logoSlot {
-    width: min(100%, 260px);
-    height: 68px;
+    height: 44px;
   }
 
   .logoSlot2x {
-    height: 120px;
+    height: 44px;
+    padding: 0;
+  }
+
+  .logoImg {
+    max-height: 34px;
+  }
+
+  .logoSlotRzd .logoImg {
+    max-width: 72px;
   }
 }

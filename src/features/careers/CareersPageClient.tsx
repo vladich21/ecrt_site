@@ -1,12 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import heroMedia from "@/assets/presentation/эвс-02.webp";
 import careersEn from "@/locales/en/careers.json";
 import careersRu from "@/locales/ru/careers.json";
 import { CAREERS_EMAIL, HH_EMPLOYER_URL } from "@/data/careersLinks";
-import { fadeUp, sectionReveal } from "@/shared/motion/presets";
 import { PageHero } from "@/shared/ui/PageHero/PageHero";
+import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
 import { CareerBenefitIcon, type CareerBenefitIconId } from "./CareerBenefitIcon";
 
@@ -52,15 +51,9 @@ export function CareersPageView({ locale = "ru" }: { locale?: "ru" | "en" }) {
       />
 
       <div className={styles.contentShell}>
-        <motion.div
-          className={styles.wrap}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px", amount: 0.08 }}
-          variants={sectionReveal}
-        >
-          <motion.section className={styles.section} variants={fadeUp} aria-labelledby="careers-culture-heading">
-            <div className={styles.culturePanel}>
+        <div className={styles.wrap}>
+          <ScrollRevealSection className={styles.section} aria-labelledby="careers-culture-heading">
+            <ScrollRevealBlock className={styles.culturePanel}>
               <h2 className={styles.culturePanelTitle} id="careers-culture-heading">
                 {careersCopy.culture.title}
               </h2>
@@ -68,63 +61,68 @@ export function CareersPageView({ locale = "ru" }: { locale?: "ru" | "en" }) {
               <ol className={styles.cultureSteps}>
                 {careersCopy.culture.bullets.map((line, index) => (
                   <li key={line} className={styles.cultureStep}>
-                    <span className={styles.cultureStepIndex} aria-hidden>
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <p className={styles.cultureStepText}>{line}</p>
+                    <ScrollRevealBlock inView fadeOnly>
+                      <span className={styles.cultureStepIndex} aria-hidden>
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <p className={styles.cultureStepText}>{line}</p>
+                    </ScrollRevealBlock>
                   </li>
                 ))}
               </ol>
-            </div>
-          </motion.section>
+            </ScrollRevealBlock>
+          </ScrollRevealSection>
 
-          <motion.section
+          <section
             className={styles.section}
             id="benefits"
-            variants={fadeUp}
             aria-labelledby="careers-benefits-heading"
           >
-            <div className={styles.sectionHeadCenter}>
+            <ScrollRevealBlock revealEarly className={styles.sectionHeadCenter}>
               <h2 className={styles.sectionTitleMain} id="careers-benefits-heading">
                 {careersCopy.benefits.titleBefore}
                 <span className={styles.titleAccent}>{careersCopy.benefits.titleAccent}</span>
               </h2>
               <span className={styles.sectionRule} aria-hidden />
-            </div>
+            </ScrollRevealBlock>
             <div className={styles.benefitsGrid}>
               {benefits.map((item, index) => (
-                <article key={`${item.icon}-${index}`} className={styles.benefitCard}>
-                  <div className={styles.benefitIcon} aria-hidden>
-                    <CareerBenefitIcon name={item.icon} />
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
-                </article>
+                <ScrollRevealBlock key={`${item.icon}-${index}`} inView className={styles.benefitGridCell}>
+                  <article className={styles.benefitCard}>
+                    <div className={styles.benefitIcon} aria-hidden>
+                      <CareerBenefitIcon name={item.icon} />
+                    </div>
+                    <p className={styles.benefitCardTitle}>{item.title}</p>
+                    <p className={styles.benefitCardBody}>{item.body}</p>
+                  </article>
+                </ScrollRevealBlock>
               ))}
             </div>
-          </motion.section>
+          </section>
 
-          <motion.section className={styles.section} variants={fadeUp} id="vacancies">
-            <div className={styles.sectionHeadCenter}>
+          <ScrollRevealSection className={styles.section} id="vacancies">
+            <ScrollRevealBlock className={styles.sectionHeadCenter}>
               <h2 className={styles.sectionTitleMain}>
                 {careersCopy.vacancies.titleBefore}
                 <span className={styles.titleAccent}>{careersCopy.vacancies.titleAccent}</span>
               </h2>
               <span className={styles.sectionRule} aria-hidden />
-            </div>
-            <div className={styles.vacanciesCtaWrap}>
+            </ScrollRevealBlock>
+            <ScrollRevealBlock className={styles.vacanciesCtaWrap}>
               <a className={`${styles.btn} ${styles.btnPrimary}`} href={HH_EMPLOYER_URL} target="_blank" rel="noreferrer">
                 <span>{careersCopy.vacancies.hhCta}</span>
                 <ExternalArrow className={styles.externalIcon} />
               </a>
-            </div>
-          </motion.section>
+            </ScrollRevealBlock>
+          </ScrollRevealSection>
 
-          <motion.section className={styles.section} variants={fadeUp}>
-            <div className={styles.ctaCard}>
+          <ScrollRevealSection className={styles.section}>
+            <ScrollRevealBlock className={styles.ctaCard}>
               <div>
                 <h2 className={styles.ctaTitle}>{careersCopy.cta.title}</h2>
-                <p className={styles.ctaBody}>{careersCopy.cta.body}</p>
+                {careersCopy.cta.body.trim().length > 0 ? (
+                  <p className={styles.ctaBody}>{careersCopy.cta.body}</p>
+                ) : null}
               </div>
               <div className={styles.ctaActions}>
                 <a
@@ -149,9 +147,9 @@ export function CareersPageView({ locale = "ru" }: { locale?: "ru" | "en" }) {
                   </svg>
                 </a>
               </div>
-            </div>
-          </motion.section>
-        </motion.div>
+            </ScrollRevealBlock>
+          </ScrollRevealSection>
+        </div>
       </div>
     </div>
   );

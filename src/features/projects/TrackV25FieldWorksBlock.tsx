@@ -1,19 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import imgAssemblyYard from "@/assets/track-v25-field/01-assembly-pms-yard.webp";
-import imgAssemblyCrane from "@/assets/track-v25-field/02-assembly-crane-sleepers.webp";
-import imgAssemblyWorkers from "@/assets/track-v25-field/03-assembly-workers.webp";
-import imgLayingRail from "@/assets/track-v25-field/04-laying-rail-on-sleepers.webp";
-import imgStage2Prep from "@/assets/track-v25-field/этап2_Подготовка_к_снятию_старой_РШР.webp";
-import imgStage2Pzs from "@/assets/track-v25-field/этап2_устройство_ПЗС.webp";
-import imgStage2Pzs2 from "@/assets/track-v25-field/этап2_устройство_ПЗС2.webp";
-import imgStage2Pzs3 from "@/assets/track-v25-field/этап2_устройство_ПЗС3.webp";
-import imgStage3Pzs from "@/assets/track-v25-field/этап3-07а_устройство_ПЗС.webp";
-import imgStage3Laying1 from "@/assets/track-v25-field/этап3-08_Укладка_РШР.webp";
-import imgStage3Laying2 from "@/assets/track-v25-field/этап3-10_Укладка_РШР.webp";
-
+import { trackV25FieldAllImages, trackV25FieldStageImages } from "@/data/project-page-images";
+import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
+import { preloadStaticImage } from "@/shared/images/preload-static-image";
+import { scheduleIdleWork } from "@/shared/images/network-preload";
 import tabStyles from "@/shared/ui/StageTabs/stage-tabs.module.scss";
 
 import {
@@ -24,12 +16,6 @@ import {
 } from "./project-detail-locale";
 import { StagePhotoSlider } from "./StagePhotoSlider";
 import styles from "./track-v25-field-works.module.scss";
-
-const stageImages = {
-  assembly: [imgAssemblyCrane, imgAssemblyYard, imgAssemblyWorkers, imgLayingRail],
-  "sub-ballast": [imgStage2Prep, imgStage2Pzs, imgStage2Pzs2, imgStage2Pzs3],
-  laying: [imgStage3Pzs, imgStage3Laying1, imgStage3Laying2],
-} as const;
 
 type TrackV25FieldWorksBlockProps = {
   locale?: ProjectDetailLocale;
@@ -42,8 +28,16 @@ export function TrackV25FieldWorksBlock({ locale = "ru" }: TrackV25FieldWorksBlo
 
   const fieldWorkStages = fieldCopy.stages.map((stage) => ({
     ...stage,
-    images: [...(stageImages[stage.id as keyof typeof stageImages] ?? [])],
+    images: [...(trackV25FieldStageImages[stage.id as keyof typeof trackV25FieldStageImages] ?? [])],
   }));
+
+  useEffect(() => {
+    scheduleIdleWork(() => {
+      for (const image of trackV25FieldAllImages) {
+        preloadStaticImage(image);
+      }
+    });
+  }, []);
 
   const [activeStageId, setActiveStageId] = useState(fieldWorkStages[0]?.id ?? "");
   const activeStage =
@@ -52,15 +46,18 @@ export function TrackV25FieldWorksBlock({ locale = "ru" }: TrackV25FieldWorksBlo
   if (!activeStage) return null;
 
   return (
-    <section className={styles.root} aria-labelledby="track-v25-field-works-heading">
-      <header className={styles.sectionHead}>
-        <h2 id="track-v25-field-works-heading" className={styles.sectionTitle}>
-          {fieldCopy.heading}
-        </h2>
-        <span className={styles.sectionTitleRule} aria-hidden />
-        <p className={styles.sectionDeck}>{fieldCopy.intro}</p>
-      </header>
+    <ScrollRevealSection className={styles.root} aria-labelledby="track-v25-field-works-heading">
+      <ScrollRevealBlock>
+        <header className={styles.sectionHead}>
+          <h2 id="track-v25-field-works-heading" className={styles.sectionTitle}>
+            {fieldCopy.heading}
+          </h2>
+          <span className={styles.sectionTitleRule} aria-hidden />
+          <p className={styles.sectionDeck}>{fieldCopy.intro}</p>
+        </header>
+      </ScrollRevealBlock>
 
+      <ScrollRevealBlock>
       <div className={styles.stageSwitcher}>
         <div className={tabStyles.stageTabList} role="tablist" aria-label={fieldUi.tabListLabel}>
           {fieldWorkStages.map((stage, stageIndex) => {
@@ -116,6 +113,7 @@ export function TrackV25FieldWorksBlock({ locale = "ru" }: TrackV25FieldWorksBlo
           </div>
         </article>
       </div>
-    </section>
+      </ScrollRevealBlock>
+    </ScrollRevealSection>
   );
 }

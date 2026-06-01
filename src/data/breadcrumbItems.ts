@@ -1,4 +1,8 @@
 import {
+  resolveDirectionTitle,
+  type DirectionLocale,
+} from '@/features/projects/direction-detail-locale'
+import {
   resolveProjectTitle as resolveLocalizedProjectTitle,
   type ProjectDetailLocale,
 } from '@/features/projects/project-detail-locale'
@@ -33,7 +37,14 @@ export function breadcrumbsOverDarkHero(pathname: string): boolean {
 export function breadcrumbsOverlayLayout(pathname: string): boolean {
   const path = pathname.replace(/\/$/, '') || '/'
   const paths = ['/documents', '/contacts', '/privacy-policy'] as const
-  return (paths as readonly string[]).includes(path)
+  if ((paths as readonly string[]).includes(path)) return true
+  return /^\/projects\/direction\/[^/]+$/.test(path)
+}
+
+/** На экранах ≤1024px последнюю крошку скрываем — полное название уже в h1 (направления деятельности). */
+export function breadcrumbsHideTrailingCurrent(pathname: string): boolean {
+  const path = pathname.replace(/\/$/, '') || '/'
+  return /^\/projects\/direction\/[^/]+$/.test(path)
 }
 
 /** Крошки для известных маршрутов; на главной - пусто. */
@@ -68,6 +79,17 @@ export function getBreadcrumbEntries(
     const slug = projectMatch[1]
     out.push({ label: t('breadcrumbs.projects'), to: '/projects' })
     out.push({ label: resolveProjectTitle(slug, locale), current: true })
+    return out
+  }
+
+  const directionMatch = path.match(/^\/projects\/direction\/([^/]+)$/)
+  if (directionMatch) {
+    const directionId = directionMatch[1]
+    out.push({ label: t('breadcrumbs.projects'), to: '/projects' })
+    out.push({
+      label: resolveDirectionTitle(directionId, locale as DirectionLocale),
+      current: true,
+    })
     return out
   }
 

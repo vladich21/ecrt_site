@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 import aboutEn from "@/locales/en/about.json";
 import aboutRu from "@/locales/ru/about.json";
 import homeEn from "@/locales/en/home.json";
@@ -19,7 +17,7 @@ export function AboutPageClient({ locale = "ru" }: { locale?: AboutLocale }) {
   const homeCopy = locale === "en" ? homeEn : homeRu;
 
   return (
-    <motion.div className={styles.aboutRoot}>
+    <div className={styles.aboutRoot}>
       <AboutHeroSection aboutCopy={aboutCopy} />
 
       <AboutChronologySection homeCopy={homeCopy} />
@@ -30,6 +28,6 @@ export function AboutPageClient({ locale = "ru" }: { locale?: AboutLocale }) {
           <AboutLeadershipSection aboutCopy={aboutCopy} />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 
@@ -11,21 +12,22 @@ const titleEase = [0.25, 0.82, 0.32, 1] as const;
 export type ThemeGroup = {
   id: string;
   title: string;
-  /** Один абзац или несколько через пустую строку (`\\n\\n`). */
-  detail: string;
+  summary: string;
+  href?: string;
 };
 
 type Props = {
   groups: readonly ThemeGroup[];
+  moreLabel: string;
 };
 
-export function DirectionsThemeAccordion({ groups }: Props) {
+export function DirectionsThemeAccordion({ groups, moreLabel }: Props) {
   const [openId, setOpenId] = useState<string | null>(null);
 
   useEffect(() => {
     setOpenId((prev) => {
       if (prev === null) return null;
-      return groups.some((g) => g.id === prev) ? prev : null;
+      return groups.some((group) => group.id === prev) ? prev : null;
     });
   }, [groups]);
 
@@ -35,14 +37,11 @@ export function DirectionsThemeAccordion({ groups }: Props) {
 
   if (!groups.length) return null;
 
-  const activeIndex = openId === null ? -1 : groups.findIndex((g) => g.id === openId);
-  const displayGroup = activeIndex >= 0 ? groups[activeIndex]! : groups[0];
-  const total = groups.length;
-  const counterTo = String(total).padStart(2, "0");
+  const activeIndex = openId === null ? -1 : groups.findIndex((group) => group.id === openId);
+  const displayGroup = activeIndex >= 0 ? groups[activeIndex]! : groups[0]!;
   const counterFrom =
     activeIndex >= 0 ? String(activeIndex + 1).padStart(2, "0") : String(1).padStart(2, "0");
-
-  const leftKey = displayGroup.id;
+  const counterTo = String(groups.length).padStart(2, "0");
 
   return (
     <div className={styles.root}>
@@ -50,7 +49,7 @@ export function DirectionsThemeAccordion({ groups }: Props) {
         <aside className={styles.sticky} aria-live="polite">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
-              key={leftKey}
+              key={displayGroup.id}
               className={styles.activeBlock}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
@@ -106,15 +105,12 @@ export function DirectionsThemeAccordion({ groups }: Props) {
                       style={{ overflow: "hidden" }}
                     >
                       <div className={styles.panel}>
-                        <div className={styles.panelProse}>
-                          {group.detail
-                            .trim()
-                            .split(/\n\n+/)
-                            .filter(Boolean)
-                            .map((para, paragraphIndex) => (
-                              <p key={`${group.id}-para-${paragraphIndex}`}>{para.trim()}</p>
-                            ))}
-                        </div>
+                        <p className={styles.summary}>{group.summary}</p>
+                        {group.href ? (
+                          <Link className={styles.moreLink} href={group.href}>
+                            {moreLabel}
+                          </Link>
+                        ) : null}
                       </div>
                     </motion.div>
                   ) : null}

@@ -57,9 +57,11 @@ export function CareerBenefitIcon({ name, ...props }: Props) {
     case 'sport':
       return (
         <svg viewBox="0 0 24 24" aria-hidden {...common} {...props}>
-          <circle cx="12" cy="12" r="9" />
-          <path d="M12 3C9 12 15 12 12 21" />
-          <path d="M12 3C15 12 9 12 12 21" />
+          <path d="M6 8v8" />
+          <path d="M18 8v8" />
+          <path d="M8.5 12h7" />
+          <path d="M3.5 10v4" />
+          <path d="M20.5 10v4" />
         </svg>
       )
     case 'office':

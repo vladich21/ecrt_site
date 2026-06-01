@@ -32,10 +32,10 @@
 
 .activeTitle {
   margin: 0;
-  font-size: 40px;
+  font-size: var(--heading-h2-size);
   font-weight: 800;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: #001a2e;
   max-width: none;
   text-wrap: balance;
@@ -51,10 +51,10 @@
 
 .item {
   border-bottom: 1px solid rgba(0, 26, 46, 0.1);
-}
 
-.item:first-child {
-  border-top: 1px solid rgba(0, 26, 46, 0.1);
+  &:first-child {
+    border-top: 1px solid rgba(0, 26, 46, 0.1);
+  }
 }
 
 .trigger {
@@ -128,21 +128,48 @@
   padding: 0 36px 16px 0;
 }
 
-.panelProse {
+.summary {
   margin: 0;
+  font-size: clamp(0.875rem, 1.35vw, 0.95rem);
+  line-height: 1.55;
+  font-weight: 500;
+  color: rgba(36, 44, 56, 0.88);
+  text-wrap: pretty;
+}
 
-  & p {
-    margin: 0 0 clamp(10px, 1.8vw, 14px);
+.moreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  margin-top: clamp(14px, 2.2vw, 18px);
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: linear-gradient(165deg, #002f55 0%, #001a2e 94%);
+  border: 1px solid rgba(0, 102, 161, 0.35);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease,
+    border-color 0.2s ease;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+  &:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+    border-color: rgba(220, 236, 252, 0.35);
+  }
 
-    font-size: 16px;
-    line-height: 1.55;
-    font-weight: 500;
-    color: rgba(36, 44, 56, 0.92);
-    text-wrap: pretty;
+  &:focus-visible {
+    outline: 2px solid #e21a1a;
+    outline-offset: 3px;
   }
 }
 
@@ -157,12 +184,13 @@
     top: auto;
   }
 
-  .activeTitle {
-    max-width: none;
-    font-size: clamp(28px, 5vw, 36px);
-  }
-
   .panel {
     padding-right: 0;
+  }
+}
+
+@media (max-width: 980px) {
+  .moreLink {
+    margin-top: clamp(12px, 2.5vw, 16px);
   }
 }

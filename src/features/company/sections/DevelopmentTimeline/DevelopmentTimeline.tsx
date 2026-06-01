@@ -15,8 +15,8 @@ import milestone201906Signing from "@/assets/presentation/milestone-2019-06-sign
 import type homeRu from "@/locales/ru/home.json";
 import type { BundledImage } from "@/data/ecrtSite";
 import { imageSrc } from "@/features/projects/image-src";
+import { ScrollRevealBlock } from "@/shared/motion/ScrollReveal";
 
-import { ease } from "../../about-page-motion";
 import timelineStyles from "./home-vertical-timeline.module.scss";
 
 type HomeCopy = typeof homeRu;
@@ -92,60 +92,35 @@ export function DevelopmentTimeline({ homeCopy }: { homeCopy: HomeCopy }) {
             const photoSrc = timelinePhotoByIso[milestone.iso];
             const hasPhoto = Boolean(photoSrc);
             const isEven = index % 2 === 0;
-            const itemDelay = Math.min(index * 0.08, 0.36) + 0.04;
 
             const marker = (
-              <motion.div
-                className={timelineStyles.markerCol}
-                initial={{ scale: 0.88, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 420,
-                  damping: 28,
-                  mass: 0.55,
-                  delay: Math.min(index * 0.06, 0.28),
-                }}
-                viewport={{ once: true, amount: 0.35, margin: "0px 0px -10% 0px" }}
-              >
+              <ScrollRevealBlock inView fadeOnly className={timelineStyles.markerCol}>
                 <span className={timelineStyles.marker} data-filled="true" aria-hidden />
-              </motion.div>
+              </ScrollRevealBlock>
             );
 
             const content = (
-              <motion.article
-                className={timelineStyles.content}
-                initial={{ opacity: 0, x: isEven ? -16 : 16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.35, margin: "0px 0px -10% 0px" }}
-                transition={{ duration: 0.84, ease, delay: itemDelay }}
-              >
+              <ScrollRevealBlock inView className={timelineStyles.content}>
                 <time className={timelineStyles.when} dateTime={milestone.iso}>
                   {milestone.date}
                 </time>
                 <h3 className={timelineStyles.stepTitle}>{milestone.title}</h3>
                 <p className={timelineStyles.blurb}>{milestone.text}</p>
-              </motion.article>
+              </ScrollRevealBlock>
             );
 
             const figure = photoSrc ? (
-              <motion.figure
-                className={timelineStyles.figure}
-                initial={{ opacity: 0, x: isEven ? 14 : -14 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1.32, ease, delay: itemDelay }}
-                viewport={{ once: true, amount: 0.35, margin: "0px 0px -10% 0px" }}
-              >
+              <figure className={timelineStyles.figure}>
                 <AssetImage
                   src={typeof photoSrc === "string" ? photoSrc : imageSrc(photoSrc)}
                   alt={milestone.imageAlt ?? milestone.title}
                   width={640}
                   height={400}
                   className={timelineStyles.figureImg}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  priority={index === 0}
+                  sizes="(max-width: 900px) 88vw, 640px"
+                  priority={index < 2}
                 />
-              </motion.figure>
+              </figure>
             ) : null;
 
             return (

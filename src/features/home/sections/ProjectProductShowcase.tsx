@@ -2,7 +2,6 @@
 
 import type { StaticImageData } from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 import type { BundledImage } from "@/data/ecrtSite";
 import { strategicProjects } from "@/data/ecrtSite";
@@ -16,16 +15,15 @@ import {
 } from "@/features/projects/project-detail-locale";
 import { heroPreloadHandlers } from "@/shared/images/route-hero-images";
 import { imageSrc } from "@/features/projects/image-src";
+import { ScrollRevealBlock } from "@/shared/motion/ScrollReveal";
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 
 import type { HomeCopy } from "../home-types";
-import { itemVariants, listVariants } from "../home-page-motion";
 import bentoStyles from "../project-product-showcase.module.scss";
 
 type SlideImage = StaticImageData | string | BundledImage;
 
 type ProductSlide = {
-  /** Стабильный ключ строки списка (в т. ч. когда два слайда ведут на один slug) */
   id: string;
   href?: string;
   linkable?: boolean;
@@ -86,12 +84,15 @@ type ProjectProductShowcaseProps = {
   ctaLabel: string;
   projectsSection: HomeCopy["projects"];
   locale?: ProjectDetailLocale;
+  /** Текст карточек плавно появляется при скролле; изображения — сразу */
+  revealOnScroll?: boolean;
 };
 
 export function ProjectProductShowcase({
   ctaLabel,
   projectsSection,
   locale = "ru",
+  revealOnScroll = false,
 }: ProjectProductShowcaseProps) {
   const trackSlug = "track-resource-2-5b";
   const trackProject = getLocalizedCatalogProject(trackSlug, locale);
@@ -149,7 +150,7 @@ export function ProjectProductShowcase({
   ];
 
   return (
-    <motion.div className={bentoStyles.productShowcase} variants={listVariants}>
+    <div className={bentoStyles.productShowcase}>
       {productSlides.map((slide, index) => {
         const headingId = `home-product-${slide.id}`;
         const isReversed = index % 2 === 1;
@@ -159,25 +160,55 @@ export function ProjectProductShowcase({
         const descriptionParagraphs =
           slide.descriptions ?? (slide.description ? [slide.description] : []);
 
-        const mediaFrame = (
+        const isAboveFold = index === 0;
+
+        const imageFrame = (
           <span className={bentoStyles.productMediaFrame}>
             <AssetImage
               className={bentoStyles.productMediaImg}
               src={imageSrc(slide.image)}
               alt=""
               fill
-              sizes="(max-width: 980px) 100vw, min(56vw, 820px)"
-              loading="lazy"
+              sizes="(max-width: 980px) 100vw, min(56vw, 920px)"
+              priority={isAboveFold}
+              loading={isAboveFold ? undefined : "lazy"}
             />
           </span>
         );
 
-        return (
-          <motion.article
-            key={slide.id}
-            className={`${bentoStyles.productSlide} ${isReversed ? bentoStyles.productSlideReverse : ""}`}
-            variants={itemVariants}
-          >
+        const copyContent = (
+          <>
+            <h3 className={bentoStyles.productTitle} id={headingId}>
+              {slide.title}
+            </h3>
+            {descriptionParagraphs.map((paragraph, paragraphIndex) => (
+              <p key={`${slide.id}-description-${paragraphIndex}`} className={bentoStyles.productDescription}>
+                {paragraph}
+              </p>
+            ))}
+            {metrics.length > 0 ? (
+              <ul className={bentoStyles.productMetricList} aria-label={ps.metricListAria}>
+                {metrics.map(({ term, detail }) => (
+                  <li key={`${slide.id}-${term}`} className={bentoStyles.productMetricItem}>
+                    <div className={bentoStyles.productMetricBanner}>
+                      <span className={bentoStyles.productMetricTerm}>{term}</span>
+                      <span className={bentoStyles.productMetricValue}>{detail}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {isLinkable ? (
+              <Link className={bentoStyles.productCta} href={slide.href!}>
+                {ctaLabel}
+                <span aria-hidden>→</span>
+              </Link>
+            ) : null}
+          </>
+        );
+
+        const slideContent = (
+          <>
             {isLinkable ? (
               <Link
                 className={bentoStyles.productMediaLink}
@@ -185,42 +216,36 @@ export function ProjectProductShowcase({
                 aria-labelledby={headingId}
                 {...heroPreloadHandlers(slide.href!)}
               >
-                {mediaFrame}
+                {imageFrame}
               </Link>
             ) : (
-              <div className={bentoStyles.productMediaStatic}>{mediaFrame}</div>
+              <div className={bentoStyles.productMediaStatic}>{imageFrame}</div>
             )}
-            <div className={bentoStyles.productCopy}>
-              <h3 className={bentoStyles.productTitle} id={headingId}>
-                {slide.title}
-              </h3>
-              {descriptionParagraphs.map((paragraph, paragraphIndex) => (
-                <p key={`${slide.id}-description-${paragraphIndex}`} className={bentoStyles.productDescription}>
-                  {paragraph}
-                </p>
-              ))}
-              {metrics.length > 0 ? (
-                <ul className={bentoStyles.productMetricList} aria-label={ps.metricListAria}>
-                  {metrics.map(({ term, detail }) => (
-                    <li key={`${slide.id}-${term}`} className={bentoStyles.productMetricItem}>
-                      <div className={bentoStyles.productMetricBanner}>
-                        <span className={bentoStyles.productMetricTerm}>{term}</span>
-                        <span className={bentoStyles.productMetricValue}>{detail}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-              {isLinkable ? (
-                <Link className={bentoStyles.productCta} href={slide.href!}>
-                  {ctaLabel}
-                  <span aria-hidden>→</span>
-                </Link>
-              ) : null}
-            </div>
-          </motion.article>
+            <div className={bentoStyles.productCopy}>{copyContent}</div>
+          </>
+        );
+
+        if (revealOnScroll) {
+          return (
+            <ScrollRevealBlock
+              key={slide.id}
+              inView
+              className={`${bentoStyles.productSlide} ${isReversed ? bentoStyles.productSlideReverse : ""}`}
+            >
+              {slideContent}
+            </ScrollRevealBlock>
+          );
+        }
+
+        return (
+          <article
+            key={slide.id}
+            className={`${bentoStyles.productSlide} ${isReversed ? bentoStyles.productSlideReverse : ""}`}
+          >
+            {slideContent}
+          </article>
         );
       })}
-    </motion.div>
+    </div>
   );
 }

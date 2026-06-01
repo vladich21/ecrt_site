@@ -18,7 +18,9 @@ import { TrackV25FieldWorksBlock } from "./TrackV25FieldWorksBlock";
 import { TrackV25ModelingBlock } from "./TrackV25ModelingBlock";
 import { TrackV25ReportBlock } from "./TrackV25ReportBlock";
 import { Vsm1TrackElementsReportBlock } from "./Vsm1TrackElementsReportBlock";
+import { preloadProjectPageImages } from "@/shared/images/page-image-preload";
 import { preloadRouteHeroImage } from "@/shared/images/route-hero-images";
+import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 import {
   galleryImageAlt,
   getLocalizedCatalogProject,
@@ -101,9 +103,10 @@ function catalogProjectContent(slug: string, locale: ProjectDetailLocale): React
       return (
         <>
           <TrackV25ReportBlock group="intro" locale={locale} />
-          <TrackV25FieldWorksBlock locale={locale} />
+          <TrackV25ReportBlock group="details" sectionIds={["requirements"]} locale={locale} />
           <TrackV25ModelingBlock locale={locale} />
-          <TrackV25ReportBlock group="details" locale={locale} />
+          <TrackV25FieldWorksBlock locale={locale} />
+          <TrackV25ReportBlock group="details" sectionIds={["rollout"]} locale={locale} />
         </>
       );
     default:
@@ -112,7 +115,9 @@ function catalogProjectContent(slug: string, locale: ProjectDetailLocale): React
 }
 
 export function ProjectDetailView({ projectSlug, locale = "ru" }: Props) {
-  preloadRouteHeroImage(projectDetailPath(projectSlug, locale));
+  const detailPath = projectDetailPath(projectSlug, locale);
+  preloadRouteHeroImage(detailPath);
+  preloadProjectPageImages(projectSlug);
   const ui = getProjectDetailUi(locale);
   const homeProjects = locale === "en" ? homeEn.projects : homeRu.projects;
 
@@ -140,80 +145,96 @@ export function ProjectDetailView({ projectSlug, locale = "ru" }: Props) {
         />
 
         <div className={styles.strReportShell}>
-          <section className={styles.strReportSection} aria-labelledby="strategic-about-heading">
-            <header className={styles.strReportSectionHead}>
-              <h2 id="strategic-about-heading" className={styles.strReportTitle}>
-                {ui.aboutProject}
-              </h2>
-              <span className={styles.strReportTitleRule} aria-hidden />
-            </header>
-            <div className={styles.strReportProse}>
-              {strategic.description.split(/\n\n+/).map((paragraph) => (
-                <p key={paragraph.slice(0, 48)} className={styles.strReportParagraph}>
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </section>
-
-          <section className={styles.strReportSection} aria-labelledby="strategic-points-heading">
-            <header className={styles.strReportSectionHead}>
-              <h2 id="strategic-points-heading" className={styles.strReportTitle}>
-                {ui.keyPoints}
-              </h2>
-              <span className={styles.strReportTitleRule} aria-hidden />
-            </header>
-            <ul className={styles.strFocusGrid}>
-              {strategic.bullets.map((bullet, pillarIndex) => (
-                <li key={bullet} className={styles.strFocusItem}>
-                  <span className={styles.strFocusDigit} aria-hidden>
-                    {(pillarIndex + 1).toString().padStart(2, "0")}
-                  </span>
-                  <p className={styles.strFocusItemText}>{bullet}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          {!hasSections && strategic.details.length > 0 ? (
-            <section className={styles.strReportSection} aria-labelledby="strategic-details-heading">
+          <ScrollRevealSection className={styles.strReportSection} aria-labelledby="strategic-about-heading">
+            <ScrollRevealBlock>
               <header className={styles.strReportSectionHead}>
-                <h2 id="strategic-details-heading" className={styles.strReportTitle}>
-                  {ui.details}
+                <h2 id="strategic-about-heading" className={styles.strReportTitle}>
+                  {ui.aboutProject}
                 </h2>
                 <span className={styles.strReportTitleRule} aria-hidden />
               </header>
+            </ScrollRevealBlock>
+            <ScrollRevealBlock>
               <div className={styles.strReportProse}>
-                {strategic.details.map((paragraph) => (
-                  <p key={paragraph} className={styles.strReportParagraph}>
+                {strategic.description.split(/\n\n+/).map((paragraph) => (
+                  <p key={paragraph.slice(0, 48)} className={styles.strReportParagraph}>
                     {paragraph}
                   </p>
                 ))}
               </div>
-            </section>
+            </ScrollRevealBlock>
+          </ScrollRevealSection>
+
+          <ScrollRevealSection className={styles.strReportSection} aria-labelledby="strategic-points-heading">
+            <ScrollRevealBlock>
+              <header className={styles.strReportSectionHead}>
+                <h2 id="strategic-points-heading" className={styles.strReportTitle}>
+                  {ui.keyPoints}
+                </h2>
+                <span className={styles.strReportTitleRule} aria-hidden />
+              </header>
+            </ScrollRevealBlock>
+            <ScrollRevealBlock>
+              <ul className={styles.strFocusGrid}>
+                {strategic.bullets.map((bullet, pillarIndex) => (
+                  <li key={bullet} className={styles.strFocusItem}>
+                    <span className={styles.strFocusDigit} aria-hidden>
+                      {(pillarIndex + 1).toString().padStart(2, "0")}
+                    </span>
+                    <p className={styles.strFocusItemText}>{bullet}</p>
+                  </li>
+                ))}
+              </ul>
+            </ScrollRevealBlock>
+          </ScrollRevealSection>
+
+          {!hasSections && strategic.details.length > 0 ? (
+            <ScrollRevealSection className={styles.strReportSection} aria-labelledby="strategic-details-heading">
+              <ScrollRevealBlock>
+                <header className={styles.strReportSectionHead}>
+                  <h2 id="strategic-details-heading" className={styles.strReportTitle}>
+                    {ui.details}
+                  </h2>
+                  <span className={styles.strReportTitleRule} aria-hidden />
+                </header>
+              </ScrollRevealBlock>
+              <ScrollRevealBlock>
+                <div className={styles.strReportProse}>
+                  {strategic.details.map((paragraph) => (
+                    <p key={paragraph} className={styles.strReportParagraph}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </ScrollRevealBlock>
+            </ScrollRevealSection>
           ) : null}
 
           {hasSections
             ? strategic.sections.map((sectionBlock, sectionIndex) => (
-                <section
+                <ScrollRevealSection
                   key={sectionBlock.title}
                   className={styles.strReportSection}
                   aria-labelledby={`strategic-extra-${sectionIndex}`}
                 >
-                  <header className={styles.strReportSectionHead}>
-                    <h2 id={`strategic-extra-${sectionIndex}`} className={styles.strReportTitle}>
-                      {sectionBlock.title}
-                    </h2>
-                    <span className={styles.strReportTitleRule} aria-hidden />
-                  </header>
-                  <div className={styles.strReportProse}>
-                    {sectionBlock.paragraphs.map((paragraph) => (
-                      <p key={paragraph} className={styles.strReportParagraph}>
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-                </section>
+                  <ScrollRevealBlock>
+                    <header className={styles.strReportSectionHead}>
+                      <h2 id={`strategic-extra-${sectionIndex}`} className={styles.strReportTitle}>
+                        {sectionBlock.title}
+                      </h2>
+                      <span className={styles.strReportTitleRule} aria-hidden />
+                    </header>
+                  </ScrollRevealBlock>
+                  <ScrollRevealBlock>
+                    <div className={styles.strReportProse}>
+                      {sectionBlock.paragraphs.map((paragraph) => (
+                        <p key={paragraph} className={styles.strReportParagraph}>
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </ScrollRevealBlock>
+                </ScrollRevealSection>
               ))
             : null}
         </div>

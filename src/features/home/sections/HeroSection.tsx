@@ -98,7 +98,7 @@ export function HeroSection({
           autoPlay
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           controls={false}
           disablePictureInPicture
           onEnded={onEnded}

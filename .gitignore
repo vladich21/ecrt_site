@@ -11,3 +11,5 @@ coverage
 tsconfig.tsbuildinfo
 .DS_Store
 Thumbs.db
+
+.vercel

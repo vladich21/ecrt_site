@@ -1,9 +1,10 @@
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 import Link from "next/link";
 
-import logoRzd from "@/assets/logos/logo-rzd.svg";
+import logoRzd from "@/assets/logos/rzd-logo.svg";
 import logoSkParticipant from "@/assets/logos/logo-sk-participant.webp";
 import footerBrandLogo from "@/assets/presentation/img-38.webp";
+import { CookieConsent } from "@/shared/ui/CookieConsent/CookieConsent";
 import { navItems } from "@/data/ecrtSite";
 
 import { t, withLocalePath, type Locale } from "../SiteShell/site-shell-utils";
@@ -58,11 +59,10 @@ export function Footer({ locale }: { locale: Locale }) {
                   <AssetImage
                     src={logoRzd}
                     alt=""
-                    width={112}
-                    height={72}
+                    width={42}
+                    height={27}
                     className={styles.partnerRzdImg}
-                    sizes="112px"
-                    style={{ width: "auto", height: "auto" }}
+                    sizes="42px"
                   />
                 </span>
                 <span className={styles.partnerRzdCopy}>
@@ -80,16 +80,16 @@ export function Footer({ locale }: { locale: Locale }) {
                   className={styles.partnerSkParticipant}
                   src={logoSkParticipant}
                   alt={t("footer.skAlt", locale)}
-                  width={260}
-                  height={88}
-                  sizes="(max-width: 480px) 70vw, 260px"
-                  style={{ width: "auto", height: "auto" }}
+                  width={200}
+                  height={45}
+                  sizes="200px"
                 />
               </a>
             </div>
           </div>
         </div>
       </div>
+      <CookieConsent />
     </footer>
   );
 }

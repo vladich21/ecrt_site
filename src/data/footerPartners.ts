@@ -1,6 +1,6 @@
-import logoRzd from '../assets/logos/logo-rzd.svg'
+import logoRzd from '../assets/logos/rzd-logo.svg'
 import logoEcosystemMark from '../assets/logos/logo-ecosystem-mark.svg'
-import logoSinara from '../assets/logos/sinara.webp'
+import logoSinara from '../assets/logos/stm_logo_rgb_9.webp'
 
 export type FooterPartnerLogo = {
   id: string

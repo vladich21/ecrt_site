@@ -3,11 +3,16 @@ import { ProjectReportSections } from "./ProjectReportSections";
 
 type TrackV25ReportBlockProps = {
   group: "intro" | "details";
+  sectionIds?: string[];
   locale?: ProjectDetailLocale;
 };
 
-export function TrackV25ReportBlock({ group, locale = "ru" }: TrackV25ReportBlockProps) {
-  const sections = getTrackV25ReportSections(locale, group);
+export function TrackV25ReportBlock({
+  group,
+  sectionIds,
+  locale = "ru",
+}: TrackV25ReportBlockProps) {
+  const sections = getTrackV25ReportSections(locale, group, sectionIds);
 
   return (
     <ProjectReportSections

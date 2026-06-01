@@ -19,8 +19,9 @@ export function LanguageSwitcher() {
 
   const switchLocale = (locale: Locale) => {
     if (locale === current) return;
-    saveLocaleScrollPosition();
-    router.push(withLocalePath(pathname, locale), { scroll: false });
+    const targetPath = withLocalePath(pathname, locale);
+    saveLocaleScrollPosition(targetPath);
+    router.push(targetPath, { scroll: false });
   };
 
   return (

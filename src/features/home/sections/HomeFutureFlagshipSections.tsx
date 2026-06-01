@@ -1,38 +1,29 @@
 "use client";
 
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { LazyInViewVideo } from "@/shared/ui/LazyInViewVideo/LazyInViewVideo";
+import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
-import evs360Hero from "@/assets/presentation/эвс-02.webp";
 import flagshipCorridorMap from "@/assets/home/magnific_3007658625.webp";
 
 import type { HomeCopy } from "../home-types";
-import { futureMotion } from "../home-page-motion";
 import futureStyles from "../home-future-flagship.module.scss";
 
 const CITY_VIDEO_WEBM_SRC = "/videos/City%2520Animation.webm";
 const CITY_VIDEO_MP4_SRC = "/videos/City%2520Animation.mp4";
-const evs360PosterSrc = typeof evs360Hero === "string" ? evs360Hero : evs360Hero.src;
 
 export function HomeFutureFlagshipSections({ homeCopy }: { homeCopy: HomeCopy }) {
   const facts = homeCopy.flagship.facts;
-  const futureCopyRef = useRef<HTMLDivElement>(null);
-  const futureCopyInView = useInView(futureCopyRef, { once: true, amount: 0.45 });
   const flagshipSectionLeadTrimmed = homeCopy.flagship.sectionLead.trim();
   const flagshipCardTitleTrimmed = homeCopy.flagship.title.trim();
   const flagshipDescriptionTrimmed = homeCopy.flagship.description.trim();
 
   return (
     <>
-      <motion.section
+      <ScrollRevealSection
         className={futureStyles.flagshipSection}
         id="flagship-project"
         aria-labelledby="flagship-section-title"
-        initial="hidden"
-        whileInView="visible"
-        variants={futureMotion.flagshipSection}
-        viewport={{ once: true, margin: "-40px" }}
       >
         <div className={futureStyles.flagshipMarks} aria-hidden>
           {homeCopy.flagship.marks.map((mark) => (
@@ -42,19 +33,17 @@ export function HomeFutureFlagshipSections({ homeCopy }: { homeCopy: HomeCopy })
           ))}
         </div>
 
-        <motion.div className={futureStyles.flagshipSectionHead} variants={futureMotion.flagshipGroup}>
-          <motion.h2 className={futureStyles.flagshipSectionTitle} id="flagship-section-title" variants={futureMotion.flagshipItem}>
+        <ScrollRevealBlock className={futureStyles.flagshipSectionHead}>
+          <h2 className={futureStyles.flagshipSectionTitle} id="flagship-section-title">
             {homeCopy.flagship.sectionTitle}
-          </motion.h2>
+          </h2>
           {flagshipSectionLeadTrimmed ? (
-            <motion.p className={futureStyles.flagshipSectionLead} variants={futureMotion.flagshipItem}>
-              {flagshipSectionLeadTrimmed}
-            </motion.p>
+            <p className={futureStyles.flagshipSectionLead}>{flagshipSectionLeadTrimmed}</p>
           ) : null}
-        </motion.div>
+        </ScrollRevealBlock>
 
-        <motion.div className={futureStyles.flagshipWrap} variants={futureMotion.flagshipGroup}>
-          <motion.div className={futureStyles.flagshipLead} tabIndex={0} variants={futureMotion.flagshipItem}>
+        <div className={futureStyles.flagshipWrap}>
+          <div className={futureStyles.flagshipLead} tabIndex={0}>
             <div className={futureStyles.flagshipLeadMedia}>
               <AssetImage
                 className={futureStyles.flagshipLeadBgImg}
@@ -62,9 +51,10 @@ export function HomeFutureFlagshipSections({ homeCopy }: { homeCopy: HomeCopy })
                 alt={homeCopy.flagship.mapAlt}
                 fill
                 sizes="(max-width: 1024px) 100vw, min(calc(100vw - 100px), 1400px)"
+                priority
               />
             </div>
-            <div className={futureStyles.flagshipText}>
+            <ScrollRevealBlock className={futureStyles.flagshipText}>
               <div className={futureStyles.flagshipTextInner}>
                 {flagshipCardTitleTrimmed ? (
                   <div className={futureStyles.flagshipTitleSlot}>
@@ -82,60 +72,56 @@ export function HomeFutureFlagshipSections({ homeCopy }: { homeCopy: HomeCopy })
                   </p>
                 ) : null}
               </div>
-            </div>
-          </motion.div>
+            </ScrollRevealBlock>
+          </div>
 
-          <motion.ul className={futureStyles.flagshipFacts} variants={futureMotion.flagshipGroup}>
+          <ul className={futureStyles.flagshipFacts}>
             {facts.map((fact, index) => (
-              <motion.li key={`${fact.num}-${fact.title}-${index}`} className={futureStyles.factLi} variants={futureMotion.flagshipFact}>
-                <article className={futureStyles.factCard}>
-                  <div className={futureStyles.factNum}>
-                    {fact.num}
-                    <span className={futureStyles.factUnit}>{fact.unit}</span>
-                  </div>
-                  <div className={futureStyles.factCopy}>
-                    <h3 className={futureStyles.factHeading}>{fact.title}</h3>
-                    <p className={futureStyles.factBody}>{fact.body}</p>
-                  </div>
-                </article>
-              </motion.li>
+              <li key={`${fact.num}-${fact.title}-${index}`} className={futureStyles.factLi}>
+                <ScrollRevealBlock inView>
+                  <article className={futureStyles.factCard}>
+                    <div className={futureStyles.factNum}>
+                      {fact.num}
+                      <span className={futureStyles.factUnit}>{fact.unit}</span>
+                    </div>
+                    <div className={futureStyles.factCopy}>
+                      <h3 className={futureStyles.factHeading}>{fact.title}</h3>
+                      <p className={futureStyles.factBody}>{fact.body}</p>
+                    </div>
+                  </article>
+                </ScrollRevealBlock>
+              </li>
             ))}
-          </motion.ul>
-        </motion.div>
-      </motion.section>
+          </ul>
+        </div>
+      </ScrollRevealSection>
 
       <section className={futureStyles.futureSection} id="future" aria-labelledby="future-title">
         <div className={futureStyles.videoFullBleed}>
           <div className={futureStyles.videoFrame}>
-            <video
+            <LazyInViewVideo
               className={futureStyles.video}
               autoPlay
               muted
               loop
               playsInline
-              preload="auto"
-              poster={evs360PosterSrc}
               aria-label={homeCopy.future.videoAria}
             >
               <source src={CITY_VIDEO_WEBM_SRC} type="video/webm" />
               <source src={CITY_VIDEO_MP4_SRC} type="video/mp4" />
-            </video>
+            </LazyInViewVideo>
             <div className={futureStyles.videoScrim} aria-hidden />
             <div className={futureStyles.videoCopyLayer}>
-              <motion.div
-                ref={futureCopyRef}
-                className={futureStyles.copyPanel}
-                variants={futureMotion.futureStack}
-                initial="hidden"
-                animate={futureCopyInView ? "visible" : "hidden"}
-              >
-                <motion.h2 className={futureStyles.overlayTitle} id="future-title" variants={futureMotion.futureLine}>
-                  {homeCopy.future.title}
-                </motion.h2>
-                <motion.p className={futureStyles.overlayLead} variants={futureMotion.futureLine}>
-                  {homeCopy.future.lead}
-                </motion.p>
-              </motion.div>
+              <ScrollRevealSection className={futureStyles.copyPanel}>
+                <ScrollRevealBlock fadeOnly>
+                  <h2 className={futureStyles.overlayTitle} id="future-title">
+                    {homeCopy.future.title}
+                  </h2>
+                </ScrollRevealBlock>
+                <ScrollRevealBlock fadeOnly>
+                  <p className={futureStyles.overlayLead}>{homeCopy.future.lead}</p>
+                </ScrollRevealBlock>
+              </ScrollRevealSection>
             </div>
           </div>
         </div>

@@ -65,8 +65,8 @@
   margin: 0 0 clamp(12px, 2vw, 16px);
   font-size: var(--heading-h2-size);
   font-weight: 800;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
   color: var(--ecrt-blue);
 }
 
@@ -81,7 +81,6 @@
 
 .sectionLead {
   margin: 0;
-  max-width: min(86ch, 100%);
   font-size: var(--body-text-size);
   line-height: 1.62;
   font-weight: 500;
@@ -141,8 +140,10 @@
 
 .platformTitle {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: var(--heading-h3-size);
   font-weight: 800;
+  line-height: var(--heading-h3-line-height);
+  letter-spacing: var(--heading-h3-tracking);
   color: var(--ecrt-blue);
 }
 
@@ -166,7 +167,8 @@
   padding: clamp(22px, 3vw, 28px);
   border-radius: 12px;
   border: 1px solid rgba(0, 47, 85, 0.12);
-  background: linear-gradient(135deg, rgba(0, 47, 85, 0.04) 0%, #fff 48%);
+  background: linear-gradient(165deg, #ffffff 0%, #f5f9fd 100%);
+  box-shadow: 0 8px 24px rgba(0, 47, 85, 0.06);
 }
 
 .complianceTitle {

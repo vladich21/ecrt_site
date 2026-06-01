@@ -17,8 +17,14 @@
   "corpDetailsLines": [
     "TIN (Russia) - 7708357508",
     "OKVED 72.19 - other research & experimental development in natural sciences & engineering",
-    "IT-sector activity classifier: 1.02"
+    "IT-sector activity classifier: 1.02",
+    "Manufacture and/or design and/or other activities, as well as provision of services relating to software-and-hardware (software-and-technical) complexes, electronic component base (electronic modules), electronic (radio-electronic) products, including computer equipment, computing hardware, network, telecommunications and peripheral equipment, equipment for medical purposes, Internet-of-Things devices, and automated process control systems (hereinafter — SHC and equipment), and materials and technologies for manufacturing electronic component base (electronic modules)."
   ],
+  "projectsNote": {
+    "prefix": "See the ",
+    "linkText": "Projects",
+    "suffix": " section for a description of goods, works, and services offered by the company."
+  },
   "formAsideA11y": "Phone, mail and premises",
   "mapA11y": "JSC Rail Transport Engineering Centre office map - Skolkovo"
 }

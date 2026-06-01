@@ -52,7 +52,6 @@
   padding: 0;
   color: rgba(45, 50, 58, 0.98);
   font-weight: 600;
-  max-width: min(48ch, 100%);
 }
 
 .sep {
@@ -116,6 +115,11 @@
   .nav:not(.navCompact) {
     width: calc(100% - 48px);
     padding-bottom: 8px;
+  }
+
+  /* Направления: длинное название уже в h1 — скрываем последнюю крошку на планшетах и телефонах */
+  .navHideTrailingCurrent .item:last-child {
+    display: none;
   }
 }
 

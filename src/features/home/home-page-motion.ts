@@ -11,11 +11,20 @@ export const listVariants = {
 };
 
 export const itemVariants = {
-  hidden: { opacity: 0, y: 32 },
+  hidden: { opacity: 0, y: 14 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease },
+    transition: { duration: 0.36, ease },
+  },
+};
+
+export const scrollRevealItemVariants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.32, ease },
   },
 };
 

@@ -49,15 +49,15 @@
   font-size: var(--heading-h2-size);
   margin-bottom: 11px;
   font-weight: 800;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 .gallery h2 {
   font-size: var(--heading-h2-size);
   font-weight: 800;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 .gallery {
@@ -137,16 +137,15 @@
 
 .strReportSectionHead {
   text-align: left;
-  max-width: min(920px, 100%);
   margin: 0 0 clamp(22px, 3.5vw, 32px);
 }
 
 .strReportTitle {
   margin: 0 0 clamp(12px, 2vw, 16px);
-  font-size: var(--showcase-title-size);
+  font-size: var(--heading-h2-size);
   font-weight: 800;
-  letter-spacing: var(--showcase-title-tracking);
-  line-height: var(--showcase-title-line-height);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
   color: var(--str-blue);
 }
 
@@ -165,10 +164,6 @@
   line-height: var(--showcase-body-line-height);
   font-weight: 500;
   color: rgba(36, 56, 72, 0.82);
-}
-
-.strReportProse {
-  max-width: min(86ch, 100%);
 }
 
 .strReportParagraph {
@@ -247,7 +242,6 @@
 .strReportList {
   margin: clamp(14px, 2.2vw, 20px) 0 0;
   padding-left: 1.25em;
-  max-width: min(86ch, 100%);
 
   li {
     margin-bottom: 10px;
@@ -431,11 +425,11 @@
 
 .pageEvs .evsHero h1 {
   margin: 0;
-  font-size: var(--showcase-title-size);
+  font-size: var(--heading-h1-size);
   font-weight: 800;
-  line-height: var(--showcase-title-line-height);
+  line-height: 1.12;
   color: #ffffff;
-  letter-spacing: var(--showcase-title-tracking);
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 

@@ -33,10 +33,10 @@
 .strHeroHeading {
   margin: 0;
   color: #ffffff;
-  font-size: var(--showcase-title-size);
+  font-size: var(--heading-h1-size);
   font-weight: 800;
-  line-height: var(--showcase-title-line-height);
-  letter-spacing: var(--showcase-title-tracking);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 

@@ -8,6 +8,7 @@ import type { BundledImage } from "@/data/ecrtSite";
 import { strategicProjects } from "@/data/ecrtSite";
 import { projectCatalogHeroImages } from "@/data/projectMedia";
 
+import { preloadPageImages } from "./page-image-preload";
 import { preloadStaticImage, asciiSafeAssetUrl, staticImageUrl, type StaticImageLike } from "./preload-static-image";
 
 const pageHeroByPath: Record<string, StaticImageLike> = {
@@ -89,4 +90,10 @@ export function preloadRouteHeroImage(pathOrHref: string): void {
     as: "image",
     fetchPriority: "high",
   });
+}
+
+/** @deprecated Используйте preloadPageImages */
+export function preloadProjectShowcaseImages(): void {
+  preloadPageImages("/projects");
+  preloadPageImages("/");
 }

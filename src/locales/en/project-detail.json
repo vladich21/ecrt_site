@@ -24,7 +24,8 @@
     "previousPhoto": "Previous photo",
     "nextPhoto": "Next photo",
     "photoChoice": "Photo selection",
-    "photoOf": "Photo {index} of {total}"
+    "photoOf": "Photo {index} of {total}",
+    "swipeHint": "Swipe left or right"
   },
   "trackV25Field": {
     "tabListLabel": "Technology deployment stages",
@@ -74,7 +75,7 @@
       "title": "Rolling stock for low-traffic lines",
       "code": "0009",
       "statusLabel": "Technical documentation in development",
-      "segment": "Passenger services on Russian Railways network",
+      "segment": "Passenger services on Russian Railways network (JSC Russian Railways)",
       "year": "2024 – 2030",
       "metric": "58 / 126 seats",
       "description": "Development of rail buses for sections of the Russian Railways network with low traffic intensity.",
@@ -386,12 +387,6 @@
               "label": "Withdrawal period for the DT1, RA1, and RA2 fleet"
             }
           ]
-        },
-        {
-          "id": "participants",
-          "group": "details",
-          "title": "Project participants",
-          "paragraphs": ["Client — Russian Railways. Developer — ECRT."]
         }
       ]
     },
@@ -414,7 +409,21 @@
           "bullets": [
             "Development of track structure elements with improved operational and resource characteristics;",
             "Addressing the integrated challenge of synergising technical characteristics of track elements within a unified structure;",
-            "Creating a maintenance and monitoring system enabling effective reliability of the track structure."
+            "Creating a maintenance and monitoring system enabling effective reliability of the track structure.",
+            "Creating a complex of mathematical models for the railway track."
+          ]
+        },
+        {
+          "id": "partners",
+          "group": "intro",
+          "title": "Competence ecosystem",
+          "paragraphs": [
+            "The project is complex and research-intensive, leading Russian competence centres have been engaged across the following areas:"
+          ],
+          "bullets": [
+            "infrastructure design bureau (PCB I);",
+            "specialist research organisations and higher education institutions: VNIIZHT, RUT (MIIT), PGUPS, SGUPS, ICT VEIP, and Peter the Great St. Petersburg Polytechnic University;",
+            "manufacturers and developers of track superstructure elements and structures: EVRAZ, Novosibirsk and Murom switch plants, RZDstroy, BetElTrans (BET), and others."
           ]
         },
         {
@@ -434,26 +443,13 @@
             {
               "value": "225 → 450",
               "unit": "million t",
-              "label": "Throughput between intermediate maintenance cycles"
+              "label": "Increase in gross throughput between intermediate maintenance cycles"
             },
             {
               "value": "233 → 350",
               "unit": "million t",
-              "label": "For sections with complex alignment and profile"
+              "label": "Increase in gross throughput between intermediate maintenance cycles for sections with complex alignment and profile"
             }
-          ]
-        },
-        {
-          "id": "partners",
-          "group": "details",
-          "title": "Competence ecosystem",
-          "paragraphs": [
-            "The project is complex and research-intensive; leading Russian competence centres have been engaged across the following areas:"
-          ],
-          "bullets": [
-            "infrastructure design bureau (PCB I);",
-            "specialist research organisations and higher education institutions: VNIIZHT, RUT (MIIT), PGUPS, SGUPS, ICT VEIP, and Peter the Great St. Petersburg Polytechnic University;",
-            "manufacturers and developers of track superstructure elements and structures: EVRAZ, Novosibirsk and Murom switch plants, RZDstroy, BetElTrans (BET), and others."
           ]
         },
         {

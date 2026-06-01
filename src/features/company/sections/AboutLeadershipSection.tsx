@@ -1,26 +1,18 @@
 "use client";
 
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
-import { motion } from "framer-motion";
+import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
 import leadershipPhoto from "@/assets/about/kireytsev-general-director.webp";
 
-import { fadeUpItem, sectionReveal } from "../about-page-motion";
 import type { AboutCopy } from "../about-types";
 import styles from "../about-page.module.scss";
 
 export function AboutLeadershipSection({ aboutCopy }: { aboutCopy: AboutCopy }) {
   return (
-    <motion.section
-      className={styles.leadership}
-      aria-labelledby="about-leadership-heading"
-      initial="hidden"
-      whileInView="visible"
-      variants={sectionReveal}
-      viewport={{ once: true, margin: "-50px", amount: 0.12 }}
-    >
+    <ScrollRevealSection className={styles.leadership} aria-labelledby="about-leadership-heading">
       <div className={styles.leadershipInner}>
-        <motion.div className={styles.leadershipVisual} variants={fadeUpItem}>
+        <div className={styles.leadershipVisual}>
           <div className={styles.leadershipPhotoWrap}>
             <span className={styles.leadershipPhotoMesh} aria-hidden />
             <figure className={styles.leadershipPhotoFigure}>
@@ -30,13 +22,13 @@ export function AboutLeadershipSection({ aboutCopy }: { aboutCopy: AboutCopy }) 
                 alt={aboutCopy.leadership.photoAlt}
                 width={leadershipPhoto.width}
                 height={leadershipPhoto.height}
-                loading="lazy"
+                priority
               />
             </figure>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div className={styles.leadershipBody} variants={fadeUpItem}>
+        <ScrollRevealBlock className={styles.leadershipBody}>
           <h2 className={styles.leadershipName} id="about-leadership-heading">
             {aboutCopy.leadership.name}
           </h2>
@@ -45,8 +37,8 @@ export function AboutLeadershipSection({ aboutCopy }: { aboutCopy: AboutCopy }) 
           <div className={styles.pillarCard}>
             <p className={styles.pillarText}>{aboutCopy.leadership.quote}</p>
           </div>
-        </motion.div>
+        </ScrollRevealBlock>
       </div>
-    </motion.section>
+    </ScrollRevealSection>
   );
 }

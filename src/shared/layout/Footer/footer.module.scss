@@ -1,5 +1,6 @@
 .footer {
   flex-shrink: 0;
+  position: relative;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -106,6 +107,9 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
   display: flex;
   flex-direction: column;
   gap: 14px;
+  width: fit-content;
+  max-width: 100%;
+  align-items: flex-start;
 }
 
 .partnerLink {
@@ -125,7 +129,11 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
 }
 
 .partnerLinkRzd {
-  gap: 16px;
+  gap: 8px;
+  width: fit-content;
+  max-width: 100%;
+  align-self: flex-start;
+  padding: 8px 18px;
 }
 
 .partnerRzdMark {
@@ -133,15 +141,15 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 112px;
+  width: 42px;
 }
 
 .partnerRzdImg {
   display: block;
-  width: auto;
-  max-width: 112px;
-  height: auto;
-  max-height: 72px;
+  width: 42px;
+  height: 27px;
+  max-width: 42px;
+  max-height: 27px;
   object-fit: contain;
   opacity: 1;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
@@ -151,26 +159,28 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: 2px;
   text-align: left;
+  min-width: 0;
+  max-width: 12rem;
 }
 
 .partnerRzdTitle {
   color: #ffffff;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 .partnerRzdSub {
   color: rgba(255, 255, 255, 0.55);
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.02em;
   text-transform: none;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
 .partnerLink span:not(.partnerRzdCopy):not(.partnerRzdTitle):not(.partnerRzdSub):not(.partnerRzdMark) {
@@ -195,10 +205,10 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
 
 .partnerSkParticipant {
   display: block;
-  width: auto;
-  height: auto;
-  max-height: 88px;
-  max-width: min(100%, 260px);
+  width: 200px;
+  height: 45px;
+  max-width: min(100%, 200px);
+  max-height: 45px;
   object-fit: contain;
   flex-shrink: 0;
   opacity: 0.95;
