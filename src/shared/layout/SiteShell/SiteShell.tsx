@@ -13,7 +13,6 @@ import {
 import { Breadcrumbs } from "@/shared/layout/Breadcrumbs/Breadcrumbs";
 import { PageImagesWarmup } from "@/shared/images/PageImagesWarmup";
 import { RouteHeroPreloader } from "@/shared/images/RouteHeroPreloader";
-import { SmoothScrollProvider } from "@/shared/scroll/SmoothScrollProvider";
 import { Footer } from "@/shared/layout/Footer/Footer";
 import { Header } from "@/shared/layout/Header/Header";
 
@@ -54,8 +53,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
   const breadcrumbVariant = darkHero ? "hero" : overlayLayout ? "compact" : "default";
 
   return (
-    <SmoothScrollProvider>
-      <div className={styles.page}>
+    <div className={styles.page}>
       <a className="skipToMain" href="#main-content">
         {t("a11y.skipToContent", locale)}
       </a>
@@ -80,6 +78,5 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <RouteHeroPreloader />
       <PageImagesWarmup />
     </div>
-    </SmoothScrollProvider>
   );
 }

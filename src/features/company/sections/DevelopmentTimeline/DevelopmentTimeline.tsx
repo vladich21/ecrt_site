@@ -1,7 +1,6 @@
 "use client";
 
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
-import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 import evs360LaunchPhoto from "@/assets/presentation/openart-gpt-image-2-edit-1_1777462551743_196f02f7.webp";
@@ -21,6 +20,9 @@ import timelineStyles from "./home-vertical-timeline.module.scss";
 
 type HomeCopy = typeof homeRu;
 
+const SPINE_PROGRESS_EASE = 0.045;
+const SPINE_PROGRESS_SNAP = 0.001;
+
 const timelinePhotoByIso: Record<string, BundledImage> = {
   "2019": milestone201906Signing,
   "2020": evs360LaunchPhoto,
@@ -35,54 +37,105 @@ const timelinePhotoByIso: Record<string, BundledImage> = {
 export function DevelopmentTimeline({ homeCopy }: { homeCopy: HomeCopy }) {
   const items = homeCopy.milestones.items;
   const timelineRef = useRef<HTMLDivElement>(null);
-  const rawSpineFillY = useMotionValue(0);
-  const spineFillY = useSpring(rawSpineFillY, {
-    stiffness: 88,
-    damping: 30,
-    mass: 0.42,
-  });
 
   useEffect(() => {
-    let frame = 0;
+    const timeline = timelineRef.current;
+    if (!timeline) return;
 
-    const measure = () => {
-      frame = 0;
-      const timeline = timelineRef.current;
-      if (!timeline) return;
+    let measureFrame = 0;
+    let animationFrame = 0;
+    let active = false;
+    let initialized = false;
+    let currentProgress = 0;
+    let targetProgress = 0;
+
+    const writeProgress = () => {
+      timeline.style.setProperty("--timeline-spine-progress", currentProgress.toFixed(3));
+    };
+
+    const animateProgress = () => {
+      animationFrame = 0;
+      if (!active) return;
+
+      const delta = targetProgress - currentProgress;
+      if (Math.abs(delta) <= SPINE_PROGRESS_SNAP) {
+        currentProgress = targetProgress;
+        writeProgress();
+        return;
+      }
+
+      currentProgress += delta * SPINE_PROGRESS_EASE;
+      writeProgress();
+      animationFrame = window.requestAnimationFrame(animateProgress);
+    };
+
+    const requestAnimation = () => {
+      if (!active || animationFrame) return;
+      animationFrame = window.requestAnimationFrame(animateProgress);
+    };
+
+    const measureProgress = () => {
+      measureFrame = 0;
 
       const rect = timeline.getBoundingClientRect();
       const startLine = window.innerHeight * 0.7;
       const endLine = window.innerHeight * 0.3;
       const distance = rect.height + startLine - endLine;
       const progress = distance > 0 ? (startLine - rect.top) / distance : 0;
+      targetProgress = Math.min(1, Math.max(0, progress));
 
-      rawSpineFillY.set(Math.min(1, Math.max(0, progress)));
+      if (!initialized) {
+        initialized = true;
+        currentProgress = targetProgress;
+        writeProgress();
+        return;
+      }
+
+      requestAnimation();
     };
 
-    const requestMeasure = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(measure);
+    const requestSync = () => {
+      if (!active || measureFrame) return;
+      measureFrame = window.requestAnimationFrame(measureProgress);
     };
 
-    measure();
-    window.addEventListener("scroll", requestMeasure, { passive: true });
-    window.addEventListener("resize", requestMeasure);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        active = entry.isIntersecting;
+        if (active) requestSync();
+      },
+      { rootMargin: "320px 0px" },
+    );
+
+    observer.observe(timeline);
+    active = true;
+    requestSync();
+
+    window.addEventListener("scroll", requestSync, { passive: true });
+    window.addEventListener("resize", requestSync);
 
     return () => {
-      if (frame) window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", requestMeasure);
-      window.removeEventListener("resize", requestMeasure);
+      active = false;
+      if (measureFrame) window.cancelAnimationFrame(measureFrame);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+      observer.disconnect();
+      window.removeEventListener("scroll", requestSync);
+      window.removeEventListener("resize", requestSync);
     };
-  }, [rawSpineFillY]);
+  }, []);
 
   return (
     <div className={timelineStyles.wrapper}>
       <div ref={timelineRef} className={timelineStyles.timeline}>
         <div className={timelineStyles.spineTrack} style={{ top: 14, bottom: 14, height: "auto" }} aria-hidden>
           <span className={timelineStyles.spineProgressClip}>
-            <motion.span
+            <span
               className={timelineStyles.spineProgress}
-              style={{ left: "50%", x: "-50%", scaleY: spineFillY, transformOrigin: "top center" }}
+              style={{
+                left: "50%",
+                transform: "translateX(-50%) scaleY(var(--timeline-spine-progress, 0))",
+                transformOrigin: "top center",
+              }}
             />
           </span>
         </div>
@@ -94,9 +147,9 @@ export function DevelopmentTimeline({ homeCopy }: { homeCopy: HomeCopy }) {
             const isEven = index % 2 === 0;
 
             const marker = (
-              <ScrollRevealBlock inView fadeOnly className={timelineStyles.markerCol}>
+              <div className={timelineStyles.markerCol}>
                 <span className={timelineStyles.marker} data-filled="true" aria-hidden />
-              </ScrollRevealBlock>
+              </div>
             );
 
             const content = (

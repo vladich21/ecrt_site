@@ -25,7 +25,7 @@ type ScrollRevealBlockProps = HTMLMotionProps<"div"> & {
   fadeOnly?: boolean;
 };
 
-function noMotionVariants<T extends { hidden: object; visible: object }>(_variants: T): T {
+function noMotionVariants<T extends { hidden: object; visible: object }>(): T {
   return {
     hidden: { opacity: 1, y: 0 },
     visible: { opacity: 1, y: 0 },
@@ -34,7 +34,7 @@ function noMotionVariants<T extends { hidden: object; visible: object }>(_varian
 
 function useScrollRevealVariants<T extends { hidden: object; visible: object }>(variants: T): T {
   const reduceMotion = useReducedMotion();
-  return reduceMotion ? noMotionVariants(variants) : variants;
+  return reduceMotion ? noMotionVariants<T>() : variants;
 }
 
 /** Секция: элементы появляются каскадом при прокрутке (gpbm-style) */

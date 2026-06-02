@@ -11,7 +11,6 @@ import { heroPreloadHandlers } from "@/shared/images/route-hero-images";
 import { LanguageSwitcher } from "@/shared/ui/LanguageSwitcher/LanguageSwitcher";
 
 import { localeFromPathname, t, withLocalePath } from "../SiteShell/site-shell-utils";
-import { setSmoothScrollPaused } from "@/shared/scroll/smooth-scroll";
 import styles from "./header.module.scss";
 
 const CSS_HEADER_HEIGHT_VAR = "--header-slot";
@@ -63,10 +62,7 @@ export function Header() {
   const pathname = usePathname();
   const locale = localeFromPathname(pathname);
   const isHomePage = pathname === "/" || pathname === "/en";
-  const [scrollY, setScrollY] = useState(0);
-  const [scrollRetracted, setScrollRetracted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const previousScrollY = useRef(0);
   const headerRootRef = useRef<HTMLElement | null>(null);
   const menuToggleRef = useRef<HTMLButtonElement>(null);
   const mobileNavRef = useRef<HTMLElement>(null);
@@ -90,48 +86,59 @@ export function Header() {
   }, []);
 
   useLayoutEffect(() => {
-    previousScrollY.current = window.scrollY;
-    setScrollY(previousScrollY.current);
-    setScrollRetracted(false);
     setMenuOpen(false);
   }, [pathname]);
 
   useEffect(() => {
+    const headerRoot = headerRootRef.current;
+    if (!headerRoot) return;
+
+    let frame = 0;
+    let previousScrollY = window.scrollY;
+    let retracted = false;
     const mobileMq = window.matchMedia(MOBILE_HEADER_PIN_MQ);
 
-    const onScroll = () => {
+    const syncHeaderOnScroll = () => {
+      frame = 0;
       const nextScrollY = window.scrollY;
-      setScrollY(nextScrollY);
+      const heroSurface = isHomePage && nextScrollY <= SCROLL_TOP_PIN_PX;
+      const shouldPin = menuOpen || mobileMq.matches || nextScrollY <= SCROLL_TOP_PIN_PX;
 
-      if (mobileMq.matches) {
-        setScrollRetracted(false);
-        previousScrollY.current = nextScrollY;
-        return;
+      if (shouldPin) {
+        retracted = false;
+      } else if (nextScrollY > previousScrollY + SCROLL_DIRECTION_THRESHOLD_PX) {
+        retracted = true;
+      } else if (nextScrollY < previousScrollY - SCROLL_DIRECTION_THRESHOLD_PX) {
+        retracted = false;
       }
 
-      if (nextScrollY <= SCROLL_TOP_PIN_PX) {
-        setScrollRetracted(false);
-      } else if (nextScrollY > previousScrollY.current + SCROLL_DIRECTION_THRESHOLD_PX) {
-        setScrollRetracted(true);
-      } else if (nextScrollY < previousScrollY.current - SCROLL_DIRECTION_THRESHOLD_PX) {
-        setScrollRetracted(false);
-      }
-
-      previousScrollY.current = nextScrollY;
+      headerRoot.classList.toggle(styles.headerHero, heroSurface);
+      headerRoot.classList.toggle(styles.headerSolid, !heroSurface);
+      headerRoot.classList.toggle(styles.headerRetracted, retracted);
+      previousScrollY = nextScrollY;
     };
 
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const requestSyncHeader = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(syncHeaderOnScroll);
+    };
+
+    syncHeaderOnScroll();
+    window.addEventListener("scroll", requestSyncHeader, { passive: true });
+    window.addEventListener("resize", requestSyncHeader);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", requestSyncHeader);
+      window.removeEventListener("resize", requestSyncHeader);
+      headerRoot.classList.remove(styles.headerRetracted);
+    };
+  }, [isHomePage, menuOpen]);
 
   useEffect(() => {
     if (!menuOpen) return;
-    setSmoothScrollPaused(true);
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
-      setSmoothScrollPaused(false);
       document.body.style.overflow = previousOverflow;
     };
   }, [menuOpen]);
@@ -170,16 +177,10 @@ export function Header() {
     });
   }, []);
 
-  const pinnedToViewportTop = scrollY <= SCROLL_TOP_PIN_PX;
-  const pinnedHero = isHomePage && pinnedToViewportTop && !scrollRetracted;
-  const useDarkHeader = pinnedHero;
-  const headerRetracted = scrollRetracted && !menuOpen;
-  const surfaceClass = headerRetracted ? "" : useDarkHeader ? styles.headerHero : styles.headerSolid;
   const headerClassName = [
     styles.header,
-    headerRetracted ? styles.headerRetracted : "",
     menuOpen ? styles.headerMenuOpen : "",
-    surfaceClass,
+    isHomePage ? styles.headerHero : styles.headerSolid,
   ]
     .filter(Boolean)
     .join(" ");

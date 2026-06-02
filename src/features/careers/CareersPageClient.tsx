@@ -1,6 +1,6 @@
 "use client";
 
-import heroMedia from "@/assets/presentation/эвс-02.webp";
+import heroMedia from "@/assets/presentation/проекты.webp";
 import careersEn from "@/locales/en/careers.json";
 import careersRu from "@/locales/ru/careers.json";
 import { CAREERS_EMAIL, HH_EMPLOYER_URL } from "@/data/careersLinks";

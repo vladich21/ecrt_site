@@ -167,7 +167,7 @@ export function ProjectProductShowcase({
               src={imageSrc(slide.image)}
               alt=""
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) min(92vw, 720px), 920px"
+              sizes="(max-width: 768px) min(100vw, 760px), (max-width: 1200px) 46vw, 760px"
               loading="lazy"
             />
           </span>

@@ -13,6 +13,7 @@ type HeroImageProps = Omit<ImageProps, "priority" | "unoptimized" | "fetchPriori
 /** LCP-hero: next/image по sizes (мобильный ~750–1080px), не полный исходник. */
 export function HeroImage({ src, alt, quality = 90, sizes, ...props }: HeroImageProps) {
   const resolvedSizes = sizes ?? "(max-width: 768px) 100vw, min(1400px, 95vw)";
+  const placeholder = typeof src === "string" ? "empty" : "blur";
 
   if (typeof src === "string") {
     preload(asciiSafeAssetUrl(src), { as: "image", fetchPriority: "high" });
@@ -29,6 +30,7 @@ export function HeroImage({ src, alt, quality = 90, sizes, ...props }: HeroImage
       quality={quality}
       sizes={resolvedSizes}
       fetchPriority="high"
+      placeholder={placeholder}
     />
   );
 }

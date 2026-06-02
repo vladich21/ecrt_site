@@ -10,16 +10,16 @@
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-columns: minmax(0, 1.14fr) minmax(300px, 0.86fr);
-  gap: clamp(30px, 5vw, 72px);
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 1fr);
+  gap: clamp(28px, 4.5vw, 64px);
   align-items: center;
-  min-height: clamp(390px, 44vw, 560px);
+  min-height: clamp(360px, 40vw, 520px);
   padding: clamp(10px, 2vw, 20px) 0;
   overflow: visible;
 }
 
 .productSlideReverse {
-  grid-template-columns: minmax(300px, 0.86fr) minmax(0, 1.14fr);
+  grid-template-columns: minmax(300px, 1fr) minmax(0, 1fr);
 }
 
 .productSlideReverse .productMediaLink,
@@ -34,8 +34,9 @@
 .productMediaLink {
   display: block;
   position: relative;
-  width: 100%;
+  width: min(100%, 760px);
   min-width: 0;
+  justify-self: center;
   overflow: visible;
   text-decoration: none;
 }
@@ -43,17 +44,18 @@
 .productMediaStatic {
   display: block;
   position: relative;
-  width: 100%;
+  width: min(100%, 760px);
   min-width: 0;
+  justify-self: center;
   overflow: visible;
 }
 
-/* Общее поле превью: одна ширина и соотношение 900×620 для всех слайдов */
+/* Общее поле превью: одна ширина и соотношение 820×560 для всех слайдов */
 .productMediaFrame {
   display: block;
   position: relative;
   width: 100%;
-  aspect-ratio: 900 / 620;
+  aspect-ratio: 820 / 560;
   margin-inline: auto;
   overflow: hidden;
   border-radius: 14px;

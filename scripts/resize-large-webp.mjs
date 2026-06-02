@@ -16,8 +16,45 @@ const assetsRoot = path.join(__dirname, "..", "src", "assets");
 const MAX_WIDTH = 1920;
 const MIN_BYTES_TO_TOUCH = 200 * 1024;
 const WEBP_QUALITY = 85;
+const WRITE_RETRIES = 3;
+const WRITE_RETRY_DELAY_MS = 250;
 
 const dryRun = process.argv.includes("--dry-run");
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function writeOptimizedFile(filePath, buffer) {
+  const tempPath = `${filePath}.tmp-${process.pid}`;
+  let lastError = null;
+
+  for (let attempt = 1; attempt <= WRITE_RETRIES; attempt += 1) {
+    try {
+      await fs.writeFile(filePath, buffer);
+      return true;
+    } catch (error) {
+      lastError = error;
+      await sleep(WRITE_RETRY_DELAY_MS);
+    }
+  }
+
+  for (let attempt = 1; attempt <= WRITE_RETRIES; attempt += 1) {
+    try {
+      await fs.writeFile(tempPath, buffer);
+      await fs.copyFile(tempPath, filePath);
+      await fs.rm(tempPath, { force: true });
+      return true;
+    } catch (error) {
+      lastError = error;
+      await fs.rm(tempPath, { force: true });
+      await sleep(WRITE_RETRY_DELAY_MS);
+    }
+  }
+
+  const code = lastError && typeof lastError === "object" && "code" in lastError ? lastError.code : "UNKNOWN";
+  return code;
+}
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -39,7 +76,8 @@ async function processFile(filePath) {
   const stat = await fs.stat(filePath);
   if (stat.size < MIN_BYTES_TO_TOUCH) return null;
 
-  const image = sharp(filePath);
+  const sourceBuffer = await fs.readFile(filePath);
+  const image = sharp(sourceBuffer);
   const meta = await image.metadata();
   const width = meta.width ?? 0;
 
@@ -61,7 +99,12 @@ async function processFile(filePath) {
     return { rel, savedKiB };
   }
 
-  await fs.writeFile(filePath, buffer);
+  const writeResult = await writeOptimizedFile(filePath, buffer);
+  if (writeResult !== true) {
+    console.warn(`Skipped ${rel}: could not replace file after retries (${writeResult}). Close image previews/editors and rerun.`);
+    return null;
+  }
+
   console.log(`${rel}: ${(stat.size / 1024).toFixed(0)} KiB → ${(buffer.length / 1024).toFixed(0)} KiB (−${savedKiB} KiB)`);
   return { rel, savedKiB };
 }

@@ -19,7 +19,7 @@ export const scrollRevealFade = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 1, ease: motionEase },
+    transition: { duration: 0.48, ease: motionEase },
   },
 };
 
@@ -29,15 +29,15 @@ export const scrollRevealFadeUp = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.95, ease: motionEase },
+    transition: { duration: 0.48, ease: motionEase },
   },
 };
 
-/** Каскад элементов секции — multiplier 0.35s как getInitialAnimation в gpbm */
+/** Короткий каскад: меньше одновременных animation frame на длинных страницах. */
 export const scrollRevealStagger = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.35, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.12, delayChildren: 0.04 },
   },
 };
 

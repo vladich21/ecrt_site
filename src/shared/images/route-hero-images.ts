@@ -2,8 +2,8 @@ import { preload } from "react-dom";
 
 import aboutHeroImage from "@/assets/presentation/О-нас.webp";
 import purchaseHeroImage from "@/assets/presentation/закупки-hero1.webp";
-import careersHeroImage from "@/assets/presentation/эвс-02.webp";
-import projectsHeroImage from "@/assets/presentation/проекты.webp";
+import careersHeroImage from "@/assets/presentation/проекты.webp";
+import projectsHeroImage from "@/assets/presentation/эвс-02.webp";
 import type { BundledImage } from "@/data/ecrtSite";
 import { strategicProjects } from "@/data/ecrtSite";
 import { projectCatalogHeroImages } from "@/data/projectMedia";
@@ -77,6 +77,21 @@ export function allRouteHeroImages(): StaticImageLike[] {
 
   for (const image of Object.values(pageHeroByPath)) add(image);
   for (const image of projectHeroBySlug.values()) add(image);
+
+  return images;
+}
+
+/** Только основные разделы из меню; без проектных страниц и галерей. */
+export function primaryPageHeroImages(): StaticImageLike[] {
+  const seen = new Set<string>();
+  const images: StaticImageLike[] = [];
+
+  for (const image of Object.values(pageHeroByPath)) {
+    const url = staticImageUrl(image);
+    if (seen.has(url)) continue;
+    seen.add(url);
+    images.push(image);
+  }
 
   return images;
 }

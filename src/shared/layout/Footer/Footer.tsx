@@ -1,5 +1,6 @@
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 import Link from "next/link";
+import Script from "next/script";
 
 import logoRzd from "@/assets/logos/rzd-logo.svg";
 import logoSkParticipant from "@/assets/logos/logo-sk-participant.webp";
@@ -84,6 +85,18 @@ export function Footer({ locale }: { locale: Locale }) {
                   sizes="200px"
                 />
               </a>
+              <a
+                className={styles.dreamJobWidget}
+                href="https://dreamjob.ru/employers/115837"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Инжиниринговый Центр Железнодорожного Транспорта: отзывы сотрудников о работодателе на Dream Job"
+              >
+                <div data-id="wg-dj-2918" suppressHydrationWarning />
+              </a>
+              <Script id="dreamjob-rating-widget" strategy="lazyOnload">
+                {`(function(s){document.querySelectorAll("[data-id='wg-dj-2918']").forEach(function(e){fetch(s).then(function(r){return r.text()}).then(function(t){e.innerHTML=t.replace(/\\/\\*\\s*margin:\\s*0\\s+auto;\\s*\\*\\//gi,"").replace(/margin:\\s*0\\s+auto;\\s*/gi,"");var c=e.firstElementChild;if(c){c.style.margin="0";}}).catch(function(){e.textContent="Отзывы сотрудников на Dream Job";});});})("https://dreamjob.ru/widget/get-widget?id=2918");`}
+              </Script>
             </div>
           </div>
         </div>
