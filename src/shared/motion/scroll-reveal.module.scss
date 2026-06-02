@@ -1,0 +1,66 @@
+.reveal {
+  --reveal-delay: 0ms;
+  --reveal-distance: 8px;
+  --reveal-duration: 620ms;
+  --reveal-ease: cubic-bezier(0.22, 0.8, 0.28, 1);
+
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance), 0);
+  transition:
+    opacity var(--reveal-duration) var(--reveal-ease) var(--reveal-delay),
+    transform var(--reveal-duration) var(--reveal-ease) var(--reveal-delay);
+  will-change: opacity, transform;
+}
+
+.fadeOnly {
+  --reveal-distance: 0;
+}
+
+.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+.stagger[data-revealed="true"] .reveal {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+.stagger {
+  --reveal-stagger-step: 90ms;
+}
+
+.stagger > .reveal:nth-child(1) {
+  --reveal-delay: 0ms;
+}
+
+.stagger > .reveal:nth-child(2) {
+  --reveal-delay: calc(var(--reveal-stagger-step) * 1);
+}
+
+.stagger > .reveal:nth-child(3) {
+  --reveal-delay: calc(var(--reveal-stagger-step) * 2);
+}
+
+.stagger > .reveal:nth-child(4) {
+  --reveal-delay: calc(var(--reveal-stagger-step) * 3);
+}
+
+.stagger > .reveal:nth-child(5) {
+  --reveal-delay: calc(var(--reveal-stagger-step) * 4);
+}
+
+.stagger > .reveal:nth-child(6) {
+  --reveal-delay: calc(var(--reveal-stagger-step) * 5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}

@@ -1,10 +1,5 @@
-"use client";
-
-import type { MotionProps } from "framer-motion";
-import { motion } from "framer-motion";
 import type { StaticImageData } from "next/image";
 
-import { heroCopyMotion } from "@/shared/motion/presets";
 import { HeroImage } from "@/shared/ui/HeroImage/HeroImage";
 
 import styles from "./page-hero.module.scss";
@@ -16,7 +11,7 @@ type PageHeroProps = {
   headingId: string;
   imageAlt?: string;
   animateCopy?: boolean;
-  copyMotion?: MotionProps;
+  copyMotion?: unknown;
   mediaClassName?: string;
   className?: string;
 };
@@ -27,8 +22,6 @@ export function PageHero({
   lead,
   headingId,
   imageAlt,
-  animateCopy = false,
-  copyMotion = heroCopyMotion,
   mediaClassName,
   className,
 }: PageHeroProps) {
@@ -63,13 +56,7 @@ export function PageHero({
         </div>
         <div className={styles.scrim} aria-hidden />
         <div className={styles.overlay}>
-          {animateCopy ? (
-            <motion.header className={styles.heroCopy} {...copyMotion}>
-              {copyContent}
-            </motion.header>
-          ) : (
-            <header className={styles.heroCopy}>{copyContent}</header>
-          )}
+          <header className={styles.heroCopy}>{copyContent}</header>
         </div>
       </div>
     </section>

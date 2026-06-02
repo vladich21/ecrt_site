@@ -124,7 +124,6 @@ export function ProjectDetailView({ projectSlug, locale = "ru" }: Props) {
   const strategic = getLocalizedStrategicProject(projectSlug, locale);
   const strategicSource = getStrategicProjectBySlug(projectSlug);
   if (strategic && strategicSource) {
-    const coverImageUrl = imageSrc(strategicSource.coverImage);
     const hasSections = strategic.sections.length > 0;
     const omitHeroPhaseLine = strategicSource.omitHeroPhaseLine === true;
     const showHeroPhaseLine =
@@ -136,7 +135,7 @@ export function ProjectDetailView({ projectSlug, locale = "ru" }: Props) {
     return (
       <div className={styles.pageStrategic}>
         <StrategicProjectHero
-          coverImageUrl={coverImageUrl}
+          coverImage={strategicSource.coverImage}
           phaseLabel={showHeroPhaseLine ? `${strategic.status} · ${strategic.period}` : undefined}
           heading={heroHeading}
           lead={heroLead}

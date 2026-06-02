@@ -3,6 +3,7 @@ import galleryKs2 from '../assets/presentation/кс-2.webp'
 import galleryKs3 from '../assets/presentation/кс-3.webp'
 import galleryKs4 from '../assets/presentation/кс-4.webp'
 import galleryKs5 from '../assets/presentation/кс-5.webp'
+import type { StaticImageData } from 'next/image'
 
 import { activityGroups as activityGroupsRu, type ActivityThemeGroup } from './activityDirectionsRu'
 
@@ -35,8 +36,8 @@ export type { ActivityThemeGroup }
 
 /** Тематические блоки страницы /projects (RU источник `activityDirectionsRu`); EN - `projects.json` → `directions.groups.{id}`. */
 export const activityGroups = activityGroupsRu
-/** Результат `import './file.webp'` в Vite или Next (строка URL либо объект с `src`). */
-export type BundledImage = string | { src: string }
+/** Результат `import './file.webp'` в Vite или Next (строка URL либо StaticImageData). */
+export type BundledImage = string | StaticImageData
 
 export type StrategicProjectSection = {
   title: string

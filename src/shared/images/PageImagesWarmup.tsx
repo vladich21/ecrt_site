@@ -7,7 +7,7 @@ import {
   resolveCriticalPageImages,
   resolveDeferredPageImages,
 } from "@/shared/images/page-image-preload";
-import { preloadStaticImage } from "@/shared/images/preload-static-image";
+import { preloadOptimizedHeroImage, preloadStaticImage } from "@/shared/images/preload-static-image";
 import { resolveRouteHeroImage } from "@/shared/images/route-hero-images";
 
 import { scheduleIdleWork, shouldLimitPreload } from "./network-preload";
@@ -18,10 +18,10 @@ export function PageImagesWarmup() {
 
   useEffect(() => {
     const hero = resolveRouteHeroImage(pathname);
-    if (hero) preloadStaticImage(hero);
+    if (hero) preloadOptimizedHeroImage(hero, "high");
 
     for (const image of resolveCriticalPageImages(pathname)) {
-      preloadStaticImage(image);
+      preloadOptimizedHeroImage(image, "high");
     }
 
     if (shouldLimitPreload()) return;

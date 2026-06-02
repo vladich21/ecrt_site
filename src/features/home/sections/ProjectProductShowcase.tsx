@@ -1,5 +1,3 @@
-"use client";
-
 import type { StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -13,8 +11,8 @@ import {
   projectDetailPath,
   type ProjectDetailLocale,
 } from "@/features/projects/project-detail-locale";
-import { heroPreloadHandlers } from "@/shared/images/route-hero-images";
 import { imageSrc } from "@/features/projects/image-src";
+import { ProjectHeroWarmLink } from "@/shared/images/ProjectHeroWarmLink";
 import { ScrollRevealBlock } from "@/shared/motion/ScrollReveal";
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 
@@ -167,7 +165,8 @@ export function ProjectProductShowcase({
               src={imageSrc(slide.image)}
               alt=""
               fill
-              sizes="(max-width: 768px) min(100vw, 760px), (max-width: 1200px) 46vw, 760px"
+              sizes="(max-width: 480px) calc(100vw - 32px), (max-width: 768px) min(100vw, 420px), (max-width: 1200px) 42vw, 760px"
+              quality={75}
               loading="lazy"
             />
           </span>
@@ -207,14 +206,13 @@ export function ProjectProductShowcase({
         const slideContent = (
           <>
             {isLinkable ? (
-              <Link
+              <ProjectHeroWarmLink
                 className={bentoStyles.productMediaLink}
                 href={slide.href!}
                 aria-labelledby={headingId}
-                {...heroPreloadHandlers(slide.href!)}
               >
                 {imageFrame}
-              </Link>
+              </ProjectHeroWarmLink>
             ) : (
               <div className={bentoStyles.productMediaStatic}>{imageFrame}</div>
             )}

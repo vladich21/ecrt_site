@@ -9,7 +9,12 @@ import { strategicProjects } from "@/data/ecrtSite";
 import { projectCatalogHeroImages } from "@/data/projectMedia";
 
 import { preloadPageImages } from "./page-image-preload";
-import { preloadStaticImage, asciiSafeAssetUrl, staticImageUrl, type StaticImageLike } from "./preload-static-image";
+import {
+  preloadOptimizedHeroImage,
+  asciiSafeAssetUrl,
+  staticImageUrl,
+  type StaticImageLike,
+} from "./preload-static-image";
 
 const pageHeroByPath: Record<string, StaticImageLike> = {
   "/about-us": aboutHeroImage,
@@ -52,7 +57,7 @@ export function resolveRouteHeroImage(pathOrHref: string): StaticImageLike | und
 
 export function preloadHeroForHref(href: string): void {
   const image = resolveRouteHeroImage(href);
-  if (image) preloadStaticImage(image);
+  if (image) preloadOptimizedHeroImage(image, "low");
 }
 
 export function heroPreloadHandlers(href: string) {

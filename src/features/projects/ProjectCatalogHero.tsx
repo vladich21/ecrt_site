@@ -3,7 +3,6 @@ import { preloadRouteHeroImage } from "@/shared/images/route-hero-images";
 
 import type { BundledImage } from "@/data/ecrtSite";
 
-import { imageSrc } from "./image-src";
 import styles from "./project-detail.module.scss";
 
 type ProjectCatalogHeroProps = {
@@ -27,7 +26,7 @@ export function ProjectCatalogHero({
     <section className={styles.evsHero}>
       <div className={styles.evsHeroMedia}>
         <HeroImage
-          src={imageSrc(image)}
+          src={image}
           alt={imageAlt}
           fill
           className={styles.heroFillImg}

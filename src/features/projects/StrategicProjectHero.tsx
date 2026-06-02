@@ -1,10 +1,11 @@
 import { HeroImage } from "@/shared/ui/HeroImage/HeroImage";
 import { preloadRouteHeroImage } from "@/shared/images/route-hero-images";
+import type { BundledImage } from "@/data/ecrtSite";
 
 import styles from "./strategic-project-hero.module.scss";
 
 type StrategicProjectHeroProps = {
-  coverImageUrl: string;
+  coverImage: BundledImage;
   phaseLabel?: string;
   heading: string;
   lead: string;
@@ -13,7 +14,7 @@ type StrategicProjectHeroProps = {
 };
 
 export function StrategicProjectHero({
-  coverImageUrl,
+  coverImage,
   phaseLabel,
   heading,
   lead,
@@ -26,7 +27,7 @@ export function StrategicProjectHero({
     <section className={styles.strHero} aria-label={heading}>
       <div className={styles.strHeroMedia}>
         <HeroImage
-          src={coverImageUrl}
+          src={coverImage}
           alt={imageAlt ?? heading}
           fill
           className={styles.strHeroImg}

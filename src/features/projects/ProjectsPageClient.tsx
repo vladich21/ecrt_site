@@ -1,5 +1,3 @@
-"use client";
-
 import projectsHeroImage from "@/assets/presentation/эвс-02.webp";
 import { activityGroups } from "@/data/ecrtSite";
 import homeEn from "@/locales/en/home.json";

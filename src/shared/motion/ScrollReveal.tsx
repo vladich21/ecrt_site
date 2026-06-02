@@ -1,21 +1,27 @@
 "use client";
 
-import { motion, useInView, useReducedMotion, type HTMLMotionProps } from "framer-motion";
-import { useRef, type ReactNode } from "react";
+import {
+  type CSSProperties,
+  type HTMLAttributes,
+  type ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import {
-  scrollRevealFade,
-  scrollRevealFadeUp,
   scrollRevealHeadingViewport,
-  scrollRevealStagger,
   scrollRevealViewport,
 } from "./presets";
+import styles from "./scroll-reveal.module.scss";
 
-type ScrollRevealSectionProps = HTMLMotionProps<"section"> & {
+type RevealViewport = typeof scrollRevealViewport | typeof scrollRevealHeadingViewport;
+
+type ScrollRevealSectionProps = HTMLAttributes<HTMLElement> & {
   children: ReactNode;
 };
 
-type ScrollRevealBlockProps = HTMLMotionProps<"div"> & {
+type ScrollRevealBlockProps = HTMLAttributes<HTMLDivElement> & {
   children: ReactNode;
   /** Самостоятельная анимация при скролле (вне stagger-секции) */
   inView?: boolean;
@@ -25,63 +31,92 @@ type ScrollRevealBlockProps = HTMLMotionProps<"div"> & {
   fadeOnly?: boolean;
 };
 
-function noMotionVariants<T extends { hidden: object; visible: object }>(): T {
-  return {
-    hidden: { opacity: 1, y: 0 },
-    visible: { opacity: 1, y: 0 },
-  } as T;
+function classNames(...classes: Array<string | false | null | undefined>) {
+  return classes.filter(Boolean).join(" ");
 }
 
-function useScrollRevealVariants<T extends { hidden: object; visible: object }>(variants: T): T {
-  const reduceMotion = useReducedMotion();
-  return reduceMotion ? noMotionVariants<T>() : variants;
+function observerOptions(viewport: RevealViewport): IntersectionObserverInit {
+  const threshold = "amount" in viewport ? viewport.amount : 0.2;
+  const rootMargin = "margin" in viewport ? viewport.margin : "0px 0px -6% 0px";
+
+  return { threshold, rootMargin };
+}
+
+function useRevealInView<T extends Element>(viewport: RevealViewport) {
+  const ref = useRef<T>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element || visible) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry?.isIntersecting) return;
+      setVisible(true);
+      observer.disconnect();
+    }, observerOptions(viewport));
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [viewport, visible]);
+
+  return { ref, visible };
 }
 
 /** Секция: элементы появляются каскадом при прокрутке (gpbm-style) */
-export function ScrollRevealSection({ children, ...props }: ScrollRevealSectionProps) {
-  const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, scrollRevealViewport);
-  const variants = useScrollRevealVariants(scrollRevealStagger);
+export function ScrollRevealSection({
+  children,
+  className,
+  ...props
+}: ScrollRevealSectionProps) {
+  const { ref, visible } = useRevealInView<HTMLElement>(scrollRevealViewport);
 
   return (
-    <motion.section
+    <section
       ref={ref}
-      variants={variants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
       {...props}
+      className={classNames(styles.stagger, className)}
+      data-revealed={visible ? "true" : undefined}
     >
       {children}
-    </motion.section>
+    </section>
   );
 }
 
 /** Блок текста / карточки внутри секции или автonomно с inView */
 export function ScrollRevealBlock({
   children,
+  className,
+  style,
   inView = false,
   revealEarly = false,
   fadeOnly = false,
   ...props
 }: ScrollRevealBlockProps) {
-  const ref = useRef<HTMLDivElement>(null);
   const viewport = revealEarly ? scrollRevealHeadingViewport : scrollRevealViewport;
-  const isInView = useInView(ref, viewport);
-  const base = fadeOnly ? scrollRevealFade : scrollRevealFadeUp;
-  const variants = useScrollRevealVariants(base);
   const standalone = inView || revealEarly;
+  const { ref, visible } = useRevealInView<HTMLDivElement>(viewport);
 
   return (
-    <motion.div
+    <div
       ref={standalone ? ref : undefined}
-      variants={variants}
-      initial={standalone ? "hidden" : undefined}
-      animate={standalone ? (isInView ? "visible" : "hidden") : undefined}
       {...props}
+      className={classNames(
+        styles.reveal,
+        fadeOnly && styles.fadeOnly,
+        standalone && visible && styles.visible,
+        className,
+      )}
+      style={style as CSSProperties}
+      data-revealed={standalone && visible ? "true" : undefined}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
-export { scrollRevealViewport, scrollRevealStagger, scrollRevealFadeUp, scrollRevealFade };
+export { scrollRevealViewport };

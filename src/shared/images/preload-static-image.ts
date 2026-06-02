@@ -1,7 +1,7 @@
 export type StaticImageLike = string | { src: string };
 
 const NEXT_IMAGE_DEVICE_WIDTHS = [640, 750, 828, 1080, 1200, 1440, 1920, 2048] as const;
-const HERO_IMAGE_QUALITY = 90;
+const HERO_IMAGE_QUALITY = 80;
 
 export function staticImageUrl(image: StaticImageLike): string {
   return typeof image === "string" ? image : image.src;

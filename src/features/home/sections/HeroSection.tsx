@@ -1,9 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
-
-import { scheduleIdleWork, shouldLimitPreload } from "@/shared/images/network-preload";
+import { useCallback, useEffect, useRef } from "react";
 
 import type { CommonCopy, HomeLocale } from "../home-types";
 
@@ -11,6 +9,7 @@ import heroStyles from "../hero-section.module.scss";
 
 const HERO_VIDEO_WEBM_SRC = "/videos/hero-magnific.webm";
 const HERO_VIDEO_MP4_SRC = "/videos/hero-magnific.mp4";
+const HERO_VIDEO_POSTER_SRC = "/videos/hero-magnific-poster.webp";
 
 function HeroCtaArrow({ className }: { className?: string }) {
   return (
@@ -72,23 +71,10 @@ export function HeroSection({
   locale?: HomeLocale;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [loadHeroVideo, setLoadHeroVideo] = useState(false);
-  const [mobileWebmOnly, setMobileWebmOnly] = useState(false);
   const stats = getStats(commonCopy);
   const pathPrefix = locale === "en" ? "/en" : "";
 
   useEffect(() => {
-    const mobile = window.matchMedia("(max-width: 768px)").matches;
-    setMobileWebmOnly(mobile);
-    if (!mobile && !shouldLimitPreload()) {
-      setLoadHeroVideo(true);
-      return;
-    }
-    scheduleIdleWork(() => setLoadHeroVideo(true));
-  }, []);
-
-  useEffect(() => {
-    if (!loadHeroVideo) return;
     const video = videoRef.current;
     if (!video) return;
     video.muted = true;
@@ -98,7 +84,7 @@ export function HeroSection({
     const onGesture = () => play();
     document.addEventListener("pointerdown", onGesture, { capture: true, once: true });
     return () => document.removeEventListener("pointerdown", onGesture, true);
-  }, [loadHeroVideo]);
+  }, []);
 
   const onEnded = useCallback(() => {
     videoRef.current?.pause();
@@ -113,22 +99,15 @@ export function HeroSection({
           autoPlay
           muted
           playsInline
-          preload={loadHeroVideo ? "metadata" : "none"}
+          poster={HERO_VIDEO_POSTER_SRC}
+          preload="auto"
           controls={false}
           disablePictureInPicture
           onEnded={onEnded}
           aria-hidden
         >
-          {loadHeroVideo ? (
-            mobileWebmOnly ? (
-              <source src={HERO_VIDEO_WEBM_SRC} type="video/webm" />
-            ) : (
-              <>
-                <source src={HERO_VIDEO_WEBM_SRC} type="video/webm" />
-                <source src={HERO_VIDEO_MP4_SRC} type="video/mp4" />
-              </>
-            )
-          ) : null}
+          <source src={HERO_VIDEO_WEBM_SRC} type="video/webm" />
+          <source src={HERO_VIDEO_MP4_SRC} type="video/mp4" />
         </video>
         <div className={heroStyles.scrim} aria-hidden />
         <div className={heroStyles.overlay}>

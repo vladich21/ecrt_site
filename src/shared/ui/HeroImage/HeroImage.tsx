@@ -11,7 +11,7 @@ type HeroImageProps = Omit<ImageProps, "priority" | "unoptimized" | "fetchPriori
 };
 
 /** LCP-hero: next/image по sizes (мобильный ~750–1080px), не полный исходник. */
-export function HeroImage({ src, alt, quality = 90, sizes, ...props }: HeroImageProps) {
+export function HeroImage({ src, alt, quality = 80, sizes, ...props }: HeroImageProps) {
   const resolvedSizes = sizes ?? "(max-width: 768px) 100vw, min(1400px, 95vw)";
   const placeholder = typeof src === "string" ? "empty" : "blur";
 
