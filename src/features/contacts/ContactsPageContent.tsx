@@ -1,26 +1,21 @@
 import Link from "next/link";
 
-import contactsCopyEn from "@/locales/en/contacts.json";
-import contactsCopyRu from "@/locales/ru/contacts.json";
+import { getCopy, type Locale } from "@/content/i18n";
 import { buildYandexMapEmbedSrc } from "@/data/contactsOfficeMap";
 import { withLocalePath } from "@/shared/layout/SiteShell/site-shell-utils";
 
-import type { HomeLocale } from "@/features/home/home-types";
-
 import { LazyYandexMapEmbed } from "./LazyYandexMapEmbed";
 import styles from "./contacts-page.module.scss";
-
-type ContactsCopy = typeof contactsCopyRu;
 
 const MAIL_INFO = "info@ecrt.ru";
 const PHONE_DIGITS_HREF = "tel:+74959091799";
 
 type ContactsPageContentProps = {
-  locale: HomeLocale;
+  locale: Locale;
 };
 
 export function ContactsPageContent({ locale }: ContactsPageContentProps) {
-  const copy: ContactsCopy = locale === "en" ? contactsCopyEn : contactsCopyRu;
+  const copy = getCopy("contacts", locale);
   const mapEmbedSrc = buildYandexMapEmbedSrc(locale);
 
   return (

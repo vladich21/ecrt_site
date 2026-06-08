@@ -1,10 +1,10 @@
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 import type { ReactNode } from "react";
 
-import homeEn from "@/locales/en/home.json";
-import homeRu from "@/locales/ru/home.json";
+import { getCopy } from "@/content/i18n";
 import { getStrategicProjectBySlug } from "@/data/ecrtSite";
 import { projectCatalogHeroImages } from "@/data/projectMedia";
+import type { HomeCopy } from "@/features/home/home-types";
 
 import { Evs360ReportBlock } from "./Evs360ReportBlock";
 import { imageSrc } from "./image-src";
@@ -48,7 +48,7 @@ const catalogLayoutSlugSet = new Set<string>(catalogLayoutSlugs);
 function catalogHeroCopy(
   slug: string,
   project: NonNullable<ReturnType<typeof getLocalizedCatalogProject>>,
-  showcase: typeof homeRu.projects,
+  showcase: HomeCopy["projects"],
 ): { title: string; lead: string } {
   if (!project) {
     return { title: slug, lead: "" };
@@ -119,7 +119,7 @@ export function ProjectDetailView({ projectSlug, locale = "ru" }: Props) {
   preloadRouteHeroImage(detailPath);
   preloadProjectPageImages(projectSlug);
   const ui = getProjectDetailUi(locale);
-  const homeProjects = locale === "en" ? homeEn.projects : homeRu.projects;
+  const homeProjects = getCopy("home", locale).projects;
 
   const strategic = getLocalizedStrategicProject(projectSlug, locale);
   const strategicSource = getStrategicProjectBySlug(projectSlug);
@@ -260,6 +260,7 @@ export function ProjectDetailView({ projectSlug, locale = "ru" }: Props) {
           lead={lead}
           imageAlt={heroImageAlt}
           projectSlug={projectSlug}
+          imageFit={projectSlug === "project-0009-low-intensity" ? "panorama" : "cover"}
         />
         {catalogProjectContent(projectSlug, locale)}
       </div>

@@ -1,4 +1,5 @@
 @use "@/styles/numbered-focus-grid" as nfg;
+@use "@/styles/report-section" as rs;
 
 .root {
   --ecrt-navy: #001a2e;
@@ -17,35 +18,19 @@
 }
 
 .reportSectionHead {
-  text-align: left;
-  margin: 0 0 clamp(28px, 4vw, 40px);
+  @include rs.section-head(clamp(28px, 4vw, 40px));
 }
 
 .reportTitle {
-  margin: 0 0 clamp(12px, 2vw, 16px);
-  font-size: var(--heading-h2-size);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--ecrt-blue);
+  @include rs.section-title(var(--ecrt-blue));
 }
 
 .reportTitleRule {
-  display: block;
-  width: var(--section-title-rule-width);
-  height: 3px;
-  margin-top: 14px;
-  border-radius: 2px;
-  background: var(--section-title-rule-gradient);
+  @include rs.section-title-rule;
 }
 
 .reportDeck {
-  margin: 0;
-  margin-top: clamp(14px, 2.2vw, 20px);
-  font-size: var(--showcase-body-size);
-  line-height: var(--showcase-body-line-height);
-  font-weight: 500;
-  color: rgba(36, 56, 72, 0.82);
+  @include rs.section-lead;
 }
 
 .focusGrid {
@@ -78,6 +63,61 @@
 
   .focusItem:last-child {
     padding-bottom: 0;
+  }
+}
+
+.reportShell {
+  padding-top: clamp(28px, 4vw, 44px);
+  border-top: 1px solid rgba(0, 47, 85, 0.1);
+}
+
+.metricsGridFour {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .metricsGridFour {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.serviceClassesBlock {
+  margin-top: clamp(28px, 4vw, 40px);
+  padding-top: clamp(24px, 3.5vw, 32px);
+}
+
+.serviceClassesHeading {
+  margin: 0;
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--ecrt-blue);
+}
+
+.serviceClassesIntro {
+  margin: clamp(12px, 2vw, 16px) 0 0;
+  font-size: var(--showcase-body-size);
+  line-height: var(--showcase-body-line-height);
+  font-weight: 500;
+  color: rgba(36, 56, 72, 0.82);
+}
+
+.serviceClassesGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.serviceClassItem {
+  text-align: center;
+
+  p {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .serviceClassesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

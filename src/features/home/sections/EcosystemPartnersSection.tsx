@@ -1,5 +1,3 @@
-"use client";
-
 import { footerPartnerLogos } from "@/data/footerPartners";
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";

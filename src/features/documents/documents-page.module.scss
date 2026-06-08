@@ -1,3 +1,6 @@
+@use "@/styles/breakpoints" as bp;
+@use "@/styles/page-shell" as shell;
+
 .root {
   --doc-navy: #001a2e;
   --doc-blue: #002f55;
@@ -9,12 +12,8 @@
 }
 
 .page {
-  box-sizing: border-box;
-  width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
-  max-width: none;
-  margin: 0 auto;
-  padding-top: calc(var(--header-slot, 80px) + clamp(42px, 6vw, 72px));
-  padding-bottom: var(--section-padding-y, 80px);
+  @include shell.column;
+  @include shell.below-header;
   animation: pageFadeIn 0.52s cubic-bezier(0.22, 0.8, 0.28, 1) both;
 }
 
@@ -24,23 +23,13 @@
 }
 
 .pageTitle {
-  margin: 0;
-  padding: 0;
-  font-size: var(--heading-h1-size);
-  font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 1.06;
-  text-transform: none;
-  color: #001a31;
+  @include shell.page-title;
 }
 
 .sectionLead {
   margin: clamp(14px, 2.4vw, 20px) 0 0;
   max-width: min(86ch, 100%);
-  font-size: var(--body-text-size);
-  line-height: 1.62;
-  font-weight: 500;
-  color: rgba(36, 56, 72, 0.82);
+  @include shell.body-muted;
 }
 
 .note {
@@ -93,11 +82,17 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .page,
+  .stagePanelActive {
+    animation: none;
+  }
+}
+
 .stagePanelInner {
   display: flex;
   flex-direction: column;
   gap: clamp(16px, 2.5vw, 22px);
-  align-items: stretch;
 }
 
 .stagePanelTitle {
@@ -120,10 +115,7 @@
 .stagePanelNote {
   margin: 0;
   max-width: min(86ch, 100%);
-  font-size: var(--body-text-size);
-  line-height: 1.62;
-  font-weight: 500;
-  color: rgba(36, 56, 72, 0.82);
+  @include shell.body-muted;
 }
 
 .stagePanelNote {
@@ -137,10 +129,227 @@
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color 0.2s ease;
+}
 
-  &:hover {
-    color: var(--doc-red);
+.inlineLink:hover {
+  color: var(--doc-red);
+}
+
+.qualityPanelBody {
+  .stagePanelLead,
+  .stagePanelText,
+  .qualityPolicyList {
+    max-width: none;
   }
+}
+
+.qualityPolicy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.6vw, 14px);
+  width: 100%;
+}
+
+.qualityPolicyTitle {
+  margin: clamp(8px, 1.2vw, 12px) 0 0;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--doc-navy);
+}
+
+.qualityPolicyList {
+  margin: 0;
+  padding-left: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.2vw, 12px);
+  @include shell.body-muted;
+}
+
+.qualityPolicyItem {
+  margin: 0;
+  padding-left: 0.2rem;
+}
+
+.certSubsection {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vw, 16px);
+}
+
+.certSubsection + .certSubsection {
+  margin-top: clamp(18px, 2.8vw, 28px);
+  padding-top: clamp(18px, 2.8vw, 28px);
+  border-top: 1px solid rgba(0, 47, 85, 0.08);
+}
+
+.certSubsectionTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--doc-blue);
+}
+
+.certSubsection .docFileList {
+  max-width: min(520px, 100%);
+}
+
+.certCarousel {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.6vw, 14px);
+  width: 100%;
+}
+
+.certCarouselFrame {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(8px, 1.4vw, 12px);
+}
+
+.certCarouselViewport {
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.certCarouselViewportDragging {
+  cursor: grabbing;
+}
+
+.certCarouselTrack {
+  display: flex;
+}
+
+.certCarouselPage {
+  display: flex;
+  flex: 0 0 100%;
+  gap: clamp(14px, 2.5vw, 22px);
+  align-items: stretch;
+}
+
+.certCarouselLink {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: calc((100% - 2 * clamp(14px, 2.5vw, 22px)) / 3);
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 8px;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.certCarouselLink:hover {
+  transform: translateY(-2px);
+}
+
+.certCarouselLink:focus-visible {
+  outline: 2px solid rgba(11, 111, 214, 0.85);
+  outline-offset: 3px;
+}
+
+.certCarouselCell {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(8px, 1.2vw, 12px);
+  border: 1px solid rgba(0, 47, 85, 0.1);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 47, 85, 0.08);
+  aspect-ratio: 1192 / 1684;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.certCarouselLink:hover .certCarouselCell {
+  border-color: rgba(226, 26, 26, 0.35);
+  box-shadow: 0 12px 28px rgba(0, 47, 85, 0.12);
+}
+
+.certCarouselImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.certCarouselNav {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 47, 85, 0.14);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--doc-blue);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.certCarouselNav:hover {
+  border-color: rgba(226, 26, 26, 0.35);
+  color: var(--doc-red);
+  box-shadow: 0 6px 18px rgba(0, 47, 85, 0.08);
+  transform: translateY(-1px);
+}
+
+.certCarouselNav:focus-visible {
+  outline: 2px solid rgba(11, 111, 214, 0.85);
+  outline-offset: 3px;
+}
+
+.certCarouselNavIcon {
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.certCarouselFooter {
+  display: flex;
+  justify-content: center;
+}
+
+.certCarouselDots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.certCarouselDot {
+  width: 8px;
+  height: 8px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  background: rgba(0, 47, 85, 0.2);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.certCarouselDotActive {
+  background: var(--doc-red);
+  transform: scale(1.2);
+}
+
+.certCarouselDot:focus-visible {
+  outline: 2px solid rgba(11, 111, 214, 0.85);
+  outline-offset: 3px;
 }
 
 .certPreviewGrid {
@@ -160,12 +369,12 @@
     box-shadow 0.2s ease,
     transform 0.2s ease,
     border-color 0.2s ease;
+}
 
-  &:hover {
-    border-color: rgba(226, 26, 26, 0.35);
-    box-shadow: 0 12px 28px rgba(0, 47, 85, 0.12);
-    transform: translateY(-2px);
-  }
+.certPreviewLink:hover {
+  border-color: rgba(226, 26, 26, 0.35);
+  box-shadow: 0 12px 28px rgba(0, 47, 85, 0.12);
+  transform: translateY(-2px);
 }
 
 .certPreviewImage {
@@ -213,12 +422,17 @@
     border-color 0.2s ease,
     box-shadow 0.2s ease,
     transform 0.2s ease;
+}
 
-  &:hover {
-    border-color: rgba(226, 26, 26, 0.35);
-    box-shadow: 0 8px 22px rgba(0, 47, 85, 0.08);
-    transform: translateY(-1px);
-  }
+.docFileLink:hover {
+  border-color: rgba(226, 26, 26, 0.35);
+  box-shadow: 0 8px 22px rgba(0, 47, 85, 0.08);
+  transform: translateY(-1px);
+}
+
+.docFileLink:focus-visible {
+  outline: 2px solid rgba(11, 111, 214, 0.85);
+  outline-offset: 3px;
 }
 
 .fileBadge {
@@ -280,26 +494,12 @@
   color: var(--doc-blue);
 }
 
-.fileName {
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.35;
-  color: rgba(36, 56, 72, 0.58);
-  font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
-  word-break: break-word;
-}
-
 .fileSecondary {
   margin-top: 2px;
   font-size: 12px;
   font-weight: 600;
   line-height: 1.4;
   color: #5f7080;
-}
-
-.docFileLink:focus-visible {
-  outline: 2px solid rgba(11, 111, 214, 0.85);
-  outline-offset: 3px;
 }
 
 .hotlineList {
@@ -332,12 +532,32 @@
   font-weight: 800;
 }
 
-@media (max-width: 720px) {
+@include bp.down(720px) {
+  .certCarouselNav {
+    width: 34px;
+    height: 34px;
+  }
+
+  .certCarouselLink {
+    max-width: 100%;
+  }
+
   .certPreviewGrid {
     grid-template-columns: 1fr;
   }
 
   .docFileLink {
     align-items: flex-start;
+  }
+}
+
+@include bp.down(420px) {
+  .docFileLink {
+    flex-direction: column;
+  }
+
+  .fileBadge {
+    width: 36px;
+    height: 44px;
   }
 }

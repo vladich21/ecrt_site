@@ -11,6 +11,8 @@ type ProjectCatalogHeroProps = {
   lead: string;
   imageAlt: string;
   projectSlug: string;
+  /** Панорама — широкий кадр с ручной позицией через CSS-переменные */
+  imageFit?: "cover" | "panorama";
 };
 
 export function ProjectCatalogHero({
@@ -19,18 +21,21 @@ export function ProjectCatalogHero({
   lead,
   imageAlt,
   projectSlug,
+  imageFit = "cover",
 }: ProjectCatalogHeroProps) {
   preloadRouteHeroImage(`/project/${projectSlug}`);
+  const fitPanorama = imageFit === "panorama";
 
   return (
     <section className={styles.evsHero}>
-      <div className={styles.evsHeroMedia}>
+      <div className={fitPanorama ? styles.evsHeroMediaPanorama : styles.evsHeroMedia}>
         <HeroImage
           src={image}
           alt={imageAlt}
           fill
-          className={styles.heroFillImg}
-          sizes="(max-width: 900px) 100vw, 1200px"
+          className={fitPanorama ? styles.heroFillImgPanorama : styles.heroFillImg}
+          sizes="100vw"
+          quality={fitPanorama ? 90 : 80}
         />
       </div>
       <span className={styles.evsHeroGradient} aria-hidden />

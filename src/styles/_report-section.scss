@@ -1,0 +1,40 @@
+// Заголовок секции отчёта на страницах проектов (эталон: strReportTitle в project-detail)
+
+@mixin section-head($gap-bottom: clamp(22px, 3.5vw, 32px)) {
+  text-align: left;
+  margin: 0 0 $gap-bottom;
+}
+
+@mixin section-title($color: #002f55) {
+  margin: 0 0 clamp(12px, 2vw, 16px);
+  font-size: var(--heading-h2-size);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: $color;
+}
+
+@mixin section-title-rule {
+  display: block;
+  width: var(--section-title-rule-width);
+  height: 3px;
+  margin-top: 14px;
+  border-radius: 2px;
+  background: var(--section-title-rule-gradient);
+}
+
+@mixin section-lead {
+  margin: clamp(14px, 2.2vw, 20px) 0 0;
+  font-size: var(--showcase-body-size);
+  line-height: var(--showcase-body-line-height);
+  font-weight: 500;
+  color: rgba(36, 56, 72, 0.82);
+}
+
+@mixin section-body {
+  margin: 0;
+  font-size: var(--showcase-body-size);
+  line-height: var(--showcase-body-line-height);
+  font-weight: 500;
+  color: rgba(36, 56, 72, 0.82);
+}

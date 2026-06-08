@@ -1,4 +1,4 @@
-import coverKs400 from '../assets/presentation/кс-1.webp'
+import coverKs400 from '../assets/presentation/ks-test.webp'
 import galleryKs2 from '../assets/presentation/кс-2.webp'
 import galleryKs3 from '../assets/presentation/кс-3.webp'
 import galleryKs4 from '../assets/presentation/кс-4.webp'
@@ -18,7 +18,6 @@ export type NavLabelKey =
 
 export type NavItem = { href: string; labelKey: NavLabelKey }
 
-/** Порядок и href - единый источник для шапки и футера; подписи - через i18n (`labelKey`). */
 export const navItems: readonly NavItem[] = [
   { href: '/', labelKey: 'nav.home' },
   { href: '/about-us', labelKey: 'nav.about' },
@@ -34,9 +33,7 @@ export const homeProjectsText =
 
 export type { ActivityThemeGroup }
 
-/** Тематические блоки страницы /projects (RU источник `activityDirectionsRu`); EN - `projects.json` → `directions.groups.{id}`. */
 export const activityGroups = activityGroupsRu
-/** Результат `import './file.webp'` в Vite или Next (строка URL либо StaticImageData). */
 export type BundledImage = string | StaticImageData
 
 export type StrategicProjectSection = {
@@ -56,9 +53,7 @@ export type StrategicProjectData = {
   value: string
   description: string
   bullets: string[]
-  /** Если заданы, отображаются вместо плоского списка «Детализация». */
   sections?: StrategicProjectSection[]
-  /** Не показывать строку «статус · период» в hero (данные сохраняются для карточек на главной). */
   omitHeroPhaseLine?: boolean
   details: string[]
 }
@@ -79,7 +74,7 @@ export const strategicProjects: StrategicProjectData[] = [
       galleryKs5,
     ],
     teaser:
-      'Создание математической модели контактной сети и динамического токосъема подвижным составом - для проектирования и эксплуатации на РЖД, включая ВСЖМ Москва - Санкт-Петербург.',
+      'Создание математической модели контактной сети и динамического токосъема подвижным составом - для проектирования и эксплуатации на РЖД, включая ВСМ Москва - Санкт-Петербург.',
     value:
       'Расчеты по модели уточняют параметры узлов и конструкций КС под расчетные скорости и качество токосъема до стройки и пуска линии.',
     description:
@@ -134,7 +129,7 @@ export const strategicProjects: StrategicProjectData[] = [
       {
         title: 'Объем ОКР и испытания',
         paragraphs: [
-          'Разработка комплекса изделий контактной сети КС-400 ведется для ВСЖМ Москва - Санкт-Петербург.',
+          'Разработка комплекса изделий контактной сети КС-400 ведется для ВСМ Москва - Санкт-Петербург.',
           'В рамках ОКР специалистами АО «ИЦ ЖТ» были разработаны строительные конструкции, узлы анкеровок, поддерживающие и фиксирующие конструкции, арматура и струны, изоляторы, конструкции для заземления и обратной тяговой сети контактной сети КС-400. Были изготовлены опытные образцы; проведены предварительные, эксплуатационные и приемочные испытания элементов комплекса изделий.',
           'На протяжении всех работ постоянно совершенствовалась конструкторская документация, в связи с чем успешно были проведены приемочные комиссии.',
         ],
@@ -161,7 +156,6 @@ export function getStrategicProjectBySlug(slug: string) {
   return strategicProjects.find((project) => project.slug === slug)
 }
 
-/** Ссылки на официальные PDF: подписи RU/EN в интерфейсе. */
 export type DocumentSectionId = 'anticorruption' | 'quality' | 'labor' | 'hotline'
 
 export type DocumentGroupId = 'policies' | 'certificates' | 'corporate' | 'sout'
@@ -172,7 +166,6 @@ export type SiteDocumentLink = {
   readonly nameEn: string
   readonly section: DocumentSectionId
   readonly group?: DocumentGroupId
-  /** Документ после текста contractorNote во вкладке антикоррупции. */
   readonly placement?: 'afterContractorNote'
 }
 
@@ -183,7 +176,6 @@ export const documentSectionOrder: readonly DocumentSectionId[] = [
   'hotline',
 ]
 
-/** Локальные копии официальных файлов в public/documents (источник: ecrt.ru). */
 const documentBase = '/documents'
 
 export const documents: readonly SiteDocumentLink[] = [
@@ -199,41 +191,6 @@ export const documents: readonly SiteDocumentLink[] = [
     nameEn: 'Anti-corruption clause',
     section: 'anticorruption',
     placement: 'afterContractorNote',
-  },
-  {
-    url: `${documentBase}/QMS-POL-001-01-politika.pdf`,
-    nameRu: 'Политика в области качества',
-    nameEn: 'Quality policy',
-    section: 'quality',
-    group: 'policies',
-  },
-  {
-    url: `${documentBase}/QM15_31102197_QM15_EN.pdf`,
-    nameRu: 'Сертификат СМК ISO 9001:2015 ENG',
-    nameEn: 'ISO 9001:2015 QMS certificate - English edition',
-    section: 'quality',
-    group: 'certificates',
-  },
-  {
-    url: `${documentBase}/QM15_31102197_QM15_RU.pdf`,
-    nameRu: 'Сертификат СМК ISO 9001:2015 RUS',
-    nameEn: 'ISO 9001:2015 QMS certificate - Russian edition',
-    section: 'quality',
-    group: 'certificates',
-  },
-  {
-    url: `${documentBase}/QMS15_ISO_9001_RU.pdf`,
-    nameRu: 'Сертификат ГОСТ Р ИСО 9001 RUS',
-    nameEn: 'GOST R ISO 9001 QMS certificate - Russian edition',
-    section: 'quality',
-    group: 'certificates',
-  },
-  {
-    url: `${documentBase}/1628236271_cert_digsig_en15085_jsc_engineering_centre_en_signed_svr-(004).pdf`,
-    nameRu: 'Сертификат соответствия проектирования сварных конструкций по EN 15085-2',
-    nameEn: 'EN 15085-2 welded-structure design conformity certificate',
-    section: 'quality',
-    group: 'certificates',
   },
   {
     url: `${documentBase}/perechen.pdf`,

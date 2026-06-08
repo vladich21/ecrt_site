@@ -10,8 +10,6 @@ type PageHeroProps = {
   lead?: string;
   headingId: string;
   imageAlt?: string;
-  animateCopy?: boolean;
-  copyMotion?: unknown;
   mediaClassName?: string;
   className?: string;
 };

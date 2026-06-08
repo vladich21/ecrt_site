@@ -21,6 +21,10 @@ export type ProjectReportSection = {
   bulletLayout?: "list" | "focusGrid";
   /** Пункты рендерятся в sectionSlots, а не в общем шаблоне секции */
   bulletsPlacement?: "inline" | "slot";
+  /** Список сразу после первого абзаца, остальные абзацы — ниже */
+  bulletsAfterLeadParagraph?: boolean;
+  /** Верхний отступ секции в px (перекрывает :first-child) */
+  paddingTopPx?: number;
   /** Группировка intro/details для составных страниц */
   group?: "intro" | "details";
 };
@@ -48,6 +52,7 @@ export function ProjectReportSections({
         <ScrollRevealSection
           key={section.id}
           className={styles.strReportSection}
+          style={section.paddingTopPx != null ? { paddingTop: `${section.paddingTopPx}px` } : undefined}
           aria-labelledby={`${ariaIdPrefix}-${section.id}-heading`}
         >
           <ScrollRevealBlock>
@@ -61,11 +66,13 @@ export function ProjectReportSections({
 
           {section.paragraphs?.length ? (
             <ScrollRevealBlock>
-              {section.paragraphs.map((paragraph) => (
-                <p key={paragraph} className={styles.strReportParagraph}>
-                  {paragraph}
-                </p>
-              ))}
+              {(section.bulletsAfterLeadParagraph ? section.paragraphs.slice(0, 1) : section.paragraphs).map(
+                (paragraph) => (
+                  <p key={paragraph} className={styles.strReportParagraph}>
+                    {paragraph}
+                  </p>
+                ),
+              )}
             </ScrollRevealBlock>
           ) : null}
 
@@ -95,6 +102,16 @@ export function ProjectReportSections({
                   ))}
                 </ul>
               )}
+            </ScrollRevealBlock>
+          ) : null}
+
+          {section.bulletsAfterLeadParagraph && section.paragraphs && section.paragraphs.length > 1 ? (
+            <ScrollRevealBlock>
+              {section.paragraphs.slice(1).map((paragraph) => (
+                <p key={paragraph} className={styles.strReportParagraph}>
+                  {paragraph}
+                </p>
+              ))}
             </ScrollRevealBlock>
           ) : null}
 

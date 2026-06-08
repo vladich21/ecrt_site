@@ -1,3 +1,6 @@
+@use "@/styles/breakpoints" as bp;
+@use "@/styles/page-shell" as shell;
+
 .contactRoot {
   --contact-font: var(--font-heading-next), var(--font-heading), system-ui, sans-serif;
   font-family: var(--contact-font);
@@ -5,22 +8,15 @@
 }
 
 .contactShell {
-  position: relative;
-  box-sizing: border-box;
-  width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
-  max-width: none;
-  margin: 0 auto;
+  @include shell.column;
+  @include shell.below-header;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding-top: calc(var(--header-slot, 80px) + clamp(42px, 6vw, 72px));
-  padding-bottom: var(--section-padding-y, 80px);
 }
 
 .layout {
   width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
   animation: contactPageIn 0.52s cubic-bezier(0.22, 0.8, 0.28, 1) both;
 }
 
@@ -30,14 +26,7 @@
 }
 
 .heading {
-  margin: 0;
-  padding: 0;
-  font-size: var(--heading-h1-size);
-  font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 1.06;
-  text-transform: none;
-  color: #001a31;
+  @include shell.page-title;
 }
 
 .columns {
@@ -45,8 +34,10 @@
   grid-template-columns: 1fr;
   gap: clamp(32px, 5vw, 48px);
   align-items: start;
+}
 
-  @media (min-width: 900px) {
+@include bp.up(900px) {
+  .columns {
     grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.18fr);
     gap: clamp(36px, 6vw, 72px);
   }
@@ -58,14 +49,18 @@
   padding: 0;
   width: 100%;
   min-width: 0;
+}
 
-  @media (max-width: 899px) {
+@include bp.down(899px) {
+  .asideCard {
     position: static;
     padding-bottom: clamp(20px, 4vw, 28px);
     border-bottom: 1px solid rgba(0, 47, 85, 0.08);
   }
+}
 
-  @media (min-width: 900px) {
+@include bp.up(900px) {
+  .asideCard {
     padding-right: clamp(12px, 3vw, 28px);
     border-right: 1px solid rgba(0, 47, 85, 0.08);
   }
@@ -78,7 +73,6 @@
 
 .corpDetailsSection {
   width: 100%;
-  max-width: none;
   margin-top: clamp(36px, 5vw, 56px);
   padding-top: clamp(28px, 4vw, 40px);
   border-top: 1px solid rgba(0, 47, 85, 0.08);
@@ -96,14 +90,16 @@
 
 .addrLine {
   margin: 0;
-  padding: 0;
   width: 100%;
-  max-width: none;
   font-size: 13.5px;
   font-weight: 400;
   line-height: 1.62;
   color: rgba(10, 39, 66, 0.58);
   text-wrap: pretty;
+}
+
+.addrLine + .addrLine {
+  margin-top: 4px;
 }
 
 .addrLineLink {
@@ -112,14 +108,10 @@
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color 0.2s ease;
-
-  &:hover {
-    color: #b01010;
-  }
 }
 
-.addrLine + .addrLine {
-  margin-top: 4px;
+.addrLineLink:hover {
+  color: #b01010;
 }
 
 .infoList {
@@ -155,16 +147,16 @@
   text-decoration: none;
   border-bottom: 1px solid transparent;
   padding-bottom: 2px;
+}
 
-  &:hover {
-    border-color: rgba(226, 26, 26, 0.5);
-    color: #b01010;
-  }
+.heroLink:hover {
+  border-color: rgba(226, 26, 26, 0.5);
+  color: #b01010;
 }
 
 .mapSurface {
-  padding: 0;
   margin: 0;
+  padding: 0;
   border: none;
   background: transparent;
 }
@@ -184,24 +176,23 @@
   min-height: inherit;
 }
 
-.mapEmbed {
-  flex: 1 1 auto;
-  width: 100%;
-  min-height: clamp(404px, 48vh, 500px);
-  border: 0;
-  border-radius: 10px;
-  display: block;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: inset 0 0 0 1px rgba(0, 47, 85, 0.1);
-}
-
+.mapEmbed,
 .mapPlaceholder {
   flex: 1 1 auto;
   width: 100%;
   min-height: clamp(404px, 48vh, 500px);
   border-radius: 10px;
-  background: linear-gradient(165deg, #e8eef4 0%, #f4f7fa 100%);
   box-shadow: inset 0 0 0 1px rgba(0, 47, 85, 0.1);
+}
+
+.mapEmbed {
+  border: 0;
+  display: block;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.mapPlaceholder {
+  background: linear-gradient(165deg, #e8eef4 0%, #f4f7fa 100%);
 }
 
 @keyframes contactPageIn {
@@ -213,5 +204,11 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layout {
+    animation: none;
   }
 }

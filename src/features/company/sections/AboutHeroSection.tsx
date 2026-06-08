@@ -1,5 +1,3 @@
-"use client";
-
 import aboutHeroImage from "@/assets/presentation/О-нас.webp";
 import { PageHero } from "@/shared/ui/PageHero/PageHero";
 
@@ -13,7 +11,6 @@ export function AboutHeroSection({ aboutCopy }: { aboutCopy: AboutCopy }) {
       lead={aboutCopy.hero.tagline}
       headingId="about-hero-heading"
       imageAlt={aboutCopy.hero.imageAlt}
-      animateCopy
     />
   );
 }

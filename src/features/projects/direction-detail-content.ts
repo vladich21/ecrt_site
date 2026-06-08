@@ -1,4 +1,11 @@
-import { getDirectionSectionHeadings, getTechnologiesSectionHeading, type DirectionLocale } from "./direction-detail-locale";
+import {
+  getCharacteristicsSectionHeading,
+  getDirectionSectionHeadings,
+  getGoalsSectionHeading,
+  getTechnologiesSectionHeading,
+  isTechnologyTopicHeading,
+  type DirectionLocale,
+} from "./direction-detail-locale";
 
 export type DirectionContentBlock =
   | { type: "heading"; text: string }
@@ -32,7 +39,42 @@ function isNumberedTechnologiesParagraph(text: string): boolean {
   return /^\d+\.\s/.test(text);
 }
 
+type CollectListOptions = {
+  sectionHeadingSet: Set<string>;
+  locale: DirectionLocale;
+  stopAtTechnologyTopics?: boolean;
+};
+
+function shouldStopListCollection(text: string, options: CollectListOptions): boolean {
+  const { sectionHeadingSet, locale, stopAtTechnologyTopics = false } = options;
+
+  if (sectionHeadingSet.has(text)) return true;
+  if (isNumberedTechnologiesParagraph(text)) return true;
+  if (stopAtTechnologyTopics && isTechnologyTopicHeading(text, locale)) return true;
+  if (text.endsWith(":")) return true;
+
+  return false;
+}
+
 function collectListItems(
+  raw: string[],
+  startIndex: number,
+  options: CollectListOptions,
+): { items: string[]; nextIndex: number } {
+  const items: string[] = [];
+  let index = startIndex;
+
+  while (index < raw.length) {
+    const next = raw[index];
+    if (shouldStopListCollection(next, options)) break;
+    items.push(next);
+    index += 1;
+  }
+
+  return { items, nextIndex: index };
+}
+
+function collectSectionItems(
   raw: string[],
   startIndex: number,
   sectionHeadingSet: Set<string>,
@@ -43,7 +85,6 @@ function collectListItems(
   while (index < raw.length) {
     const next = raw[index];
     if (sectionHeadingSet.has(next)) break;
-    if (isNumberedTechnologiesParagraph(next)) break;
     items.push(next);
     index += 1;
   }
@@ -51,21 +92,57 @@ function collectListItems(
   return { items, nextIndex: index };
 }
 
+function parseColonIntroList(
+  raw: string[],
+  startIndex: number,
+  options: CollectListOptions,
+): { blocks: DirectionContentBlock[]; nextIndex: number } {
+  const text = raw[startIndex];
+  const { items, nextIndex } = collectListItems(raw, startIndex + 1, options);
+
+  if (items.length > 0) {
+    return {
+      blocks: [{ type: "paragraph", text }, { type: "list", items }],
+      nextIndex,
+    };
+  }
+
+  return {
+    blocks: [{ type: "paragraph", text }],
+    nextIndex: startIndex + 1,
+  };
+}
+
 function parseTechnologiesParagraph(
   raw: string[],
   startIndex: number,
-  sectionHeadingSet: Set<string>,
+  options: CollectListOptions,
 ): { blocks: DirectionContentBlock[]; nextIndex: number } {
   const text = raw[startIndex];
 
-  if (text.endsWith(":")) {
-    const { items, nextIndex } = collectListItems(raw, startIndex + 1, sectionHeadingSet);
-    if (items.length > 0) {
-      return {
-        blocks: [{ type: "paragraph", text }, { type: "list", items }],
-        nextIndex,
-      };
+  if (isTechnologyTopicHeading(text, options.locale)) {
+    const blocks: DirectionContentBlock[] = [{ type: "heading", text }];
+    let index = startIndex + 1;
+
+    while (index < raw.length) {
+      const next = raw[index];
+      if (
+        options.sectionHeadingSet.has(next) ||
+        isTechnologyTopicHeading(next, options.locale) ||
+        isNumberedTechnologiesParagraph(next)
+      ) {
+        break;
+      }
+
+      blocks.push({ type: "paragraph", text: next });
+      index += 1;
     }
+
+    return { blocks, nextIndex: index };
+  }
+
+  if (text.endsWith(":")) {
+    return parseColonIntroList(raw, startIndex, options);
   }
 
   const inlineList = tryParseInlineColonList(text);
@@ -92,6 +169,9 @@ export function parseDirectionDetailContent(
   const sectionHeadings = getDirectionSectionHeadings(locale);
   const sectionHeadingSet = new Set<string>(sectionHeadings);
   const technologiesHeading = getTechnologiesSectionHeading(locale);
+  const goalsHeading = getGoalsSectionHeading(locale);
+  const characteristicsHeading = getCharacteristicsSectionHeading(locale);
+  const listOptions: CollectListOptions = { sectionHeadingSet, locale };
 
   const raw = detail
     .trim()
@@ -108,11 +188,33 @@ export function parseDirectionDetailContent(
     if (sectionHeadingSet.has(text)) {
       section = text;
       blocks.push({ type: "heading", text });
+
+      if (text === goalsHeading) {
+        const { items, nextIndex } = collectSectionItems(raw, index + 1, sectionHeadingSet);
+        if (items.length >= 2) {
+          blocks.push({ type: "list", items });
+          index = nextIndex - 1;
+        } else if (items.length === 1) {
+          blocks.push({ type: "paragraph", text: items[0] });
+          index = nextIndex - 1;
+        }
+      }
+
       continue;
     }
 
     if (section === technologiesHeading) {
-      const parsed = parseTechnologiesParagraph(raw, index, sectionHeadingSet);
+      const parsed = parseTechnologiesParagraph(raw, index, listOptions);
+      blocks.push(...parsed.blocks);
+      index = parsed.nextIndex - 1;
+      continue;
+    }
+
+    if (section !== technologiesHeading && text.endsWith(":")) {
+      const parsed = parseColonIntroList(raw, index, {
+        ...listOptions,
+        stopAtTechnologyTopics: section === characteristicsHeading,
+      });
       blocks.push(...parsed.blocks);
       index = parsed.nextIndex - 1;
       continue;

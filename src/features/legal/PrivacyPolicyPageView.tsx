@@ -1,11 +1,8 @@
 import { Fragment, type ReactNode } from "react";
 
-import privacyEn from "@/locales/en/privacy-policy.json";
-import privacyRu from "@/locales/ru/privacy-policy.json";
+import { getCopy, type Locale } from "@/content/i18n";
 
 import styles from "./privacy-policy-page.module.scss";
-
-type Locale = "ru" | "en";
 
 type PrivacyBlock =
   | { type: "p"; text: string }
@@ -22,10 +19,6 @@ type PrivacyCopy = {
   intro: string;
   sections: PrivacySection[];
 };
-
-function getPrivacyCopy(locale: Locale): PrivacyCopy {
-  return (locale === "en" ? privacyEn : privacyRu) as PrivacyCopy;
-}
 
 const LINK_PATTERN =
   /(https?:\/\/[^\s,)]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|\+7\s?\(?\d{3}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2})/g;
@@ -95,7 +88,7 @@ function renderBlock(block: PrivacyBlock, index: number) {
 }
 
 export function PrivacyPolicyPageView({ locale = "ru" }: { locale?: Locale }) {
-  const copy = getPrivacyCopy(locale);
+  const copy = getCopy("privacy", locale) as PrivacyCopy;
 
   return (
     <article className={styles.page}>

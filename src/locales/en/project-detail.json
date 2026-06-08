@@ -17,7 +17,7 @@
   },
   "meta": {
     "titleSuffix": "ECRT",
-    "descriptionFallback": "Engineering Centre for Rail Transport."
+    "descriptionFallback": "Engineering center of railway transport."
   },
   "slider": {
     "carouselLabel": "Photos: {title}",
@@ -100,13 +100,13 @@
       "description": "ECRT develops rail fastenings for ballasted track on the Moscow – St Petersburg high-speed main line.",
       "facts": [
         "Design documentation for the fastening node has been assigned release \"O\"",
-        "Testing and installation at the Sablino – Tosno test site — through end of 2026",
-        "Planned completion of work on variable-stiffness sections — March 2027"
+        "Testing and installation at the Sablino – Tosno test site — 2026",
+        "Planned completion of work on variable-stiffness sections — 2027"
       ],
       "details": [
         "ECRT is developing an intermediate rail fastening node for VSM-1 and track superstructure elements for variable-stiffness sections.",
         "Laboratory, bench, and preliminary tests have been completed; work at the test site is being prepared.",
-        "Conformity certificate for the VSM-1 fastening node is planned for September 2026."
+        "Conformity certificate for the VSM-1 fastening node is planned for 2026."
       ]
     },
     "track-resource-2-5b": {
@@ -210,29 +210,34 @@
         "Synchronise work on the second train with the approved delivery and assembly calendar."
       ],
       "characteristicsHeading": "Train characteristics",
-      "characteristicsIntro": "The electric train is being developed for operation on the Moscow – St Petersburg VSM at speeds up to 360 km/h. It features dual-system operation for 3 kV DC and 25 kV AC, an eight-car consist with double-traction capability, and operation at temperatures from −40 to +40 °C.",
-      "characteristicsBullets": [
-        "Four service classes: first, business, comfort, and standard, plus two compartment types in the leading car.",
-        "Design is developed with modern trends and operating experience of the Sapsan electric train in mind."
+      "characteristicsIntro": "The electric train is intended for operation on the Moscow – St Petersburg VSM. Dual-system operation for 3 kV DC and 25 kV AC is provided.",
+      "characteristicsBullets": [],
+      "serviceClassesHeading": "Service classes",
+      "serviceClassesIntro": "The train offers four comfort levels for passengers. Meeting compartments are also provided. Design is developed with modern trends and operating experience of the Sapsan electric train in mind.",
+      "serviceClassLabel": "service class",
+      "serviceClasses": [
+        { "name": "First" },
+        { "name": "Business" },
+        { "name": "Comfort" },
+        { "name": "Standard" }
       ],
       "characteristicsMetrics": [
         { "value": "360", "unit": "km/h", "label": "Maximum operating speed on VSM" },
         { "value": "8", "unit": "cars", "label": "Consist with double-traction capability" },
-        { "value": "455", "unit": "passengers", "label": "Total passenger capacity" },
+        { "value": "452", "unit": "passengers", "label": "Total passenger capacity" },
         { "value": "−40…+40", "unit": "°C", "label": "Operating temperature range" }
       ],
       "scheduleHeading": "Schedule and key milestones",
-      "scheduleIntro": "ECRT is the lead developer — design documentation has been developed since 2020 under contract with Russian Railways. Design follows an agreed work plan; in April 2024 a contract was signed for delivery of two lead prototypes with fixed deadlines for transferring design documentation to the manufacturer.",
-      "scheduleParagraphs": [
-        "Completion of detailed design, release of working design documentation, and start of assembly of the first electric train are planned for Q1 2026. A full test programme will be conducted on two lead prototypes."
-      ],
+      "scheduleIntro": "ECRT is the lead developer — design documentation has been developed since 2020 under contract with Russian Railways. Design follows an agreed work plan. In April 2024 a contract was signed for delivery of two lead prototypes with fixed deadlines for transferring design documentation to the manufacturer.",
+      "scheduleParagraphs": [],
       "scheduleMetrics": [
-        { "value": "Q1 2026", "unit": "", "label": "Plan: complete detailed design, release working design documentation, and start assembly of the first train" },
-        { "value": "16.02.2028", "unit": "", "label": "Planned completion of acceptance tests for two lead prototypes" },
-        { "value": "16.03.2028", "unit": "", "label": "Planned conformity certificate (TR CU 002/2011)" }
+        { "value": "2025", "unit": "", "label": "Technical design" },
+        { "value": "2026", "unit": "", "label": "Detailed design" },
+        { "value": "2027", "unit": "", "label": "Testing" },
+        { "value": "2028", "unit": "", "label": "Certification" }
       ],
       "scaleHeading": "Programme scale",
-      "scaleIntro": "Domestic companies are prioritised for project implementation; new designs and technologies are being developed for individual systems. The electric train manufacturer is Ural Locomotives; Transmashholding enterprises and more than 160 Russian organisations are involved in the project.",
+      "scaleIntro": "Domestic companies are prioritised for project implementation. New designs and technologies are being developed for individual systems. The electric train manufacturer is Ural Locomotives. Transmashholding enterprises are involved in the project.",
       "scaleMetrics": [
         { "value": "36", "unit": "systems", "label": "New systems for the high-speed electric train" },
         { "value": ">10 000", "unit": "parts", "label": "Components in the train structure" },
@@ -245,6 +250,7 @@
       "sections": [
         {
           "id": "fastening",
+          "paddingTopPx": 80,
           "title": "Intermediate rail fastening node for VSM-1",
           "paragraphs": [
             "ECRT is carrying out a comprehensive programme to develop an intermediate rail fastening node for the VSM-1 track superstructure."
@@ -257,12 +263,12 @@
           ],
           "metrics": [
             {
-              "value": "September 2026",
+              "value": "2026",
               "unit": "",
               "label": "Planned conformity certificate for the VSM-1 fastening node"
             },
             {
-              "value": "end of 2026",
+              "value": "2026",
               "unit": "",
               "label": "Installation of prototype samples and testing at the Sablino – Tosno test site"
             }
@@ -281,7 +287,7 @@
           ],
           "metrics": [
             {
-              "value": "March 2027",
+              "value": "2027",
               "unit": "",
               "label": "Planned completion date"
             }
@@ -318,12 +324,19 @@
           "id": "about",
           "group": "intro",
           "title": "About the project",
+          "paddingTopPx": 80,
           "paragraphs": [
-            "ECRT, commissioned by Russian Railways, is developing low-floor rolling stock for operation on low-traffic lines of Russian Railways. The approved working designation of the model range under development is: rail bus RA11 — single-car version; rail bus RA12 — two-car version; rail bus RA13 — two-car version with enhanced-comfort car interiors.",
+            "ECRT, commissioned by Russian Railways, is developing low-floor rolling stock for operation on low-traffic lines of Russian Railways. The approved working designation of the model range under development is:",
             "A technical specification for RA12 has been developed; detailed design is in progress.",
             "Forecast serial production volumes for rail buses are 300 cars (75 cars per year over 4 years) for operation on low-traffic lines of the Russian Railways network.",
             "Creating modern rolling stock for passenger services on low-traffic sections of the Russian Railways network addresses the acute social challenge of transport accessibility to remote settlements for residents across the country."
-          ]
+          ],
+          "bullets": [
+            "rail bus RA11 — single-car version",
+            "rail bus RA12 — two-car version",
+            "rail bus RA13 — two-car version with enhanced-comfort car interiors"
+          ],
+          "bulletsAfterLeadParagraph": true
         },
         {
           "id": "configurations",
@@ -396,6 +409,7 @@
           "id": "about",
           "group": "intro",
           "title": "About the project",
+          "paddingTopPx": 80,
           "paragraphs": [
             "ECRT has established a dedicated unit for developing advanced track infrastructure solutions. Under the Russian Railways programme to create a track structure and maintenance technologies providing 2.5 billion gross tonnes of throughput, the unit acts as developer of the structure, its elements, and maintenance regulations, and as coordinator of all project participants.",
             "The programme goal is to reduce track life-cycle cost on heavily loaded sections by extending throughput between capital and intermediate track maintenance cycles. R&D and deployment of maintenance technologies for the innovative track structure are carried out in 2021–2026."

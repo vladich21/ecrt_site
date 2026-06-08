@@ -3,7 +3,7 @@ import { preload } from "react-dom";
 import aboutHeroImage from "@/assets/presentation/О-нас.webp";
 import purchaseHeroImage from "@/assets/presentation/закупки-hero1.webp";
 import careersHeroImage from "@/assets/presentation/проекты.webp";
-import projectsHeroImage from "@/assets/presentation/эвс-02.webp";
+import projectsHeroImage from "@/assets/presentation/project_train.webp";
 import type { BundledImage } from "@/data/ecrtSite";
 import { strategicProjects } from "@/data/ecrtSite";
 import { projectCatalogHeroImages } from "@/data/projectMedia";

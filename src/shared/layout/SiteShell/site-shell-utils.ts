@@ -1,9 +1,10 @@
+import type { Locale } from "@/content/i18n";
 import commonEn from "@/locales/en/common.json";
 import commonRu from "@/locales/ru/common.json";
 
 type MessageTree = Record<string, unknown>;
 
-export type Locale = "ru" | "en";
+export type { Locale };
 
 const enPathByRuPath: Record<string, string> = {
   "/": "/en",

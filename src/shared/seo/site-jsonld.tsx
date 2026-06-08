@@ -9,7 +9,7 @@ export function SiteJsonLd({ locale = "ru" }: SiteJsonLdProps) {
   const isEn = locale === "en";
 
   const organizationName = isEn
-    ? "Engineering Centre for Rail Transport"
+    ? "Engineering center of railway transport"
     : "АО «Инжиниринговый центр железнодорожного транспорта»";
 
   const data = {

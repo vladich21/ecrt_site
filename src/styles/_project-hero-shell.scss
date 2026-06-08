@@ -1,4 +1,4 @@
-// Общая оболочка hero на /project/* — как PageHero: одна высота секции, media на inset: 0.
+// Hero на страницах /project/* — общая высота и слои (картинка, градиент, текст).
 @mixin frame {
   position: relative;
   isolation: isolate;
@@ -23,6 +23,21 @@
     width: 100% !important;
     height: 120% !important;
     display: block !important;
+  }
+}
+
+@mixin media-shell-flat {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+
+  > span {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 

@@ -5,9 +5,6 @@ const nextConfig: NextConfig = {
   output: "standalone",
   outputFileTracingRoot: path.join(__dirname),
   poweredByHeader: false,
-  experimental: {
-    optimizePackageImports: ["framer-motion"],
-  },
   images: {
     // Исходники уже webp — только webp-derivatives, без «двойного» AVIF-сжатия
     formats: ["image/webp"],

@@ -1,15 +1,53 @@
 import {
   getEvs360ReportCopy,
   type Evs360MetricCopy,
+  type Evs360ServiceClassCopy,
   type ProjectDetailLocale,
 } from "./project-detail-locale";
 
 import detailStyles from "./project-detail.module.scss";
 import styles from "./evs360-report.module.scss";
 
-function MetricsGrid({ metrics }: { metrics: readonly Evs360MetricCopy[] }) {
+function ServiceClassesBlock({
+  heading,
+  intro,
+  serviceClassLabel,
+  serviceClasses,
+}: {
+  heading: string;
+  intro: string;
+  serviceClassLabel: string;
+  serviceClasses: readonly Evs360ServiceClassCopy[];
+}) {
   return (
-    <ul className={detailStyles.strMetricsGrid}>
+    <div className={styles.serviceClassesBlock}>
+      <h3 className={styles.serviceClassesHeading}>{heading}</h3>
+      <p className={styles.serviceClassesIntro}>{intro}</p>
+      <ul className={`${detailStyles.strMetricsGrid} ${styles.serviceClassesGrid}`}>
+        {serviceClasses.map((serviceClass) => (
+          <li key={serviceClass.name} className={`${detailStyles.strMetricItem} ${styles.serviceClassItem}`}>
+            <p className={detailStyles.strMetricValue}>
+              <span className={detailStyles.strMetricNumber}>{serviceClass.name}</span>
+            </p>
+            <p className={detailStyles.strMetricLabel}>{serviceClassLabel}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function MetricsGrid({
+  metrics,
+  fourColumns = false,
+}: {
+  metrics: readonly Evs360MetricCopy[];
+  fourColumns?: boolean;
+}) {
+  return (
+    <ul
+      className={`${detailStyles.strMetricsGrid}${fourColumns ? ` ${styles.metricsGridFour}` : ""}`}
+    >
       {metrics.map((metric) => (
         <li key={metric.label} className={detailStyles.strMetricItem}>
           <p className={detailStyles.strMetricValue}>
@@ -52,21 +90,31 @@ export function Evs360ReportBlock({ locale = "ru" }: Evs360ReportBlockProps) {
         </ul>
       </section>
 
-      <div className={detailStyles.strReportShell}>
+      <div className={`${detailStyles.strReportShell} ${styles.reportShell}`}>
         <section className={detailStyles.strReportSection} aria-labelledby="evs-characteristics-heading">
           <header className={detailStyles.strReportSectionHead}>
             <h2 id="evs-characteristics-heading" className={detailStyles.strReportTitle}>
               {copy.characteristicsHeading}
             </h2>
             <span className={detailStyles.strReportTitleRule} aria-hidden />
-            <p className={detailStyles.strReportDeck}>{copy.characteristicsIntro}</p>
+            {copy.characteristicsIntro ? (
+              <p className={detailStyles.strReportDeck}>{copy.characteristicsIntro}</p>
+            ) : null}
           </header>
           <MetricsGrid metrics={copy.characteristicsMetrics} />
-          <ul className={detailStyles.strReportList}>
-            {copy.characteristicsBullets.map((line) => (
-              <li key={line}>{line}</li>
-            ))}
-          </ul>
+          <ServiceClassesBlock
+            heading={copy.serviceClassesHeading}
+            intro={copy.serviceClassesIntro}
+            serviceClassLabel={copy.serviceClassLabel}
+            serviceClasses={copy.serviceClasses}
+          />
+          {copy.characteristicsBullets.length > 0 ? (
+            <ul className={detailStyles.strReportList}>
+              {copy.characteristicsBullets.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          ) : null}
         </section>
 
         <section className={detailStyles.strReportSection} aria-labelledby="evs-schedule-heading">
@@ -77,12 +125,14 @@ export function Evs360ReportBlock({ locale = "ru" }: Evs360ReportBlockProps) {
             <span className={detailStyles.strReportTitleRule} aria-hidden />
             <p className={detailStyles.strReportDeck}>{copy.scheduleIntro}</p>
           </header>
-          {copy.scheduleParagraphs.map((paragraph) => (
-            <p key={paragraph} className={detailStyles.strReportParagraph}>
-              {paragraph}
-            </p>
-          ))}
-          <MetricsGrid metrics={copy.scheduleMetrics} />
+          {copy.scheduleParagraphs.length > 0
+            ? copy.scheduleParagraphs.map((paragraph) => (
+                <p key={paragraph} className={detailStyles.strReportParagraph}>
+                  {paragraph}
+                </p>
+              ))
+            : null}
+          <MetricsGrid metrics={copy.scheduleMetrics} fourColumns />
         </section>
 
         <section className={detailStyles.strReportSection} aria-labelledby="evs-scale-heading">

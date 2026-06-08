@@ -1,4 +1,7 @@
+@use "@/styles/breakpoints" as bp;
 @use "@/styles/numbered-focus-grid" as nfg;
+@use "@/styles/page-shell" as shell;
+@use "@/styles/report-section" as rs;
 
 .aboutRoot {
   --ecrt-navy: #001a2e;
@@ -11,7 +14,6 @@
   width: 100%;
 }
 
-/* ——— Руководство: в стиле светлой части страницы ——— */
 .leadership {
   position: relative;
   width: 100%;
@@ -109,18 +111,13 @@
   white-space: pre-line;
 }
 
-/* ——— Контент под hero ——— */
 .contentShell {
   position: relative;
   width: 100%;
 }
 
 .wrap {
-  position: relative;
-  box-sizing: border-box;
-  width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
-  max-width: none;
-  margin: 0 auto;
+  @include shell.column;
   padding: var(--section-padding-y, 80px) 0;
   display: flex;
   flex-direction: column;
@@ -128,29 +125,19 @@
 }
 
 .sectionHead {
-  text-align: left;
+  @include rs.section-head;
   max-width: min(820px, 100%);
-  margin: 0 0 clamp(28px, 4vw, 40px);
 }
 
 .pillarsHeading {
-  margin: 0 0 clamp(12px, 2vw, 16px);
-  font-size: var(--heading-h2-size);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--ecrt-blue);
+  @include rs.section-title(var(--ecrt-blue));
 }
 
 .sectionSubtitle {
   margin: 0;
-  font-size: clamp(0.95rem, 1.55vw, 1.05rem);
-  line-height: 1.55;
-  font-weight: 500;
-  color: rgba(36, 56, 72, 0.82);
+  @include shell.body-muted;
 }
 
-/* Направления: открытая вёрстка, без рамок и «карточек» — тёплый текст + красные акценты */
 .pillars {
   margin: 0;
 }
@@ -164,12 +151,7 @@
 }
 
 .pillarsHeadRule {
-  display: block;
-  width: var(--section-title-rule-width);
-  height: 3px;
-  margin-top: 14px;
-  border-radius: 2px;
-  background: var(--section-title-rule-gradient);
+  @include rs.section-title-rule;
 }
 
 .pillarGrid {
@@ -194,51 +176,6 @@
   @include nfg.text;
 }
 
-/* ——— История: без «коробки», на всю ширину колонки ——— */
-.storySection {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  overflow: visible;
-}
-
-.storyHeadRow {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(16px, 2.5vw, 22px);
-  margin-bottom: clamp(28px, 4vw, 40px);
-  max-width: min(920px, 100%);
-}
-
-
-.storyTitles {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.storyHeading {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  line-height: 1.28;
-  color: var(--ecrt-blue);
-}
-
-.storyLead {
-  margin: 0 0 clamp(14px, 2vw, 18px);
-  font-size: clamp(0.95rem, 1.55vw, 1.05rem);
-  line-height: 1.52;
-  font-weight: 500;
-  color: rgba(36, 56, 72, 0.85);
-}
-
-/* Номера шагов — только типографика, без круга и без красного акцента */
 .storyBlockIndex {
   flex-shrink: 0;
   align-self: flex-start;
@@ -251,89 +188,7 @@
   color: rgba(0, 26, 46, 0.34);
 }
 
-.storyBlocks {
-  list-style: none;
-  margin: 0 0 clamp(28px, 4vw, 36px);
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.storyBlock {
-  display: flex;
-  gap: clamp(16px, 2.5vw, 22px);
-  align-items: flex-start;
-  padding: clamp(22px, 3.5vw, 32px) 0;
-  margin: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  border-top: 1px solid rgba(0, 47, 85, 0.09);
-
-  &:first-child {
-    border-top: none;
-    padding-top: 0;
-  }
-}
-
-.storyBlockBody {
-  min-width: 0;
-  flex: 1;
-}
-
-.storyBlockTitle {
-  margin: 0 0 10px;
-  font-size: clamp(1rem, 1.65vw, 1.1rem);
-  font-weight: 800;
-  line-height: 1.35;
-  color: var(--ecrt-navy);
-}
-
-.storyBlockText {
-  margin: 0;
-  font-size: clamp(0.95rem, 1.5vw, 1.04rem);
-  line-height: 1.68;
-  font-weight: 400;
-  color: #2c4154;
-}
-
-.storyCtaWrap {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.storyCta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 28px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 14px;
-  color: #fff;
-  text-decoration: none;
-  background: linear-gradient(180deg, var(--ecrt-red) 0%, var(--ecrt-red-deep) 100%);
-  border: 1px solid rgba(226, 26, 26, 0.45);
-  box-shadow:
-    0 6px 20px rgba(196, 21, 21, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    filter 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.05);
-    box-shadow:
-      0 10px 28px rgba(196, 21, 21, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  }
-}
-
-@media (max-width: 880px) {
+@include bp.down(bp.$bp-md) {
   .leadershipInner {
     grid-template-columns: 1fr;
     gap: clamp(24px, 6vw, 32px);
@@ -357,18 +212,9 @@
   .pillarCard:last-child {
     padding-bottom: 0;
   }
-
-  .storyCtaWrap {
-    justify-content: stretch;
-  }
-
-  .storyCta {
-    width: 100%;
-    box-sizing: border-box;
-  }
 }
 
-@media (max-width: 767px) {
+@include bp.down(bp.$bp-sm) {
   .wrap {
     padding: clamp(40px, 10vw, 56px) 0;
     gap: clamp(36px, 8vw, 52px);
@@ -426,21 +272,9 @@
     margin-bottom: clamp(14px, 4vw, 20px);
   }
 
-  .storyHeading {
-    font-size: clamp(1.25rem, 5.2vw, 1.5rem);
-  }
-
-  .storyLead,
   .sectionSubtitle {
     font-size: var(--body-text-size);
     line-height: var(--body-text-line-height);
-  }
-
-  .storyBlock {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: clamp(10px, 3vw, 14px);
-    padding: clamp(18px, 4.5vw, 24px) 0;
   }
 
   .storyBlockIndex {
@@ -449,14 +283,4 @@
     line-height: 1.05;
     padding-top: 2px;
   }
-
-  .storyBlockTitle {
-    font-size: clamp(0.95rem, 4vw, 1.05rem);
-  }
-
-  .storyBlockText {
-    font-size: var(--body-text-size);
-    line-height: var(--body-text-line-height);
-  }
 }
-

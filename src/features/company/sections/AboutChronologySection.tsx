@@ -1,5 +1,3 @@
-"use client";
-
 import { ScrollRevealBlock } from "@/shared/motion/ScrollReveal";
 import siteStyles from "@/shared/ui/SitePageShell/site-page-shell.module.scss";
 

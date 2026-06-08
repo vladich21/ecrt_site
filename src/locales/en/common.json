@@ -26,7 +26,7 @@
     "skipToContent": "Skip to content",
     "mainNav": "Main navigation",
     "languageChoice": "Interface language",
-    "brandHome": "Engineering Centre for Rail Transport - home",
+    "brandHome": "Engineering center of railway transport - home",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "heroVideo": "Background video: engineering and motion, no sound"
@@ -41,8 +41,8 @@
     "contacts": "Contacts"
   },
   "hero": {
-    "lead": "Engineering Centre for\nRail Transport",
-    "title": "New technological\nrailway superstructure",
+    "lead": "We design. We test. We deploy.",
+    "title": "Innovative engineering\nfor technological sovereignty\nin transport",
     "ctaDirections": "Projects",
     "ctaProjects": "Our projects",
     "ctaAbout": "About the centre"
@@ -70,7 +70,7 @@
     "en": "En"
   },
   "header": {
-    "brandLines": "Engineering\nCentre for\nRail\nTransport"
+    "brandLines": "Engineering center of\nrailway transport"
   },
   "cookies": {
     "title": "We use cookies",
@@ -81,7 +81,7 @@
   },
   "footer": {
     "contacts": "Contacts",
-    "company": "Joint Stock Company «Engineering Centre for Rail Transport»",
+    "company": "Joint Stock Company «Engineering center of railway transport»",
     "addressLine1": "121205, Moscow, Skolkovo, Bolshoy Blvd 40",
     "addressLine2": "+7 (495) 909-17-99",
     "sections": "Site sections",

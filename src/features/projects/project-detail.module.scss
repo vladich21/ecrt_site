@@ -1,5 +1,7 @@
+@use "@/styles/breakpoints" as bp;
 @use "@/styles/numbered-focus-grid" as nfg;
 @use "@/styles/project-hero-shell" as ph;
+@use "@/styles/report-section" as rs;
 
 .page {
   width: min(92%, var(--container-max));
@@ -112,10 +114,14 @@
   --str-blue: #002f55;
   --str-red: #e21a1a;
   --str-red-deep: #c41515;
-  margin-top: clamp(52px, 6vw, 72px);
   display: flex;
+  margin: 0;
   flex-direction: column;
   gap: clamp(40px, 5.5vw, 80px);
+}
+
+.pageStrategic .strReportShell {
+  margin-top: clamp(52px, 6vw, 72px);
 }
 
 .strReportShellContinued {
@@ -136,43 +142,24 @@
 }
 
 .strReportSectionHead {
-  text-align: left;
-  margin: 0 0 clamp(22px, 3.5vw, 32px);
+  @include rs.section-head;
 }
 
 .strReportTitle {
-  margin: 0 0 clamp(12px, 2vw, 16px);
-  font-size: var(--heading-h2-size);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--str-blue);
+  @include rs.section-title(var(--str-blue));
 }
 
 .strReportTitleRule {
-  display: block;
-  width: var(--section-title-rule-width);
-  height: 3px;
-  margin-top: 14px;
-  border-radius: 2px;
-  background: var(--section-title-rule-gradient);
+  @include rs.section-title-rule;
 }
 
 .strReportDeck {
-  margin: clamp(14px, 2.2vw, 20px) 0 0;
-  font-size: var(--showcase-body-size);
-  line-height: var(--showcase-body-line-height);
-  font-weight: 500;
-  color: rgba(36, 56, 72, 0.82);
+  @include rs.section-lead;
 }
 
 .strReportParagraph {
-  margin: 0;
+  @include rs.section-body;
   padding: 0;
-  font-size: var(--showcase-body-size);
-  line-height: var(--showcase-body-line-height);
-  font-weight: 500;
-  color: rgba(36, 56, 72, 0.82);
 }
 
 .strReportSection .strReportParagraph:first-of-type {
@@ -180,7 +167,8 @@
 }
 
 .strReportSection .strMetricsGrid + .strReportParagraph,
-.strReportSection .strReportList + .strReportParagraph {
+.strReportSection .strReportList + .strReportParagraph,
+.strReportSection .strReportParagraph + .strReportList {
   margin-top: clamp(14px, 2.5vw, 20px);
 }
 
@@ -328,15 +316,6 @@
   color: var(--str-navy);
 }
 
-.strPresentationNote {
-  margin: clamp(8px, 2vw, 16px) 0 0;
-  padding-top: clamp(20px, 3vw, 28px);
-  border-top: 1px solid rgba(0, 47, 85, 0.08);
-  font-size: 14px;
-  line-height: 1.5;
-  color: #6a7985;
-}
-
 @media (max-width: 880px) {
   .strFocusGrid {
     @include nfg.down-single-column;
@@ -394,6 +373,47 @@
   @include ph.media-shell;
 }
 
+.evsHeroMediaPanorama {
+  @include ph.media-shell-flat;
+  --panorama-x: 74%;
+  --panorama-shift-y: 80px;
+  /* Ширина viewport, на которой зафиксирован кадр панорамы (масштаб и позиция поезда) */
+  --panorama-freeze-width: 1650px;
+
+  .heroFillImgPanorama {
+    object-fit: cover;
+    object-position: var(--panorama-x) center;
+    /* next/image задаёт top: 0 инлайном */
+    top: var(--panorama-shift-y) !important;
+  }
+}
+
+@include bp.down(1109px) {
+  .evsHeroMediaPanorama {
+    --panorama-shift-y: 50px;
+  }
+}
+
+/* ≥1650px: тот же кадр, что при 1650px — фиксированная ширина по центру, без пересчёта cover */
+@include bp.up(1650px) {
+  .pageEvs .evsHero:has(.evsHeroMediaPanorama) {
+    height: var(--project-hero-max-height);
+    min-height: var(--project-hero-max-height);
+    max-height: var(--project-hero-max-height);
+  }
+
+  .evsHeroMediaPanorama > span {
+    inset: auto;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: var(--panorama-freeze-width);
+    height: 100% !important;
+  }
+}
+
 .evsHeroGradient {
   @include ph.gradient;
 }
@@ -442,9 +462,19 @@
   color: rgba(232, 242, 255, 0.96);
 }
 
-@media (max-width: 768px) {
+@include bp.down(bp.$bp-sm) {
   .pageEvs .evsHero {
     min-height: max(var(--project-hero-min-height), 72vw);
+  }
+
+  .evsHeroMediaPanorama {
+    --panorama-x: 83%;
+    --panorama-shift-y: 70px;
+
+    > span {
+      left: -14%;
+      width: 118%;
+    }
   }
 
   .pageEvs .evsHeroContent {
@@ -457,11 +487,4 @@
     font-size: clamp(0.875rem, 3.4vw, 1rem);
     line-height: 1.55;
   }
-}
-
-/* Светлый блок «Математическое моделирование» на странице Путь V2.5 */
-.trackModelingBand {
-  margin-top: clamp(36px, 5vw, 52px);
-  padding-top: clamp(28px, 4vw, 44px);
-  border-top: 1px solid rgba(0, 47, 85, 0.1);
 }

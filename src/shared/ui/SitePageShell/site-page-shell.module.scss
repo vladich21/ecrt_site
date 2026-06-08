@@ -1,18 +1,14 @@
+@use "@/styles/breakpoints" as bp;
+@use "@/styles/page-shell" as shell;
+
 /*
- * Site page shell — иерархия отступов:
- *
- * .page        — только колонка (ширина + центрирование), без вертикальных padding
- * .homePage     — вертикальные отступы секции на главной (единственный источник)
- * .sectionOpen  — секция внутри shell, без своих padding (контент идёт в .block1268)
- * .block1268     — внутренняя ширина контента секции
+ * SitePageShell — колонка страницы и секции главной / about / projects.
+ * .page — только ширина; вертикальные отступы задаёт .homePage или секция.
  */
 
 .page {
+  @include shell.column;
   position: relative;
-  box-sizing: border-box;
-  width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
-  max-width: none;
-  margin: 0 auto;
   padding: 0;
 }
 
@@ -34,11 +30,9 @@
 }
 
 .chronologyInner {
+  @include shell.column;
   position: relative;
   z-index: 1;
-  box-sizing: border-box;
-  width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
-  margin: 0 auto;
   padding: 0;
 }
 
@@ -48,7 +42,7 @@
   text-align: center;
 }
 
-.chronologyIntro .chronologyTitle {
+.chronologyTitle {
   margin: 0 auto;
   font-size: var(--heading-h2-size);
   font-weight: 700;
@@ -68,9 +62,9 @@
 }
 
 .block1268 {
+  width: 100%;
   max-width: none;
   margin: 0 auto;
-  width: 100%;
   box-sizing: border-box;
   padding: 0;
 }
@@ -112,7 +106,7 @@
   background: var(--section-title-rule-gradient);
 }
 
-@media (max-width: 768px) {
+@include bp.down(bp.$bp-sm) {
   .homePage {
     --shell-section-y: clamp(40px, 7vw, 56px);
   }
@@ -127,7 +121,7 @@
     text-align: left;
   }
 
-  .chronologyIntro .chronologyTitle {
+  .chronologyTitle {
     text-align: left;
   }
 
@@ -148,7 +142,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@include bp.down(bp.$bp-xs) {
   .homePage {
     --shell-section-y: clamp(32px, 6vw, 48px);
   }

@@ -1,7 +1,6 @@
+import { getCopy, localePathPrefix } from "@/content/i18n";
 import type { ProjectDetailLocale } from "@/features/projects/project-detail-locale";
 import { projectDetailPath } from "@/features/projects/project-detail-locale";
-import commonEn from "@/locales/en/common.json";
-import commonRu from "@/locales/ru/common.json";
 
 type BreadcrumbJsonLdProps = {
   baseUrl: string;
@@ -16,10 +15,10 @@ export function ProjectBreadcrumbJsonLd({
   projectName,
   locale = "ru",
 }: BreadcrumbJsonLdProps) {
-  const commonCopy = locale === "en" ? commonEn : commonRu;
+  const commonCopy = getCopy("common", locale);
   const homeLabel = commonCopy.breadcrumbs.home;
   const projectsLabel = commonCopy.breadcrumbs.projects;
-  const projectsPath = locale === "en" ? "/en/projects" : "/projects";
+  const projectsPath = `${localePathPrefix(locale)}/projects`;
   const projectPath = projectDetailPath(projectSlug, locale);
 
   const data = {
@@ -30,7 +29,7 @@ export function ProjectBreadcrumbJsonLd({
         "@type": "ListItem",
         position: 1,
         name: homeLabel,
-        item: `${baseUrl}${locale === "en" ? "/en" : "/"}`,
+        item: `${baseUrl}${localePathPrefix(locale) || "/"}`,
       },
       {
         "@type": "ListItem",

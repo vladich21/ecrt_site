@@ -8,7 +8,7 @@ export const PAGE_SEO = {
     en: {
       title: "ECRT — Railway Engineering | ECRT",
       description:
-        "Engineering Centre for Rail Transport: EVS-360 high-speed train, Moscow–Saint Petersburg HSR, catenary, track and railway infrastructure R&D in Russia.",
+        "Engineering center of railway transport: EVS-360 high-speed train, Moscow–Saint Petersburg HSR, catenary, track and railway infrastructure R&D in Russia.",
     },
   },
   about: {

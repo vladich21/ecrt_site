@@ -1,28 +1,20 @@
-"use client";
-
-import purchaseEn from "@/locales/en/purchase.json";
-import purchaseRu from "@/locales/ru/purchase.json";
 import purchaseHeroImage from "@/assets/presentation/закупки-hero1.webp";
+import { getCopy, pageLangAttr, type Locale } from "@/content/i18n";
 import { PageHero } from "@/shared/ui/PageHero/PageHero";
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
 import styles from "./purchase-page.module.scss";
 
-type Locale = "ru" | "en";
-
-type PurchaseCopy = typeof purchaseRu;
-
 export function PurchasePageView({ locale = "ru" }: { locale?: Locale }) {
-  const copy: PurchaseCopy = locale === "en" ? purchaseEn : purchaseRu;
+  const copy = getCopy("purchase", locale);
 
   return (
-    <div className={styles.root} lang={locale === "en" ? "en" : undefined}>
+    <div className={styles.root} lang={pageLangAttr(locale)}>
       <PageHero
         image={purchaseHeroImage}
         title={copy.hero.title}
         lead={copy.hero.lead}
         headingId="purchase-hero-heading"
-        animateCopy
       />
 
       <div className={styles.page}>

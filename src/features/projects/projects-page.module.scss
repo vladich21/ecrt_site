@@ -1,3 +1,7 @@
+@use "@/styles/breakpoints" as bp;
+@use "@/styles/page-shell" as shell;
+@use "@/styles/report-section" as rs;
+
 .projectsRoot {
   --ecrt-blue: #002f55;
   --ecrt-navy: #001a2e;
@@ -17,10 +21,7 @@
 }
 
 .wrap {
-  box-sizing: border-box;
-  width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
-  max-width: none;
-  margin: 0 auto;
+  @include shell.column;
   padding: clamp(48px, 8vw, 100px) 0 var(--section-padding-y, 80px);
   display: flex;
   flex-direction: column;
@@ -35,84 +36,41 @@
   padding-bottom: clamp(8px, 1.5vw, 16px);
 }
 
+.sectionHead {
+  @include rs.section-head;
+  max-width: min(820px, 100%);
+}
+
 .directionsIntro.sectionHead {
   max-width: 100%;
   width: 100%;
-  margin: 0 0 clamp(14px, 2vw, 80px);
+  margin-bottom: clamp(14px, 2vw, 80px);
 }
 
 .directionsPageTitle {
-  margin: 0 0 clamp(12px, 2vw, 16px);
-  font-size: var(--heading-h2-size);
-  font-weight: 800;
+  @include rs.section-title(var(--ecrt-blue));
   letter-spacing: 0.02em;
   line-height: 1.2;
-  color: var(--ecrt-blue);
 }
 
-/* То же шкало, что заголовок направлений — блок витрины «Основные проекты» на /projects */
 .projectsShowcaseTitle {
   margin: 0;
   max-width: min(28ch, 100%);
-  font-size: var(--heading-h2-size);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  @include rs.section-title(var(--ecrt-blue));
   text-wrap: balance;
-  color: var(--ecrt-blue);
 }
 
 .directionsLead {
   margin: clamp(8px, 1.6vw, 14px) 0 0;
   max-width: none;
-  font-size: clamp(0.93rem, 1.72vw, 1.035rem);
-  line-height: 1.62;
-  font-weight: 500;
-  color: rgba(0, 26, 46, 0.82);
-}
-
-.sectionHead {
-  max-width: min(820px, 100%);
-  margin: 0 0 clamp(22px, 3.5vw, 32px);
-}
-
-.sectionTitle {
-  margin: 0 0 clamp(12px, 2vw, 16px);
-  font-size: var(--heading-h2-size);
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-  color: var(--ecrt-blue);
+  @include shell.body-muted;
 }
 
 .sectionRule {
-  display: block;
-  width: var(--section-title-rule-width);
-  height: 3px;
-  margin-top: 14px;
-  border-radius: 2px;
-  background: var(--section-title-rule-gradient);
+  @include rs.section-title-rule;
 }
 
-.showcaseLead {
-  margin: 0 0 clamp(10px, 1.6vw, 16px);
-  font-size: clamp(0.98rem, 1.6vw, 1.06rem);
-  line-height: 1.62;
-  font-weight: 500;
-  color: #3a3530;
-  max-width: min(65ch, 100%);
-}
-
-.showcaseSection {
-  margin: 0;
-}
-
-.showcaseList {
-  margin: 0;
-  padding: 0;
-}
-
-@media (max-width: 880px) {
+@include bp.down(bp.$bp-md) {
   .directionsPageTitle {
     font-size: var(--heading-h2-size);
   }
@@ -127,7 +85,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@include bp.down(bp.$bp-sm) {
   .wrap {
     padding-top: clamp(28px, 6vw, 40px);
     padding-bottom: clamp(40px, 8vw, 56px);
@@ -139,13 +97,10 @@
   }
 }
 
-@media (max-width: 480px) {
+@include bp.down(bp.$bp-xs) {
   .wrap {
     padding-top: clamp(24px, 5vw, 32px);
     padding-bottom: clamp(32px, 7vw, 48px);
     gap: clamp(28px, 6vw, 40px);
   }
 }
-
-
-

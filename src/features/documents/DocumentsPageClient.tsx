@@ -2,61 +2,27 @@
 
 import { useMemo, useState } from "react";
 
+import { pageLangAttr, type Locale } from "@/content/i18n/locale";
 import type { DocumentGroupId, DocumentSectionId, SiteDocumentLink } from "@/data/ecrtSite";
 import { documentSectionOrder } from "@/data/ecrtSite";
 import documentsCopyEn from "@/locales/en/documents.json";
 import documentsCopyRu from "@/locales/ru/documents.json";
 
-import { CertificatePreviewGrid } from "./CertificatePreviewGrid";
+import { CertificateCarousel } from "./CertificateCarousel";
 import { DocumentFileLink } from "./DocumentFileLink";
-import { certificatePreviews, hasCertificatePreview } from "./documentCertificatePreviews";
+import {
+  en15085BundleUrl,
+  en15085CertificateSlides,
+  iso9001BundleUrl,
+  iso9001CertificateSlides,
+} from "./qualityCertificateAssets";
 
 import tabStyles from "@/shared/ui/StageTabs/stage-tabs.module.scss";
 
 import styles from "./documents-page.module.scss";
 
-type Locale = "ru" | "en";
+type DocumentsCopy = typeof documentsCopyRu | typeof documentsCopyEn;
 
-type QualityGroupCopy = {
-  title: string;
-};
-
-type DocumentsCopy = {
-  title: string;
-  intro: string;
-  linkSuffixA11y?: string;
-  officialNote?: string;
-  ruOriginalLabel?: string;
-  openPdfHint: string;
-  tabListLabel: string;
-  tabs: {
-    anticorruption: {
-      label: string;
-      paragraphs: string[];
-      contactPhoneLabel: string;
-      contactPhone: string;
-      contactEmailLabel: string;
-      contactEmail: string;
-      contractorNote: string;
-    };
-    quality: {
-      label: string;
-      partnerIntro?: string;
-      groups: Record<"policies" | "certificates", QualityGroupCopy>;
-    };
-    labor: {
-      label: string;
-      lead: string;
-      groups: Record<"sout", QualityGroupCopy>;
-    };
-    hotline: {
-      label: string;
-      items: string[];
-    };
-  };
-};
-
-const qualityGroupOrder = ["policies", "certificates"] as const;
 const laborGroupOrder = ["sout"] as const;
 
 type DocumentsPageClientProps = {
@@ -83,8 +49,8 @@ function phoneHref(phone: string) {
 
 export function DocumentsPageClient({ locale = "ru", documents: docList }: DocumentsPageClientProps) {
   const isEn = locale === "en";
-  const copy = (isEn ? documentsCopyEn : documentsCopyRu) as DocumentsCopy;
-  const pageLang = isEn ? "en" : undefined;
+  const copy: DocumentsCopy = isEn ? documentsCopyEn : documentsCopyRu;
+  const pageLang = pageLangAttr(locale);
 
   const [activeSectionId, setActiveSectionId] = useState<DocumentSectionId>(documentSectionOrder[0]);
 
@@ -97,14 +63,12 @@ export function DocumentsPageClient({ locale = "ru", documents: docList }: Docum
     () => anticorruptionDocs.filter((doc) => doc.placement === "afterContractorNote"),
     [anticorruptionDocs],
   );
-  const qualityDocs = useMemo(() => docsForSection(docList, "quality"), [docList]);
   const laborDocs = useMemo(() => docsForSection(docList, "labor"), [docList]);
 
   const renderDocLink = (doc: SiteDocumentLink) => {
     const primary = isEn ? doc.nameEn : doc.nameRu;
     const a11ySuffix = copy.linkSuffixA11y ?? "";
-    const secondaryLabel =
-      isEn && copy.ruOriginalLabel ? `${copy.ruOriginalLabel}: ${doc.nameRu}` : null;
+    const secondaryLabel = isEn ? `${documentsCopyEn.ruOriginalLabel}: ${doc.nameRu}` : null;
 
     return (
       <DocumentFileLink
@@ -122,46 +86,74 @@ export function DocumentsPageClient({ locale = "ru", documents: docList }: Docum
     <div className={styles.docFileList}>{items.map(renderDocLink)}</div>
   );
 
+  const renderPolicyBlock = (
+    policy: {
+      title: string;
+      intro: string;
+      commitmentIntro?: string;
+      items: readonly string[];
+    },
+    key: string,
+  ) => (
+    <section key={key} className={styles.qualityPolicy}>
+      <h3 className={styles.qualityPolicyTitle}>{policy.title}</h3>
+      <p className={styles.stagePanelText}>{policy.intro}</p>
+      {policy.commitmentIntro ? <p className={styles.stagePanelText}>{policy.commitmentIntro}</p> : null}
+      <ol className={styles.qualityPolicyList}>
+        {policy.items.map((item) => (
+          <li key={item.slice(0, 48)} className={styles.qualityPolicyItem}>
+            {item}
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+
+  const renderQualityDownloadLink = (url: string, label: string) =>
+    renderDocLink({
+      url,
+      nameRu: label,
+      nameEn: label,
+      section: "quality",
+    });
+
   const renderQualityPanel = () => {
     const tabCopy = copy.tabs.quality;
 
     return (
-      <div className={styles.stagePanelBody}>
-        {tabCopy.partnerIntro ? (
-          <p className={styles.stagePanelLead}>{tabCopy.partnerIntro}</p>
-        ) : null}
-        {qualityGroupOrder.map((groupId) => {
-          const items = docsForGroup(qualityDocs, "quality", groupId);
-          if (items.length === 0) return null;
+      <div className={`${styles.stagePanelBody} ${styles.qualityPanelBody}`}>
+        <p className={styles.stagePanelLead}>{tabCopy.lead}</p>
 
-          if (groupId === "certificates") {
-            const previewItems = certificatePreviews
-              .map((preview) => items.find((doc) => doc.url === preview.pdfUrl))
-              .filter((doc): doc is SiteDocumentLink => doc !== undefined);
-            const pdfOnlyItems = items.filter((doc) => !hasCertificatePreview(doc.url));
+        {renderPolicyBlock(tabCopy.policies.quality, "quality-policy")}
+        {renderPolicyBlock(tabCopy.policies.safety, "safety-policy")}
 
-            return (
-              <div key={groupId} className={styles.docGroup}>
-                <h3 className={styles.docGroupTitle}>{tabCopy.groups[groupId].title}</h3>
-                {pdfOnlyItems.length > 0 ? renderDocList(pdfOnlyItems) : null}
-                {previewItems.length > 0 ? (
-                  <CertificatePreviewGrid
-                    items={previewItems}
-                    locale={locale}
-                    openPdfHint={copy.openPdfHint}
-                  />
-                ) : null}
-              </div>
-            );
-          }
+        <div className={styles.docGroup}>
+          <h3 className={styles.docGroupTitle}>{tabCopy.certificates.title}</h3>
 
-          return (
-            <div key={groupId} className={styles.docGroup}>
-              <h3 className={styles.docGroupTitle}>{tabCopy.groups[groupId].title}</h3>
-              {renderDocList(items)}
+          <div className={styles.certSubsection}>
+            <h4 className={styles.certSubsectionTitle}>{tabCopy.certificates.iso9001.title}</h4>
+            <CertificateCarousel
+              slides={iso9001CertificateSlides}
+              locale={locale}
+              ui={tabCopy.certificates.carousel}
+            />
+            <div className={styles.docFileList}>
+              {renderQualityDownloadLink(iso9001BundleUrl, tabCopy.certificates.iso9001.downloadLabel)}
             </div>
-          );
-        })}
+          </div>
+
+          <div className={styles.certSubsection}>
+            <h4 className={styles.certSubsectionTitle}>{tabCopy.certificates.en15085.title}</h4>
+            <CertificateCarousel
+              slides={en15085CertificateSlides}
+              locale={locale}
+              ui={tabCopy.certificates.carousel}
+            />
+            <div className={styles.docFileList}>
+              {renderQualityDownloadLink(en15085BundleUrl, tabCopy.certificates.en15085.downloadLabel)}
+            </div>
+          </div>
+        </div>
       </div>
     );
   };
@@ -223,16 +215,30 @@ export function DocumentsPageClient({ locale = "ru", documents: docList }: Docum
 
     return (
       <div className={styles.stagePanelBody}>
-        <ol className={styles.hotlineList}>
-          {tabCopy.items.map((item, itemIndex) => (
-            <li key={itemIndex} className={styles.hotlineItem}>
-              <span className={styles.hotlineIndex} aria-hidden>
-                {itemIndex + 1}
-              </span>
-              <p className={styles.stagePanelText}>{item}</p>
-            </li>
-          ))}
-        </ol>
+        {tabCopy.paragraphs.map((paragraph) => (
+          <p key={paragraph.slice(0, 48)} className={styles.stagePanelText}>
+            {paragraph}
+          </p>
+        ))}
+
+        <p className={styles.stagePanelText}>{tabCopy.contactIntro}</p>
+        <p className={styles.stagePanelText}>
+          {tabCopy.contactPhoneLabel}:{" "}
+          <a className={styles.inlineLink} href={phoneHref(tabCopy.contactPhone)}>
+            {tabCopy.contactPhone}
+          </a>
+          <br />
+          {tabCopy.contactEmailLabel}:{" "}
+          <a className={styles.inlineLink} href={`mailto:${tabCopy.contactEmail}`}>
+            {tabCopy.contactEmail}
+          </a>
+          <br />
+          {tabCopy.postalLabel}: {tabCopy.postalMark}
+          <br />
+          {tabCopy.postalAddress}
+        </p>
+
+        <p className={styles.stagePanelNote}>{tabCopy.submissionNote}</p>
       </div>
     );
   };
@@ -258,7 +264,7 @@ export function DocumentsPageClient({ locale = "ru", documents: docList }: Docum
         <header className={styles.pageIntro}>
           <h1 className={styles.pageTitle}>{copy.title}</h1>
           <p className={styles.sectionLead}>{copy.intro}</p>
-          {isEn && copy.officialNote ? <p className={styles.note}>{copy.officialNote}</p> : null}
+          {isEn ? <p className={styles.note}>{documentsCopyEn.officialNote}</p> : null}
         </header>
 
         <div className={styles.stageSwitcher}>

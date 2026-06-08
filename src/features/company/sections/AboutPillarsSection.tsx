@@ -1,5 +1,3 @@
-"use client";
-
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
 import type { AboutCopy } from "../about-types";

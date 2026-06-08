@@ -34,7 +34,7 @@
   /* Hero на /project/*: высота от ширины (16:9), без ручных clamp по брейкпоинтам */
   --project-hero-aspect-ratio: 16 / 9;
   --project-hero-min-height: 360px;
-  --project-hero-max-height: 520px;
+  --project-hero-max-height: 620px;
   --project-hero-height: clamp(
     var(--project-hero-min-height),
     56.25vw,
@@ -153,15 +153,15 @@ a {
 
 @media (max-width: 768px) {
   :root {
-    --heading-h1-size: 24px;
-    --body-text-size: 14px;
+    --heading-h1-size: 1.5rem;
+    --body-text-size: 0.875rem;
     --body-text-line-height: 1.6;
     --showcase-body-line-height: 1.6;
     --showcase-emphasis-line-height: 1.6;
   }
 
   :where(p) {
-    font-size: 14px !important;
+    font-size: 0.875rem !important;
   }
 }
 

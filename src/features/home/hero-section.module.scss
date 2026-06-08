@@ -28,7 +28,7 @@
 
 .stage {
   flex: 1 1 auto;
-  min-height: 0;
+  min-height: calc(100svh - var(--hero-clearance));
   position: relative;
   overflow: hidden;
   background: var(--bg);
@@ -101,35 +101,32 @@
 }
 
 .overlay {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  min-height: inherit;
   z-index: 4;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-start;
-  padding: clamp(32px, 6vh, 80px) clamp(24px, 5vw, 64px)
-    clamp(56px, 10vh, 120px);
+  width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter, 16px)));
+  margin-inline: auto;
+  padding: clamp(44px, 7vh, 92px) 0;
   box-sizing: border-box;
 }
 
 .copy {
   width: 100%;
+  max-width: min(760px, 100%);
   display: flex;
   flex-direction: column;
   gap: var(--hero-copy-gap);
 }
 
-.lead {
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.35vw, 18px);
   margin: 0;
-  max-width: var(--hero-lead-max-width);
-  font-family: var(--font-body);
-  font-size: var(--hero-lead-size);
-  font-weight: 700;
-  letter-spacing: 0.015em;
-  line-height: 1.4;
-  color: var(--accent-primary, #e21a1a);
-  white-space: pre-line;
-  text-wrap: balance;
+  max-width: var(--hero-title-max-width, none);
 }
 
 .title {
@@ -145,6 +142,20 @@
   text-shadow:
     0 2px 28px rgba(0, 0, 0, 0.5),
     0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.tagline {
+  margin: 0;
+  max-width: var(--hero-lead-max-width);
+  font-family: var(--font-body);
+  font-size: var(--hero-lead-size);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  color: var(--accent-primary, #e21a1a);
+  white-space: pre-line;
+  text-wrap: balance;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
 }
 
 .actions {
@@ -190,7 +201,7 @@
   padding: var(--hero-cta-padding-y) var(--hero-cta-padding-x);
   border-radius: 999px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: var(--hero-cta-font-size);
   line-height: 1.2;
   color: #fff;
   text-decoration: none;
@@ -340,10 +351,9 @@
   }
 
   .overlay {
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-start;
-    padding: clamp(24px, 4vh, 48px) clamp(20px, 4vw, 40px)
-      clamp(36px, 7vh, 72px);
+    padding: clamp(36px, 6vh, 72px) 0;
   }
 
   .copy {
@@ -359,8 +369,8 @@
     display: none;
   }
 
-  .copy :where(p:not(.lead)) {
-    font-size: 13px !important;
+  .copy :where(p:not(.tagline)) {
+    font-size: 0.8125rem !important;
     line-height: 1.32;
   }
 
@@ -411,7 +421,7 @@
   .stage {
     flex: 0 0 auto;
     min-height: calc(100svh - var(--hero-clearance));
-    height: calc(100svh - var(--hero-clearance));
+    height: auto;
   }
 
   .actions {
@@ -434,7 +444,7 @@
     right: auto;
     width: 100%;
     min-width: 0;
-    height: calc(100svh - var(--hero-clearance));
+    height: 100%;
     transform: translateZ(0);
     backface-visibility: hidden;
     object-fit: cover;
@@ -466,7 +476,8 @@
 
   .overlay {
     align-items: flex-end;
-    padding-inline: clamp(14px, 3.5vw, 20px);
+    min-height: calc(100svh - var(--hero-clearance));
+    width: min(var(--layout-max, 1560px), calc(100% - 2 * clamp(14px, 3.5vw, 20px)));
     padding-bottom: clamp(16px, 3.5vh, 28px);
   }
 
@@ -501,7 +512,7 @@
     );
   }
 
-  .lead,
+  .tagline,
   .title {
     text-shadow:
       0 2px 18px rgba(0, 0, 0, 0.65),
@@ -562,7 +573,7 @@
   .stage {
     flex: 0 0 auto;
     min-height: calc(100svh - var(--hero-clearance));
-    height: calc(100svh - var(--hero-clearance));
+    height: auto;
   }
 
   .title {
@@ -596,13 +607,13 @@
 }
 
 @media (max-width: 420px) {
-  .copy :where(p:not(.lead)) {
-    font-size: 12px !important;
+  .copy :where(p:not(.tagline)) {
+    font-size: 0.75rem !important;
     line-height: 1.28;
   }
 
   .overlay {
-    padding-inline: clamp(12px, 3vw, 16px);
+    width: min(var(--layout-max, 1560px), calc(100% - 2 * clamp(12px, 3vw, 16px)));
     padding-bottom: clamp(12px, 2.5vh, 20px);
   }
 

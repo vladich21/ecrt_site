@@ -19,7 +19,6 @@ export function resolveProjectTitle(slug: string, locale: ProjectDetailLocale = 
   return resolveLocalizedProjectTitle(slug, locale)
 }
 
-/** Страницы с полноширинным темным hero: крошки на скриме, светлый текст (legacy Tilda). */
 export function breadcrumbsOverDarkHero(pathname: string): boolean {
   const path = pathname.replace(/\/$/, '') || '/'
   if (path === '/') return false
@@ -33,7 +32,6 @@ export function breadcrumbsOverDarkHero(pathname: string): boolean {
   return /^\/project\/[^/]+$/.test(path)
 }
 
-/** Страницы без hero-картинки: крошки поверх контента, как на /careers, но с обычным цветом текста. */
 export function breadcrumbsOverlayLayout(pathname: string): boolean {
   const path = pathname.replace(/\/$/, '') || '/'
   const paths = ['/documents', '/contacts', '/privacy-policy'] as const
@@ -41,13 +39,11 @@ export function breadcrumbsOverlayLayout(pathname: string): boolean {
   return /^\/projects\/direction\/[^/]+$/.test(path)
 }
 
-/** На экранах ≤1024px последнюю крошку скрываем — полное название уже в h1 (направления деятельности). */
 export function breadcrumbsHideTrailingCurrent(pathname: string): boolean {
   const path = pathname.replace(/\/$/, '') || '/'
   return /^\/projects\/direction\/[^/]+$/.test(path)
 }
 
-/** Крошки для известных маршрутов; на главной - пусто. */
 export function getBreadcrumbEntries(
   pathname: string,
   t: Translate,

@@ -112,8 +112,10 @@ export function HeroSection({
         <div className={heroStyles.scrim} aria-hidden />
         <div className={heroStyles.overlay}>
           <aside className={heroStyles.copy}>
-            <p className={heroStyles.lead}>{commonCopy.hero.lead}</p>
-            <h1 className={heroStyles.title}>{commonCopy.hero.title}</h1>
+            <div className={heroStyles.headline}>
+              <h1 className={heroStyles.title}>{commonCopy.hero.title}</h1>
+              <p className={heroStyles.tagline}>{commonCopy.hero.lead}</p>
+            </div>
             <div className={heroStyles.actions}>
               <Link className={heroStyles.cta} href={`${pathPrefix}/projects`}>
                 {commonCopy.hero.ctaProjects}

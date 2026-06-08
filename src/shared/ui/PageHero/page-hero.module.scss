@@ -3,18 +3,16 @@
 
   position: relative;
   isolation: isolate;
-  height: var(--page-hero-height);
-  max-height: var(--page-hero-max-height);
+  height: auto;
   min-height: var(--page-hero-height);
   overflow: hidden;
   background: var(--page-hero-bg);
 }
 
 .stage {
-  position: absolute;
-  inset: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
+  min-height: inherit;
   overflow: hidden;
 }
 
@@ -56,8 +54,8 @@
 }
 
 .overlay {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  min-height: inherit;
   z-index: 4;
   display: flex;
   align-items: center;

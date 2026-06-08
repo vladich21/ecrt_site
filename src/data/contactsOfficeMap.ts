@@ -1,4 +1,3 @@
-/** Координаты дома 40 на Большом бульваре, Сколково (Яндекс Карты, объект дома). */
 export const officeMapPoint = {
   latitude: 55.695261,
   longitude: 37.347135,
@@ -19,7 +18,6 @@ function mapPointParams(): URLSearchParams {
   });
 }
 
-/** Виджет: только метка, без карточки организации. */
 export function buildYandexMapEmbedSrc(locale: "ru" | "en"): string {
   const params = mapPointParams();
   params.set("lang", mapLang(locale));

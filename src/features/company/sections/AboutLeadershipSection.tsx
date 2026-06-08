@@ -1,5 +1,3 @@
-"use client";
-
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 

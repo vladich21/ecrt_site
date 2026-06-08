@@ -75,9 +75,9 @@
     "mapAlt": "Infographic of the first high-speed main line route: stations and design-speed segments.",
     "facts": [
       {
-        "num": "400",
-        "unit": "km/h max",
-        "title": "Demonstration speed",
+        "num": "360",
+        "unit": "km/h",
+        "title": "Operating speed",
         "body": "Aerodynamic profile, a domestically produced traction motor, and unique components designed for climates with large temperature swings."
       },
       {
@@ -87,10 +87,10 @@
         "body": "New track on a concrete subgrade and modernisation of sections in Moscow and Saint Petersburg."
       },
       {
-        "num": "2:15",
-        "unit": "city-to-city",
-        "title": "Moscow ↔ St Petersburg",
-        "body": "More than 2 hours saved in journey time compared with the Sapsan EMU."
+        "num": "2028",
+        "unit": "year",
+        "title": "Train readiness",
+        "body": "The first two prototype trains will be ready in 2028. A total of 43 high-speed trainsets will be delivered by 2030."
       }
     ]
   },

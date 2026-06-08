@@ -1,6 +1,6 @@
 {
   "title": "Documents",
-  "intro": "Official documents, policies, and materials of JSC Rail Transport Engineering Centre.",
+  "intro": "Official documents, policies, and materials of JSC Engineering center of railway transport.",
   "officialNote": "Bodies of most filings are legally issued in Russian. English wording here is provided for clarity; bilingual or English PDF editions are labelled in filenames where available.",
   "ruOriginalLabel": "Official filing title (RU)",
   "linkSuffixA11y": " — download PDF",
@@ -10,7 +10,7 @@
     "anticorruption": {
       "label": "Anti-corruption policy",
       "paragraphs": [
-        "All employees of JSC Rail Transport Engineering Centre (the Company) adhere to zero tolerance of corruption in any form. The Company informs personnel about Russian anti-corruption legislation and liability for corruption-related offences, and regularly explains anti-corruption measures applied in the Company.",
+        "All employees of JSC Engineering center of railway transport (the Company) adhere to zero tolerance of corruption in any form. The Company informs personnel about Russian anti-corruption legislation and liability for corruption-related offences, and regularly explains anti-corruption measures applied in the Company.",
         "If you become aware of violations of anti-corruption or information-security requirements by Company employees, attempts to induce corruption-related offences, or other questionable actions by Company employees or counterparties that may indicate such violations, please report them to the authorised anti-corruption officer:"
       ],
       "contactPhoneLabel": "Phone",
@@ -21,12 +21,47 @@
     },
     "quality": {
       "label": "Quality management system",
-      "groups": {
-        "policies": {
-          "title": "Policies"
+      "lead": "The QMS of JSC Engineering center of railway transport is certified to ISO 9001 / GOST R ISO 9001.",
+      "policies": {
+        "quality": {
+          "title": "Quality policy of JSC Engineering center of railway transport",
+          "intro": "In line with Russian Railways' quality management concept, Russian Railways' policy on strategic quality management of procured products, works and services, and ECRT's development strategy through 2030, senior management of JSC Engineering center of railway transport undertakes the following quality commitments:",
+          "items": [
+            "Increase satisfaction of customers and other interested parties by delivering work results that fully meet their requirements and expectations.",
+            "Ensure continuous quality improvement by implementing, maintaining and improving the Company's quality management system and its processes based on GOST R ISO 9001 (ISO 9001), the railway standard ISO 22163 (or the corresponding national standard of the Russian Federation when available), and other applicable customer and regulatory requirements.",
+            "Develop competence and quality-related cooperation among employees, foster corporate culture and a favourable environment, increase staff motivation, and take social and psychological factors into account.",
+            "Maintain long-term mutually beneficial relationships with partners and suppliers to implement joint projects, ensure mutual sustainable development, and ensure that goods, works and services supplied by external providers meet applicable requirements while creating long-term economic value for all interested parties.",
+            "Support risk-based thinking and risk and opportunity management processes to prevent potential nonconformities and use favourable opportunities for development.",
+            "Provide the necessary resources and define staff responsibilities and authority to implement the Quality Policy."
+          ]
         },
-        "certificates": {
-          "title": "Certificates"
+        "safety": {
+          "title": "Safety policy of JSC Engineering center of railway transport",
+          "intro": "JSC Engineering center of railway transport delivers the full cycle of design and operational documentation, software, test support, mandatory conformity assessment, and engineering support for production, operation, maintenance, modification, modernisation and repair of railway rolling stock and railway infrastructure facilities.",
+          "commitmentIntro": "To ensure that products meet technical safety requirements throughout their life cycle, the management of JSC Engineering center of railway transport undertakes the following safety commitments:",
+          "items": [
+            "Develop and provide customers with products and services with a high level of safety based on railway safety rules and internal processes, national and international standards, codes of established practice, impartial assessment, available experience and continuous improvement.",
+            "Ensure compliance with Russian legislation on product safety and transport security, as well as design (including survey), production, installation, commissioning, operation, storage, transportation, sale and disposal processes.",
+            "Ensure the safety of products and related production, operation, storage, transportation, sale and disposal processes where there is no unacceptable risk of harm to the life or health of citizens, property of individuals or legal entities, state or municipal property, the environment, or the life or health of animals and plants."
+          ]
+        }
+      },
+      "certificates": {
+        "title": "Certificates",
+        "iso9001": {
+          "title": "ISO 9001",
+          "downloadLabel": "Download ISO 9001 certificates"
+        },
+        "en15085": {
+          "title": "EN 15085-2",
+          "downloadLabel": "Download EN 15085-2 certificates"
+        },
+        "carousel": {
+          "previous": "Previous certificate",
+          "next": "Next certificate",
+          "carouselLabel": "Certificate viewer",
+          "slideOf": "Certificate {index} of {total}",
+          "openPdfHint": "Open PDF"
         }
       }
     },
@@ -36,12 +71,19 @@
     },
     "hotline": {
       "label": "Hotline",
-      "items": [
-        "The anti-corruption hotline of JSC Rail Transport Engineering Centre enables reporting of corruption facts, including bribery, abuse of office, commercial bribery, or other unlawful use of an employee's position to obtain benefits. Exercising the right to report must not violate the rights and freedoms of others.",
-        "The hotline is operated to ensure proper response to reports of corruption within the Company.",
-        "Reports are accepted by phone at +7 (495) 909-17-99, by email at compliance@ecrt.ru, and by post marked for the authorised anti-corruption officer at: 121205, Moscow, Skolkovo Innovation Centre, 5 Bolshoy Boulevard, floor 5, premises 5.01.",
-        "Email and postal submissions must include the substance of the report and applicant details as required by the Company's hotline procedure. Failure to provide required personal data or comply with submission rules may result in the report being treated as anonymous."
-      ]
+      "paragraphs": [
+        "The anti-corruption hotline of JSC Engineering center of railway transport enables reporting of corruption facts, including bribery, abuse of office, commercial bribery, or other unlawful use of an employee's position to obtain benefits. Exercising the right to report must not violate the rights and freedoms of others.",
+        "The hotline is operated to ensure proper response to reports of corruption within the Company."
+      ],
+      "contactIntro": "Reports are accepted as follows:",
+      "contactPhoneLabel": "Phone",
+      "contactPhone": "+7 (495) 909-17-99",
+      "contactEmailLabel": "Email",
+      "contactEmail": "compliance@ecrt.ru",
+      "postalLabel": "Post",
+      "postalMark": "Mark the envelope for the authorised anti-corruption officer at ECRT",
+      "postalAddress": "121205, Moscow, Skolkovo, 40 Bolshoy Boulevard",
+      "submissionNote": "Email and postal submissions must include the substance of the report and applicant details as required by the Company's hotline procedure. Failure to provide required personal data or comply with submission rules may result in the report being treated as anonymous."
     }
   }
 }

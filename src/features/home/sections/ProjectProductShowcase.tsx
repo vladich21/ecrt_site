@@ -166,7 +166,7 @@ export function ProjectProductShowcase({
               alt=""
               fill
               sizes="(max-width: 480px) calc(100vw - 32px), (max-width: 768px) min(100vw, 420px), (max-width: 1200px) 42vw, 760px"
-              quality={75}
+              quality={slide.id === "low-intensity" ? 90 : 75}
               loading="lazy"
             />
           </span>

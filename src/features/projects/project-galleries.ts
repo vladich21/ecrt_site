@@ -1,5 +1,5 @@
 import img2 from "@/assets/presentation/img-2.webp";
-import ks1 from "@/assets/presentation/кс-1.webp";
+import ks1 from "@/assets/presentation/ks-test.webp";
 import ks2 from "@/assets/presentation/кс-2.webp";
 import ks3 from "@/assets/presentation/кс-3.webp";
 import ks4 from "@/assets/presentation/кс-4.webp";

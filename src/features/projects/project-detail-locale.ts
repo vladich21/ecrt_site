@@ -1,3 +1,4 @@
+import type { Locale } from "@/content/i18n";
 import projectDetailEn from "@/locales/en/project-detail.json";
 import projectDetailRu from "@/locales/ru/project-detail.json";
 import { getStrategicProjectBySlug } from "@/data/ecrtSite";
@@ -7,6 +8,10 @@ import {
   evs360CharacteristicsHeading,
   evs360CharacteristicsIntro,
   evs360CharacteristicsMetrics,
+  evs360ServiceClassLabel,
+  evs360ServiceClasses,
+  evs360ServiceClassesHeading,
+  evs360ServiceClassesIntro,
   evs360FocusBullets,
   evs360FocusHeading,
   evs360FocusIntro,
@@ -21,7 +26,7 @@ import {
 } from "@/data/evs360Status";
 import type { ProjectReportSection } from "./ProjectReportSections";
 
-export type ProjectDetailLocale = "ru" | "en";
+export type ProjectDetailLocale = Locale;
 
 export type ProjectDetailUi = typeof projectDetailRu.ui;
 export type ProjectDetailSliderUi = typeof projectDetailRu.slider;
@@ -61,6 +66,10 @@ export type Evs360MetricCopy = {
   label: string;
 };
 
+export type Evs360ServiceClassCopy = {
+  name: string;
+};
+
 export type Evs360ReportCopy = {
   focusHeading: string;
   focusIntro: string;
@@ -69,6 +78,10 @@ export type Evs360ReportCopy = {
   characteristicsIntro: string;
   characteristicsBullets: string[];
   characteristicsMetrics: Evs360MetricCopy[];
+  serviceClassesHeading: string;
+  serviceClassesIntro: string;
+  serviceClassLabel: string;
+  serviceClasses: Evs360ServiceClassCopy[];
   scheduleHeading: string;
   scheduleIntro: string;
   scheduleParagraphs: string[];
@@ -109,8 +122,10 @@ export type TrackFasteningCalculationsCopy = {
   directions: TrackV25ModelingBlockCopy[];
 };
 
-function detailBundle(locale: ProjectDetailLocale) {
-  return locale === "en" ? projectDetailEn : projectDetailRu;
+function detailBundle<L extends ProjectDetailLocale>(locale: L) {
+  return (locale === "en" ? projectDetailEn : projectDetailRu) as L extends "en"
+    ? typeof projectDetailEn
+    : typeof projectDetailRu;
 }
 
 export function projectDetailPath(slug: string, locale: ProjectDetailLocale): string {
@@ -155,7 +170,7 @@ export function getLocalizedCatalogProject(
   locale: ProjectDetailLocale,
 ): LocalizedCatalogProject | null {
   if (locale === "en") {
-    const catalog = projectDetailEn.catalog as Record<string, LocalizedCatalogProject | undefined>;
+    const catalog = detailBundle("en").catalog as Record<string, LocalizedCatalogProject | undefined>;
     return catalog[slug] ?? null;
   }
 
@@ -180,7 +195,7 @@ export function getLocalizedStrategicProject(
   locale: ProjectDetailLocale,
 ): LocalizedStrategicProject | null {
   if (locale === "en") {
-    const strategic = projectDetailEn.strategic as Record<string, LocalizedStrategicProject | undefined>;
+    const strategic = detailBundle("en").strategic as Record<string, LocalizedStrategicProject | undefined>;
     return strategic[slug] ?? null;
   }
 
@@ -201,7 +216,7 @@ export function getLocalizedStrategicProject(
 
 export function getEvs360ReportCopy(locale: ProjectDetailLocale): Evs360ReportCopy {
   if (locale === "en") {
-    return projectDetailEn.reports["evs-360"] as Evs360ReportCopy;
+    return detailBundle("en").reports["evs-360"] as Evs360ReportCopy;
   }
 
   return {
@@ -212,6 +227,10 @@ export function getEvs360ReportCopy(locale: ProjectDetailLocale): Evs360ReportCo
     characteristicsIntro: evs360CharacteristicsIntro,
     characteristicsBullets: [...evs360CharacteristicsBullets],
     characteristicsMetrics: [...evs360CharacteristicsMetrics],
+    serviceClassesHeading: evs360ServiceClassesHeading,
+    serviceClassesIntro: evs360ServiceClassesIntro,
+    serviceClassLabel: evs360ServiceClassLabel,
+    serviceClasses: [...evs360ServiceClasses],
     scheduleHeading: evs360ScheduleHeading,
     scheduleIntro: evs360ScheduleIntro,
     scheduleParagraphs: [...evs360ScheduleParagraphs],
@@ -225,7 +244,7 @@ export function getEvs360ReportCopy(locale: ProjectDetailLocale): Evs360ReportCo
 
 function reportSections(slug: string, locale: ProjectDetailLocale): ProjectReportSection[] {
   if (locale === "en") {
-    const reports = projectDetailEn.reports as Record<
+    const reports = detailBundle("en").reports as Record<
       string,
       { sections?: ProjectReportSection[] } | Evs360ReportCopy
     >;
@@ -254,7 +273,7 @@ export function getLowIntensityReportSections(
 
 export function getLowIntensityConfigurationAlt(locale: ProjectDetailLocale): string {
   if (locale === "en") {
-    const report = projectDetailEn.reports["project-0009-low-intensity"] as {
+    const report = detailBundle("en").reports["project-0009-low-intensity"] as {
       configurationAlt: string;
     };
     return report.configurationAlt;
@@ -282,14 +301,14 @@ export function getTrackV25ReportSections(
 
 export function getTrackV25FieldCopy(locale: ProjectDetailLocale): TrackV25FieldCopy {
   if (locale === "en") {
-    return projectDetailEn.reports["track-resource-2-5b"].fieldWorks as TrackV25FieldCopy;
+    return detailBundle("en").reports["track-resource-2-5b"].fieldWorks as TrackV25FieldCopy;
   }
   return getRuTrackV25FieldCopy();
 }
 
 export function getTrackV25ModelingCopy(locale: ProjectDetailLocale): TrackV25ModelingCopy {
   if (locale === "en") {
-    return projectDetailEn.reports["track-resource-2-5b"].modeling as TrackV25ModelingCopy;
+    return detailBundle("en").reports["track-resource-2-5b"].modeling as TrackV25ModelingCopy;
   }
   return getRuTrackV25ModelingCopy();
 }
@@ -298,7 +317,7 @@ export function getTrackFasteningCalculationsCopy(
   locale: ProjectDetailLocale,
 ): TrackFasteningCalculationsCopy {
   if (locale === "en") {
-    return projectDetailEn.reports["vsm-1-track-elements"].calculations as TrackFasteningCalculationsCopy;
+    return detailBundle("en").reports["vsm-1-track-elements"].calculations as TrackFasteningCalculationsCopy;
   }
   return getRuTrackFasteningCalculationsCopy();
 }
@@ -320,9 +339,10 @@ function getRuVsm1Sections(): ProjectReportSection[] {
   return [
     {
       id: "fastening",
-      title: "Узел промежуточного рельсового скрепления для ВСЖМ-1",
+      paddingTopPx: 80,
+      title: "Узел промежуточного рельсового скрепления для ВСМ-1",
       paragraphs: [
-        "АО «ИЦ ЖТ» выполняет комплекс мероприятий по разработке узла промежуточного рельсового скрепления для верхнего строения пути ВСЖМ-1.",
+        "АО «ИЦ ЖТ» выполняет комплекс мероприятий по разработке узла промежуточного рельсового скрепления для верхнего строения пути ВСМ-1.",
       ],
       bullets: [
         "проведен бенчмаркинг аналогов и определен прототип; разработан комплект конструкторской документации;",
@@ -332,12 +352,12 @@ function getRuVsm1Sections(): ProjectReportSection[] {
       ],
       metrics: [
         {
-          value: "сентябрь 2026",
-          unit: "",
-          label: "План получения сертификата соответствия на узел скрепления для ВСЖМ-1",
+          value: "2026",
+          unit: "г.",
+          label: "План получения сертификата соответствия на узел скрепления для ВСМ-1",
         },
         {
-          value: "конец 2026",
+          value: "2026",
           unit: "г.",
           label: "Укладка опытных образцов и испытания на полигоне Саблино - Тосно",
         },
@@ -356,8 +376,8 @@ function getRuVsm1Sections(): ProjectReportSection[] {
       ],
       metrics: [
         {
-          value: "март 2027",
-          unit: "",
+          value: "2027",
+          unit: "г.",
           label: "Плановый срок завершения работ",
         },
       ],
@@ -371,12 +391,19 @@ function getRuLowIntensitySections(): ProjectReportSection[] {
       id: "about",
       group: "intro",
       title: "О проекте",
+      paddingTopPx: 80,
       paragraphs: [
-        "АО «ИЦ ЖТ» по заказу ОАО «РЖД» ведет разработку низкопольного подвижного состава для эксплуатации на малоинтенсивных линиях ОАО «РЖД». Утверждено рабочее наименование модельного ряда разрабатываемого ПС: рельсовый автобус РА11 — одновагонное исполнение; рельсовый автобус РА12 — двухвагонное исполнение; рельсовый автобус РА13 — двухвагонное исполнение с салонами вагонов повышенной комфортности.",
+        "АО «ИЦ ЖТ» по заказу ОАО «РЖД» ведет разработку низкопольного подвижного состава для эксплуатации на малоинтенсивных линиях ОАО «РЖД». Утверждено рабочее наименование модельного ряда разрабатываемого ПС:",
         "На текущий момент разработано техническое задание на РА12 и ведется разработка технического проекта.",
         "Прогнозируемые объемы серийного производства рельсовых автобусов составляют 300 вагонов (75 вагонов в год в течение 4 лет) для эксплуатации на малоинтенсивных линиях сети железных дорог ОАО «РЖД».",
         "Создание современного подвижного состава для организации перевозки пассажиров на малоинтенсивных участках сети ОАО «РЖД» решает острую социальную проблему транспортной доступности к отдаленным населенным пунктам жителей страны.",
       ],
+      bullets: [
+        "рельсовый автобус РА11 — одновагонное исполнение",
+        "рельсовый автобус РА12 — двухвагонное исполнение",
+        "рельсовый автобус РА13 — двухвагонное исполнение с салонами вагонов повышенной комфортности",
+      ],
+      bulletsAfterLeadParagraph: true,
     },
     {
       id: "configurations",
@@ -450,6 +477,7 @@ function getRuTrackV25Sections(): ProjectReportSection[] {
       id: "about",
       group: "intro",
       title: "О проекте",
+      paddingTopPx: 80,
       paragraphs: [
         "В АО «Инжиниринговый центр железнодорожного транспорта» (ИЦ ЖТ) создано специализированное подразделение по разработке перспективных решений в области путевой инфраструктуры (Центра разработки инфраструктуры). В рамках реализации проекта ОАО «РЖД» по созданию конструкции и технологий содержания железнодорожного пути, обеспечивающих наработку 2,5 млрд тонн брутто пропущенного тоннажа, Центр выступает разработчиком конструкции, ее элементов и регламентов содержания, а также координатором работ всех участников проекта.",
         "Цель проекта - снизить стоимость жизненного цикла железнодорожного пути на особогрузонапряженных участках за счет увеличения наработки между капитальными и промежуточными ремонтами пути. Реализация НИОКР и внедрение технологий содержания инновационной конструкции пути ведутся в период 2021-2026 гг.",

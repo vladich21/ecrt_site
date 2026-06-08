@@ -1,5 +1,3 @@
-"use client";
-
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 import { LazyInViewVideo } from "@/shared/ui/LazyInViewVideo/LazyInViewVideo";
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
@@ -9,8 +7,8 @@ import flagshipCorridorMap from "@/assets/home/magnific_3007658625.webp";
 import type { HomeCopy } from "../home-types";
 import futureStyles from "../home-future-flagship.module.scss";
 
-const CITY_VIDEO_WEBM_SRC = "/videos/City%2520Animation.webm";
-const CITY_VIDEO_MP4_SRC = "/videos/City%2520Animation.mp4";
+const WINTER_VIDEO_WEBM_SRC = "/videos/Winter%2520Animation.webm";
+const WINTER_VIDEO_MP4_SRC = "/videos/Winter%2520Animation-cropped.mp4";
 
 export function HomeFutureFlagshipSections({ homeCopy }: { homeCopy: HomeCopy }) {
   const facts = homeCopy.flagship.facts;
@@ -107,8 +105,8 @@ export function HomeFutureFlagshipSections({ homeCopy }: { homeCopy: HomeCopy })
               playsInline
               aria-label={homeCopy.future.videoAria}
             >
-              <source src={CITY_VIDEO_WEBM_SRC} type="video/webm" />
-              <source src={CITY_VIDEO_MP4_SRC} type="video/mp4" />
+              <source src={WINTER_VIDEO_WEBM_SRC} type="video/webm" />
+              <source src={WINTER_VIDEO_MP4_SRC} type="video/mp4" />
             </LazyInViewVideo>
             <div className={futureStyles.videoScrim} aria-hidden />
             <div className={futureStyles.videoCopyLayer}>
@@ -118,12 +116,15 @@ export function HomeFutureFlagshipSections({ homeCopy }: { homeCopy: HomeCopy })
                     {homeCopy.future.title}
                   </h2>
                 </ScrollRevealBlock>
-                <ScrollRevealBlock fadeOnly>
+                <ScrollRevealBlock className={futureStyles.overlayLeadBlock} fadeOnly>
                   <p className={futureStyles.overlayLead}>{homeCopy.future.lead}</p>
                 </ScrollRevealBlock>
               </ScrollRevealSection>
             </div>
           </div>
+          <ScrollRevealBlock className={futureStyles.mobileVideoLead} fadeOnly inView>
+            <p>{homeCopy.future.lead}</p>
+          </ScrollRevealBlock>
         </div>
       </section>
     </>

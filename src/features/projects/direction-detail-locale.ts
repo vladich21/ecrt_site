@@ -36,6 +36,42 @@ export function getTechnologiesSectionHeading(locale: DirectionLocale): string {
   return locale === "en" ? "Applied technologies" : "Применяемые технологии";
 }
 
+export function getGoalsSectionHeading(locale: DirectionLocale): string {
+  return locale === "en" ? "Goals and objectives" : "Цели и задачи";
+}
+
+export function getCharacteristicsSectionHeading(locale: DirectionLocale): string {
+  return locale === "en" ? "Characteristics" : "Характеристики";
+}
+
+export const TECHNOLOGY_TOPIC_HEADINGS_RU = [
+  "Интеграция",
+  "Безопасность",
+  "Надежность",
+  "Модульность",
+  "Всесторонняя диагностика",
+  "Предиктивность",
+  "Адаптивность",
+] as const;
+
+export const TECHNOLOGY_TOPIC_HEADINGS_EN = [
+  "Integration",
+  "Safety",
+  "Reliability",
+  "Modularity",
+  "Comprehensive diagnostics",
+  "Predictability",
+  "Adaptability",
+] as const;
+
+export function getTechnologyTopicHeadings(locale: DirectionLocale): readonly string[] {
+  return locale === "en" ? TECHNOLOGY_TOPIC_HEADINGS_EN : TECHNOLOGY_TOPIC_HEADINGS_RU;
+}
+
+export function isTechnologyTopicHeading(text: string, locale: DirectionLocale): boolean {
+  return getTechnologyTopicHeadings(locale).includes(text);
+}
+
 export function getAllDirectionIds(): string[] {
   return activityGroups.map((group) => group.id);
 }
