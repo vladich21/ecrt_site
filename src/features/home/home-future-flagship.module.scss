@@ -28,9 +28,6 @@
   isolation: isolate;
   --future-section-x: 50px;
   padding: 0;
-  background: #050a12;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .videoFullBleed {
@@ -267,7 +264,6 @@
     margin: 0;
     padding: clamp(16px, 4vw, 22px) var(--future-section-x) clamp(20px, 5vw, 28px);
     background: #ffffff;
-    border-top: 1px solid var(--grid-line, rgba(0, 58, 99, 0.12));
   }
 
   .mobileVideoLead p {

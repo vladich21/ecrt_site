@@ -1,5 +1,3 @@
-// Общая колонка контента страницы (ширина + центрирование)
-
 @mixin column {
   box-sizing: border-box;
   width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));

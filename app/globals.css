@@ -21,7 +21,7 @@
   --font-heading: "IBM Plex Sans", Verdana, Geneva, Tahoma, sans-serif;
   --font-body: Verdana, Geneva, Tahoma, sans-serif;
   --layout-max: 1560px;
-  /* Горизонтальный воздух у края вьюпорта; не уменьшает «полные» 1560px за счёт padding внутри колонки. */
+  /* Горизонтальный воздух у края вьюпорта; не уменьшает «полные» 1560px за счет padding внутри колонки. */
   --page-inline-gutter: clamp(16px, 4vw, 60px);
   --layout-gutter: 60px;
   --header-height: var(--header-slot);

@@ -19,13 +19,9 @@ export type ProjectReportSection = {
   bullets?: string[];
   metrics?: ProjectReportMetric[];
   bulletLayout?: "list" | "focusGrid";
-  /** Пункты рендерятся в sectionSlots, а не в общем шаблоне секции */
   bulletsPlacement?: "inline" | "slot";
-  /** Список сразу после первого абзаца, остальные абзацы — ниже */
   bulletsAfterLeadParagraph?: boolean;
-  /** Верхний отступ секции в px (перекрывает :first-child) */
   paddingTopPx?: number;
-  /** Группировка intro/details для составных страниц */
   group?: "intro" | "details";
 };
 

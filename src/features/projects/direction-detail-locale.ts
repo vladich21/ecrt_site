@@ -11,6 +11,7 @@ export const DIRECTION_SECTION_HEADINGS_RU = [
   "Описание",
   "Цели и задачи",
   "Характеристики",
+  "Имеющиеся технические компетенции",
   "Применяемые технологии",
 ] as const;
 
@@ -18,6 +19,7 @@ export const DIRECTION_SECTION_HEADINGS_EN = [
   "Description",
   "Goals and objectives",
   "Characteristics",
+  "Existing technical competencies",
   "Applied technologies",
 ] as const;
 

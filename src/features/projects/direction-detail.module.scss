@@ -57,7 +57,7 @@
   color: #002f55;
 }
 
-/* ScrollRevealBlock делает каждый h2 :first-child — отступ задаём от соседней секции в .prose */
+/* ScrollRevealBlock делает каждый h2 :first-child — отступ задаем от соседней секции в .prose */
 .prose > :not(:first-child) .sectionHeading {
   margin-top: clamp(28px, 4vw, 40px);
 }

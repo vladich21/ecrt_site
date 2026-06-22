@@ -18,7 +18,6 @@ import { TrackV25FieldWorksBlock } from "./TrackV25FieldWorksBlock";
 import { TrackV25ModelingBlock } from "./TrackV25ModelingBlock";
 import { TrackV25ReportBlock } from "./TrackV25ReportBlock";
 import { Vsm1TrackElementsReportBlock } from "./Vsm1TrackElementsReportBlock";
-import { preloadProjectPageImages } from "@/shared/images/page-image-preload";
 import { preloadRouteHeroImage } from "@/shared/images/route-hero-images";
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 import {
@@ -117,7 +116,6 @@ function catalogProjectContent(slug: string, locale: ProjectDetailLocale): React
 export function ProjectDetailView({ projectSlug, locale = "ru" }: Props) {
   const detailPath = projectDetailPath(projectSlug, locale);
   preloadRouteHeroImage(detailPath);
-  preloadProjectPageImages(projectSlug);
   const ui = getProjectDetailUi(locale);
   const homeProjects = getCopy("home", locale).projects;
 

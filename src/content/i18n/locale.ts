@@ -2,7 +2,7 @@ export type Locale = "ru" | "en";
 
 export const DEFAULT_LOCALE: Locale = "ru";
 
-/** Атрибут lang на обёртке страницы (EN-only страницы). */
+/** Атрибут lang на обертке страницы (EN-only страницы). */
 export function pageLangAttr(locale: Locale): "en" | undefined {
   return locale === "en" ? "en" : undefined;
 }

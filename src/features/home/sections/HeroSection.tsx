@@ -7,28 +7,10 @@ import type { CommonCopy, HomeLocale } from "../home-types";
 
 import heroStyles from "../hero-section.module.scss";
 
-const HERO_VIDEO_WEBM_SRC = "/videos/hero-magnific.webm";
-const HERO_VIDEO_MP4_SRC = "/videos/hero-magnific.mp4";
-const HERO_VIDEO_POSTER_SRC = "/videos/hero-magnific-poster.webp";
-
-function HeroCtaArrow({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M5 12h14M13 6l6 6-6 6" />
-    </svg>
-  );
-}
+const HERO_VIDEO_WEBM_SRC = "/videos/train_in_v6.webm";
+const HERO_VIDEO_POSTER_SRC = "/videos/train_in_v6-poster.webp";
+const HERO_VIDEO_PLAYBACK_RATE = 1.25;
+const HERO_VIDEO_END_SEC = 8;
 
 function getStats(commonCopy: CommonCopy) {
   return [
@@ -71,19 +53,37 @@ export function HeroSection({
   locale?: HomeLocale;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const clipEndedRef = useRef(false);
   const stats = getStats(commonCopy);
   const pathPrefix = locale === "en" ? "/en" : "";
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    clipEndedRef.current = false;
     video.muted = true;
-    const play = () => void video.play().catch(() => {});
+    video.playbackRate = HERO_VIDEO_PLAYBACK_RATE;
+    const play = () => {
+      if (clipEndedRef.current) return;
+      video.playbackRate = HERO_VIDEO_PLAYBACK_RATE;
+      void video.play().catch(() => {});
+    };
+    const stopAtClipEnd = () => {
+      if (clipEndedRef.current || video.paused) return;
+      if (video.currentTime >= HERO_VIDEO_END_SEC) {
+        clipEndedRef.current = true;
+        video.pause();
+      }
+    };
     play();
     video.addEventListener("canplay", play, { once: true });
+    video.addEventListener("timeupdate", stopAtClipEnd);
     const onGesture = () => play();
     document.addEventListener("pointerdown", onGesture, { capture: true, once: true });
-    return () => document.removeEventListener("pointerdown", onGesture, true);
+    return () => {
+      video.removeEventListener("timeupdate", stopAtClipEnd);
+      document.removeEventListener("pointerdown", onGesture, true);
+    };
   }, []);
 
   const onEnded = useCallback(() => {
@@ -107,23 +107,22 @@ export function HeroSection({
           aria-hidden
         >
           <source src={HERO_VIDEO_WEBM_SRC} type="video/webm" />
-          <source src={HERO_VIDEO_MP4_SRC} type="video/mp4" />
         </video>
         <div className={heroStyles.scrim} aria-hidden />
         <div className={heroStyles.overlay}>
           <aside className={heroStyles.copy}>
             <div className={heroStyles.headline}>
               <h1 className={heroStyles.title}>{commonCopy.hero.title}</h1>
-              <p className={heroStyles.tagline}>{commonCopy.hero.lead}</p>
+              {commonCopy.hero.lead ? (
+                <p className={heroStyles.tagline}>{commonCopy.hero.lead}</p>
+              ) : null}
             </div>
             <div className={heroStyles.actions}>
               <Link className={heroStyles.cta} href={`${pathPrefix}/projects`}>
                 {commonCopy.hero.ctaProjects}
-                <HeroCtaArrow className={heroStyles.ctaArrow} />
               </Link>
               <Link className={heroStyles.ctaGhost} href={`${pathPrefix}/about-us`}>
                 {commonCopy.hero.ctaAbout}
-                <HeroCtaArrow className={heroStyles.ctaArrow} />
               </Link>
             </div>
             <HeroStatsList

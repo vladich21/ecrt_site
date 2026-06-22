@@ -11,8 +11,7 @@ import {
   breadcrumbsHideTrailingCurrent,
 } from "@/data/breadcrumbItems";
 import { Breadcrumbs } from "@/shared/layout/Breadcrumbs/Breadcrumbs";
-import { PageImagesWarmup } from "@/shared/images/PageImagesWarmup";
-import { RouteHeroPreloader } from "@/shared/images/RouteHeroPreloader";
+import { RouteHeroWarmup } from "@/shared/images/RouteHeroWarmup";
 import { Footer } from "@/shared/layout/Footer/Footer";
 import { Header } from "@/shared/layout/Header/Header";
 
@@ -75,8 +74,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         {children}
       </main>
       <Footer locale={locale} />
-      <RouteHeroPreloader />
-      <PageImagesWarmup />
+      <RouteHeroWarmup />
     </div>
   );
 }

@@ -1,11 +1,11 @@
 @use "@/styles/breakpoints" as bp;
 @use "@/styles/numbered-focus-grid" as nfg;
+@use "@/styles/page-shell" as shell;
 @use "@/styles/project-hero-shell" as ph;
 @use "@/styles/report-section" as rs;
 
 .page {
-  width: min(92%, var(--container-max));
-  margin: 0 auto;
+  @include shell.column;
   padding: var(--section-padding-y, 80px) 0 var(--section-padding-y, 80px);
 }
 
@@ -101,12 +101,9 @@
   font-size: 14px;
 }
 
-/* Стратегические проекты (КС-400): статический hero + отчёт */
 .pageStrategic {
-  width: min(94%, calc(var(--container-max) + 32px));
-  margin: 0 auto;
+  @include shell.column;
   padding: 0 0 var(--section-padding-y, 80px);
-  box-sizing: border-box;
 }
 
 .strReportShell {
@@ -121,7 +118,7 @@
 }
 
 .pageStrategic .strReportShell {
-  margin-top: clamp(52px, 6vw, 72px);
+  margin-top: 80px;
 }
 
 .strReportShellContinued {
@@ -293,7 +290,6 @@
   color: rgba(36, 56, 72, 0.82);
 }
 
-/* Ключевые тезисы — сетка с цифрами (как purchase-page .focusGrid) */
 .strFocusGrid {
   @include nfg.container;
   margin-top: 0;
@@ -377,13 +373,11 @@
   @include ph.media-shell-flat;
   --panorama-x: 74%;
   --panorama-shift-y: 80px;
-  /* Ширина viewport, на которой зафиксирован кадр панорамы (масштаб и позиция поезда) */
   --panorama-freeze-width: 1650px;
 
   .heroFillImgPanorama {
     object-fit: cover;
     object-position: var(--panorama-x) center;
-    /* next/image задаёт top: 0 инлайном */
     top: var(--panorama-shift-y) !important;
   }
 }
@@ -394,7 +388,6 @@
   }
 }
 
-/* ≥1650px: тот же кадр, что при 1650px — фиксированная ширина по центру, без пересчёта cover */
 @include bp.up(1650px) {
   .pageEvs .evsHero:has(.evsHeroMediaPanorama) {
     height: var(--project-hero-max-height);
@@ -435,12 +428,9 @@
   object-fit: cover;
 }
 
-/* Страница catalog-проектов — светлая сетка + блок отчёта */
 .pageEvs {
-  width: min(94%, calc(var(--container-max) + 32px));
-  margin: 0 auto;
+  @include shell.column;
   padding: 0 0 var(--section-padding-y, 80px);
-  box-sizing: border-box;
 }
 
 .pageEvs .evsHero h1 {

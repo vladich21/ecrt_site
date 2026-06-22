@@ -4,6 +4,7 @@ import {
   type CSSProperties,
   type HTMLAttributes,
   type ReactNode,
+  startTransition,
   useEffect,
   useRef,
   useState,
@@ -23,11 +24,8 @@ type ScrollRevealSectionProps = HTMLAttributes<HTMLElement> & {
 
 type ScrollRevealBlockProps = HTMLAttributes<HTMLDivElement> & {
   children: ReactNode;
-  /** Самостоятельная анимация при скролле (вне stagger-секции) */
   inView?: boolean;
-  /** Заголовок секции — появляется раньше контента ниже */
   revealEarly?: boolean;
-  /** Только fade, без сдвига — для изображений не использовать */
   fadeOnly?: boolean;
 };
 
@@ -56,7 +54,7 @@ function useRevealInView<T extends Element>(viewport: RevealViewport) {
 
     const observer = new IntersectionObserver(([entry]) => {
       if (!entry?.isIntersecting) return;
-      setVisible(true);
+      startTransition(() => setVisible(true));
       observer.disconnect();
     }, observerOptions(viewport));
 
@@ -67,7 +65,6 @@ function useRevealInView<T extends Element>(viewport: RevealViewport) {
   return { ref, visible };
 }
 
-/** Секция: элементы появляются каскадом при прокрутке (gpbm-style) */
 export function ScrollRevealSection({
   children,
   className,
@@ -87,7 +84,6 @@ export function ScrollRevealSection({
   );
 }
 
-/** Блок текста / карточки внутри секции или автonomно с inView */
 export function ScrollRevealBlock({
   children,
   className,

@@ -52,8 +52,6 @@ $nav-compact-max: 1100px;
   width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
   margin: 0 auto;
   min-height: 80px;
-  padding-right: max(var(--page-inline-gutter), 16px);
-  padding-left: max(var(--page-inline-gutter), 16px);
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
@@ -423,12 +421,6 @@ $nav-compact-max: 1100px;
   }
 
   .brandTextLine {
-    font-size: 7px;
-  }
-}
-
-@media (min-width: $nav-desktop-min) {
-  .container {
-    padding-left: max(var(--page-inline-gutter), 16px);
+    font-size: 9px;
   }
 }

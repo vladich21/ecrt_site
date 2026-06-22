@@ -1,5 +1,3 @@
-/** События для визуального таймлайна (2019-2026), в духе корпоративной хроники + вехи проектов */
-
 export type TimelineMilestone = {
   id: string
   year: string

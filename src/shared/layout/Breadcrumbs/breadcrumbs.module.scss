@@ -1,11 +1,9 @@
-/* Минималистичная цепочка: верхний левый ряд, caps, серый текст, пробел вокруг / */
+@use "@/styles/page-shell" as shell;
 
 .nav {
-  width: min(94%, var(--container-max));
-  margin: 0 auto;
+  @include shell.column;
   padding-top: calc(var(--header-height, 72px) + 10px);
   padding-bottom: 10px;
-  box-sizing: border-box;
 }
 
 .navInner {
@@ -69,7 +67,6 @@
   user-select: none;
 }
 
-/* Расположение как на /careers: прижато влево, без caps, компактный кегль */
 .navCompact {
   box-sizing: border-box;
   width: fit-content;
@@ -92,7 +89,6 @@
   line-height: 1.35;
 }
 
-/* Тёмный hero: только цвет текста поверх изображения */
 .navOnHero .list {
   color: rgba(255, 255, 255, 0.9);
   text-shadow:
@@ -129,11 +125,9 @@
 
 @media (max-width: 1024px) {
   .nav:not(.navCompact) {
-    width: calc(100% - 48px);
     padding-bottom: 8px;
   }
 
-  /* Направления: длинное название уже в h1 — скрываем последнюю крошку на планшетах и телефонах */
   .navHideTrailingCurrent .item:last-child {
     display: none;
   }
@@ -145,7 +139,6 @@
     word-break: break-word;
   }
 
-  /* На hero h1 уже даёт полное название страницы — дублирующая крошка только мешает */
   .navOnHero .item:last-child {
     display: none;
   }

@@ -4,14 +4,13 @@ import ks400Showcase from "@/assets/presentation/ks-test.webp";
 import lowIntensity0009 from "@/assets/low-intensity-0009/figure2.webp";
 import lowIntensityShowcase from "@/assets/low-intensity-0009/showcase-train.png";
 import vsm1TrackCatalogHero from "@/assets/evs360-calculations/rack-interaction3.webp";
-import vsm1TrackShowcase from "@/assets/evs360-calculations/rail-fastening-node.webp";
+import vsm1TrackShowcase from "@/assets/track-v25-modeling/renderv2.5-showcase.png";
 import trackLayingHero from "@/assets/presentation/09_Укладка_РШР.webp";
 import hydrogenPreview from "@/assets/presentation/img-35.webp";
 import evs2Showcase from "@/assets/presentation/evs2-02.webp";
 import type { BundledImage } from "@/data/ecrtSite";
 import { getStrategicProjectBySlug } from "@/data/ecrtSite";
 
-/** Hero/cover images for catalog project detail pages and OG previews. */
 export const projectCatalogHeroImages: Partial<Record<string, BundledImage>> = {
   "evs-360": evs360CatalogHero,
   "project-0007-hydrogen": hydrogenPreview,
@@ -20,7 +19,6 @@ export const projectCatalogHeroImages: Partial<Record<string, BundledImage>> = {
   "track-resource-2-5b": trackLayingHero,
 };
 
-/** Images for home page product showcase slides (may differ from catalog hero). */
 export const projectShowcaseImages: Partial<Record<string, BundledImage>> = {
   "evs-360": evs360Showcase,
   "ks-400-catenary": ks400Showcase,

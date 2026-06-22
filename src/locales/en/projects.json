@@ -80,10 +80,14 @@
       "thermal-monitoring-traction": {
         "title": "Thermal supervision of motors, gearboxes, and journal boxes",
         "detail": "Distributed temperature probes let the onboard microprocessor cluster infer mechanical wear states for rotating machinery long before hard failures appear."
+      },
+      "path-infrastructure-elements": {
+        "title": "Development of track infrastructure elements for various railway operating conditions",
+        "detail": "Development of railway track structure solutions as a rail transport infrastructure subsystem, taking into account operating conditions (speeds, axle loads, train mass and length, and other factors)."
       }
     }
   },
   "showcase": {
-    "title": "Featured programmes"
+    "title": "Key projects and programmes"
   }
 }

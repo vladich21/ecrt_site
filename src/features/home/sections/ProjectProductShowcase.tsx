@@ -12,7 +12,6 @@ import {
   type ProjectDetailLocale,
 } from "@/features/projects/project-detail-locale";
 import { imageSrc } from "@/features/projects/image-src";
-import { ProjectHeroWarmLink } from "@/shared/images/ProjectHeroWarmLink";
 import { ScrollRevealBlock } from "@/shared/motion/ScrollReveal";
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 
@@ -166,7 +165,9 @@ export function ProjectProductShowcase({
               alt=""
               fill
               sizes="(max-width: 480px) calc(100vw - 32px), (max-width: 768px) min(100vw, 420px), (max-width: 1200px) 42vw, 760px"
-              quality={slide.id === "low-intensity" ? 90 : 75}
+              quality={
+                slide.id === "low-intensity" || slide.id === "vsm-1-track-elements" ? 92 : 85
+              }
               loading="lazy"
             />
           </span>
@@ -206,13 +207,13 @@ export function ProjectProductShowcase({
         const slideContent = (
           <>
             {isLinkable ? (
-              <ProjectHeroWarmLink
+              <Link
                 className={bentoStyles.productMediaLink}
                 href={slide.href!}
                 aria-labelledby={headingId}
               >
                 {imageFrame}
-              </ProjectHeroWarmLink>
+              </Link>
             ) : (
               <div className={bentoStyles.productMediaStatic}>{imageFrame}</div>
             )}

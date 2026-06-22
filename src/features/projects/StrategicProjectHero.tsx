@@ -31,7 +31,6 @@ export function StrategicProjectHero({
           alt={imageAlt ?? heading}
           fill
           className={styles.strHeroImg}
-          sizes="100vw"
         />
       </div>
       <span className={styles.strHeroGradient} aria-hidden />

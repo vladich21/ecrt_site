@@ -33,7 +33,7 @@
       {
         "icon": "social",
         "title": "Employee benefits bundle",
-        "body": "Monthly commuting allowance. Financial support tied to statutory annual leave (from two years at the company onward) and other perk programmes."
+        "body": "Monthly commuting allowance. Financial support tied to statutory annual leave (from two years at the company onward), plus annual salary indexation."
       },
       {
         "icon": "sport",
@@ -54,8 +54,8 @@
   },
   "cta": {
     "title": "Write to us directly",
-    "body": "",
-    "emailCta": "Write to us",
+    "body": "If you did not find a suitable position among our open vacancies, send your CV directly by email",
+    "emailCta": "Write to us at hr@ecrt.ru",
     "emailBtn": "{{email}}",
     "hhCard": "Employer profile on hh.ru"
   }

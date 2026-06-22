@@ -17,7 +17,6 @@ function isNearViewport(node: HTMLElement, marginPx: number): boolean {
   return rect.top < window.innerHeight + marginPx && rect.bottom > -marginPx;
 }
 
-/** Видео ниже первого экрана — источники подключаются при приближении к viewport. */
 export function LazyInViewVideo({
   rootMargin = "200px 0px",
   autoPlay,
@@ -61,7 +60,6 @@ export function LazyInViewVideo({
 
     const play = () => {
       void node.play().catch(() => {
-        /* autoplay может быть заблокирован */
       });
     };
 

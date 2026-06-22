@@ -52,7 +52,6 @@ const PREPOSITIONS = [
   "бы",
 ] as const;
 
-/** Нормализация RU-текста: е вместо ё, дефис вместо длинного тире, неразрывный пробел после предлогов. */
 export function normalizeRussianTypography(text: string): string {
   const withoutYoAndDash = text
     .replace(/\u0451/g, "\u0435")

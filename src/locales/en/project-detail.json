@@ -38,7 +38,7 @@
       "code": "EVS 360",
       "statusLabel": "Active development",
       "segment": "VSM",
-      "year": "2019 – 2028",
+      "year": "2020 - 2028",
       "metric": "R&D · VSM",
       "description": "High-speed electric train platform for VSM main lines: a joint engineering and production programme with phased delivery of trains for testing and certification.",
       "facts": [
@@ -91,13 +91,13 @@
       ]
     },
     "vsm-1-track-elements": {
-      "title": "Track structure elements for VSM-1",
+      "title": "Permanent-way structure elements for VSM-1",
       "code": "VSM-1",
       "statusLabel": "Testing",
       "segment": "VSM",
       "year": "2025 – 2027",
       "metric": "Sablino – Tosno",
-      "description": "ECRT develops rail fastenings for ballasted track on the Moscow – St Petersburg high-speed main line.",
+      "description": "ECRT is developing rail fastenings for railway track on a ballastless subgrade for the Moscow – Saint Petersburg high-speed main line.",
       "facts": [
         "Design documentation for the fastening node has been assigned release \"O\"",
         "Testing and installation at the Sablino – Tosno test site — 2026",
@@ -204,10 +204,10 @@
       "focusHeading": "Development priorities",
       "focusIntro": "The focus of the upcoming cycle is to complete detailed design in key areas, manufacture and assemble the first train, prepare for testing, and establish the basis for the second train in line with the overall programme schedule.",
       "focusBullets": [
-        "Complete working documentation and agreed packages for production and assembly.",
-        "Complete production and assembly stages for the first train and proceed to commissioning.",
-        "Prepare and approve acceptance test programmes and methods.",
-        "Synchronise work on the second train with the approved delivery and assembly calendar."
+        "Complete working documentation and agreed packages for production and assembly",
+        "Complete production and assembly stages for the first train and proceed to commissioning",
+        "Prepare and approve acceptance test programmes and methods",
+        "Synchronise work on the second train with the approved delivery and assembly calendar"
       ],
       "characteristicsHeading": "Train characteristics",
       "characteristicsIntro": "The electric train is intended for operation on the Moscow – St Petersburg VSM. Dual-system operation for 3 kV DC and 25 kV AC is provided.",
@@ -344,11 +344,11 @@
           "title": "Rolling stock configurations",
           "bulletsPlacement": "slot",
           "paragraphs": [
-            "Based on analysis of route network data and passenger traffic volumes on low-activity railway lines, development and deployment of two rolling stock types is planned:"
+            "Based on analysis of route network data and passenger traffic volumes on low-traffic railway lines, development and deployment of two rolling stock types is planned:"
           ],
           "bullets": [
-            "For routes up to 50 km in length, a single-car multiple unit with a power plant based on a rechargeable energy storage system and an auxiliary diesel-generator unit; 58 seats and a design capacity (seated plus 3 persons/m² standing on free floor area) of 93 passengers in a 3rd-class interior layout (3+2 seating);",
-            "For routes over 50 km in length, a two-section multiple unit with a booster section containing two diesel-generator units; 126 seats and a design capacity of 192 passengers in a 3rd-class interior layout."
+            "For routes up to 50 km in length, a single-car multiple unit with a power plant based on a rechargeable energy storage system and an auxiliary diesel-generator unit, 58 seats and a design capacity (seated plus 3 persons/m² standing on free floor area) of 93 passengers in a 3rd-class interior layout (3+2 seating)",
+            "For routes over 50 km in length, a two-car multiple unit with a booster section containing two diesel-generator units, 126 seats and a design capacity of 192 passengers in a 3rd-class interior layout"
           ],
           "metrics": [
             {
@@ -421,10 +421,10 @@
           "title": "Main workstreams",
           "bulletLayout": "focusGrid",
           "bullets": [
-            "Development of track structure elements with improved operational and resource characteristics;",
-            "Addressing the integrated challenge of synergising technical characteristics of track elements within a unified structure;",
-            "Creating a maintenance and monitoring system enabling effective reliability of the track structure.",
-            "Creating a complex of mathematical models for the railway track."
+            "Development of track structure elements with improved operational and resource characteristics",
+            "Addressing the integrated challenge of synergising technical characteristics of track elements within a unified structure",
+            "Creating a maintenance and monitoring system enabling effective reliability of the track structure",
+            "Creating a complex of mathematical models for the railway track"
           ]
         },
         {
@@ -478,22 +478,22 @@
       ],
       "fieldWorks": {
         "heading": "Technology deployment",
-        "intro": "Three sequential stages: track panel assembly at a track maintenance depot, subgrade preparation using cold recycling technology, and panel installation on the Krasnoyarsk Railway line.",
+        "intro": "Three sequential stages: track panel assembly at a track maintenance depot, subgrade preparation using cold recycling technology, and panel installation on a section of the Krasnoyarsk Railway.",
         "stages": [
           {
             "id": "assembly",
             "title": "Track panel assembly at the track maintenance depot",
-            "description": "Assembly of the track panel with ECRT-developed fastenings at the track maintenance depot (TMD)."
+            "description": "Assembly of the track panel with intermediate rail fastenings and sleepers developed under the project at a track maintenance depot (TMD)."
           },
           {
             "id": "sub-ballast",
-            "title": "Subgrade preparation and protective layer installation",
-            "description": "Preparation for removal of the existing track panel and subsequent installation of a new sub-ballast protective layer using cold recycling technology. The protective layer installation process was developed by ECRT."
+            "title": "Subgrade preparation and sub-ballast protective layer installation",
+            "description": "Removal of the existing track panel followed by installation of a sub-ballast protective layer using cold recycling technology. The protective layer installation process was developed by ECRT."
           },
           {
             "id": "laying",
-            "title": "Track panel installation on the line",
-            "description": "Installation of the track panel with ECRT-developed fastenings on the Zaozerny – Kamala section of the Krasnoyarsk Railway."
+            "title": "Track panel installation on the Russian Railways network",
+            "description": "Installation of the innovative track structure on a section of the Krasnoyarsk Railway."
           }
         ]
       },
@@ -502,24 +502,24 @@
         "intro": "Mathematical modelling receives substantial attention during project implementation. A suite of mathematical models has been developed and is used for design and calculations of innovative track structures; all models have been validated based on experiments by VNIIZHT, MIIT, and ICT VEIP.",
         "blocks": [
           {
-            "title": "Determination of loads on the track, its nodes, and elements",
-            "body": "Modelling of forces applied by rolling stock to rails and nodes; contact zones and the integrated loading picture along the section under consideration are assessed."
+            "title": "Analysis of dynamic track–rolling stock interaction",
+            "body": "Multi-body dynamic modelling accounts for all aspects of rolling stock suspension and track superstructure design to determine loads from the wheel on the rails."
           },
           {
-            "title": "Track structure calculation",
-            "body": "Finite-element model of a track superstructure section: rails, sleepers, ballast bed, and support constraints; loads and boundary conditions are applied to verify the bearing capacity of the scheme."
+            "title": "Calculation of stress–strain state of track superstructure",
+            "body": "Dynamic loads obtained are applied to a finite-element model of the track superstructure to determine rail deflection and uplift, instantaneous sleeper settlements, and vertical and lateral loads on rail fastening nodes. Rail strength and track stability are determined."
           },
           {
-            "title": "Calculation of track nodes and elements",
-            "body": "Detailed verification of fastening nodes and element joints for stress–strain state; contact nodes of components and reactions in zones of maximum stress concentration are considered."
+            "title": "Strength calculation of intermediate rail fastenings and concrete sleepers",
+            "body": "Detailed finite-element models of fastenings determine their translational and rotational stiffness, assess strength and deformability of structural elements, and determine elastic clamp service life. Detailed sleeper models account for prestressing of reinforcing elements and allow crack development in concrete to be determined."
           },
           {
-            "title": "Geotechnical calculations",
-            "body": "Cross-sections of the embankment or foundation divided into finite elements: loads from the track superstructure, boundary conditions, and stress (or displacement) distribution in the soil mass."
+            "title": "Geotechnical modelling of the sub-sleeper foundation",
+            "body": "Specialised geotechnical finite-element models are used to determine deformability and stability of the ballast prism, embankment, and foundation, including possible strengthening of the main embankment platform."
           },
           {
-            "title": "Optimisation of track structure and element parameters",
-            "body": "Comparison of fastening element and track superstructure geometry variants against target indicators (stress state, node stiffness, etc.); results are presented as charts and reference node geometry."
+            "title": "Optimisation of track superstructure elements",
+            "body": "Multi-criteria parametric optimisation is used to obtain three-dimensional geometry of elastic clamps with high clamping force, fatigue durability, and natural vibration frequencies. Reinforcement of concrete sleepers and required deformability indicators of track structure materials are also optimised."
           }
         ]
       }

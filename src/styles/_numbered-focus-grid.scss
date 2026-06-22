@@ -1,6 +1,5 @@
 @use "@/styles/breakpoints" as bp;
 
-// Нумерованная сетка «цифра + текст» — эталон: purchase-page .focusGrid
 @mixin container {
   list-style: none;
   margin: clamp(20px, 3vw, 28px) 0 0;
@@ -18,7 +17,6 @@
   margin: 0;
   padding: 0 0 clamp(20px, 2.8vw, 28px);
 
-  /* Одна обёртка (ScrollRevealBlock): цифра + текст в одну строку */
   > *:only-child {
     display: flex;
     flex-direction: row;

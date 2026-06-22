@@ -64,7 +64,6 @@
 }
 
 .productMediaImg {
-  object-fit: cover;
   object-position: center;
   transform: scale(1) translateZ(0);
   transition: transform 0.8s cubic-bezier(0.22, 0.8, 0.28, 1);

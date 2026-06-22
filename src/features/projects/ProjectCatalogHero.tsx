@@ -11,7 +11,6 @@ type ProjectCatalogHeroProps = {
   lead: string;
   imageAlt: string;
   projectSlug: string;
-  /** Панорама — широкий кадр с ручной позицией через CSS-переменные */
   imageFit?: "cover" | "panorama";
 };
 
@@ -34,7 +33,6 @@ export function ProjectCatalogHero({
           alt={imageAlt}
           fill
           className={fitPanorama ? styles.heroFillImgPanorama : styles.heroFillImg}
-          sizes="100vw"
           quality={fitPanorama ? 90 : 80}
         />
       </div>

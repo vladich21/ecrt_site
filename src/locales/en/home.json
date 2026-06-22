@@ -60,7 +60,7 @@
   },
   "future": {
     "title": "Russia’s train of the future",
-    "lead": "High-speed electric rolling stock is being built at the Ural Locomotives plant. The engineering solutions developed by ECRT match world-class benchmarks and, for several subsystems, exceed them.\n\nCommercial service readiness is planned for 2028.",
+    "lead": "High-speed electric rolling stock is being built at the Ural Locomotives plant. The engineering solutions developed by ECRT match world-class benchmarks and, for several subsystems, exceed them. Commercial service readiness is planned for 2028.",
     "videoAria": "Night-time animation of a high-speed train in an urban skyline."
   },
   "flagship": {
@@ -90,7 +90,7 @@
         "num": "2028",
         "unit": "year",
         "title": "Train readiness",
-        "body": "The first two prototype trains will be ready in 2028. A total of 43 high-speed trainsets will be delivered by 2030."
+        "body": "A total of 43 high-speed trainsets will be delivered by 2030"
       }
     ]
   },
@@ -112,8 +112,8 @@
     "showcaseContactVsm1Title": "Catenary systems for HSL‑1",
     "showcaseContactVsm1Description": "The KS-400 catenary subsystem delivers reliable power transfer to train pantographs at speeds up to 400 km/h.",
     "showcaseVsm1TrackTitle": "Permanent-way elements for HSL‑1",
-    "showcaseVsm1TrackDescription": "ECRT is developing ballasted-track rail fastenings for the Moscow–Saint Petersburg high-speed main line.",
-    "showcaseTrackV25Title": "Permanent-way structural elements (Path V2.5)",
+    "showcaseVsm1TrackDescription": "ECRT is developing rail fastenings for railway track on a ballastless subgrade for the Moscow – Saint Petersburg high-speed main line.",
+    "showcaseTrackV25Title": "Innovative railway track structure for heavily loaded sections and its elements (Path V2.5)",
     "showcaseLowIntensityTitle": "Rolling stock for low-traffic lines",
     "showcaseOperationSupportTitle": "Operations support - Sapsan and Lastochka EMUs",
     "showcaseOperationSupportDescriptions": [

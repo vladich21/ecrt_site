@@ -9,7 +9,6 @@ type LazyYandexMapEmbedProps = {
   title: string;
 };
 
-/** Карта Яндекса — только in-view (~400 KB JS), не в LCP. */
 export function LazyYandexMapEmbed({ src, title }: LazyYandexMapEmbedProps) {
   const frameRef = useRef<HTMLDivElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);

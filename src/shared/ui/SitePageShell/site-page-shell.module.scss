@@ -1,11 +1,6 @@
 @use "@/styles/breakpoints" as bp;
 @use "@/styles/page-shell" as shell;
 
-/*
- * SitePageShell — колонка страницы и секции главной / about / projects.
- * .page — только ширина; вертикальные отступы задаёт .homePage или секция.
- */
-
 .page {
   @include shell.column;
   position: relative;

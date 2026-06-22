@@ -1,4 +1,3 @@
-/** Медленное соединение или режим экономии трафика — не грузим лишнее заранее. */
 export function shouldLimitPreload(): boolean {
   if (typeof window === "undefined") return false;
 
