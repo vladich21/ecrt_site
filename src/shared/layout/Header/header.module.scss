@@ -69,6 +69,7 @@ $nav-compact-max: 1100px;
 }
 
 .brandMark {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,9 +79,6 @@ $nav-compact-max: 1100px;
 }
 
 .brandMarkImg {
-  width: 72px;
-  height: 72px;
-  display: block;
   object-fit: contain;
 }
 
@@ -260,8 +258,7 @@ $nav-compact-max: 1100px;
   }
 
   .brandMarkImg {
-    width: 64px;
-    height: 64px;
+    object-fit: contain;
   }
 
   .brandTextLine {
@@ -394,8 +391,7 @@ $nav-compact-max: 1100px;
   }
 
   .brandMarkImg {
-    width: 56px;
-    height: 56px;
+    object-fit: contain;
   }
 
   .brandTextLine {
@@ -416,8 +412,7 @@ $nav-compact-max: 1100px;
   }
 
   .brandMarkImg {
-    width: 48px;
-    height: 48px;
+    object-fit: contain;
   }
 
   .brandTextLine {

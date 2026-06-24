@@ -58,10 +58,11 @@ export const evs360ScheduleIntro =
 export const evs360ScheduleParagraphs: readonly string[] = [];
 
 export const evs360ScheduleMetrics: readonly Evs360Metric[] = [
-  { value: "2025", unit: "", label: "Технический проект" },
+  { value: "2023", unit: "", label: "Эскизный проект" },
+  { value: "2024", unit: "", label: "Технический проект" },
+  { value: "2025", unit: "", label: "Начало изготовления компонентов" },
   { value: "2026", unit: "", label: "Рабочий проект" },
-  { value: "2027", unit: "", label: "Испытания" },
-  { value: "2028", unit: "", label: "Сертификация" },
+  { value: "2027–2028", unit: "", label: "Испытания и сертификация" },
 ];
 
 export const evs360ScaleHeading = "Масштаб программы";

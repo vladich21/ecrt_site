@@ -209,8 +209,7 @@ export function Header() {
             <AssetImage
               src={brandLogo}
               alt=""
-              width={72}
-              height={72}
+              fill
               className={styles.brandMarkImg}
               sizes="72px"
               priority

@@ -18,6 +18,7 @@ export type ProjectReportSection = {
   paragraphs?: string[];
   bullets?: string[];
   metrics?: ProjectReportMetric[];
+  paragraphsAfterMetrics?: string[];
   bulletLayout?: "list" | "focusGrid";
   bulletsPlacement?: "inline" | "slot";
   bulletsAfterLeadParagraph?: boolean;
@@ -124,6 +125,16 @@ export function ProjectReportSections({
                   </li>
                 ))}
               </ul>
+            </ScrollRevealBlock>
+          ) : null}
+
+          {section.paragraphsAfterMetrics?.length ? (
+            <ScrollRevealBlock>
+              {section.paragraphsAfterMetrics.map((paragraph) => (
+                <p key={paragraph} className={styles.strReportParagraph}>
+                  {paragraph}
+                </p>
+              ))}
             </ScrollRevealBlock>
           ) : null}
         </ScrollRevealSection>

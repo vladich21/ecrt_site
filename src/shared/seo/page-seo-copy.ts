@@ -39,12 +39,12 @@ export const PAGE_SEO = {
     ru: {
       title: "Карьера — АО ИЦ ЖТ | ECRT",
       description:
-        "Карьера в АО ИЦ ЖТ: вакансии инженеров, конструкторов и промышленных дизайнеров в проектах высокоскоростного транспорта и железнодорожной инфраструктуры.",
+        "Карьера в АО ИЦ ЖТ: вакансии квалифицированных инженеров и программистов в проектах высокоскоростного транспорта и железнодорожной инфраструктуры.",
     },
     en: {
       title: "Careers — ECRT",
       description:
-        "Careers at ECRT: engineering, design and industrial design roles in high-speed rail and railway infrastructure programmes.",
+        "Careers at ECRT: opportunities for qualified engineers and programmers in high-speed rail and railway infrastructure programmes.",
     },
   },
   purchase: {

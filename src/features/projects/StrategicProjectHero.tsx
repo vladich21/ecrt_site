@@ -1,5 +1,4 @@
 import { HeroImage } from "@/shared/ui/HeroImage/HeroImage";
-import { preloadRouteHeroImage } from "@/shared/images/route-hero-images";
 import type { BundledImage } from "@/data/ecrtSite";
 
 import styles from "./strategic-project-hero.module.scss";
@@ -19,10 +18,7 @@ export function StrategicProjectHero({
   heading,
   lead,
   imageAlt,
-  projectSlug,
 }: StrategicProjectHeroProps) {
-  preloadRouteHeroImage(`/project/${projectSlug}`);
-
   return (
     <section className={styles.strHero} aria-label={heading}>
       <div className={styles.strHeroMedia}>

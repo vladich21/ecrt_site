@@ -43,13 +43,16 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
   margin-top: 4px;
 }
 
-.companyLogo {
+.companyLogoShell {
+  position: relative;
   display: block;
-  width: auto;
-  height: auto;
-  max-width: min(100%, 220px);
-  max-height: 72px;
+  width: min(100%, 220px);
+  height: 72px;
+}
+
+.companyLogo {
   object-fit: contain;
+  object-position: left center;
 }
 
 .companyBlock + .muted,
@@ -137,19 +140,14 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
 }
 
 .partnerRzdMark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  display: block;
   flex-shrink: 0;
   width: 42px;
+  height: 27px;
 }
 
 .partnerRzdImg {
-  display: block;
-  width: 42px;
-  height: 27px;
-  max-width: 42px;
-  max-height: 27px;
   object-fit: contain;
   opacity: 1;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
@@ -200,16 +198,18 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
   opacity: 0.88;
 }
 
-.partnerSkParticipant {
+.partnerSkShell {
+  position: relative;
   display: block;
   width: 200px;
   height: 45px;
   max-width: min(100%, 200px);
-  max-height: 45px;
+}
+
+.partnerSkParticipant {
   object-fit: contain;
-  flex-shrink: 0;
+  object-position: left center;
   opacity: 0.95;
-  align-self: flex-start;
 }
 
 .dreamJobWidget {

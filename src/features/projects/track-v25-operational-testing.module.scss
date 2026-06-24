@@ -1,0 +1,61 @@
+.root {
+  --section-navy: #001a2e;
+  --section-blue: #002f55;
+  margin-top: clamp(52px, 6vw, 72px);
+  padding-top: clamp(28px, 4vw, 44px);
+  border-top: 1px solid rgba(0, 47, 85, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4.5vw, 48px);
+}
+
+.sectionHead {
+  margin: 0;
+}
+
+.sectionTitle {
+  margin: 0 0 clamp(12px, 2vw, 16px);
+  font-size: var(--heading-h2-size);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--section-blue);
+}
+
+.sectionTitleRule {
+  display: block;
+  width: var(--section-title-rule-width);
+  height: 3px;
+  margin-top: 14px;
+  border-radius: 2px;
+  background: var(--section-title-rule-gradient);
+}
+
+.contentReveal {
+  width: 100%;
+}
+
+.contentPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 2.5vw, 24px);
+  width: 100%;
+}
+
+.sectionParagraphs {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2.2vw, 18px);
+  margin: 0;
+  width: 100%;
+  align-self: stretch;
+}
+
+.sectionParagraph {
+  margin: 0;
+  font-size: var(--showcase-body-size);
+  line-height: var(--showcase-body-line-height);
+  font-weight: 500;
+  color: rgba(36, 56, 72, 0.82);
+}

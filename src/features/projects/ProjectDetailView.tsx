@@ -16,6 +16,7 @@ import { ProjectCatalogHero } from "./ProjectCatalogHero";
 import { TrackFasteningCalculationsBlock } from "./TrackFasteningCalculationsBlock";
 import { TrackV25FieldWorksBlock } from "./TrackV25FieldWorksBlock";
 import { TrackV25ModelingBlock } from "./TrackV25ModelingBlock";
+import { TrackV25OperationalTestingBlock } from "./TrackV25OperationalTestingBlock";
 import { TrackV25ReportBlock } from "./TrackV25ReportBlock";
 import { Vsm1TrackElementsReportBlock } from "./Vsm1TrackElementsReportBlock";
 import { preloadRouteHeroImage } from "@/shared/images/route-hero-images";
@@ -104,6 +105,7 @@ function catalogProjectContent(slug: string, locale: ProjectDetailLocale): React
           <TrackV25ReportBlock group="intro" locale={locale} />
           <TrackV25ReportBlock group="details" sectionIds={["requirements"]} locale={locale} />
           <TrackV25ModelingBlock locale={locale} />
+          <TrackV25OperationalTestingBlock locale={locale} />
           <TrackV25FieldWorksBlock locale={locale} />
           <TrackV25ReportBlock group="details" sectionIds={["rollout"]} locale={locale} />
         </>

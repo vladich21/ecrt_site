@@ -6,7 +6,12 @@ import type { BundledImage } from "@/data/ecrtSite";
 import { strategicProjects } from "@/data/ecrtSite";
 import { projectCatalogHeroImages } from "@/data/projectMedia";
 
-import { preloadHeroImage, staticImageUrl, type StaticImageLike } from "./preload-static-image";
+import {
+  preloadHeroImage,
+  staticImageUrl,
+  warmStaticImage,
+  type StaticImageLike,
+} from "./preload-static-image";
 
 const pageHeroByPath: Record<string, StaticImageLike> = {
   "/about-us": aboutHeroImage,
@@ -59,6 +64,32 @@ export function heroPreloadHandlers(href: string) {
     onMouseEnter: () => preloadRouteHeroImage(href),
     onFocus: () => preloadRouteHeroImage(href),
   };
+}
+
+export function allProjectHeroImages(): StaticImageLike[] {
+  const seen = new Set<string>();
+  const images: StaticImageLike[] = [];
+
+  for (const image of projectHeroBySlug.values()) {
+    const url = staticImageUrl(image);
+    if (seen.has(url)) continue;
+    seen.add(url);
+    images.push(image);
+  }
+
+  return images;
+}
+
+export function preloadAllProjectHeroImages(fetchPriority: "high" | "low" = "low"): void {
+  for (const image of allProjectHeroImages()) {
+    preloadHeroImage(image, fetchPriority);
+  }
+}
+
+export function warmAllProjectHeroImages(): void {
+  for (const image of allProjectHeroImages()) {
+    warmStaticImage(image);
+  }
 }
 
 export function allRouteHeroImages(): StaticImageLike[] {

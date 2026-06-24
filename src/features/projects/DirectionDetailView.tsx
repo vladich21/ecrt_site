@@ -57,7 +57,16 @@ export function DirectionDetailView({ directionId, locale = "ru" }: Props) {
             }
 
             return (
-              <ScrollRevealSection key={`${directionId}-para-${index}`}>
+              <ScrollRevealSection
+                key={`${directionId}-para-${index}`}
+                className={
+                  block.text.includes("drag-and-drop") &&
+                  (block.text.includes("графических сред разработки") ||
+                    block.text.includes("graphical development environments"))
+                    ? styles.paragraphSectionSpaced
+                    : undefined
+                }
+              >
                 <ScrollRevealBlock>
                   <p>{block.text}</p>
                 </ScrollRevealBlock>

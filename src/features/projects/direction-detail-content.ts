@@ -39,6 +39,11 @@ function isNumberedTechnologiesParagraph(text: string): boolean {
   return /^\d+\.\s/.test(text);
 }
 
+function isProseContinuationAfterList(text: string): boolean {
+  // Standalone paragraphs after colon-led lists start with a capital letter.
+  return /^[A-ZА-ЯЁ]/u.test(text) && text.length > 15;
+}
+
 type CollectListOptions = {
   sectionHeadingSet: Set<string>;
   locale: DirectionLocale;
@@ -52,6 +57,7 @@ function shouldStopListCollection(text: string, options: CollectListOptions): bo
   if (isNumberedTechnologiesParagraph(text)) return true;
   if (stopAtTechnologyTopics && isTechnologyTopicHeading(text, locale)) return true;
   if (text.endsWith(":")) return true;
+  if (isProseContinuationAfterList(text)) return true;
 
   return false;
 }
@@ -143,6 +149,13 @@ function parseTechnologiesParagraph(
 
   if (text.endsWith(":")) {
     return parseColonIntroList(raw, startIndex, options);
+  }
+
+  if (isNumberedTechnologiesParagraph(text) && !text.endsWith(":")) {
+    return {
+      blocks: [{ type: "paragraph", text }],
+      nextIndex: startIndex + 1,
+    };
   }
 
   const inlineList = tryParseInlineColonList(text);

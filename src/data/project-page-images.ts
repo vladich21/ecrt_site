@@ -23,9 +23,20 @@ import imgStage2Pzs3 from "@/assets/track-v25-field/этап2_устройств
 import imgStage3Pzs from "@/assets/track-v25-field/этап3-07а_устройство_ПЗС.webp";
 import imgStage3Laying1 from "@/assets/track-v25-field/этап3-08_Укладка_РШР.webp";
 import imgStage3Laying2 from "@/assets/track-v25-field/этап3-10_Укладка_РШР.webp";
+import imgOperationalTesting1 from "@/assets/track-v25-field/track-v25-filed_1.webp";
+import imgOperationalTesting2 from "@/assets/track-v25-field/track-v25-filed_2.webp";
+import imgOperationalTesting3 from "@/assets/track-v25-field/track-v25-filed_3.webp";
+import imgOperationalTesting4 from "@/assets/track-v25-field/track-v25-filed_4.webp";
+import imgOperationalTesting5 from "@/assets/track-v25-field/track-v25-filed_5.webp";
+import imgOperationalTesting6 from "@/assets/track-v25-field/track-v25-filed_6.webp";
+import imgOperationalTesting7 from "@/assets/track-v25-field/track-v25-filed_7.webp";
+import imgOperationalTesting8 from "@/assets/track-v25-field/track-v25-filed_8.webp";
+import imgOperationalTesting9 from "@/assets/track-v25-field/track-v25-filed_9.webp";
+import imgOperationalTesting10 from "@/assets/track-v25-field/track-v25-filed_10.webp";
 import { strategicProjects } from "@/data/ecrtSite";
 import { projectCatalogHeroImages } from "@/data/projectMedia";
 import { projectGalleryBySlug } from "@/features/projects/project-galleries";
+import type { StaticImageData } from "next/image";
 import type { StaticImageLike } from "@/shared/images/preload-static-image";
 import { staticImageUrl } from "@/shared/images/preload-static-image";
 
@@ -37,6 +48,19 @@ export const trackV25FieldStageImages = {
 } as const;
 
 export const trackV25FieldAllImages: StaticImageLike[] = Object.values(trackV25FieldStageImages).flat();
+
+export const trackV25OperationalTestingImages: StaticImageData[] = [
+  imgOperationalTesting1,
+  imgOperationalTesting2,
+  imgOperationalTesting3,
+  imgOperationalTesting4,
+  imgOperationalTesting5,
+  imgOperationalTesting6,
+  imgOperationalTesting7,
+  imgOperationalTesting8,
+  imgOperationalTesting9,
+  imgOperationalTesting10,
+];
 
 export const trackV25ModelingImages: StaticImageLike[] = [
   imgLoads,
@@ -60,7 +84,11 @@ export const vsm1TrackCalculationImages: StaticImageLike[] = [
 export const lowIntensityReportImages: StaticImageLike[] = [configurationsImage];
 
 const projectExtraImages: Record<string, StaticImageLike[]> = {
-  "track-resource-2-5b": [...trackV25FieldAllImages, ...trackV25ModelingImages],
+  "track-resource-2-5b": [
+    ...trackV25FieldAllImages,
+    ...trackV25OperationalTestingImages,
+    ...trackV25ModelingImages,
+  ],
   "vsm-1-track-elements": vsm1TrackCalculationImages,
   "project-0009-low-intensity": lowIntensityReportImages,
 };

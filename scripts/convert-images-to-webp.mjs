@@ -60,7 +60,7 @@ async function convertFile(filePath) {
   }
 
   await sharp(filePath)
-    .webp({ quality: 85, effort: 4 })
+    .webp({ quality: 90, effort: 4 })
     .toFile(webpPath);
 
   try {

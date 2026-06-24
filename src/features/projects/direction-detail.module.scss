@@ -47,6 +47,10 @@
   }
 }
 
+.paragraphSectionSpaced {
+  padding-bottom: clamp(20px, 3.2vw, 36px);
+}
+
 .sectionHeading {
   margin: 0 0 clamp(10px, 1.6vw, 14px);
   font-family: var(--font-heading-next), var(--font-heading), system-ui, sans-serif;

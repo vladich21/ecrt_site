@@ -30,8 +30,11 @@ export function TrackV25ModelingBlock({ locale = "ru" }: TrackV25ModelingBlockPr
 
   return (
     <div className={styles.root}>
-      <ScrollRevealSection className={styles.section} aria-labelledby="track-v25-modeling-heading">
-        <ScrollRevealBlock>
+      <ScrollRevealSection
+        className={`${styles.section} ${styles.modelingSection}`}
+        aria-labelledby="track-v25-modeling-heading"
+      >
+        <ScrollRevealBlock revealEarly>
           <div className={styles.reportSectionHead}>
             <h2 id="track-v25-modeling-heading" className={styles.reportTitle}>
               {copy.heading}
@@ -40,31 +43,36 @@ export function TrackV25ModelingBlock({ locale = "ru" }: TrackV25ModelingBlockPr
             <p className={styles.reportDeck}>{copy.intro}</p>
           </div>
         </ScrollRevealBlock>
-        <div className={styles.calculationSeries}>
-          {copy.blocks.map((item, itemIndex) => (
-            <ScrollRevealBlock
-              key={item.title}
-              inView
-              className={`${styles.calculationEntry} ${itemIndex % 2 === 1 ? styles.calculationEntryReverse : ""}`}
-            >
-              <div className={styles.calculationMedia}>
-                {(modelingImages[itemIndex] ?? []).map((image, index) => (
-                  <AssetImage
-                    key={`${item.title}-${index}`}
-                    src={image}
-                    alt=""
-                    className={styles.calculationImg}
-                    sizes="(max-width: 900px) 50vw, 280px"
-                  />
-                ))}
-              </div>
-              <div className={styles.calculationBody}>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </div>
-            </ScrollRevealBlock>
-          ))}
-        </div>
+        {copy.blocks.map((item, itemIndex) => (
+          <ScrollRevealBlock
+            key={item.title}
+            className={`${styles.calculationEntry} ${itemIndex % 2 === 1 ? styles.calculationEntryReverse : ""}`}
+          >
+            <div className={styles.calculationMedia}>
+              {(modelingImages[itemIndex] ?? []).map((image, index) => (
+                <AssetImage
+                  key={`${item.title}-${index}`}
+                  src={image}
+                  alt=""
+                  className={styles.calculationImg}
+                  sizes="(max-width: 900px) 50vw, 280px"
+                />
+              ))}
+            </div>
+            <div className={styles.calculationBody}>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          </ScrollRevealBlock>
+        ))}
+        {copy.testingNote ? (
+          <ScrollRevealBlock>
+            <article className={styles.modelingTestingCard}>
+              <h3 className={styles.modelingTestingCardTitle}>{copy.testingNote.title}</h3>
+              <p className={styles.modelingTestingCardBody}>{copy.testingNote.body}</p>
+            </article>
+          </ScrollRevealBlock>
+        ) : null}
       </ScrollRevealSection>
     </div>
   );

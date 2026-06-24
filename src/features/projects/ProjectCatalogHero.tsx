@@ -1,5 +1,4 @@
 import { HeroImage } from "@/shared/ui/HeroImage/HeroImage";
-import { preloadRouteHeroImage } from "@/shared/images/route-hero-images";
 
 import type { BundledImage } from "@/data/ecrtSite";
 
@@ -19,10 +18,8 @@ export function ProjectCatalogHero({
   title,
   lead,
   imageAlt,
-  projectSlug,
   imageFit = "cover",
 }: ProjectCatalogHeroProps) {
-  preloadRouteHeroImage(`/project/${projectSlug}`);
   const fitPanorama = imageFit === "panorama";
 
   return (
@@ -33,7 +30,6 @@ export function ProjectCatalogHero({
           alt={imageAlt}
           fill
           className={fitPanorama ? styles.heroFillImgPanorama : styles.heroFillImg}
-          quality={fitPanorama ? 90 : 80}
         />
       </div>
       <span className={styles.evsHeroGradient} aria-hidden />

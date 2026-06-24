@@ -29,8 +29,7 @@ export function EcosystemPartnersSection({ title }: EcosystemPartnersSectionProp
                   className={partnersStyles.logoImg}
                   src={partner.src}
                   alt={partner.alt}
-                  width={partner.id === "rzd" ? 132 : partner.id === "sinara" ? 200 : 160}
-                  height={partner.id === "sinara" ? 55 : 60}
+                  fill
                   sizes={
                     partner.id === "rzd"
                       ? "85px"

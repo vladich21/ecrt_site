@@ -15,7 +15,7 @@ const assetsRoot = path.join(__dirname, "..", "src", "assets");
 
 const MAX_WIDTH = 1920;
 const MIN_BYTES_TO_TOUCH = 200 * 1024;
-const WEBP_QUALITY = 85;
+const WEBP_QUALITY = 90;
 const WRITE_RETRIES = 3;
 const WRITE_RETRY_DELAY_MS = 250;
 

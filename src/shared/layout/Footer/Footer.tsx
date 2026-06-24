@@ -19,14 +19,15 @@ export function Footer({ locale }: { locale: Locale }) {
           <div className={styles.col}>
             <p className={styles.colHeading}>{t("footer.contacts", locale)}</p>
             <div className={styles.companyBlock}>
-              <AssetImage
-                src={footerBrandLogo}
-                alt={t("footer.company", locale)}
-                width={220}
-                height={72}
-                className={styles.companyLogo}
-                sizes="220px"
-              />
+              <span className={styles.companyLogoShell}>
+                <AssetImage
+                  src={footerBrandLogo}
+                  alt={t("footer.company", locale)}
+                  fill
+                  className={styles.companyLogo}
+                  sizes="220px"
+                />
+              </span>
             </div>
             <p className={styles.muted}>{t("footer.addressLine1", locale)}</p>
             <a className={styles.email} href="tel:+74959091799">
@@ -59,8 +60,7 @@ export function Footer({ locale }: { locale: Locale }) {
                   <AssetImage
                     src={logoRzd}
                     alt=""
-                    width={42}
-                    height={27}
+                    fill
                     className={styles.partnerRzdImg}
                     sizes="42px"
                   />
@@ -76,14 +76,15 @@ export function Footer({ locale }: { locale: Locale }) {
                 target="_blank"
                 rel="noreferrer"
               >
-                <AssetImage
-                  className={styles.partnerSkParticipant}
-                  src={logoSkParticipant}
-                  alt={t("footer.skAlt", locale)}
-                  width={200}
-                  height={45}
-                  sizes="200px"
-                />
+                <span className={styles.partnerSkShell}>
+                  <AssetImage
+                    className={styles.partnerSkParticipant}
+                    src={logoSkParticipant}
+                    alt={t("footer.skAlt", locale)}
+                    fill
+                    sizes="200px"
+                  />
+                </span>
               </a>
               <a
                 className={styles.dreamJobWidget}

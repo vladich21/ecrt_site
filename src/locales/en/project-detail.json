@@ -216,33 +216,94 @@
       "serviceClassesIntro": "The train offers four comfort levels for passengers. Meeting compartments are also provided. Design is developed with modern trends and operating experience of the Sapsan electric train in mind.",
       "serviceClassLabel": "service class",
       "serviceClasses": [
-        { "name": "First" },
-        { "name": "Business" },
-        { "name": "Comfort" },
-        { "name": "Standard" }
+        {
+          "name": "First"
+        },
+        {
+          "name": "Business"
+        },
+        {
+          "name": "Comfort"
+        },
+        {
+          "name": "Standard"
+        }
       ],
       "characteristicsMetrics": [
-        { "value": "360", "unit": "km/h", "label": "Maximum operating speed on VSM" },
-        { "value": "8", "unit": "cars", "label": "Consist with double-traction capability" },
-        { "value": "452", "unit": "passengers", "label": "Total passenger capacity" },
-        { "value": "−40…+40", "unit": "°C", "label": "Operating temperature range" }
+        {
+          "value": "360",
+          "unit": "km/h",
+          "label": "Maximum operating speed on VSM"
+        },
+        {
+          "value": "8",
+          "unit": "cars",
+          "label": "Consist with double-traction capability"
+        },
+        {
+          "value": "452",
+          "unit": "passengers",
+          "label": "Total passenger capacity"
+        },
+        {
+          "value": "−40…+40",
+          "unit": "°C",
+          "label": "Operating temperature range"
+        }
       ],
       "scheduleHeading": "Schedule and key milestones",
       "scheduleIntro": "ECRT is the lead developer — design documentation has been developed since 2020 under contract with Russian Railways. Design follows an agreed work plan. In April 2024 a contract was signed for delivery of two lead prototypes with fixed deadlines for transferring design documentation to the manufacturer.",
       "scheduleParagraphs": [],
       "scheduleMetrics": [
-        { "value": "2025", "unit": "", "label": "Technical design" },
-        { "value": "2026", "unit": "", "label": "Detailed design" },
-        { "value": "2027", "unit": "", "label": "Testing" },
-        { "value": "2028", "unit": "", "label": "Certification" }
+        {
+          "value": "2023",
+          "unit": "",
+          "label": "Preliminary design"
+        },
+        {
+          "value": "2024",
+          "unit": "",
+          "label": "Technical design"
+        },
+        {
+          "value": "2025",
+          "unit": "",
+          "label": "Start of component manufacturing"
+        },
+        {
+          "value": "2026",
+          "unit": "",
+          "label": "Detailed design"
+        },
+        {
+          "value": "2027–2028",
+          "unit": "",
+          "label": "Testing and certification"
+        }
       ],
       "scaleHeading": "Programme scale",
       "scaleIntro": "Domestic companies are prioritised for project implementation. New designs and technologies are being developed for individual systems. The electric train manufacturer is Ural Locomotives. Transmashholding enterprises are involved in the project.",
       "scaleMetrics": [
-        { "value": "36", "unit": "systems", "label": "New systems for the high-speed electric train" },
-        { "value": ">10 000", "unit": "parts", "label": "Components in the train structure" },
-        { "value": "≥85", "unit": "%", "label": "Planned share of domestically sourced parts" },
-        { "value": "160+", "unit": "organisations", "label": "Enterprises, research institutes, and design bureaus involved in development and production" }
+        {
+          "value": "36",
+          "unit": "systems",
+          "label": "New systems for the high-speed electric train"
+        },
+        {
+          "value": ">10 000",
+          "unit": "parts",
+          "label": "Components in the train structure"
+        },
+        {
+          "value": "≥85",
+          "unit": "%",
+          "label": "Planned share of domestically sourced parts"
+        },
+        {
+          "value": "160+",
+          "unit": "organisations",
+          "label": "Enterprises, research institutes, and design bureaus involved in development and production"
+        }
       ],
       "sourceNote": "Characteristics and indicators — based on materials from the round table \"On the readiness of Russian industry sectors for the Moscow – St Petersburg VSM project\", Federation Council, 9 December 2024."
     },
@@ -411,8 +472,10 @@
           "title": "About the project",
           "paddingTopPx": 80,
           "paragraphs": [
-            "ECRT has established a dedicated unit for developing advanced track infrastructure solutions. Under the Russian Railways programme to create a track structure and maintenance technologies providing 2.5 billion gross tonnes of throughput, the unit acts as developer of the structure, its elements, and maintenance regulations, and as coordinator of all project participants.",
-            "The programme goal is to reduce track life-cycle cost on heavily loaded sections by extending throughput between capital and intermediate track maintenance cycles. R&D and deployment of maintenance technologies for the innovative track structure are carried out in 2021–2026."
+            "JSC Engineering Centre of Railway Transport (ECRT) has established a dedicated unit for developing advanced track infrastructure solutions (Infrastructure Development Centre).",
+            "Under the Russian Railways programme to create a track structure and maintenance technologies providing 2.5 billion gross tonnes of throughput, the Centre acts as developer of the structure, its elements, and maintenance technologies, and as coordinator of all project participants.",
+            "The project goal is to reduce track life-cycle cost on heavily loaded sections by extending gross tonnage throughput between capital and intermediate track maintenance cycles.",
+            "R&D and deployment of maintenance technologies for the innovative track structure are carried out from 2021 to 2026."
           ]
         },
         {
@@ -464,6 +527,9 @@
               "unit": "million t",
               "label": "Increase in gross throughput between intermediate maintenance cycles for sections with complex alignment and profile"
             }
+          ],
+          "paragraphsAfterMetrics": [
+            "Accordingly, an important aspect of project implementation is ensuring compliance with criteria for both the first limit state (strength and stability) and the second limit state (stability of track position in plan and profile)."
           ]
         },
         {
@@ -499,7 +565,11 @@
       },
       "modeling": {
         "heading": "Mathematical modelling and track structure calculations",
-        "intro": "Mathematical modelling receives substantial attention during project implementation. A suite of mathematical models has been developed and is used for design and calculations of innovative track structures; all models have been validated based on experiments by VNIIZHT, MIIT, and ICT VEIP.",
+        "intro": "Mathematical modelling receives substantial attention during project implementation. A suite of mathematical models has been developed and is used for design and calculations of innovative track structures. All models have been validated based on experiments conducted by VNIIZHT, MIIT, and ICT VEIP.",
+        "testingNote": {
+          "title": "Testing and validation of characteristics",
+          "body": "During project implementation, a comprehensive programme of preliminary (factory), laboratory, and bench testing was completed, confirming the characteristics of the innovative track structure under development and its elements."
+        },
         "blocks": [
           {
             "title": "Analysis of dynamic track–rolling stock interaction",
@@ -521,6 +591,15 @@
             "title": "Optimisation of track superstructure elements",
             "body": "Multi-criteria parametric optimisation is used to obtain three-dimensional geometry of elastic clamps with high clamping force, fatigue durability, and natural vibration frequencies. Reinforcement of concrete sleepers and required deformability indicators of track structure materials are also optimised."
           }
+        ]
+      },
+      "operationalTesting": {
+        "heading": "Operational testing",
+        "paragraphs": [
+          "To conduct operational testing of the innovative track structure, in autumn 2023 at the Experimental Ring at Shcherbinka station, test and control track sections were installed in curves with radii of 1200, 590, and 400 m. Thirteen test sections with a total length of 650 metres were laid with various rail-and-sleeper grid configurations, along with five control sections with a total length of 295 metres.",
+          "On the test sections, a ballast layer of basalt rock in a new fraction from 10 to 63 mm was installed. An experimental cold recycling process for the sub-ballast protective layer was also developed.",
+          "In autumn 2024, at the Experimental Ring at Shcherbinka station, innovative 1/11 turnouts with a continuous running surface — with and without cant on the rail strings — a 1/13 diverging turnout with a continuous running surface and cant on the rail strings, and a high-durability insulated joint were installed for operational testing.",
+          "Operational testing of the innovative track structure was completed in autumn 2025."
         ]
       }
     }
