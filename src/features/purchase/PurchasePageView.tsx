@@ -1,5 +1,5 @@
 import purchaseHeroImage from "@/assets/presentation/закупки-hero1.webp";
-import { getCopy, pageLangAttr, type Locale } from "@/content/i18n";
+import { getCopy, type Locale } from "@/content/i18n";
 import { PageHero } from "@/shared/ui/PageHero/PageHero";
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
@@ -9,7 +9,7 @@ export function PurchasePageView({ locale = "ru" }: { locale?: Locale }) {
   const copy = getCopy("purchase", locale);
 
   return (
-    <div className={styles.root} lang={pageLangAttr(locale)}>
+    <div className={styles.root}>
       <PageHero
         image={purchaseHeroImage}
         title={copy.hero.title}

@@ -1,20 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { CommonCopy, HomeLocale } from "../home-types";
 
+import { getCompanyAgeYears } from "@/data/company";
+import { localePathPrefix } from "@/content/i18n/locale";
+
 import heroStyles from "../hero-section.module.scss";
 
-const HERO_VIDEO_WEBM_SRC = "/videos/train_in_v6.webm";
+const HERO_VIDEO_DESKTOP_SRC = "/videos/train_in_v6_4k.mp4";
+const HERO_VIDEO_MOBILE_SRC = "/videos/train_in_v6.webm";
 const HERO_VIDEO_POSTER_SRC = "/videos/train_in_v6-poster.webp";
-const HERO_VIDEO_PLAYBACK_RATE = 1.25;
+const HERO_VIDEO_PLAYBACK_RATE = 0.7;
 const HERO_VIDEO_END_SEC = 8;
+const MOBILE_VIDEO_MQ = "(max-width: 768px)";
 
 function getStats(commonCopy: CommonCopy) {
   return [
-    { target: 6, showPlus: true, label: commonCopy.heroStats.labels.years },
+    { target: getCompanyAgeYears(), showPlus: true, label: commonCopy.heroStats.labels.years },
     { target: 16, showPlus: true, label: commonCopy.heroStats.labels.projects },
     { target: 3, showPlus: false, label: commonCopy.heroStats.labels.directions },
     { target: 250, showPlus: true, label: commonCopy.heroStats.labels.team },
@@ -32,10 +37,12 @@ function HeroStatsList({
 }) {
   return (
     <ol className={className} aria-label={heading}>
-      {stats.map((stat) => (
+      {stats.map((stat, index) => (
         <li key={stat.label} className={heroStyles.statItem}>
           <div className={heroStyles.statNumberRow} aria-hidden>
-            <span className={heroStyles.statDigit}>{stat.target}</span>
+            <span className={heroStyles.statDigit} suppressHydrationWarning={index === 0}>
+              {stat.target}
+            </span>
             {stat.showPlus ? <span className={heroStyles.statPlus}>+</span> : null}
           </div>
           <p className={heroStyles.statLabel}>{stat.label}</p>
@@ -55,7 +62,16 @@ export function HeroSection({
   const videoRef = useRef<HTMLVideoElement>(null);
   const clipEndedRef = useRef(false);
   const stats = getStats(commonCopy);
-  const pathPrefix = locale === "en" ? "/en" : "";
+  const pathPrefix = localePathPrefix(locale);
+  const [preferMobileVideo, setPreferMobileVideo] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia(MOBILE_VIDEO_MQ);
+    const sync = () => setPreferMobileVideo(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -84,7 +100,7 @@ export function HeroSection({
       video.removeEventListener("timeupdate", stopAtClipEnd);
       document.removeEventListener("pointerdown", onGesture, true);
     };
-  }, []);
+  }, [preferMobileVideo]);
 
   const onEnded = useCallback(() => {
     videoRef.current?.pause();
@@ -100,13 +116,17 @@ export function HeroSection({
           muted
           playsInline
           poster={HERO_VIDEO_POSTER_SRC}
-          preload="auto"
+          preload={preferMobileVideo ? "metadata" : "auto"}
           controls={false}
           disablePictureInPicture
           onEnded={onEnded}
           aria-hidden
         >
-          <source src={HERO_VIDEO_WEBM_SRC} type="video/webm" />
+          {preferMobileVideo ? (
+            <source src={HERO_VIDEO_MOBILE_SRC} type="video/webm" />
+          ) : (
+            <source src={HERO_VIDEO_DESKTOP_SRC} type="video/mp4" />
+          )}
         </video>
         <div className={heroStyles.scrim} aria-hidden />
         <div className={heroStyles.overlay}>

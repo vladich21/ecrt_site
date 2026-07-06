@@ -244,29 +244,45 @@
 
 .photoSliderDots {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: clamp(3px, 1vw, 8px);
+  width: 100%;
+  max-width: 100%;
 }
 
 .photoSliderDot {
   appearance: none;
-  width: 36px;
-  height: 4px;
+  flex: 1 1 0;
+  min-width: clamp(14px, 2.4vw, 36px);
+  max-width: 36px;
+  height: 28px;
   margin: 0;
   padding: 0;
   border: none;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photoSliderDot::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
   border-radius: 999px;
   background-color: rgba(226, 26, 26, 0.22);
-  cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.photoSliderDot:hover {
+.photoSliderDot:hover::before {
   background-color: rgba(226, 26, 26, 0.45);
 }
 
-.photoSliderDotActive {
+.photoSliderDotActive::before {
   background-color: var(--field-red);
   transform: scaleY(1.35);
 }
@@ -288,5 +304,14 @@
 
   .photoSliderViewport {
     min-height: clamp(220px, 56vw, 340px);
+  }
+
+  .photoSliderDots {
+    gap: clamp(2px, 0.75vw, 6px);
+  }
+
+  .photoSliderDot {
+    min-width: clamp(12px, 2vw, 28px);
+    max-width: 28px;
   }
 }

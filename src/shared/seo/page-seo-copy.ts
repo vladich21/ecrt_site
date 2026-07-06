@@ -3,19 +3,19 @@ export const PAGE_SEO = {
     ru: {
       title: "Инжиниринговый центр железнодорожного транспорта",
       description:
-        "АО ИЦ ЖТ: проектирование высокоскоростных поездов ЭВС-360, магистраль ВСМ Москва — Санкт-Петербург, контактная сеть, путь и инфраструктура для железных дорог России.",
+        "АО ИЦ ЖТ: проектирование высокоскоростных поездов первого отечественного высокоскоростного электропоезда, первая линия ВСМ Москва — Санкт-Петербург, контактная сеть, путь и инфраструктура для железных дорог России.",
     },
     en: {
       title: "ECRT — Railway Engineering | ECRT",
       description:
-        "Engineering center of railway transport: EVS-360 high-speed train, Moscow–Saint Petersburg HSR, catenary, track and railway infrastructure R&D in Russia.",
+        "Engineering center of railway transport: EVS-360 high-speed train, first VSM line Moscow – Saint Petersburg, catenary, track and railway infrastructure R&D in Russia.",
     },
   },
   about: {
     ru: {
       title: "О нас — АО ИЦ ЖТ | ECRT",
       description:
-        "О компании АО ИЦ ЖТ: инжиниринг подвижного состава и инфраструктуры, команда в Сколково, проекты ВСМ, ЭВС-360 и импортозамещение для железных дорог.",
+        "О компании АО ИЦ ЖТ: инжиниринг подвижного состава и инфраструктуры, команда в Сколково, проекты ВСМ, первый отечественный высокоскоростной электропоезд и импортозамещение для железных дорог.",
     },
     en: {
       title: "About — ECRT",
@@ -27,12 +27,12 @@ export const PAGE_SEO = {
     ru: {
       title: "Проекты — АО ИЦ ЖТ | ECRT",
       description:
-        "Проекты АО ИЦ ЖТ: ЭВС-360, магистраль ВСМ, путь V2.5, контактная сеть КС-400, малоинтенсивные линии и инженерные программы для РЖД.",
+        "Проекты АО ИЦ ЖТ: первый отечественный высокоскоростной электропоезд, первая линия ВСМ Москва — Санкт-Петербург, путь V2.5, контактная сеть КС-400, малоинтенсивные линии и инженерные программы для РЖД.",
     },
     en: {
       title: "Projects — ECRT",
       description:
-        "ECRT projects: EVS-360, HSR corridor, Track V2.5, KS-400 catenary, low-intensity lines and engineering programmes for Russian Railways.",
+        "ECRT projects: EVS-360, first VSM line Moscow – Saint Petersburg, Track V2.5, KS-400 catenary, low-intensity lines and engineering programmes for Russian Railways.",
     },
   },
   careers: {

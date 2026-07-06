@@ -42,7 +42,7 @@
         "iso": "2024",
         "date": "2024",
         "title": "High-speed train technical design completed",
-        "text": "Core technical solutions for the EVS-360 programme were developed."
+        "text": "Core technical solutions were developed for Russia’s first domestic high-speed electric train."
       },
       {
         "iso": "2025",
@@ -54,50 +54,50 @@
         "iso": "2026",
         "date": "2026",
         "title": "Working design completed and high-speed train production started",
-        "text": "Engineering documentation for the EVS-360 programme was completed; carbody fabrication started at the Ural Locomotives plant."
+        "text": "Engineering documentation for Russia’s first domestic high-speed electric train was completed; carbody fabrication started at the Ural Locomotives plant."
       }
     ]
   },
   "future": {
     "title": "Russia’s train of the future",
-    "lead": "High-speed electric rolling stock is being built at the Ural Locomotives plant. The engineering solutions developed by ECRT match world-class benchmarks and, for several subsystems, exceed them. Commercial service readiness is planned for 2028.",
+    "lead": "The high-speed electric train is manufactured at the Ural Locomotives plant. The engineering solutions developed by ECRT match world-class benchmarks and, for several subsystems, exceed them. Planned launch year is 2028.",
     "videoAria": "Night-time animation of a high-speed train in an urban skyline."
   },
   "flagship": {
     "tagYears": "2024 - 2030",
-    "sectionTitle": "Main line\nMoscow - Saint Petersburg",
+    "sectionTitle": "First VSM line\nMoscow – Saint Petersburg",
     "sectionLead": "",
-    "marks": ["HSL-1"],
+    "marks": ["VSM"],
     "title": "",
-    "description": "We deliver the core technical solutions for Russia’s first high-speed main line: rolling stock, catenary, and rail fastening.",
+    "description": "We deliver the core technical solutions for the first VSM line Moscow – Saint Petersburg: rolling stock, catenary, and rail fastening.",
     "ctaCase": "View case study",
     "ctaDirections": "All programmes",
-    "mapAlt": "Infographic of the first high-speed main line route: stations and design-speed segments.",
+    "mapAlt": "Infographic of the first VSM line Moscow – Saint Petersburg route: stations and design-speed segments.",
     "facts": [
       {
-        "num": "360",
+        "num": "400",
         "unit": "km/h",
-        "title": "Operating speed",
-        "body": "Aerodynamic profile, a domestically produced traction motor, and unique components designed for climates with large temperature swings."
+        "title": "Maximum speed",
+        "body": "Aerodynamic profile, a domestically produced traction motor, and unique components for operation in climates with large temperature swings."
       },
       {
         "num": "679",
         "unit": "km of line",
-        "title": "Main line length",
-        "body": "New track on a concrete subgrade and modernisation of sections in Moscow and Saint Petersburg."
+        "title": "Line length",
+        "body": "New track on a concrete subgrade in sections in Moscow and Saint Petersburg."
       },
       {
         "num": "2028",
         "unit": "year",
         "title": "Train readiness",
-        "body": "A total of 43 high-speed electric trains will be delivered"
+        "body": "A total of 43 high-speed electric trains will be delivered in 2030."
       }
     ]
   },
   "projects": {
     "title": "Main projects",
     "ctaMore": "Learn more",
-    "evsHomeShowcaseDescription": "Development of rolling stock for the high-speed main line. ECRT prepares the specification and conceptual, technical, and detailed design documentation; manufacturing takes place at the Ural Locomotives plant (part of the Sinara Transport Machines group).",
+    "evsHomeShowcaseDescription": "Development of rolling stock for the first VSM line Moscow – Saint Petersburg. ECRT prepares the specification and conceptual, technical, and detailed design documentation; manufacturing takes place at the Ural Locomotives plant (part of the Sinara Transport Machines group).",
     "metricListAria": "Key programme indicators",
     "metricLabels": {
       "period": "Horizon",
@@ -108,11 +108,11 @@
       "stage": "Programme phase",
       "programFocus": "Programme emphasis"
     },
-    "showcaseEvsTitle": "High-speed EVS‑360 electric train",
-    "showcaseContactVsm1Title": "Catenary systems for HSL‑1",
-    "showcaseContactVsm1Description": "The KS-400 catenary subsystem delivers reliable power transfer to train pantographs at speeds up to 400 km/h.",
-    "showcaseVsm1TrackTitle": "Permanent-way elements for HSL‑1",
-    "showcaseVsm1TrackDescription": "ECRT is developing rail fastenings for railway track on a ballastless subgrade for the Moscow – Saint Petersburg high-speed main line.",
+    "showcaseEvsTitle": "Russia’s first domestic high-speed electric train",
+    "showcaseContactVsm1Title": "Catenary for VSM",
+    "showcaseContactVsm1Description": "The KS-400 catenary product range ensures reliable power transfer to train pantographs at speeds up to 400 km/h.",
+    "showcaseVsm1TrackTitle": "Rail fastenings for VSM",
+    "showcaseVsm1TrackDescription": "ECRT is developing rail fastenings for railway track on a ballastless subgrade for the first VSM line Moscow – Saint Petersburg",
     "showcaseTrackV25Title": "Innovative railway track structure for heavily loaded sections and its elements (Path V2.5)",
     "showcaseLowIntensityTitle": "Rolling stock for low-traffic lines",
     "showcaseOperationSupportTitle": "Operations support - Sapsan and Lastochka EMUs",

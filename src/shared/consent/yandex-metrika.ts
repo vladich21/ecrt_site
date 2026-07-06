@@ -1,0 +1,49 @@
+declare global {
+  interface Window {
+    ym?: YandexMetrikaFn & { a?: unknown[]; l?: number };
+  }
+}
+
+type YandexMetrikaFn = ((counterId: number, method: string, ...args: unknown[]) => void) & {
+  a?: unknown[];
+  l?: number;
+};
+
+let loaded = false;
+
+export function getYandexMetrikaCounterId(): string | null {
+  const raw = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID?.trim();
+  return raw || null;
+}
+
+/** Loads Yandex.Metrica once after cookie consent. No-op if ID is missing. */
+export function initYandexMetrika(): void {
+  if (typeof window === "undefined" || loaded) return;
+
+  const counterId = getYandexMetrikaCounterId();
+  if (!counterId) return;
+
+  const numericId = Number(counterId);
+  if (!Number.isFinite(numericId)) return;
+
+  loaded = true;
+
+  const ymFn = function (...args: unknown[]) {
+    (ymFn.a = ymFn.a || []).push(args);
+  } as YandexMetrikaFn;
+  ymFn.a = [];
+  ymFn.l = Date.now();
+  window.ym = ymFn;
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = "https://mc.yandex.ru/metrika/tag.js";
+  document.head.appendChild(script);
+
+  window.ym(numericId, "init", {
+    clickmap: true,
+    trackLinks: true,
+    accurateTrackBounce: true,
+    webvisor: true,
+  });
+}

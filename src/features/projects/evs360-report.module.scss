@@ -66,11 +66,6 @@
   }
 }
 
-.reportShell {
-  padding-top: clamp(28px, 4vw, 44px);
-  border-top: 1px solid rgba(0, 47, 85, 0.1);
-}
-
 .metricsGridFour {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }

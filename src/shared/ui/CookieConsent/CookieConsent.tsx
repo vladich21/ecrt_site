@@ -6,11 +6,10 @@ import { usePathname } from "next/navigation";
 
 import {
   getPrivacyPolicyUrl,
-  getYandexMetrikaId,
   readCookieConsent,
   writeCookieConsent,
 } from "@/shared/consent/cookie-consent";
-import { loadYandexMetrika } from "@/shared/consent/load-yandex-metrika";
+import { initYandexMetrika } from "@/shared/consent/yandex-metrika";
 import { localeFromPathname, t } from "@/shared/layout/SiteShell/site-shell-utils";
 
 import styles from "./cookie-consent.module.scss";
@@ -22,17 +21,13 @@ export function CookieConsent() {
 
   useEffect(() => {
     const stored = readCookieConsent();
-    if (stored?.analytics) {
-      const counterId = getYandexMetrikaId();
-      if (counterId) loadYandexMetrika(counterId);
-    }
+    if (stored?.analytics) initYandexMetrika();
     setVisible(stored == null);
   }, []);
 
   const accept = () => {
     writeCookieConsent(true);
-    const counterId = getYandexMetrikaId();
-    if (counterId) loadYandexMetrika(counterId);
+    initYandexMetrika();
     setVisible(false);
   };
 

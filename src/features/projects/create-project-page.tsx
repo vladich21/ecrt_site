@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { LOCALES, type Locale } from "@/content/i18n/locale";
+import { parseLocaleParam } from "@/content/i18n/parse-locale";
+import { publicPathForLocale } from "@/content/i18n/routing";
+
 import { ProjectBreadcrumbJsonLd } from "@/features/projects/project-breadcrumb-jsonld";
 import { ProjectDetailView } from "@/features/projects/ProjectDetailView";
 import {
@@ -13,14 +17,13 @@ import {
 import { resolveProjectPreviewImage } from "@/features/projects/project-preview-image";
 import { getAllProjectSlugs } from "@/features/projects/project-slugs";
 import { buildPageMetadata, getPublicSiteOrigin } from "@/shared/seo/build-page-metadata";
-import { trimDescription } from "@/shared/seo/page-seo-copy";
 
 export const revalidate = 86400;
 
 export const dynamicParams = false;
 
 type ProjectPageProps = {
-  params: Promise<{ projectSlug: string }>;
+  params: Promise<{ locale: string; projectSlug: string }>;
 };
 
 function projectDescription(slug: string, locale: ProjectDetailLocale): string {
@@ -33,49 +36,46 @@ function projectDescription(slug: string, locale: ProjectDetailLocale): string {
   return `${name}. ${meta.descriptionFallback}`;
 }
 
-export function createProjectPage(locale: ProjectDetailLocale) {
-  const pathPrefix = locale === "en" ? "/en" : "";
+function projectAlternates(slug: string, locale: Locale) {
+  const path = publicPathForLocale(locale, `/project/${slug}`);
+  return {
+    canonical: path,
+    languages: {
+      "ru-RU": publicPathForLocale("ru", `/project/${slug}`),
+      en: publicPathForLocale("en", `/project/${slug}`),
+    },
+  };
+}
 
+export function createProjectPage() {
   function generateStaticParams() {
-    return getAllProjectSlugs().map((projectSlug) => ({ projectSlug }));
+    return LOCALES.flatMap((locale) =>
+      getAllProjectSlugs().map((projectSlug) => ({ locale, projectSlug })),
+    );
   }
 
   async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-    const { projectSlug } = await params;
+    const { locale: rawLocale, projectSlug } = await params;
+    const locale = parseLocaleParam(rawLocale) as ProjectDetailLocale;
     const name = resolveProjectTitle(projectSlug, locale);
     const meta = getProjectDetailMeta(locale);
     const title = `${name} — ${meta.titleSuffix} | ECRT`;
-    const description = trimDescription(projectDescription(projectSlug, locale));
-    const path = `${pathPrefix}/project/${projectSlug}`;
 
     return buildPageMetadata({
       title,
-      description,
-      path,
+      description: projectDescription(projectSlug, locale),
+      path: publicPathForLocale(locale, `/project/${projectSlug}`),
       locale: locale === "en" ? "en_US" : "ru_RU",
       ogImagePath: resolveProjectPreviewImage(projectSlug),
       ogImageAlt: name,
-      alternates:
-        locale === "en"
-          ? {
-              canonical: path,
-              languages: {
-                "ru-RU": `/project/${projectSlug}`,
-                en: path,
-              },
-            }
-          : {
-              canonical: path,
-              languages: {
-                "ru-RU": path,
-                en: `/en/project/${projectSlug}`,
-              },
-            },
+      alternates: projectAlternates(projectSlug, locale),
     });
   }
 
   async function ProjectSlugPage({ params }: ProjectPageProps) {
-    const { projectSlug } = await params;
+    const { locale: rawLocale, projectSlug } = await params;
+    const locale = parseLocaleParam(rawLocale) as ProjectDetailLocale;
+
     if (!getAllProjectSlugs().includes(projectSlug)) {
       notFound();
     }

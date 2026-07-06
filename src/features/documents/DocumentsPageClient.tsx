@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 
-import { pageLangAttr, type Locale } from "@/content/i18n/locale";
+import { type Locale } from "@/content/i18n/locale";
 import type { DocumentGroupId, DocumentSectionId, SiteDocumentLink } from "@/data/ecrtSite";
 import { documentSectionOrder } from "@/data/ecrtSite";
 import documentsCopyEn from "@/locales/en/documents.json";
@@ -50,7 +50,6 @@ function phoneHref(phone: string) {
 export function DocumentsPageClient({ locale = "ru", documents: docList }: DocumentsPageClientProps) {
   const isEn = locale === "en";
   const copy: DocumentsCopy = isEn ? documentsCopyEn : documentsCopyRu;
-  const pageLang = pageLangAttr(locale);
 
   const [activeSectionId, setActiveSectionId] = useState<DocumentSectionId>(documentSectionOrder[0]);
 
@@ -259,7 +258,7 @@ export function DocumentsPageClient({ locale = "ru", documents: docList }: Docum
   };
 
   return (
-    <div className={styles.root} lang={pageLang}>
+    <div className={styles.root}>
       <div className={styles.page}>
         <header className={styles.pageIntro}>
           <h1 className={styles.pageTitle}>{copy.title}</h1>

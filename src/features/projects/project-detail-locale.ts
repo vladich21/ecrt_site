@@ -12,9 +12,6 @@ import {
   evs360ServiceClasses,
   evs360ServiceClassesHeading,
   evs360ServiceClassesIntro,
-  evs360FocusBullets,
-  evs360FocusHeading,
-  evs360FocusIntro,
   evs360ScaleHeading,
   evs360ScaleIntro,
   evs360ScaleMetrics,
@@ -32,111 +29,45 @@ export type ProjectDetailUi = typeof projectDetailRu.ui;
 export type ProjectDetailSliderUi = typeof projectDetailRu.slider;
 export type ProjectDetailMeta = typeof projectDetailRu.meta;
 
-export type LocalizedCatalogProject = {
-  title: string;
-  code: string;
-  statusLabel: string;
-  segment: string;
-  year: string;
-  metric: string;
-  description: string;
-  facts: string[];
-  details: string[];
+type StringList = string[];
+
+export type LocalizedCatalogProject =
+  (typeof projectDetailEn.catalog)[keyof typeof projectDetailEn.catalog];
+
+type StrategicProjectBase = (typeof projectDetailEn.strategic)[keyof typeof projectDetailEn.strategic];
+export type LocalizedStrategicProject = Omit<
+  StrategicProjectBase,
+  "bullets" | "details" | "sections"
+> & {
+  bullets: StringList;
+  details: StringList;
+  sections: Array<{ title: string; paragraphs: StringList }>;
 };
 
-export type LocalizedStrategicSection = {
-  title: string;
-  paragraphs: string[];
+type Evs360ReportCopyBase = (typeof projectDetailEn.reports)["evs-360"];
+export type Evs360ReportCopy = Omit<
+  Evs360ReportCopyBase,
+  "characteristicsBullets" | "scheduleParagraphs"
+> & {
+  characteristicsBullets: StringList;
+  scheduleParagraphs: StringList;
 };
 
-export type LocalizedStrategicProject = {
-  title: string;
-  status: string;
-  period: string;
-  teaser: string;
-  description: string;
-  bullets: string[];
-  sections: LocalizedStrategicSection[];
-  details: string[];
+type TrackV25FieldCopyBase =
+  (typeof projectDetailEn.reports)["track-resource-2-5b"]["fieldWorks"];
+export type TrackV25FieldCopy = Omit<TrackV25FieldCopyBase, "stages"> & {
+  stages: Array<TrackV25FieldCopyBase["stages"][number] & { locationNote?: string }>;
 };
 
-export type Evs360MetricCopy = {
-  value: string;
-  unit: string;
-  label: string;
-};
+export type TrackV25ModelingCopy =
+  (typeof projectDetailEn.reports)["track-resource-2-5b"]["modeling"];
+export type TrackV25OperationalTestingCopy =
+  (typeof projectDetailEn.reports)["track-resource-2-5b"]["operationalTesting"];
+export type TrackFasteningCalculationsCopy =
+  (typeof projectDetailEn.reports)["vsm-1-track-elements"]["calculations"];
 
-export type Evs360ServiceClassCopy = {
-  name: string;
-};
-
-export type Evs360ReportCopy = {
-  focusHeading: string;
-  focusIntro: string;
-  focusBullets: string[];
-  characteristicsHeading: string;
-  characteristicsIntro: string;
-  characteristicsBullets: string[];
-  characteristicsMetrics: Evs360MetricCopy[];
-  serviceClassesHeading: string;
-  serviceClassesIntro: string;
-  serviceClassLabel: string;
-  serviceClasses: Evs360ServiceClassCopy[];
-  scheduleHeading: string;
-  scheduleIntro: string;
-  scheduleParagraphs: string[];
-  scheduleMetrics: Evs360MetricCopy[];
-  scaleHeading: string;
-  scaleIntro: string;
-  scaleMetrics: Evs360MetricCopy[];
-  sourceNote: string;
-};
-
-export type TrackV25FieldStageCopy = {
-  id: string;
-  title: string;
-  description: string;
-  locationNote?: string;
-};
-
-export type TrackV25FieldCopy = {
-  heading: string;
-  intro: string;
-  stages: TrackV25FieldStageCopy[];
-};
-
-export type TrackV25ModelingBlockCopy = {
-  title: string;
-  body: string;
-};
-
-export type TrackV25TestingNoteCopy = {
-  title: string;
-  body: string;
-};
-
-export type TrackV25ModelingCopy = {
-  heading: string;
-  intro: string;
-  testingNote: TrackV25TestingNoteCopy;
-  blocks: TrackV25ModelingBlockCopy[];
-};
-
-export type TrackV25OperationalTestingCopy = {
-  heading: string;
-  paragraphs: string[];
-};
-
-export type TrackFasteningCalculationsCopy = {
-  heading: string;
-  intro: string;
-  directions: TrackV25ModelingBlockCopy[];
-};
-
-function detailBundle<L extends ProjectDetailLocale>(locale: L) {
-  return (locale === "en" ? projectDetailEn : projectDetailRu) as L extends "en"
-    ? typeof projectDetailEn
-    : typeof projectDetailRu;
+function detailBundle(locale: ProjectDetailLocale) {
+  return locale === "en" ? projectDetailEn : projectDetailRu;
 }
 
 export function projectDetailPath(slug: string, locale: ProjectDetailLocale): string {
@@ -181,8 +112,7 @@ export function getLocalizedCatalogProject(
   locale: ProjectDetailLocale,
 ): LocalizedCatalogProject | null {
   if (locale === "en") {
-    const catalog = detailBundle("en").catalog as Record<string, LocalizedCatalogProject | undefined>;
-    return catalog[slug] ?? null;
+    return projectDetailEn.catalog[slug as keyof typeof projectDetailEn.catalog] ?? null;
   }
 
   const project = getProjectBySlug(slug);
@@ -206,8 +136,7 @@ export function getLocalizedStrategicProject(
   locale: ProjectDetailLocale,
 ): LocalizedStrategicProject | null {
   if (locale === "en") {
-    const strategic = detailBundle("en").strategic as Record<string, LocalizedStrategicProject | undefined>;
-    return strategic[slug] ?? null;
+    return projectDetailEn.strategic[slug as keyof typeof projectDetailEn.strategic] ?? null;
   }
 
   const project = getStrategicProjectBySlug(slug);
@@ -227,13 +156,10 @@ export function getLocalizedStrategicProject(
 
 export function getEvs360ReportCopy(locale: ProjectDetailLocale): Evs360ReportCopy {
   if (locale === "en") {
-    return detailBundle("en").reports["evs-360"] as Evs360ReportCopy;
+    return projectDetailEn.reports["evs-360"] as Evs360ReportCopy;
   }
 
   return {
-    focusHeading: evs360FocusHeading,
-    focusIntro: evs360FocusIntro,
-    focusBullets: [...evs360FocusBullets],
     characteristicsHeading: evs360CharacteristicsHeading,
     characteristicsIntro: evs360CharacteristicsIntro,
     characteristicsBullets: [...evs360CharacteristicsBullets],
@@ -255,13 +181,9 @@ export function getEvs360ReportCopy(locale: ProjectDetailLocale): Evs360ReportCo
 
 function reportSections(slug: string, locale: ProjectDetailLocale): ProjectReportSection[] {
   if (locale === "en") {
-    const reports = detailBundle("en").reports as Record<
-      string,
-      { sections?: ProjectReportSection[] } | Evs360ReportCopy
-    >;
-    const entry = reports[slug];
+    const entry = projectDetailEn.reports[slug as keyof typeof projectDetailEn.reports];
     if (entry && "sections" in entry && entry.sections) {
-      return entry.sections;
+      return entry.sections as ProjectReportSection[];
     }
     return [];
   }
@@ -284,10 +206,7 @@ export function getLowIntensityReportSections(
 
 export function getLowIntensityConfigurationAlt(locale: ProjectDetailLocale): string {
   if (locale === "en") {
-    const report = detailBundle("en").reports["project-0009-low-intensity"] as {
-      configurationAlt: string;
-    };
-    return report.configurationAlt;
+    return projectDetailEn.reports["project-0009-low-intensity"].configurationAlt;
   }
   return "Схема конфигураций подвижного состава для малоинтенсивных линий";
 }
@@ -312,14 +231,14 @@ export function getTrackV25ReportSections(
 
 export function getTrackV25FieldCopy(locale: ProjectDetailLocale): TrackV25FieldCopy {
   if (locale === "en") {
-    return detailBundle("en").reports["track-resource-2-5b"].fieldWorks as TrackV25FieldCopy;
+    return projectDetailEn.reports["track-resource-2-5b"].fieldWorks;
   }
   return getRuTrackV25FieldCopy();
 }
 
 export function getTrackV25ModelingCopy(locale: ProjectDetailLocale): TrackV25ModelingCopy {
   if (locale === "en") {
-    return detailBundle("en").reports["track-resource-2-5b"].modeling as TrackV25ModelingCopy;
+    return projectDetailEn.reports["track-resource-2-5b"].modeling;
   }
   return getRuTrackV25ModelingCopy();
 }
@@ -328,8 +247,7 @@ export function getTrackV25OperationalTestingCopy(
   locale: ProjectDetailLocale,
 ): TrackV25OperationalTestingCopy {
   if (locale === "en") {
-    return detailBundle("en").reports["track-resource-2-5b"]
-      .operationalTesting as TrackV25OperationalTestingCopy;
+    return projectDetailEn.reports["track-resource-2-5b"].operationalTesting;
   }
   return getRuTrackV25OperationalTestingCopy();
 }
@@ -338,7 +256,7 @@ export function getTrackFasteningCalculationsCopy(
   locale: ProjectDetailLocale,
 ): TrackFasteningCalculationsCopy {
   if (locale === "en") {
-    return detailBundle("en").reports["vsm-1-track-elements"].calculations as TrackFasteningCalculationsCopy;
+    return projectDetailEn.reports["vsm-1-track-elements"].calculations;
   }
   return getRuTrackFasteningCalculationsCopy();
 }
@@ -361,9 +279,9 @@ function getRuVsm1Sections(): ProjectReportSection[] {
     {
       id: "fastening",
       paddingTopPx: 80,
-      title: "Узел промежуточного рельсового скрепления для ВСМ-1",
+      title: "Узел промежуточного рельсового скрепления для ВСМ",
       paragraphs: [
-        "АО «ИЦ ЖТ» выполняет комплекс мероприятий по разработке узла промежуточного рельсового скрепления для верхнего строения пути ВСМ-1.",
+        "АО «ИЦ ЖТ» выполняет комплекс мероприятий по разработке узла промежуточного рельсового скрепления для верхнего строения пути ВСМ.",
       ],
       bullets: [
         "проведен бенчмаркинг аналогов и определен прототип; разработан комплект конструкторской документации;",
@@ -372,10 +290,10 @@ function getRuVsm1Sections(): ProjectReportSection[] {
         "ведется постановка узла на производство по ГОСТ 33477-2015.",
       ],
       metrics: [
-        {
+        {   
           value: "2026",
           unit: "",
-          label: "План получения сертификата соответствия на узел скрепления для ВСМ-1",
+          label: "План получения сертификата соответствия на узел скрепления для ВСМ",
         },
         {
           value: "2026",
@@ -650,7 +568,7 @@ function getRuTrackFasteningCalculationsCopy(): TrackFasteningCalculationsCopy {
   return {
     heading: "Математическое моделирование и проектные расчеты",
     intro:
-      "Для программы ЭВС 360 расчетный контур связывает состав, путь и элементы крепления: от формы клеммы до поведения узла в составе верхнего строения пути.",
+      "Для программы первого отечественного высокоскоростного электропоезда расчетный контур связывает состав, путь и элементы крепления: от формы клеммы до поведения узла в составе верхнего строения пути.",
     directions: [
       {
         title: "Расчеты клеммы",

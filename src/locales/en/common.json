@@ -65,6 +65,15 @@
     "body": "Part of the page failed to load. Try refreshing or come back later.",
     "retry": "Try again"
   },
+  "notFound": {
+    "animation404": "404 error animation",
+    "animationTrain": "Train animation",
+    "eyebrow": "Route not found",
+    "title": "This page is off the tracks",
+    "lead": "The address may have changed or was entered incorrectly. Return to the home page or browse our projects.",
+    "homeLink": "Back to home",
+    "projectsLink": "View projects"
+  },
   "lang": {
     "ru": "Ru",
     "en": "En"

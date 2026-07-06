@@ -36,8 +36,3 @@ export function getPrivacyPolicyUrl(locale: "ru" | "en" = "ru"): string {
   if (envUrl) return envUrl;
   return locale === "en" ? "/en/privacy-policy" : "/privacy-policy";
 }
-
-export function getYandexMetrikaId(): string | null {
-  const raw = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID?.trim();
-  return raw ? raw : null;
-}

@@ -3,7 +3,7 @@ import {
   type DirectionLocale,
 } from '@/features/projects/direction-detail-locale'
 import {
-  resolveProjectTitle as resolveLocalizedProjectTitle,
+  resolveProjectTitle,
   type ProjectDetailLocale,
 } from '@/features/projects/project-detail-locale'
 
@@ -14,10 +14,6 @@ export type BreadcrumbEntry = {
 }
 
 type Translate = (key: string) => string
-
-export function resolveProjectTitle(slug: string, locale: ProjectDetailLocale = 'ru'): string {
-  return resolveLocalizedProjectTitle(slug, locale)
-}
 
 export function breadcrumbsOverDarkHero(pathname: string): boolean {
   const path = pathname.replace(/\/$/, '') || '/'

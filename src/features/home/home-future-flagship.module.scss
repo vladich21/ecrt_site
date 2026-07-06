@@ -413,8 +413,6 @@
   width: 100%;
   justify-self: start;
   border-radius: 14px;
-  border: 1px solid rgba(0, 58, 99, 0.1);
-  background: #fafcfe;
   cursor: default;
 
   &:focus-visible {
@@ -427,7 +425,6 @@
   position: relative;
   z-index: 0;
   width: 100%;
-  /* 5504×3072 — пропорции исходника карты */
   aspect-ratio: 5504 / 3072;
   line-height: 0;
   background: #f7fbff;

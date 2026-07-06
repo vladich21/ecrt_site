@@ -1,12 +1,12 @@
 import {
   getEvs360ReportCopy,
-  type Evs360MetricCopy,
-  type Evs360ServiceClassCopy,
   type ProjectDetailLocale,
 } from "./project-detail-locale";
 
 import detailStyles from "./project-detail.module.scss";
 import styles from "./evs360-report.module.scss";
+
+type Evs360Copy = ReturnType<typeof getEvs360ReportCopy>;
 
 function ServiceClassesBlock({
   heading,
@@ -17,7 +17,7 @@ function ServiceClassesBlock({
   heading: string;
   intro: string;
   serviceClassLabel: string;
-  serviceClasses: readonly Evs360ServiceClassCopy[];
+  serviceClasses: Evs360Copy["serviceClasses"];
 }) {
   return (
     <div className={styles.serviceClassesBlock}>
@@ -41,7 +41,7 @@ function MetricsGrid({
   metrics,
   fourColumns = false,
 }: {
-  metrics: readonly Evs360MetricCopy[];
+  metrics: Evs360Copy["characteristicsMetrics"];
   fourColumns?: boolean;
 }) {
   return (
@@ -70,26 +70,6 @@ export function Evs360ReportBlock({ locale = "ru" }: Evs360ReportBlockProps) {
 
   return (
     <div className={styles.root}>
-      <section className={styles.section} aria-labelledby="evs-focus-heading">
-        <div className={styles.reportSectionHead}>
-          <h2 id="evs-focus-heading" className={styles.reportTitle}>
-            {copy.focusHeading}
-          </h2>
-          <span className={styles.reportTitleRule} aria-hidden />
-          <p className={styles.reportDeck}>{copy.focusIntro}</p>
-        </div>
-        <ul className={styles.focusGrid}>
-          {copy.focusBullets.map((line, pillarIndex) => (
-            <li key={line} className={styles.focusItem}>
-              <span className={styles.focusDigit} aria-hidden>
-                {(pillarIndex + 1).toString().padStart(2, "0")}
-              </span>
-              <p className={styles.focusItemText}>{line}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
       <div className={`${detailStyles.strReportShell} ${styles.reportShell}`}>
         <section className={detailStyles.strReportSection} aria-labelledby="evs-characteristics-heading">
           <header className={detailStyles.strReportSectionHead}>

@@ -1,18 +1,16 @@
-"use client";
-
 import Link from "next/link";
-import { useMemo } from "react";
 
 import type { BreadcrumbEntry } from "@/data/breadcrumbItems";
+import type { Locale } from "@/content/i18n/locale";
+import { withLocalePath } from "@/content/i18n/routing";
 
-import { withLocalePath } from "../SiteShell/site-shell-utils";
 import styles from "./breadcrumbs.module.scss";
 
 type BreadcrumbsProps = {
   variant?: "default" | "hero" | "compact";
   hideTrailingCurrent?: boolean;
   items: BreadcrumbEntry[];
-  locale: "ru" | "en";
+  locale: Locale;
   ariaLabel: string;
 };
 
@@ -23,21 +21,17 @@ export function Breadcrumbs({
   locale,
   ariaLabel,
 }: BreadcrumbsProps) {
-  const rootClass = useMemo(
-    () =>
-      [
-        styles.nav,
-        "pl-extra",
-        variant === "hero" || variant === "compact" ? styles.navCompact : "",
-        variant === "hero" ? styles.navOnHero : "",
-        hideTrailingCurrent ? styles.navHideTrailingCurrent : "",
-      ]
-        .filter(Boolean)
-        .join(" "),
-    [variant, hideTrailingCurrent],
-  );
-
   if (items.length === 0) return null;
+
+  const rootClass = [
+    styles.nav,
+    "pl-extra",
+    variant === "hero" || variant === "compact" ? styles.navCompact : "",
+    variant === "hero" ? styles.navOnHero : "",
+    hideTrailingCurrent ? styles.navHideTrailingCurrent : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <div className={rootClass}>

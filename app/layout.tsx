@@ -3,9 +3,8 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { headers } from "next/headers";
 
-import { DEFAULT_OG_IMAGE_PATH } from "@/shared/seo/build-page-metadata";
+import { DEFAULT_OG_IMAGE_PATH, getPublicSiteOrigin } from "@/shared/seo/build-page-metadata";
 
-import { WebVitalsReporter } from "./components/web-vitals-reporter";
 import "./globals.css";
 
 const headingFont = IBM_Plex_Sans({
@@ -15,19 +14,10 @@ const headingFont = IBM_Plex_Sans({
   display: "swap",
 });
 
-const metadataBase =
-  process.env.NEXT_PUBLIC_SITE_URL != null
-    ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
-    : new URL("https://example.com");
-
 export const metadata: Metadata = {
-  metadataBase,
+  metadataBase: new URL(getPublicSiteOrigin()),
   title: "АО ИЦ ЖТ | ECRT",
   description: "Инжиниринговый центр железнодорожного транспорта",
-  icons: {
-    icon: [{ url: "/favicon.webp", type: "image/png", sizes: "512x512" }],
-    apple: [{ url: "/apple-icon.webp", type: "image/png", sizes: "180x180" }],
-  },
   openGraph: {
     siteName: "АО ИЦ ЖТ",
     type: "website",
@@ -45,15 +35,11 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
-  const pathname = (await headers()).get("x-pathname") ?? "";
-  const lang = pathname === "/en" || pathname.startsWith("/en/") ? "en" : "ru";
+  const locale = (await headers()).get("x-locale") === "en" ? "en" : "ru";
 
   return (
-    <html lang={lang}>
-      <body className={headingFont.variable}>
-        <WebVitalsReporter />
-        {children}
-      </body>
+    <html lang={locale}>
+      <body className={headingFont.variable}>{children}</body>
     </html>
   );
 }

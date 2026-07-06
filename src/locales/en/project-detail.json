@@ -40,7 +40,7 @@
       "segment": "VSM",
       "year": "2020 - 2028",
       "metric": "R&D · VSM",
-      "description": "High-speed electric train platform for VSM main lines: a joint engineering and production programme with phased delivery of trains for testing and certification.",
+      "description": "High-speed electric train platform for the first VSM line Moscow – Saint Petersburg: a joint engineering and production programme with phased delivery of trains for testing and certification.",
       "facts": [
         "Joint work by ECRT and an industrial partner on design, manufacturing, and testing.",
         "Calendar milestones and phase distribution are shown in the charts below; design documentation readiness metrics are updated in internal reporting.",
@@ -97,7 +97,7 @@
       "segment": "VSM",
       "year": "2025 – 2027",
       "metric": "Sablino – Tosno",
-      "description": "ECRT is developing rail fastenings for railway track on a ballastless subgrade for the Moscow – Saint Petersburg high-speed main line.",
+      "description": "ECRT is developing rail fastenings for railway track on a ballastless subgrade for the first VSM line Moscow – Saint Petersburg",
       "facts": [
         "Design documentation for the fastening node has been assigned release \"O\"",
         "Testing and installation at the Sablino – Tosno test site — 2026",
@@ -134,8 +134,8 @@
       "title": "Mathematical model of catenary–pantograph interaction",
       "status": "In progress",
       "period": "2022 – 2026",
-      "teaser": "Development of a mathematical model of the catenary and dynamic current collection by rolling stock — for design and operation on Russian Railways, including the Moscow – St Petersburg VSM.",
-      "description": "The model describes catenary suspension dynamics and interaction with pantographs. It is used in developing technical solutions, designing, and operating the catenary on electrified sections of the Russian Railways network, including the Moscow – St Petersburg high-speed line.",
+      "teaser": "Development of a mathematical model of the catenary and dynamic current collection by rolling stock — for design and operation on Russian Railways, including the first VSM line Moscow – Saint Petersburg.",
+      "description": "The model describes catenary suspension dynamics and interaction with pantographs. It is used in developing technical solutions, designing, and operating the catenary on electrified sections of the Russian Railways network, including the first VSM line Moscow – Saint Petersburg.",
       "bullets": [
         "Selection of rational parameters for catenary nodes and structures at design speeds and current collection requirements.",
         "Refinement of requirements for the catenary product range and validation of adopted engineering solutions through model-based calculations."
@@ -151,7 +151,7 @@
         {
           "title": "Scope of application",
           "paragraphs": [
-            "Used in developing technical solutions, designing, and operating the catenary on all electrified sections of the Russian Railways network, including the Moscow – St Petersburg high-speed line."
+            "Used in developing technical solutions, designing, and operating the catenary on all electrified sections of the Russian Railways network, including the first VSM line Moscow – Saint Petersburg."
           ]
         },
         {
@@ -177,7 +177,7 @@
         {
           "title": "R&D scope and testing",
           "paragraphs": [
-            "Development of the KS-400 catenary product range is carried out for the Moscow – St Petersburg VSM.",
+            "Development of the KS-400 catenary product range is carried out for the first VSM line Moscow – Saint Petersburg.",
             "Under the R&D programme, ECRT specialists developed structural elements, anchorage nodes, supporting and fixing structures, fittings and droppers, insulators, and structures for earthing and the return traction network of the KS-400 catenary. Prototype samples were manufactured; preliminary, operational, and acceptance tests of product range elements were conducted.",
             "Design documentation was continuously refined throughout the work, enabling successful acceptance commissions."
           ]
@@ -201,16 +201,8 @@
   },
   "reports": {
     "evs-360": {
-      "focusHeading": "Development priorities",
-      "focusIntro": "The focus of the upcoming cycle is to complete detailed design in key areas, manufacture and assemble the first train, prepare for testing, and establish the basis for the second train in line with the overall programme schedule.",
-      "focusBullets": [
-        "Complete working documentation and agreed packages for production and assembly",
-        "Complete production and assembly stages for the first train and proceed to commissioning",
-        "Prepare and approve acceptance test programmes and methods",
-        "Synchronise work on the second train with the approved delivery and assembly calendar"
-      ],
       "characteristicsHeading": "Train characteristics",
-      "characteristicsIntro": "The electric train is intended for operation on the Moscow – St Petersburg VSM. Dual-system operation for 3 kV DC and 25 kV AC is provided.",
+      "characteristicsIntro": "The electric train is intended for operation on the first VSM line Moscow – Saint Petersburg. Dual-system operation for 3 kV DC and 25 kV AC is provided.",
       "characteristicsBullets": [],
       "serviceClassesHeading": "Service classes",
       "serviceClassesIntro": "The train offers four comfort levels for passengers. Meeting compartments are also provided. Design is developed with modern trends and operating experience of the Sapsan electric train in mind.",

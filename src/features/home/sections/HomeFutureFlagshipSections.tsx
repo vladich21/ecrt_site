@@ -2,7 +2,7 @@ import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 import { LazyInViewVideo } from "@/shared/ui/LazyInViewVideo/LazyInViewVideo";
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
-import flagshipCorridorMap from "@/assets/home/magnific_3007658625.webp";
+import flagshipCorridorMap from "@/assets/home/magnific_3007658625(1).webp";
 
 import type { HomeCopy } from "../home-types";
 import futureStyles from "../home-future-flagship.module.scss";
