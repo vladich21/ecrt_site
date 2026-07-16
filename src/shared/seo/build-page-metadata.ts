@@ -28,7 +28,7 @@ export type BuildPageMetadataInput = {
 export function buildPageMetadata(input: BuildPageMetadataInput): Metadata {
   const locale = input.locale ?? "ru_RU";
   const siteName = input.siteName ?? (locale === "en_US" ? "ECRT" : "АО ИЦ ЖТ");
-  const imagePath = input.ogImagePath ?? DEFAULT_OG_IMAGE_PATH;
+  const imagePath = input.ogImagePath?.trim() || DEFAULT_OG_IMAGE_PATH;
   const imageAlt = input.ogImageAlt ?? siteName;
   const dims = input.ogImageDimensions ?? (imagePath === DEFAULT_OG_IMAGE_PATH ? DEFAULT_OG_IMAGE_SIZE : undefined);
 
@@ -46,6 +46,7 @@ export function buildPageMetadata(input: BuildPageMetadataInput): Metadata {
       url: input.path,
       siteName,
       locale,
+      alternateLocale: locale === "en_US" ? ["ru_RU"] : ["en_US"],
       type: "website",
       images: [imageEntry],
     },

@@ -24,3 +24,10 @@ export function buildYandexMapEmbedSrc(locale: "ru" | "en"): string {
 
   return `https://yandex.ru/map-widget/v1/?${params.toString()}`;
 }
+
+export function buildYandexMapExternalUrl(locale: "ru" | "en"): string {
+  const params = mapPointParams();
+  params.set("l", "map");
+  params.set("lang", mapLang(locale));
+  return `https://yandex.ru/maps/?${params.toString()}`;
+}

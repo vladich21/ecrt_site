@@ -20,7 +20,6 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Public URLs never use /ru; redirect mistaken or leaked internal paths.
   if (pathname === "/ru" || pathname.startsWith("/ru/")) {
     const publicPath = pathname.replace(/^\/ru(?=\/|$)/, "") || "/";
     return NextResponse.redirect(new URL(publicPath, request.url));

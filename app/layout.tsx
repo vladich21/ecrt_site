@@ -14,6 +14,9 @@ const headingFont = IBM_Plex_Sans({
   display: "swap",
 });
 
+const yandexVerification = process.env.NEXT_PUBLIC_YANDEX_VERIFICATION?.trim();
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+
 export const metadata: Metadata = {
   metadataBase: new URL(getPublicSiteOrigin()),
   title: "АО ИЦ ЖТ | ECRT",
@@ -22,6 +25,7 @@ export const metadata: Metadata = {
     siteName: "АО ИЦ ЖТ",
     type: "website",
     locale: "ru_RU",
+    alternateLocale: ["en_US"],
     images: [{ url: DEFAULT_OG_IMAGE_PATH, alt: "АО ИЦ ЖТ" }],
   },
   twitter: {
@@ -31,6 +35,10 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  verification: {
+    ...(yandexVerification ? { yandex: yandexVerification } : {}),
+    ...(googleVerification ? { google: googleVerification } : {}),
   },
 };
 

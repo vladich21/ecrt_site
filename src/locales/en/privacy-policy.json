@@ -119,11 +119,15 @@
         },
         {
           "type": "p",
-          "text": "6.3. Analytics cookies and Yandex.Metrica (Yandex LLC, Russia) are used only after the user accepts the cookie banner. The service collects aggregated visit statistics. See: https://yandex.ru/legal/confidential/"
+          "text": "6.3. Analytics cookies and Yandex.Metrica (Yandex LLC, Russia) are used only after the user clicks “Accept” on the cookie banner. The service collects aggregated visit statistics and may include Session Replay (Webvisor) for usability analysis. See: https://yandex.ru/legal/confidential/"
         },
         {
           "type": "p",
-          "text": "6.4. Users may decline analytics cookies via the banner, delete cookies, or change browser settings. Some Website features may be affected."
+          "text": "6.4. The Website also embeds third-party elements: a Yandex Map on the contacts page and a Dream Job rating widget in the footer. When they load, the user’s browser contacts those services; they may receive technical data (including IP address and browser details) and use their own cookies under their policies: https://yandex.ru/legal/confidential/ , https://dreamjob.ru/privacy"
+        },
+        {
+          "type": "p",
+          "text": "6.5. Users may delete cookies and change browser settings. This does not disable the Yandex Map or the Dream Job widget."
         }
       ]
     },

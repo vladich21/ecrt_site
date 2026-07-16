@@ -131,33 +131,28 @@
   },
   "strategic": {
     "ks-400-model": {
-      "title": "Mathematical model of catenary–pantograph interaction",
-      "status": "In progress",
-      "period": "2022 – 2026",
-      "teaser": "Development of a mathematical model of the catenary and dynamic current collection by rolling stock — for design and operation on Russian Railways, including the first VSM line Moscow – Saint Petersburg.",
-      "description": "The model describes catenary suspension dynamics and interaction with pantographs. It is used in developing technical solutions, designing, and operating the catenary on electrified sections of the Russian Railways network, including the first VSM line Moscow – Saint Petersburg.",
+      "title": "Catenary mathematical model",
+      "status": "Testing and validation of the mathematical model",
+      "period": "2023 – 2027",
+      "teaser": "The catenary mathematical model enables finite-element calculations of static catenary performance and of dynamic interaction between the catenary and electric rolling stock pantographs.",
+      "description": "The model is intended for use in developing technical solutions, designing, and operating the catenary on all electrified sections of the Russian Railways network (including the Moscow – Saint Petersburg high-speed line) and for determining (and refining) the most rational parameters of catenary nodes and structures (such as catenary suspension, anchor-span junctions, average anchoring, air turnouts, supporting and bracing structures, fittings, and so on) while meeting current collection quality requirements at design speeds.",
       "bullets": [
-        "Selection of rational parameters for catenary nodes and structures at design speeds and current collection requirements.",
-        "Refinement of requirements for the catenary product range and validation of adopted engineering solutions through model-based calculations."
+        "Catenary model: beam-based, with distributed parameters, built on the finite element method with modelling of catenary suspension, supports, bracing, and other structures, as well as conductors of various purpose in a single static and dynamic system.",
+        "Pantograph models: two-, three-, and four-mass with lumped parameters and rigid bodies, based on multibody dynamics, including combined configurations.",
+        "Interaction model: based on solving the contact problem using the penalty method."
       ],
       "sections": [
         {
-          "title": "Model purpose",
+          "title": "Verification against EN 50318:2018+A1:2022",
           "paragraphs": [
-            "The model is intended to determine (and refine) the most rational parameters of catenary nodes and structures while meeting current collection quality requirements at design speeds.",
-            "Performing calculations will refine requirements for the catenary product range and confirm the validity of adopted technical solutions."
+            "Verification on reference models according to EN 50318:2018 was carried out for two model variants: non-sprung and sprung AC catenary suspension. Dynamic pantograph interaction modelling was performed at speeds of 275 and 320 km/h.",
+            "Verification by comparison with field test results cited in EN 50318:2018 was performed for two variants: non-sprung and sprung AC catenary suspension. The catenary suspension models comprised three anchor spans, and the analysis sections were over one kilometre long with 22 spans per model."
           ]
         },
         {
-          "title": "Scope of application",
+          "title": "Validation of the static KS-400 catenary mathematical model at the VNIIZHT experimental ring",
           "paragraphs": [
-            "Used in developing technical solutions, designing, and operating the catenary on all electrified sections of the Russian Railways network, including the first VSM line Moscow – Saint Petersburg."
-          ]
-        },
-        {
-          "title": "Visualisation: EVS-360 pantograph prototype and KS-400 catenary suspension",
-          "paragraphs": [
-            "The illustrations show modelling of interaction between the EVS-360 pantograph prototype and the KS-400 catenary suspension."
+            "Validation of the static KS-400 catenary mathematical model based on operational trials of the KS-400 catenary product range at the VNIIZHT experimental ring was performed by comparing calculated catenary suspension elasticity with field test data. Elasticity values were compared under each dropper and in inter-dropper spans of the analysed suspension sections. The maximum elasticity difference at all control points was 9.5%; the mean deviation was 3%."
           ]
         }
       ],
@@ -222,6 +217,11 @@
         }
       ],
       "characteristicsMetrics": [
+        {
+          "value": "400",
+          "unit": "km/h",
+          "label": "Maximum speed on VSM"
+        },
         {
           "value": "360",
           "unit": "km/h",
@@ -593,6 +593,13 @@
           "In autumn 2024, at the Experimental Ring at Shcherbinka station, innovative 1/11 turnouts with a continuous running surface — with and without cant on the rail strings — a 1/13 diverging turnout with a continuous running surface and cant on the rail strings, and a high-durability insulated joint were installed for operational testing.",
           "Operational testing of the innovative track structure was completed in autumn 2025."
         ]
+      }
+    },
+    "ks-400-model": {
+      "video": {
+        "title": "Train run on the test ring",
+        "lead": "Footage of an actual run showing how the pantograph interacts with the catenary during model validation.",
+        "ariaLabel": "Video: train run on the test ring"
       }
     }
   }

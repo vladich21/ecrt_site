@@ -13,13 +13,20 @@ type StagePhotoSliderProps = {
   stageTitle: string;
   images: StaticImageData[];
   sliderUi: ProjectDetailSliderUi;
+  containImageIndices?: readonly number[];
 };
 
 const SWIPE_COMMIT_RATIO = 0.14;
 const SWIPE_COMMIT_MIN_PX = 48;
 const SWIPE_LOCK_PX = 8;
 
-export function StagePhotoSlider({ stageId, stageTitle, images, sliderUi }: StagePhotoSliderProps) {
+export function StagePhotoSlider({
+  stageId,
+  stageTitle,
+  images,
+  sliderUi,
+  containImageIndices = [],
+}: StagePhotoSliderProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -173,7 +180,9 @@ export function StagePhotoSlider({ stageId, stageTitle, images, sliderUi }: Stag
                   fill
                   priority={imageIndex === activeIndex}
                   fullResolution
-                  className={styles.photoSlideImg}
+                  className={`${styles.photoSlideImg} ${
+                    containImageIndices.includes(imageIndex) ? styles.photoSlideImgContain : ""
+                  }`.trim()}
                   sizes="(max-width: 900px) 100vw, min(920px, 90vw)"
                 />
               </figure>

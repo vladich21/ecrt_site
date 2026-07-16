@@ -1,7 +1,6 @@
 import type { Locale } from "./locale";
 import { localePathPrefix } from "./locale";
 
-/** Public URL for a logical route (basePath without locale prefix). */
 export function publicPathForLocale(locale: Locale, basePath: string): string {
   const prefix = localePathPrefix(locale);
   if (basePath === "/") return prefix || "/";

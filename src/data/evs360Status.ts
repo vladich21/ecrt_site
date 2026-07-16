@@ -31,6 +31,7 @@ export const evs360CharacteristicsBullets: readonly string[] = [];
 
 export const evs360CharacteristicsMetrics: readonly Evs360Metric[] = [
   { value: "400", unit: "км/ч", label: "Максимальная скорость на ВСМ" },
+  { value: "360", unit: "км/ч", label: "Эксплуатационная скорость" },
   { value: "8", unit: "вагонов", label: "Составность с возможностью сдвоенной эксплуатации" },
   { value: "452", unit: "чел.", label: "Общая пассажировместимость" },
   { value: "−40…+40", unit: "°С", label: "Диапазон температур эксплуатации" },

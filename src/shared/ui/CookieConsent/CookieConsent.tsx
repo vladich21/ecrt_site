@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import {
+  COOKIE_CONSENT_CHANGE_EVENT,
   getPrivacyPolicyUrl,
   readCookieConsent,
   writeCookieConsent,
@@ -20,19 +21,19 @@ export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const stored = readCookieConsent();
-    if (stored?.analytics) initYandexMetrika();
-    setVisible(stored == null);
+    const sync = () => {
+      const stored = readCookieConsent();
+      if (stored?.analytics) initYandexMetrika();
+      setVisible(stored == null);
+    };
+    sync();
+    window.addEventListener(COOKIE_CONSENT_CHANGE_EVENT, sync);
+    return () => window.removeEventListener(COOKIE_CONSENT_CHANGE_EVENT, sync);
   }, []);
 
   const accept = () => {
     writeCookieConsent(true);
     initYandexMetrika();
-    setVisible(false);
-  };
-
-  const reject = () => {
-    writeCookieConsent(false);
     setVisible(false);
   };
 
@@ -56,9 +57,6 @@ export function CookieConsent() {
           </p>
         </div>
         <div className={styles.actions}>
-          <button type="button" className={styles.rejectBtn} onClick={reject}>
-            {t("cookies.reject", locale)}
-          </button>
           <button type="button" className={styles.acceptBtn} onClick={accept}>
             {t("cookies.accept", locale)}
           </button>

@@ -566,7 +566,6 @@
     --hero-actions-gap: 8px;
   }
 }
-
 @media (max-width: 550px) {
   .hero {
     min-height: 100svh;
@@ -622,3 +621,4 @@
     bottom: calc(-1 * clamp(12px, 2.5vh, 20px));
   }
 }
+

@@ -8,6 +8,7 @@ import type { HomeCopy } from "@/features/home/home-types";
 
 import { Evs360ReportBlock } from "./Evs360ReportBlock";
 import { imageSrc } from "./image-src";
+import { Ks400ModelVideoBlock } from "./Ks400ModelVideoBlock";
 import { projectGalleryBySlug } from "./project-galleries";
 import styles from "./project-detail.module.scss";
 import { StrategicProjectHero } from "@/features/projects/StrategicProjectHero";
@@ -210,31 +211,39 @@ export function ProjectDetailView({ projectSlug, locale = "ru" }: Props) {
           ) : null}
 
           {hasSections
-            ? strategic.sections.map((sectionBlock, sectionIndex) => (
-                <ScrollRevealSection
-                  key={sectionBlock.title}
-                  className={styles.strReportSection}
-                  aria-labelledby={`strategic-extra-${sectionIndex}`}
-                >
-                  <ScrollRevealBlock>
-                    <header className={styles.strReportSectionHead}>
-                      <h2 id={`strategic-extra-${sectionIndex}`} className={styles.strReportTitle}>
-                        {sectionBlock.title}
-                      </h2>
-                      <span className={styles.strReportTitleRule} aria-hidden />
-                    </header>
-                  </ScrollRevealBlock>
-                  <ScrollRevealBlock>
-                    <div className={styles.strReportProse}>
-                      {sectionBlock.paragraphs.map((paragraph) => (
-                        <p key={paragraph} className={styles.strReportParagraph}>
-                          {paragraph}
-                        </p>
-                      ))}
-                    </div>
-                  </ScrollRevealBlock>
-                </ScrollRevealSection>
-              ))
+            ? strategic.sections.flatMap((sectionBlock, sectionIndex) => {
+                const sectionNode = (
+                  <ScrollRevealSection
+                    key={sectionBlock.title}
+                    className={styles.strReportSection}
+                    aria-labelledby={`strategic-extra-${sectionIndex}`}
+                  >
+                    <ScrollRevealBlock>
+                      <header className={styles.strReportSectionHead}>
+                        <h2 id={`strategic-extra-${sectionIndex}`} className={styles.strReportTitle}>
+                          {sectionBlock.title}
+                        </h2>
+                        <span className={styles.strReportTitleRule} aria-hidden />
+                      </header>
+                    </ScrollRevealBlock>
+                    <ScrollRevealBlock>
+                      <div className={styles.strReportProse}>
+                        {sectionBlock.paragraphs.map((paragraph) => (
+                          <p key={paragraph} className={styles.strReportParagraph}>
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
+                    </ScrollRevealBlock>
+                  </ScrollRevealSection>
+                );
+
+                if (strategicSource.slug === "ks-400-model" && sectionIndex === 0) {
+                  return [sectionNode, <Ks400ModelVideoBlock key="ks400-model-video" locale={locale} />];
+                }
+
+                return [sectionNode];
+              })
             : null}
         </div>
       </div>

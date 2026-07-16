@@ -62,6 +62,7 @@ export function TrackV25OperationalTestingBlock({
             stageTitle={copy.heading}
             images={[...trackV25OperationalTestingImages]}
             sliderUi={sliderUi}
+            containImageIndices={[0]}
           />
         </div>
       </ScrollRevealBlock>

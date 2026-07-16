@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { LOCALES, type Locale } from "@/content/i18n/locale";
+import { LOCALES } from "@/content/i18n/locale";
 import { parseLocaleParam } from "@/content/i18n/parse-locale";
 import { publicPathForLocale } from "@/content/i18n/routing";
 
+import { DirectionBreadcrumbJsonLd } from "@/features/projects/direction-breadcrumb-jsonld";
 import { DirectionDetailView } from "@/features/projects/DirectionDetailView";
 import {
   getDirectionIdsWithDetailPage,
   getLocalizedDirection,
   type DirectionLocale,
 } from "@/features/projects/direction-detail-locale";
-import { buildPageMetadata } from "@/shared/seo/build-page-metadata";
+import { buildPageMetadata, getPublicSiteOrigin } from "@/shared/seo/build-page-metadata";
+import { languageAlternatesForLocale } from "@/shared/seo/hreflang";
 
 export const revalidate = 86400;
 
@@ -20,17 +22,6 @@ export const dynamicParams = false;
 type DirectionPageProps = {
   params: Promise<{ locale: string; directionId: string }>;
 };
-
-function directionAlternates(directionId: string, locale: Locale) {
-  const path = publicPathForLocale(locale, `/projects/direction/${directionId}`);
-  return {
-    canonical: path,
-    languages: {
-      "ru-RU": publicPathForLocale("ru", `/projects/direction/${directionId}`),
-      en: publicPathForLocale("en", `/projects/direction/${directionId}`),
-    },
-  };
-}
 
 export function createDirectionPage() {
   function generateStaticParams() {
@@ -52,7 +43,7 @@ export function createDirectionPage() {
       description: direction.summary,
       path: publicPathForLocale(locale, `/projects/direction/${directionId}`),
       locale: locale === "en" ? "en_US" : "ru_RU",
-      alternates: directionAlternates(directionId, locale),
+      alternates: languageAlternatesForLocale(locale, `/projects/direction/${directionId}`),
     });
   }
 
@@ -69,7 +60,17 @@ export function createDirectionPage() {
       notFound();
     }
 
-    return <DirectionDetailView directionId={directionId} locale={locale} />;
+    return (
+      <>
+        <DirectionBreadcrumbJsonLd
+          baseUrl={getPublicSiteOrigin()}
+          directionId={directionId}
+          directionTitle={direction.title}
+          locale={locale}
+        />
+        <DirectionDetailView directionId={directionId} locale={locale} />
+      </>
+    );
   }
 
   return {

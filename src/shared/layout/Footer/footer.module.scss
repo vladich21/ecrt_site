@@ -226,6 +226,17 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
   min-height: 72px;
 }
 
+.dreamJobFallback {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .dreamJobWidget:focus-visible {
   outline: 2px solid #7ec8ff;
   outline-offset: 4px;

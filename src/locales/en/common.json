@@ -83,10 +83,9 @@
   },
   "cookies": {
     "title": "We use cookies",
-    "message": "By continuing to use this site, you agree to cookies and web analytics. Learn more in our",
+    "message": "Click “Accept” if you agree to cookies and web analytics. Learn more in our",
     "policyLink": "personal data processing policy",
-    "accept": "Accept all",
-    "reject": "Decline"
+    "accept": "Accept"
   },
   "footer": {
     "contacts": "Contacts",

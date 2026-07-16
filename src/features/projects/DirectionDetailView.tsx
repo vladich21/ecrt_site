@@ -1,11 +1,10 @@
-"use client";
+import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
 import {
   getLocalizedDirection,
   type DirectionLocale,
 } from "./direction-detail-locale";
 import { parseDirectionDetailContent } from "./direction-detail-content";
-import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
 import styles from "./direction-detail.module.scss";
 
@@ -30,6 +29,7 @@ export function DirectionDetailView({ directionId, locale = "ru" }: Props) {
             </header>
           </ScrollRevealBlock>
         </ScrollRevealSection>
+
         <div className={styles.prose}>
           {blocks.map((block, index) => {
             if (block.type === "heading") {
@@ -44,33 +44,26 @@ export function DirectionDetailView({ directionId, locale = "ru" }: Props) {
 
             if (block.type === "list") {
               return (
-                <ScrollRevealSection key={`${directionId}-list-${index}`}>
-                  <ScrollRevealBlock>
-                    <ul className={styles.list}>
-                      {block.items.map((item, itemIndex) => (
-                        <li key={`${directionId}-list-${index}-${itemIndex}`}>{item}</li>
-                      ))}
-                    </ul>
-                  </ScrollRevealBlock>
-                </ScrollRevealSection>
+                <ul key={`${directionId}-list-${index}`} className={styles.list}>
+                  {block.items.map((item, itemIndex) => (
+                    <li key={`${directionId}-list-${index}-${itemIndex}`}>{item}</li>
+                  ))}
+                </ul>
               );
             }
 
+            const spaced =
+              block.text.includes("drag-and-drop") &&
+              (block.text.includes("графических сред разработки") ||
+                block.text.includes("graphical development environments"));
+
             return (
-              <ScrollRevealSection
+              <p
                 key={`${directionId}-para-${index}`}
-                className={
-                  block.text.includes("drag-and-drop") &&
-                  (block.text.includes("графических сред разработки") ||
-                    block.text.includes("graphical development environments"))
-                    ? styles.paragraphSectionSpaced
-                    : undefined
-                }
+                className={spaced ? styles.paragraphSectionSpaced : undefined}
               >
-                <ScrollRevealBlock>
-                  <p>{block.text}</p>
-                </ScrollRevealBlock>
-              </ScrollRevealSection>
+                {block.text}
+              </p>
             );
           })}
         </div>

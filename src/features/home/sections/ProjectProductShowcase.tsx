@@ -56,6 +56,17 @@ function showcaseMetricRows(
     ];
   }
 
+  if (slug === "ks-400-model") {
+    const strategic = getLocalizedStrategicProject(slug, locale);
+    const segment =
+      locale === "en" ? "VSM and other catenary systems" : "ВСМ и любые иные контактные сети";
+    return [
+      { term: metricLabels.segment, detail: segment },
+      { term: metricLabels.status, detail: strategic?.status ?? "" },
+      { term: metricLabels.period, detail: strategic?.period ?? "2023 - 2027" },
+    ];
+  }
+
   const catalogue = getLocalizedCatalogProject(slug, locale);
   if (catalogue) {
     return [
@@ -81,7 +92,6 @@ type ProjectProductShowcaseProps = {
   ctaLabel: string;
   projectsSection: HomeCopy["projects"];
   locale?: ProjectDetailLocale;
-  /** Текст карточек плавно появляется при скролле; изображения — сразу */
   revealOnScroll?: boolean;
 };
 
@@ -98,6 +108,7 @@ export function ProjectProductShowcase({
   const lowProject = getLocalizedCatalogProject("project-0009-low-intensity", locale);
   const vsm1TrackProject = getLocalizedCatalogProject("vsm-1-track-elements", locale);
   const ks400CatenaryProject = strategicProjects.find((project) => project.slug === "ks-400-catenary")!;
+  const ks400ModelProject = strategicProjects.find((project) => project.slug === "ks-400-model")!;
 
   const ps = projectsSection;
 
@@ -115,6 +126,13 @@ export function ProjectProductShowcase({
       title: ps.showcaseContactVsm1Title,
       description: ps.showcaseContactVsm1Description,
       image: projectShowcaseImages["ks-400-catenary"]!,
+    },
+    {
+      id: "ks400-model",
+      href: projectDetailPath(ks400ModelProject.slug, locale),
+      title: ps.showcaseKs400ModelTitle,
+      description: ps.showcaseKs400ModelDescription,
+      image: projectShowcaseImages["ks-400-model"]!,
     },
     {
       id: "vsm-1-track-elements",

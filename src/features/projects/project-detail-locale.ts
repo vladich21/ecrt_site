@@ -1,4 +1,6 @@
-import type { Locale } from "@/content/i18n";
+import type { Locale } from "@/content/i18n/locale";
+import homeEn from "@/locales/en/home.json";
+import homeRu from "@/locales/ru/home.json";
 import projectDetailEn from "@/locales/en/project-detail.json";
 import projectDetailRu from "@/locales/ru/project-detail.json";
 import { getStrategicProjectBySlug } from "@/data/ecrtSite";
@@ -101,6 +103,12 @@ export function galleryImageAlt(title: string, index: number, locale: ProjectDet
 }
 
 export function resolveProjectTitle(slug: string, locale: ProjectDetailLocale = "ru"): string {
+  if (slug === "track-resource-2-5b") {
+    return locale === "en"
+      ? homeEn.projects.showcaseTrackV25Title
+      : homeRu.projects.showcaseTrackV25Title;
+  }
+
   const strategic = getLocalizedStrategicProject(slug, locale);
   if (strategic) return strategic.title;
   const catalog = getLocalizedCatalogProject(slug, locale);
@@ -151,6 +159,18 @@ export function getLocalizedStrategicProject(
     bullets: project.bullets,
     sections: project.sections ?? [],
     details: project.details,
+  };
+}
+
+export function getKs400ModelVideoCopy(locale: ProjectDetailLocale) {
+  if (locale === "en") {
+    return projectDetailEn.reports["ks-400-model"].video;
+  }
+
+  return {
+    title: "Проезд поезда на испытательном кольце",
+    lead: "Видеозапись натурного проезда - как токоприёмник взаимодействует с контактной сетью в ходе проверки модели.",
+    ariaLabel: "Видео: проезд поезда на испытательном кольце",
   };
 }
 
@@ -492,7 +512,7 @@ function getRuTrackV25Sections(): ProjectReportSection[] {
 
 function getRuTrackV25FieldCopy(): TrackV25FieldCopy {
   return {
-    heading: "Технологическое внедрение",
+    heading: "Укладка инновационной конструкции железнодорожного пути на действующей инфраструктуре",
     intro:
       "Три последовательных этапа: сборка рельсошпальной решетки на базе путевой машинной станции, подготовка основания по технологии холодного ресайклинга и укладка решетки на участке Красноярской железной дороги.",
     stages: [

@@ -8,7 +8,6 @@
 }
 
 .head {
-  max-width: min(920px, 100%);
   margin-bottom: clamp(32px, 4.5vw, 48px);
 }
 
@@ -45,7 +44,6 @@
 
 .intro {
   margin: clamp(16px, 2.4vw, 22px) 0 0;
-  max-width: min(86ch, 100%);
   font-size: clamp(15px, 1.6vw, 16px);
   line-height: 1.65;
   color: rgba(36, 56, 72, 0.88);
@@ -55,7 +53,6 @@
   display: flex;
   flex-direction: column;
   gap: clamp(24px, 3.5vw, 36px);
-  max-width: min(920px, 100%);
 }
 
 .section {
@@ -69,12 +66,10 @@
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: #002f55;
-  text-wrap: balance;
 }
 
 .paragraph {
   margin: 0 0 12px;
-  max-width: min(86ch, 100%);
   font-size: clamp(14px, 1.5vw, 15px);
   line-height: 1.68;
   color: var(--text-soft, #525252);
@@ -89,7 +84,6 @@
 .list {
   margin: 0 0 12px;
   padding-left: 1.15em;
-  max-width: min(86ch, 100%);
 }
 
 .listItem {

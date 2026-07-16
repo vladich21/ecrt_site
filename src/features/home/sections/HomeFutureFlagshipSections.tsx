@@ -2,13 +2,14 @@ import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 import { LazyInViewVideo } from "@/shared/ui/LazyInViewVideo/LazyInViewVideo";
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
-import flagshipCorridorMap from "@/assets/home/magnific_3007658625(1).webp";
+import flagshipCorridorMap from "@/assets/home/всм-остановки.webp";
 
 import type { HomeCopy } from "../home-types";
 import futureStyles from "../home-future-flagship.module.scss";
 
+/** webm в public назван с литералом %20; mp4 — Safari. */
 const WINTER_VIDEO_WEBM_SRC = "/videos/Winter%2520Animation.webm";
-const WINTER_VIDEO_MP4_SRC = "/videos/Winter%2520Animation-cropped.mp4";
+const WINTER_VIDEO_MP4_SRC = "/videos/Winter-Animation.mp4";
 
 export function HomeFutureFlagshipSections({ homeCopy }: { homeCopy: HomeCopy }) {
   const facts = homeCopy.flagship.facts;

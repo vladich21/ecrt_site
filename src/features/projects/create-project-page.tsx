@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { LOCALES, type Locale } from "@/content/i18n/locale";
+import { LOCALES } from "@/content/i18n/locale";
 import { parseLocaleParam } from "@/content/i18n/parse-locale";
 import { publicPathForLocale } from "@/content/i18n/routing";
 
@@ -17,6 +17,7 @@ import {
 import { resolveProjectPreviewImage } from "@/features/projects/project-preview-image";
 import { getAllProjectSlugs } from "@/features/projects/project-slugs";
 import { buildPageMetadata, getPublicSiteOrigin } from "@/shared/seo/build-page-metadata";
+import { languageAlternatesForLocale } from "@/shared/seo/hreflang";
 
 export const revalidate = 86400;
 
@@ -34,17 +35,6 @@ function projectDescription(slug: string, locale: ProjectDetailLocale): string {
   if (strategic?.description) return strategic.description;
   const name = resolveProjectTitle(slug, locale);
   return `${name}. ${meta.descriptionFallback}`;
-}
-
-function projectAlternates(slug: string, locale: Locale) {
-  const path = publicPathForLocale(locale, `/project/${slug}`);
-  return {
-    canonical: path,
-    languages: {
-      "ru-RU": publicPathForLocale("ru", `/project/${slug}`),
-      en: publicPathForLocale("en", `/project/${slug}`),
-    },
-  };
 }
 
 export function createProjectPage() {
@@ -68,7 +58,7 @@ export function createProjectPage() {
       locale: locale === "en" ? "en_US" : "ru_RU",
       ogImagePath: resolveProjectPreviewImage(projectSlug),
       ogImageAlt: name,
-      alternates: projectAlternates(projectSlug, locale),
+      alternates: languageAlternatesForLocale(locale, `/project/${projectSlug}`),
     });
   }
 

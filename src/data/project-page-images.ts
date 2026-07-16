@@ -23,6 +23,7 @@ import imgStage2Pzs3 from "@/assets/track-v25-field/этап2_устройств
 import imgStage3Pzs from "@/assets/track-v25-field/этап3-07а_устройство_ПЗС.webp";
 import imgStage3Laying1 from "@/assets/track-v25-field/этап3-08_Укладка_РШР.webp";
 import imgStage3Laying2 from "@/assets/track-v25-field/этап3-10_Укладка_РШР.webp";
+import imgOperationalTestingYkladka from "@/assets/track-v25-field/ykladka.webp";
 import imgOperationalTesting1 from "@/assets/track-v25-field/track-v25-filed_1.webp";
 import imgOperationalTesting2 from "@/assets/track-v25-field/track-v25-filed_2.webp";
 import imgOperationalTesting3 from "@/assets/track-v25-field/track-v25-filed_3.webp";
@@ -40,7 +41,6 @@ import type { StaticImageData } from "next/image";
 import type { StaticImageLike } from "@/shared/images/preload-static-image";
 import { staticImageUrl } from "@/shared/images/preload-static-image";
 
-/** Фото этапов «Технологическое внедрение» (track-resource-2-5b). */
 export const trackV25FieldStageImages = {
   assembly: [imgAssemblyCrane, imgAssemblyYard, imgAssemblyWorkers, imgLayingRail],
   "sub-ballast": [imgStage2Prep, imgStage2Pzs, imgStage2Pzs2, imgStage2Pzs3],
@@ -50,6 +50,7 @@ export const trackV25FieldStageImages = {
 export const trackV25FieldAllImages: StaticImageLike[] = Object.values(trackV25FieldStageImages).flat();
 
 export const trackV25OperationalTestingImages: StaticImageData[] = [
+  imgOperationalTestingYkladka,
   imgOperationalTesting1,
   imgOperationalTesting2,
   imgOperationalTesting3,
@@ -107,7 +108,6 @@ function dedupeImages(images: StaticImageLike[]): StaticImageLike[] {
   return result;
 }
 
-/** Все контентные изображения страницы проекта (hero — отдельно). */
 export function getProjectPageImages(projectSlug: string): StaticImageLike[] {
   const images: StaticImageLike[] = [];
 

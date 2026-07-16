@@ -23,7 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries = LOCALES.flatMap((locale) =>
     STATIC_BASE_PATHS.map((basePath) => ({
       url: `${baseUrl}${publicPathForLocale(locale, basePath)}`,
-      lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: basePath === "/" ? 1 : 0.8,
     })),
@@ -32,7 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const projectEntries = LOCALES.flatMap((locale) =>
     getAllProjectSlugs().map((slug) => ({
       url: `${baseUrl}${publicPathForLocale(locale, `/project/${slug}`)}`,
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
@@ -41,7 +39,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const directionEntries = LOCALES.flatMap((locale) =>
     getDirectionIdsWithDetailPage().map((directionId) => ({
       url: `${baseUrl}${publicPathForLocale(locale, `/projects/direction/${directionId}`)}`,
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),

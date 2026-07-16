@@ -156,9 +156,18 @@
   transition: transform 0.8s cubic-bezier(0.22, 0.8, 0.28, 1);
 }
 
+.photoSlideImgContain {
+  object-fit: contain;
+  background: #ffffff;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .photoSlide:hover .photoSlideImg {
     transform: scale(1.03) translateZ(0);
+  }
+
+  .photoSlide:hover .photoSlideImgContain {
+    transform: scale(1) translateZ(0);
   }
 }
 

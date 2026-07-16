@@ -4,6 +4,7 @@ import type { Locale } from "@/content/i18n/locale";
 import { publicPathForLocale } from "@/content/i18n/routing";
 
 import { buildPageMetadata } from "./build-page-metadata";
+import { languageAlternates } from "./hreflang";
 import { PAGE_SEO } from "./page-seo-copy";
 
 export function buildStaticPageMetadata(
@@ -21,10 +22,7 @@ export function buildStaticPageMetadata(
     locale: locale === "en" ? "en_US" : "ru_RU",
     alternates: {
       canonical,
-      languages: {
-        "ru-RU": publicPathForLocale("ru", basePath),
-        en: publicPathForLocale("en", basePath),
-      },
+      languages: languageAlternates(basePath),
     },
   });
 }

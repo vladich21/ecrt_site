@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: path.join(__dirname),
   poweredByHeader: false,
   images: {
-    // Исходники уже webp — только webp-derivatives, без «двойного» AVIF-сжатия
     formats: ["image/webp"],
     qualities: [75, 80, 85, 90, 92],
     deviceSizes: [640, 750, 828, 1080, 1200, 1440, 1920, 2048],

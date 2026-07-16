@@ -1,0 +1,17 @@
+.next
+node_modules
+.git
+.env
+.env.*
+!.env.example
+.vercel
+.lighthouseci
+coverage
+*.log
+tsconfig.tsbuildinfo
+.DS_Store
+Thumbs.db
+*.tmp
+README.md
+.dockerignore
+.gitignore

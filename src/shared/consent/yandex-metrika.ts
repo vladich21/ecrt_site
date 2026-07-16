@@ -35,15 +35,27 @@ export function initYandexMetrika(): void {
   ymFn.l = Date.now();
   window.ym = ymFn;
 
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = "https://mc.yandex.ru/metrika/tag.js";
-  document.head.appendChild(script);
+  const scriptSrc = `https://mc.yandex.ru/metrika/tag.js?id=${numericId}`;
+  const existing = Array.from(document.scripts).some((node) => node.src === scriptSrc);
+  if (!existing) {
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = scriptSrc;
+    const first = document.getElementsByTagName("script")[0];
+    if (first?.parentNode) {
+      first.parentNode.insertBefore(script, first);
+    } else {
+      document.head.appendChild(script);
+    }
+  }
 
   window.ym(numericId, "init", {
-    clickmap: true,
-    trackLinks: true,
-    accurateTrackBounce: true,
+    ssr: true,
     webvisor: true,
+    clickmap: true,
+    referrer: document.referrer,
+    url: location.href,
+    accurateTrackBounce: true,
+    trackLinks: true,
   });
 }

@@ -10,8 +10,9 @@ import { localePathPrefix } from "@/content/i18n/locale";
 
 import heroStyles from "../hero-section.module.scss";
 
-const HERO_VIDEO_DESKTOP_SRC = "/videos/train_in_v6_4k.mp4";
-const HERO_VIDEO_MOBILE_SRC = "/videos/train_in_v6.webm";
+/** webm — Chrome/Firefox/Edge; mp4 — Safari. Оба ~720p, без 4K. */
+const HERO_VIDEO_WEBM_SRC = "/videos/train_in_v6.webm";
+const HERO_VIDEO_MP4_SRC = "/videos/train_in_v6.mp4";
 const HERO_VIDEO_POSTER_SRC = "/videos/train_in_v6-poster.webp";
 const HERO_VIDEO_PLAYBACK_RATE = 0.7;
 const HERO_VIDEO_END_SEC = 8;
@@ -122,11 +123,8 @@ export function HeroSection({
           onEnded={onEnded}
           aria-hidden
         >
-          {preferMobileVideo ? (
-            <source src={HERO_VIDEO_MOBILE_SRC} type="video/webm" />
-          ) : (
-            <source src={HERO_VIDEO_DESKTOP_SRC} type="video/mp4" />
-          )}
+          <source src={HERO_VIDEO_WEBM_SRC} type="video/webm" />
+          <source src={HERO_VIDEO_MP4_SRC} type="video/mp4" />
         </video>
         <div className={heroStyles.scrim} aria-hidden />
         <div className={heroStyles.overlay}>

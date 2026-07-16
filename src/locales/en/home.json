@@ -75,10 +75,10 @@
     "mapAlt": "Infographic of the first VSM line Moscow – Saint Petersburg route: stations and design-speed segments.",
     "facts": [
       {
-        "num": "400",
-        "unit": "km/h",
-        "title": "Maximum speed",
-        "body": "Aerodynamic profile, a domestically produced traction motor, and unique components for operation in climates with large temperature swings."
+        "num": "14",
+        "unit": "stops",
+        "title": "Stations on the route",
+        "body": "The first VSM line Moscow – Saint Petersburg will have 14 stopping points."
       },
       {
         "num": "679",
@@ -109,6 +109,8 @@
       "programFocus": "Programme emphasis"
     },
     "showcaseEvsTitle": "Russia’s first domestic high-speed electric train",
+    "showcaseKs400ModelTitle": "Catenary mathematical model",
+    "showcaseKs400ModelDescription": "The catenary mathematical model enables finite-element calculations of static catenary performance and of dynamic interaction between the catenary and electric rolling stock pantographs.",
     "showcaseContactVsm1Title": "Catenary for VSM",
     "showcaseContactVsm1Description": "The KS-400 catenary product range ensures reliable power transfer to train pantographs at speeds up to 400 km/h.",
     "showcaseVsm1TrackTitle": "Rail fastenings for VSM",
