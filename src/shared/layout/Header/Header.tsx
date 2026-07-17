@@ -134,6 +134,23 @@ export function Header() {
     };
   }, [isHomePage, menuOpen]);
 
+  const closeMenu = useCallback(() => {
+    if (mobileNavRef.current?.contains(document.activeElement)) {
+      menuToggleRef.current?.focus({ preventScroll: true });
+    }
+    setMenuOpen(false);
+  }, []);
+
+  const toggleMenu = useCallback(() => {
+    setMenuOpen((open) => {
+      const next = !open;
+      if (!next && mobileNavRef.current?.contains(document.activeElement)) {
+        menuToggleRef.current?.focus({ preventScroll: true });
+      }
+      return next;
+    });
+  }, []);
+
   useEffect(() => {
     if (!menuOpen) return;
     const previousOverflow = document.body.style.overflow;
@@ -153,28 +170,24 @@ export function Header() {
   }, [menuOpen]);
 
   useEffect(() => {
+    if (!menuOpen) return;
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target as Node | null;
+      if (!target) return;
+      if (mobileNavRef.current?.contains(target)) return;
+      if (menuToggleRef.current?.contains(target)) return;
+      closeMenu();
+    };
+    document.addEventListener("pointerdown", onPointerDown, true);
+    return () => document.removeEventListener("pointerdown", onPointerDown, true);
+  }, [menuOpen, closeMenu]);
+
+  useEffect(() => {
     const onResize = () => {
       if (window.matchMedia("(min-width: 1441px)").matches) setMenuOpen(false);
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, []);
-
-  const closeMenu = useCallback(() => {
-    if (mobileNavRef.current?.contains(document.activeElement)) {
-      menuToggleRef.current?.focus({ preventScroll: true });
-    }
-    setMenuOpen(false);
-  }, []);
-
-  const toggleMenu = useCallback(() => {
-    setMenuOpen((open) => {
-      const next = !open;
-      if (!next && mobileNavRef.current?.contains(document.activeElement)) {
-        menuToggleRef.current?.focus({ preventScroll: true });
-      }
-      return next;
-    });
   }, []);
 
   const headerClassName = [

@@ -21,10 +21,11 @@ export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // Метрика сразу при заходе — визиты видны до нажатия «Принять».
+    initYandexMetrika();
+
     const sync = () => {
-      const stored = readCookieConsent();
-      if (stored?.analytics) initYandexMetrika();
-      setVisible(stored == null);
+      setVisible(readCookieConsent() == null);
     };
     sync();
     window.addEventListener(COOKIE_CONSENT_CHANGE_EVENT, sync);
@@ -33,7 +34,6 @@ export function CookieConsent() {
 
   const accept = () => {
     writeCookieConsent(true);
-    initYandexMetrika();
     setVisible(false);
   };
 

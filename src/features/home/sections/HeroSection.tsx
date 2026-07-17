@@ -10,12 +10,12 @@ import { localePathPrefix } from "@/content/i18n/locale";
 
 import heroStyles from "../hero-section.module.scss";
 
-/** webm — Chrome/Firefox/Edge; mp4 — Safari. Оба ~720p, без 4K. */
-const HERO_VIDEO_WEBM_SRC = "/videos/train_in_v6.webm";
-const HERO_VIDEO_MP4_SRC = "/videos/train_in_v6.mp4";
-const HERO_VIDEO_POSTER_SRC = "/videos/train_in_v6-poster.webp";
+/** webm — Chrome/Firefox/Edge; mp4 — Safari. Оба ~720p из train_4k_6s_v04. */
+const HERO_VIDEO_WEBM_SRC = "/videos/train_4k_6s_v04.webm";
+const HERO_VIDEO_MP4_SRC = "/videos/train_4k_6s_v04.mp4";
+const HERO_VIDEO_POSTER_SRC = "/videos/train_4k_6s_v04-poster.webp";
 const HERO_VIDEO_PLAYBACK_RATE = 0.7;
-const HERO_VIDEO_END_SEC = 8;
+const HERO_VIDEO_END_SEC = 6;
 const MOBILE_VIDEO_MQ = "(max-width: 768px)";
 
 function getStats(commonCopy: CommonCopy) {
@@ -110,6 +110,12 @@ export function HeroSection({
   return (
     <section className={heroStyles.hero} id="hero">
       <div className={heroStyles.stage}>
+        {/* Мобилка: размытый фон закрывает зазор, если видео ниже экрана */}
+        <div
+          className={heroStyles.videoAmbient}
+          style={{ backgroundImage: `url(${HERO_VIDEO_POSTER_SRC})` }}
+          aria-hidden
+        />
         <video
           ref={videoRef}
           className={heroStyles.video}

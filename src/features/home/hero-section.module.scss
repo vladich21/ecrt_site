@@ -52,6 +52,10 @@
   );
 }
 
+.videoAmbient {
+  display: none;
+}
+
 .video {
   position: absolute;
   top: 0;
@@ -414,9 +418,11 @@
     --hero-cta-icon-size: 16px;
     --hero-cta-min-height: 44px;
     --hero-actions-gap: 10px 12px;
+    /* Крупный cover; ширину/высоту/кадр крути этими переменными */
+    --hero-video-width: 100%;
+    --hero-video-height: 95%;
     --hero-video-scale: 1;
-    --hero-video-zoom-origin: 50% 16%;
-    /* Поезд: object-x/y — кадр; offset-x/y — сдвиг слоя; scale — масштаб */
+    --hero-video-zoom-origin: 50% 100%;
     --hero-video-object-x: 52.5%;
     --hero-video-object-y: 16%;
     --hero-video-offset-x: 0%;
@@ -428,6 +434,21 @@
     flex: 0 0 auto;
     min-height: calc(100svh - var(--hero-clearance));
     height: auto;
+  }
+
+  .videoAmbient {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-color: var(--bg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    filter: blur(32px) saturate(1.08);
+    transform: scale(1.14);
+    transform-origin: center bottom;
   }
 
   .actions {
@@ -454,18 +475,34 @@
   }
 
   .video {
-    inset: 0;
-    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    z-index: 1;
+    width: var(--hero-video-width);
     min-width: 0;
-    height: 100%;
-    transform: scale(var(--hero-video-scale))
+    height: var(--hero-video-height);
+    transform: translateX(-50%) scale(var(--hero-video-scale))
       translate(var(--hero-video-offset-x), var(--hero-video-offset-y)) translateZ(0);
     transform-origin: var(--hero-video-zoom-origin);
     backface-visibility: hidden;
     object-fit: cover;
     object-position: var(--hero-video-object-x) var(--hero-video-object-y);
-    -webkit-mask-image: none;
-    mask-image: none;
+    -webkit-mask-image: linear-gradient(
+      180deg,
+      #000 0%,
+      #000 82%,
+      rgba(0, 0, 0, 0.55) 93%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      180deg,
+      #000 0%,
+      #000 82%,
+      rgba(0, 0, 0, 0.55) 93%,
+      transparent 100%
+    );
   }
 
   .stage::before {
@@ -559,7 +596,7 @@
     --hero-title-size: clamp(0.9375rem, 0.08rem + 4.6vw, 1.3125rem);
     --hero-lead-size: clamp(0.625rem, 0.08rem + 2.8vw, 0.75rem);
     --hero-copy-gap: clamp(10px, 2.6vw, 16px);
-    --hero-cta-font-size: 12px;
+    --hero-cta-font-size: 14px;
     --hero-cta-padding-y: 11px;
     --hero-cta-padding-x: 16px;
     --hero-cta-icon-size: 15px;
@@ -588,6 +625,7 @@
 
 @media (max-width: 425px) {
   .hero {
+    --hero-video-width: 100%;
     --hero-video-object-y: 14%;
     --hero-video-offset-y: 0%;
   }

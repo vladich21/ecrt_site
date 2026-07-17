@@ -27,6 +27,7 @@ $nav-compact-max: 1100px;
 }
 
 .headerMenuOpen {
+  z-index: 200;
   transform: translateY(0);
   pointer-events: auto;
 }

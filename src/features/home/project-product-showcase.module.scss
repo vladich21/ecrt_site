@@ -3,7 +3,7 @@
 .productShowcase {
   display: flex;
   flex-direction: column;
-  gap: clamp(32px, 6vw, 86px);
+  gap: var(--section-padding-y, 40px);
   width: 100%;
   margin: 0;
 }

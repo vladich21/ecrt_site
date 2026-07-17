@@ -21,10 +21,15 @@
   width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
   max-width: none;
   margin: 0 auto;
-  padding: var(--section-padding-y, 80px) 0;
+  padding-top: var(--section-padding-y, 80px);
+  padding-bottom: var(--section-padding-y, 80px);
   display: flex;
   flex-direction: column;
   gap: clamp(40px, 6vw, 100px);
+
+  @media (max-width: 768px) {
+    gap: var(--section-padding-y, 40px);
+  }
 }
 
 .section {
@@ -328,18 +333,3 @@
   }
 }
 
-@include bp.down(bp.$bp-sm) {
-  .wrap {
-    padding-top: clamp(28px, 6vw, 40px);
-    padding-bottom: clamp(40px, 8vw, 56px);
-    gap: clamp(32px, 7vw, 48px);
-  }
-}
-
-@include bp.down(bp.$bp-xs) {
-  .wrap {
-    padding-top: clamp(24px, 5vw, 32px);
-    padding-bottom: clamp(32px, 7vw, 48px);
-    gap: clamp(28px, 6vw, 40px);
-  }
-}

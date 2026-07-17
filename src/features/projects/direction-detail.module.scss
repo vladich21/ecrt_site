@@ -9,7 +9,7 @@
   max-width: none;
   margin: 0 auto;
   padding-top: calc(var(--header-slot, 80px) + clamp(42px, 6vw, 72px));
-  padding-bottom: var(--section-padding-y, 80px);
+  padding-bottom: var(--section-padding-y, 40px);
   animation: directionPageIn 0.52s cubic-bezier(0.22, 0.8, 0.28, 1) both;
 }
 

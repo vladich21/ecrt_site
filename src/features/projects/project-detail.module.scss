@@ -6,7 +6,7 @@
 
 .page {
   @include shell.column;
-  padding: var(--section-padding-y, 80px) 0 var(--section-padding-y, 80px);
+  padding: var(--section-padding-y, 40px) 0 var(--section-padding-y, 40px);
 }
 
 .hero h1 {
@@ -103,7 +103,7 @@
 
 .pageStrategic {
   @include shell.column;
-  padding: 0 0 var(--section-padding-y, 80px);
+  padding: 0 0 var(--section-padding-y, 40px);
 }
 
 .strReportShell {
@@ -114,11 +114,8 @@
   display: flex;
   margin: 0;
   flex-direction: column;
-  gap: clamp(40px, 5.5vw, 80px);
-}
-
-.pageStrategic .strReportShell {
-  margin-top: 80px;
+  gap: var(--section-padding-y, 80px);
+  padding-top: var(--section-padding-y, 80px);
 }
 
 .strReportShellContinued {
@@ -129,7 +126,7 @@
 
 .strReportSection {
   margin: 0;
-  padding-top: clamp(28px, 4vw, 44px);
+  padding-top: var(--section-padding-y, 40px);
   border-top: 1px solid rgba(0, 47, 85, 0.1);
 }
 
@@ -430,7 +427,7 @@
 
 .pageEvs {
   @include shell.column;
-  padding: 0 0 var(--section-padding-y, 80px);
+  padding: 0 0 var(--section-padding-y, 40px);
 }
 
 .pageEvs .evsHero h1 {

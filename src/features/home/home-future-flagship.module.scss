@@ -289,7 +289,7 @@
   isolation: isolate;
   overflow: hidden;
   --flagship-section-x: 50px;
-  padding: var(--section-padding-y, 80px) var(--flagship-section-x);
+  padding: var(--section-padding-y, 40px) var(--flagship-section-x);
   box-sizing: border-box;
   background:
     linear-gradient(180deg, #ffffff 0%, #f7fbff 46%, #ffffff 100%);
@@ -530,6 +530,10 @@
 .factCopy {
   min-width: 0;
   margin-left: 20px;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 }
 
 .factNum {
@@ -672,8 +676,8 @@
 @media (max-width: 768px) {
   .flagshipSection {
     --flagship-section-x: clamp(14px, 3.5vw, 22px);
-    padding-top: clamp(40px, 7vw, 56px);
-    padding-bottom: clamp(40px, 7vw, 56px);
+    padding-top: var(--section-padding-y, 40px);
+    padding-bottom: var(--section-padding-y, 40px);
   }
 
   .flagshipSectionHead {

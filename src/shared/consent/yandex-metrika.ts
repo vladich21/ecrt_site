@@ -16,7 +16,6 @@ export function getYandexMetrikaCounterId(): string | null {
   return raw || null;
 }
 
-/** Loads Yandex.Metrica once after cookie consent. No-op if ID is missing. */
 export function initYandexMetrika(): void {
   if (typeof window === "undefined" || loaded) return;
 

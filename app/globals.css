@@ -14,6 +14,7 @@
   --surface-border: rgba(0, 47, 85, 0.08);
   --surface-radius: 12px;
   --surface-shadow: 0 4px 24px rgba(0, 47, 85, 0.06);
+  /* Единый вертикальный воздух между секциями: desktop / mobile (<768px) */
   --section-padding: 80px;
   --section-padding-y: 80px;
   --container-max: 1240px;
@@ -64,6 +65,13 @@
     rgba(226, 26, 26, 0.18) 100%
   );
   --cookie-banner-offset: 0px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 40px;
+    --section-padding-y: 40px;
+  }
 }
 
 html,

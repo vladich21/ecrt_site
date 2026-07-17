@@ -303,7 +303,6 @@
       "sections": [
         {
           "id": "fastening",
-          "paddingTopPx": 80,
           "title": "Intermediate rail fastening node for VSM-1",
           "paragraphs": [
             "ECRT is carrying out a comprehensive programme to develop an intermediate rail fastening node for the VSM-1 track superstructure."
@@ -377,7 +376,6 @@
           "id": "about",
           "group": "intro",
           "title": "About the project",
-          "paddingTopPx": 80,
           "paragraphs": [
             "ECRT, commissioned by Russian Railways, is developing low-floor rolling stock for operation on low-traffic lines of Russian Railways. The approved working designation of the model range under development is:",
             "A technical specification for RA12 has been developed; detailed design is in progress.",
@@ -462,7 +460,6 @@
           "id": "about",
           "group": "intro",
           "title": "About the project",
-          "paddingTopPx": 80,
           "paragraphs": [
             "JSC Engineering Centre of Railway Transport (ECRT) has established a dedicated unit for developing advanced track infrastructure solutions (Infrastructure Development Centre).",
             "Under the Russian Railways programme to create a track structure and maintenance technologies providing 2.5 billion gross tonnes of throughput, the Centre acts as developer of the structure, its elements, and maintenance technologies, and as coordinator of all project participants.",

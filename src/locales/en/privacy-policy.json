@@ -60,7 +60,7 @@
             "ensuring Website operation and user access to its services;",
             "handling enquiries submitted via Website feedback forms;",
             "reviewing job applications and candidate responses;",
-            "collecting anonymised visit statistics subject to cookie and analytics consent;",
+            "collecting anonymised visit statistics using cookies and web analytics services;",
             "compliance with applicable laws of the Russian Federation."
           ]
         }
@@ -119,7 +119,7 @@
         },
         {
           "type": "p",
-          "text": "6.3. Analytics cookies and Yandex.Metrica (Yandex LLC, Russia) are used only after the user clicks “Accept” on the cookie banner. The service collects aggregated visit statistics and may include Session Replay (Webvisor) for usability analysis. See: https://yandex.ru/legal/confidential/"
+          "text": "6.3. Analytics cookies and Yandex.Metrica (Yandex LLC, Russia) load when a user visits the Website (including before clicking “Accept” on the cookie banner). The service collects aggregated visit statistics and may include Session Replay (Webvisor) for usability analysis. See: https://yandex.ru/legal/confidential/"
         },
         {
           "type": "p",

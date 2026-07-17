@@ -10,7 +10,7 @@
 $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
 
 .mainBlock {
-  padding: 80px 32px 80px;
+  padding: var(--section-padding-y, 40px) 32px var(--section-padding-y, 40px);
   background: $footer-bg;
   color: rgba(255, 255, 255, 0.92);
 }
@@ -249,5 +249,59 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
 
   .inner {
     gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainBlock {
+    padding: var(--section-padding-y, 40px) 16px;
+  }
+
+  .inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 16px;
+  }
+
+  .col:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .inner .colHeading {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .affiliations {
+    gap: 0px;
+    width: 100%;
+  }
+
+  .partnerLinkRzd {
+    width: 100%;
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .partnerRzdCopy {
+    max-width: none;
+  }
+
+  .partnerRzdTitle {
+    font-size: 11px;
+  }
+
+  .partnerRzdSub {
+    font-size: 9px;
+  }
+
+  .partnerSkShell {
+    width: 100%;
+    max-width: 150px;
+    height: 34px;
+  }
+
+  .dreamJobWidget {
+    width: 100%;
+    max-width: 100%;
   }
 }

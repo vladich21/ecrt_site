@@ -7,7 +7,7 @@
 
 @mixin below-header {
   padding-top: calc(var(--header-slot, 80px) + clamp(42px, 6vw, 72px));
-  padding-bottom: var(--section-padding-y, 80px);
+  padding-bottom: var(--section-padding-y, 40px);
 }
 
 @mixin page-title {
