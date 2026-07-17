@@ -2,12 +2,12 @@
 
 import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 import imgLoads from "@/assets/presentation/image.webp";
-import imgPathStructure from "@/assets/presentation/Расчет кострукции пути.webp";
-import imgNodes from "@/assets/presentation/Расчте узлов и элементов пути.webp";
-import imgGeo from "@/assets/presentation/Геотехнические расчеты.webp";
-import imgOptimize1 from "@/assets/presentation/Оптимизация параметров конструкции пути и его элементов1.webp";
-import imgOptimize2 from "@/assets/presentation/Оптимизация параметров конструкции пути и его элементов2.webp";
-import imgOptimize3 from "@/assets/presentation/Оптимизация параметров конструкции пути и его элементов3.webp";
+import imgPathStructure from "@/assets/presentation/track-structure-calculation.webp";
+import imgNodes from "@/assets/presentation/track-nodes-calculation.webp";
+import imgGeo from "@/assets/presentation/track-geo-calculations.webp";
+import imgOptimize1 from "@/assets/presentation/track-optimize-params-1.webp";
+import imgOptimize2 from "@/assets/presentation/track-optimize-params-2.webp";
+import imgOptimize3 from "@/assets/presentation/track-optimize-params-3.webp";
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
 import { getTrackV25ModelingCopy, type ProjectDetailLocale } from "./project-detail-locale";

@@ -6,12 +6,12 @@ import trainTrackInteractionSrc from "@/assets/evs360-calculations/train-track-i
 import wheelClampLoadSrc from "@/assets/evs360-calculations/wheel-clamp-load.webp";
 import configurationsImage from "@/assets/low-intensity-0009/img11.webp";
 import imgLoads from "@/assets/presentation/image.webp";
-import imgPathStructure from "@/assets/presentation/Расчет кострукции пути.webp";
-import imgNodes from "@/assets/presentation/Расчте узлов и элементов пути.webp";
-import imgGeo from "@/assets/presentation/Геотехнические расчеты.webp";
-import imgOptimize1 from "@/assets/presentation/Оптимизация параметров конструкции пути и его элементов1.webp";
-import imgOptimize2 from "@/assets/presentation/Оптимизация параметров конструкции пути и его элементов2.webp";
-import imgOptimize3 from "@/assets/presentation/Оптимизация параметров конструкции пути и его элементов3.webp";
+import imgPathStructure from "@/assets/presentation/track-structure-calculation.webp";
+import imgNodes from "@/assets/presentation/track-nodes-calculation.webp";
+import imgGeo from "@/assets/presentation/track-geo-calculations.webp";
+import imgOptimize1 from "@/assets/presentation/track-optimize-params-1.webp";
+import imgOptimize2 from "@/assets/presentation/track-optimize-params-2.webp";
+import imgOptimize3 from "@/assets/presentation/track-optimize-params-3.webp";
 import imgAssemblyYard from "@/assets/track-v25-field/этап-01.webp";
 import imgAssemblyCrane from "@/assets/track-v25-field/02-assembly-crane-sleepers.webp";
 import imgAssemblyWorkers from "@/assets/track-v25-field/этап-01.1.webp";
