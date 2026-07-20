@@ -37,10 +37,10 @@
       "title": "High-speed electric train EVS-360",
       "code": "EVS 360",
       "statusLabel": "Active development",
-      "segment": "VSM",
+      "segment": "HSR",
       "year": "2020 - 2028",
-      "metric": "R&D · VSM",
-      "description": "High-speed electric train platform for the first VSM line Moscow – Saint Petersburg: a joint engineering and production programme with phased delivery of trains for testing and certification.",
+      "metric": "R&D · HSR",
+      "description": "High-speed electric train platform for the first HSR line Moscow – Saint Petersburg: a joint engineering and production programme with phased delivery of trains for testing and certification.",
       "facts": [
         "Joint work by ECRT and an industrial partner on design, manufacturing, and testing.",
         "Calendar milestones and phase distribution are shown in the charts below; design documentation readiness metrics are updated in internal reporting.",
@@ -91,22 +91,22 @@
       ]
     },
     "vsm-1-track-elements": {
-      "title": "Permanent-way structure elements for VSM-1",
-      "code": "VSM-1",
+      "title": "Permanent-way structure elements for HSR-1",
+      "code": "HSR-1",
       "statusLabel": "Testing",
-      "segment": "VSM",
+      "segment": "HSR",
       "year": "2025 – 2027",
       "metric": "Sablino – Tosno",
-      "description": "ECRT is developing rail fastenings for railway track on a ballastless subgrade for the first VSM line Moscow – Saint Petersburg",
+      "description": "ECRT is developing rail fastenings for railway track on a ballastless subgrade for the first HSR line Moscow – Saint Petersburg",
       "facts": [
         "Design documentation for the fastening node has been assigned release \"O\"",
         "Testing and installation at the Sablino – Tosno test site — 2026",
         "Planned completion of work on variable-stiffness sections — 2027"
       ],
       "details": [
-        "ECRT is developing an intermediate rail fastening node for VSM-1 and track superstructure elements for variable-stiffness sections.",
+        "ECRT is developing an intermediate rail fastening node for HSR-1 and track superstructure elements for variable-stiffness sections.",
         "Laboratory, bench, and preliminary tests have been completed; work at the test site is being prepared.",
-        "Conformity certificate for the VSM-1 fastening node is planned for 2026."
+        "Conformity certificate for the HSR-1 fastening node is planned for 2026."
       ]
     },
     "track-resource-2-5b": {
@@ -162,7 +162,7 @@
       "title": "KS-400 product range",
       "status": "Production launch",
       "period": "2021 – 2027",
-      "teaser": "R&D on the KS-400 catenary product range for VSM: structures, testing, and a pilot site at the VNIIZHT experimental ring under emergency operating modes.",
+      "teaser": "R&D on the KS-400 catenary product range for HSR: structures, testing, and a pilot site at the VNIIZHT experimental ring under emergency operating modes.",
       "description": "The product range is designed for building the KS-400 railway catenary, providing reliable transfer of electrical energy from traction substations and line-side power supply equipment to electric rolling stock pantographs at train speeds up to 400 km/h.\n\nPrototype trials on the VNIIZHT experimental ring were completed in 2026; design documentation has been assigned release «O1». ECRT and Russian Railways are now working together to put KS-400 catenary components into production.",
       "bullets": [
         "Under the R&D programme, ECRT has developed structural elements, anchorage nodes, supporting and fixing structures, fittings and droppers, insulators, and structures for earthing and the return traction network of KS-400.",
@@ -172,7 +172,7 @@
         {
           "title": "R&D scope and testing",
           "paragraphs": [
-            "Development of the KS-400 catenary product range is carried out for the first VSM line Moscow – Saint Petersburg.",
+            "Development of the KS-400 catenary product range is carried out for the first HSR line Moscow – Saint Petersburg.",
             "Under the R&D programme, ECRT specialists developed structural elements, anchorage nodes, supporting and fixing structures, fittings and droppers, insulators, and structures for earthing and the return traction network of the KS-400 catenary. Prototype samples were manufactured; preliminary, operational, and acceptance tests of product range elements were conducted.",
             "Design documentation was continuously refined throughout the work, enabling successful acceptance commissions."
           ]
@@ -197,7 +197,7 @@
   "reports": {
     "evs-360": {
       "characteristicsHeading": "Train characteristics",
-      "characteristicsIntro": "The electric train is intended for operation on the first VSM line Moscow – Saint Petersburg. Dual-system operation for 3 kV DC and 25 kV AC is provided.",
+      "characteristicsIntro": "The electric train is intended for operation on the first HSR line Moscow – Saint Petersburg. Dual-system operation for 3 kV DC and 25 kV AC is provided.",
       "characteristicsBullets": [],
       "serviceClassesHeading": "Service classes",
       "serviceClassesIntro": "The train offers four comfort levels for passengers. Meeting compartments are also provided. Design is developed with modern trends and operating experience of the Sapsan electric train in mind.",
@@ -220,12 +220,12 @@
         {
           "value": "400",
           "unit": "km/h",
-          "label": "Maximum speed on VSM"
+          "label": "Maximum speed on HSR"
         },
         {
           "value": "360",
           "unit": "km/h",
-          "label": "Maximum operating speed on VSM"
+          "label": "Maximum operating speed on HSR"
         },
         {
           "value": "8",
@@ -297,15 +297,15 @@
           "label": "Enterprises, research institutes, and design bureaus involved in development and production"
         }
       ],
-      "sourceNote": "Characteristics and indicators — based on materials from the round table \"On the readiness of Russian industry sectors for the Moscow – St Petersburg VSM project\", Federation Council, 9 December 2024."
+      "sourceNote": "Characteristics and indicators — based on materials from the round table \"On the readiness of Russian industry sectors for the Moscow – St Petersburg HSR project\", Federation Council, 9 December 2024."
     },
     "vsm-1-track-elements": {
       "sections": [
         {
           "id": "fastening",
-          "title": "Intermediate rail fastening node for VSM-1",
+          "title": "Intermediate rail fastening node for HSR-1",
           "paragraphs": [
-            "ECRT is carrying out a comprehensive programme to develop an intermediate rail fastening node for the VSM-1 track superstructure."
+            "ECRT is carrying out a comprehensive programme to develop an intermediate rail fastening node for the HSR-1 track superstructure."
           ],
           "bullets": [
             "benchmarking of analogues completed and prototype selected; a full set of design documentation developed;",
@@ -317,7 +317,7 @@
             {
               "value": "2026",
               "unit": "",
-              "label": "Planned conformity certificate for the VSM-1 fastening node"
+              "label": "Planned conformity certificate for the HSR-1 fastening node"
             },
             {
               "value": "2026",
@@ -461,8 +461,8 @@
           "group": "intro",
           "title": "About the project",
           "paragraphs": [
-            "JSC Engineering Centre of Railway Transport (ECRT) has established a dedicated unit for developing advanced track infrastructure solutions (Infrastructure Development Centre).",
-            "Under the Russian Railways programme to create a track structure and maintenance technologies providing 2.5 billion gross tonnes of throughput, the Centre acts as developer of the structure, its elements, and maintenance technologies, and as coordinator of all project participants.",
+            "JSC Engineering Center of Railway Transport (ECRT) has established a dedicated unit for developing advanced track infrastructure solutions (Infrastructure Development Center).",
+            "Under the Russian Railways programme to create a track structure and maintenance technologies providing 2.5 billion gross tonnes of throughput, the Center acts as developer of the structure, its elements, and maintenance technologies, and as coordinator of all project participants.",
             "The project goal is to reduce track life-cycle cost on heavily loaded sections by extending gross tonnage throughput between capital and intermediate track maintenance cycles.",
             "R&D and deployment of maintenance technologies for the innovative track structure are carried out from 2021 to 2026."
           ]
@@ -484,7 +484,7 @@
           "group": "intro",
           "title": "Competence ecosystem",
           "paragraphs": [
-            "The project is complex and research-intensive, leading Russian competence centres have been engaged across the following areas:"
+            "The project is complex and research-intensive, leading Russian competence centers have been engaged across the following areas:"
           ],
           "bullets": [
             "infrastructure design bureau (PCB I);",

@@ -8,7 +8,7 @@ export const PAGE_SEO = {
     en: {
       title: "ECRT — Railway Engineering | ECRT",
       description:
-        "Engineering center of railway transport: EVS-360 high-speed train, first VSM line Moscow – Saint Petersburg, catenary, track and railway infrastructure R&D in Russia.",
+        "Engineering center of railway transport: EVS-360 high-speed train, first HSR line Moscow – Saint Petersburg, catenary, track and railway infrastructure R&D in Russia.",
     },
   },
   about: {
@@ -32,7 +32,7 @@ export const PAGE_SEO = {
     en: {
       title: "Projects — ECRT",
       description:
-        "ECRT projects: EVS-360, first VSM line Moscow – Saint Petersburg, Track V2.5, KS-400 catenary, low-intensity lines and engineering programmes for Russian Railways.",
+        "ECRT projects: EVS-360, first HSR line Moscow – Saint Petersburg, Track V2.5, KS-400 catenary, low-intensity lines and engineering programmes for Russian Railways.",
     },
   },
   careers: {
@@ -68,7 +68,7 @@ export const PAGE_SEO = {
     en: {
       title: "Documents — ECRT",
       description:
-        "Official ECRT documents: charter materials, reporting, partner publications and engineering centre disclosures.",
+        "Official ECRT documents: charter materials, reporting, partner publications and engineering center disclosures.",
     },
   },
   contacts: {

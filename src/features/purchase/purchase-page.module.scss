@@ -15,8 +15,8 @@
   width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
   max-width: none;
   margin: 0 auto;
-  padding-top: calc(var(--header-slot, 80px) + var(--section-padding-y, 40px));
-  padding-bottom: var(--section-padding-y, 40px);
+  padding-top: var(--section-padding-y, 80px);
+  padding-bottom: var(--section-padding-y, 80px);
 }
 
 .content {

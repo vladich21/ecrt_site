@@ -21,7 +21,6 @@ export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Метрика сразу при заходе — визиты видны до нажатия «Принять».
     initYandexMetrika();
 
     const sync = () => {

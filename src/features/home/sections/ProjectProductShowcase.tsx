@@ -59,7 +59,7 @@ function showcaseMetricRows(
   if (slug === "ks-400-model") {
     const strategic = getLocalizedStrategicProject(slug, locale);
     const segment =
-      locale === "en" ? "VSM and other catenary systems" : "ВСМ и любые иные контактные сети";
+      locale === "en" ? "HSR and other catenary systems" : "ВСМ и любые иные контактные сети";
     return [
       { term: metricLabels.segment, detail: segment },
       { term: metricLabels.status, detail: strategic?.status ?? "" },

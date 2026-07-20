@@ -9,8 +9,8 @@
       {
         "iso": "2019",
         "date": "2019",
-        "title": "Establishment of the engineering centre",
-        "text": "Russian Railways (RZD) and the Sinara group of companies incorporated the Railway Transport Engineering Centre.",
+        "title": "Establishment of the engineering center",
+        "text": "Russian Railways (RZD) and the Sinara group of companies incorporated the Railway Transport Engineering Center.",
         "imageAlt": "Signing of RZD-Sinara joint engineering agreement."
       },
       {
@@ -22,14 +22,14 @@
       {
         "iso": "2021",
         "date": "2021",
-        "title": "Infrastructure development centre established",
+        "title": "Infrastructure development center established",
         "text": "A new infrastructure development track opened; catenary and permanent-way programmes commenced.",
         "imageAlt": "Catenary systems and permanent-way development projects."
       },
       {
         "iso": "2022",
         "date": "2022",
-        "title": "Forward-looking projects centre established",
+        "title": "Forward-looking projects center established",
         "text": "A new innovative rolling-stock development track opened. Hydrogen and hybrid locomotive programmes launched."
       },
       {
@@ -41,7 +41,7 @@
       {
         "iso": "2024",
         "date": "2024",
-        "title": "High-speed train technical design completed",
+        "title": "High-speed train basic design completed",
         "text": "Core technical solutions were developed for Russia’s first domestic high-speed electric train."
       },
       {
@@ -53,7 +53,7 @@
       {
         "iso": "2026",
         "date": "2026",
-        "title": "Working design completed and high-speed train production started",
+        "title": "Detail design completed and high-speed train production started",
         "text": "Engineering documentation for Russia’s first domestic high-speed electric train was completed; carbody fabrication started at the Ural Locomotives plant."
       }
     ]
@@ -65,20 +65,20 @@
   },
   "flagship": {
     "tagYears": "2024 - 2030",
-    "sectionTitle": "First VSM line\nMoscow – Saint Petersburg",
+    "sectionTitle": "First HSR line\nMoscow – Saint Petersburg",
     "sectionLead": "",
-    "marks": ["VSM"],
+    "marks": ["HSR"],
     "title": "",
-    "description": "We deliver the core technical solutions for the first VSM line Moscow – Saint Petersburg: rolling stock, catenary, and rail fastening.",
+    "description": "We deliver the core technical solutions for the first HSR line Moscow – Saint Petersburg: rolling stock, catenary, and rail fastening.",
     "ctaCase": "View case study",
     "ctaDirections": "All programmes",
-    "mapAlt": "Infographic of the first VSM line Moscow – Saint Petersburg route: stations and design-speed segments.",
+    "mapAlt": "Infographic of the first HSR line Moscow – Saint Petersburg route: stations and design-speed segments.",
     "facts": [
       {
         "num": "14",
         "unit": "stops",
         "title": "Stations on the route",
-        "body": "The first VSM line Moscow – Saint Petersburg will have 14 stopping points."
+        "body": "The first HSR line Moscow – Saint Petersburg will have 14 stopping points."
       },
       {
         "num": "679",
@@ -97,7 +97,7 @@
   "projects": {
     "title": "Main projects",
     "ctaMore": "Learn more",
-    "evsHomeShowcaseDescription": "Development of rolling stock for the first VSM line Moscow – Saint Petersburg. ECRT prepares the specification and conceptual, technical, and detailed design documentation; manufacturing takes place at the Ural Locomotives plant (part of the Sinara Transport Machines group).",
+    "evsHomeShowcaseDescription": "Development of rolling stock for the first HSR line Moscow – Saint Petersburg. ECRT prepares the specification and conceptual, technical, and detailed design documentation; manufacturing takes place at the Ural Locomotives plant (part of the Sinara Transport Machines group).",
     "metricListAria": "Key programme indicators",
     "metricLabels": {
       "period": "Horizon",
@@ -111,10 +111,10 @@
     "showcaseEvsTitle": "Russia’s first domestic high-speed electric train",
     "showcaseKs400ModelTitle": "Catenary mathematical model",
     "showcaseKs400ModelDescription": "The catenary mathematical model enables finite-element calculations of static catenary performance and of dynamic interaction between the catenary and electric rolling stock pantographs.",
-    "showcaseContactVsm1Title": "Catenary for VSM",
+    "showcaseContactVsm1Title": "Catenary for HSR",
     "showcaseContactVsm1Description": "The KS-400 catenary product range ensures reliable power transfer to train pantographs at speeds up to 400 km/h.",
-    "showcaseVsm1TrackTitle": "Rail fastenings for VSM",
-    "showcaseVsm1TrackDescription": "ECRT is developing rail fastenings for railway track on a ballastless subgrade for the first VSM line Moscow – Saint Petersburg",
+    "showcaseVsm1TrackTitle": "Rail fastenings for HSR",
+    "showcaseVsm1TrackDescription": "ECRT is developing rail fastenings for railway track on a ballastless subgrade for the first HSR line Moscow – Saint Petersburg",
     "showcaseTrackV25Title": "Innovative railway track structure for heavily loaded sections and its elements (Path V2.5)",
     "showcaseLowIntensityTitle": "Rolling stock for low-traffic lines",
     "showcaseOperationSupportTitle": "Operations support - Sapsan and Lastochka EMUs",
