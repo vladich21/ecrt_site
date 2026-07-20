@@ -262,6 +262,7 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
     gap: 28px 16px;
   }
 
+  /* Контакты на всю ширину; Разделы | Официальные — 2 колонки */
   .col:first-child {
     grid-column: 1 / -1;
   }
@@ -271,19 +272,27 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
     margin-bottom: 10px;
   }
 
+  .col {
+    min-width: 0;
+  }
+
   .affiliations {
-    gap: 0px;
+    gap: 12px;
     width: 100%;
+    min-width: 0;
+    overflow: visible;
   }
 
   .partnerLinkRzd {
     width: 100%;
+    box-sizing: border-box;
     padding: 8px 10px;
     gap: 6px;
   }
 
   .partnerRzdCopy {
     max-width: none;
+    min-width: 0;
   }
 
   .partnerRzdTitle {
@@ -294,14 +303,27 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
     font-size: 9px;
   }
 
+  .partnerSkLink {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+
   .partnerSkShell {
     width: 100%;
-    max-width: 150px;
-    height: 34px;
+    max-width: 180px;
+    height: 42px;
   }
 
   .dreamJobWidget {
     width: 100%;
     max-width: 100%;
+    min-height: 72px;
+    overflow: visible;
+  }
+
+  .dreamJobWidget > div {
+    width: 100%;
+    overflow: visible;
   }
 }
