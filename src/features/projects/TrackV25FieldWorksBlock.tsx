@@ -1,11 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { trackV25FieldAllImages, trackV25FieldStageImages } from "@/data/project-page-images";
+import { trackV25FieldStageImages } from "@/data/project-page-images";
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
-import { preloadStaticImage } from "@/shared/images/preload-static-image";
-import { scheduleIdleWork } from "@/shared/images/network-preload";
 import tabStyles from "@/shared/ui/StageTabs/stage-tabs.module.scss";
 
 import {
@@ -30,14 +28,6 @@ export function TrackV25FieldWorksBlock({ locale = "ru" }: TrackV25FieldWorksBlo
     ...stage,
     images: [...(trackV25FieldStageImages[stage.id as keyof typeof trackV25FieldStageImages] ?? [])],
   }));
-
-  useEffect(() => {
-    scheduleIdleWork(() => {
-      for (const image of trackV25FieldAllImages) {
-        preloadStaticImage(image);
-      }
-    });
-  }, []);
 
   const [activeStageId, setActiveStageId] = useState(fieldWorkStages[0]?.id ?? "");
   const activeStage =

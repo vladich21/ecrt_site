@@ -1,4 +1,4 @@
-import aboutHeroImage from "@/assets/presentation/О-нас.webp";
+import aboutHeroImage from "@/assets/presentation/about-us-hero.webp";
 import { PageHero } from "@/shared/ui/PageHero/PageHero";
 
 import type { AboutCopy } from "../about-types";

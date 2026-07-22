@@ -18,7 +18,7 @@
   --section-padding: 80px;
   --section-padding-y: 80px;
   --container-max: 1240px;
-  --header-slot: calc(81px + env(safe-area-inset-top, 0px));
+  --header-slot: calc(80px + env(safe-area-inset-top, 0px));
   --font-heading: "IBM Plex Sans", Verdana, Geneva, Tahoma, sans-serif;
   --font-body: Verdana, Geneva, Tahoma, sans-serif;
   --layout-max: 1560px;

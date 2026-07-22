@@ -1,6 +1,6 @@
-import aboutHeroImage from "@/assets/presentation/О-нас.webp";
-import purchaseHeroImage from "@/assets/presentation/закупки-hero1.webp";
-import careersHeroImage from "@/assets/presentation/проекты.webp";
+import aboutHeroImage from "@/assets/presentation/about-us-hero.webp";
+import purchaseHeroImage from "@/assets/presentation/purchase-hero1.webp";
+import careersHeroImage from "@/assets/presentation/projects-hero.webp";
 import projectsHeroImage from "@/assets/presentation/project_train.webp";
 import type { BundledImage } from "@/data/ecrtSite";
 import { strategicProjects } from "@/data/ecrtSite";
@@ -60,9 +60,14 @@ export function preloadRouteHeroImage(pathOrHref: string): void {
 }
 
 export function heroPreloadHandlers(href: string) {
+  const warm = () => {
+    const image = resolveRouteHeroImage(href);
+    if (image) warmStaticImage(image);
+  };
+
   return {
-    onMouseEnter: () => preloadRouteHeroImage(href),
-    onFocus: () => preloadRouteHeroImage(href),
+    onMouseEnter: warm,
+    onFocus: warm,
   };
 }
 
@@ -78,12 +83,6 @@ export function allProjectHeroImages(): StaticImageLike[] {
   }
 
   return images;
-}
-
-export function preloadAllProjectHeroImages(fetchPriority: "high" | "low" = "low"): void {
-  for (const image of allProjectHeroImages()) {
-    preloadHeroImage(image, fetchPriority);
-  }
 }
 
 export function warmAllProjectHeroImages(): void {

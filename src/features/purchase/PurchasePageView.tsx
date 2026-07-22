@@ -1,4 +1,4 @@
-import purchaseHeroImage from "@/assets/presentation/закупки-hero1.webp";
+import purchaseHeroImage from "@/assets/presentation/purchase-hero1.webp";
 import { getCopy, type Locale } from "@/content/i18n";
 import { PageHero } from "@/shared/ui/PageHero/PageHero";
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";

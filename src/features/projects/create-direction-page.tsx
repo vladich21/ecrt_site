@@ -39,7 +39,7 @@ export function createDirectionPage() {
     }
 
     return buildPageMetadata({
-      title: `${direction.title} | ECRT`,
+      title: direction.title,
       description: direction.summary,
       path: publicPathForLocale(locale, `/projects/direction/${directionId}`),
       locale: locale === "en" ? "en_US" : "ru_RU",

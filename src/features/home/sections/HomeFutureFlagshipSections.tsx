@@ -2,14 +2,15 @@ import { AssetImage } from "@/shared/ui/AssetImage/AssetImage";
 import { LazyInViewVideo } from "@/shared/ui/LazyInViewVideo/LazyInViewVideo";
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
-import flagshipCorridorMap from "@/assets/home/всм-остановки.webp";
+import flagshipCorridorMap from "@/assets/home/hsr-stops-map.webp";
 
 import type { HomeCopy } from "../home-types";
 import futureStyles from "../home-future-flagship.module.scss";
 
-/** webm в public назван с литералом %20; mp4 — Safari. */
-const WINTER_VIDEO_WEBM_SRC = "/videos/Winter%2520Animation.webm";
+/** webm + mp4 для Safari; poster — если видео не загрузилось. */
+const WINTER_VIDEO_WEBM_SRC = "/videos/Winter-Animation.webm";
 const WINTER_VIDEO_MP4_SRC = "/videos/Winter-Animation.mp4";
+const WINTER_VIDEO_POSTER_SRC = "/videos/Winter-Animation-poster.webp";
 
 export function HomeFutureFlagshipSections({ homeCopy }: { homeCopy: HomeCopy }) {
   const facts = homeCopy.flagship.facts;
@@ -98,12 +99,18 @@ export function HomeFutureFlagshipSections({ homeCopy }: { homeCopy: HomeCopy })
       <section className={futureStyles.futureSection} id="future" aria-labelledby="future-title">
         <div className={futureStyles.videoFullBleed}>
           <div className={futureStyles.videoFrame}>
+            <div
+              className={futureStyles.videoPoster}
+              style={{ backgroundImage: `url(${WINTER_VIDEO_POSTER_SRC})` }}
+              aria-hidden
+            />
             <LazyInViewVideo
               className={futureStyles.video}
               autoPlay
               muted
               loop
               playsInline
+              poster={WINTER_VIDEO_POSTER_SRC}
               aria-label={homeCopy.future.videoAria}
             >
               <source src={WINTER_VIDEO_WEBM_SRC} type="video/webm" />

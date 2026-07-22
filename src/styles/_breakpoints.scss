@@ -3,7 +3,7 @@ $bp-sm: 768px;
 $bp-md: 880px;
 $bp-lg: 1024px;
 $bp-xl: 1200px;
-$bp-nav-desktop: 1441px;
+$bp-nav-desktop: 1300px;
 
 @mixin down($width) {
   @media (max-width: $width) {

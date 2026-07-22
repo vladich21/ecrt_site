@@ -10,13 +10,15 @@
 $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
 
 .mainBlock {
-  padding: var(--section-padding-y, 40px) 32px var(--section-padding-y, 40px);
+  padding: var(--section-padding-y, 40px) 0;
   background: $footer-bg;
   color: rgba(255, 255, 255, 0.92);
 }
 
 .inner {
-  width: min(100%, 1240px);
+  box-sizing: border-box;
+  width: min(var(--layout-max, 1560px), calc(100% - 2 * var(--page-inline-gutter)));
+  max-width: none;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -243,10 +245,6 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
 }
 
 @media (max-width: 900px) {
-  .mainBlock {
-    padding: 64px 20px 64px;
-  }
-
   .inner {
     gap: 40px;
   }
@@ -254,7 +252,7 @@ $footer-bg: linear-gradient(180deg, #0f2744 0%, #0a1628 48%, #050a12 100%);
 
 @media (max-width: 768px) {
   .mainBlock {
-    padding: var(--section-padding-y, 40px) 16px;
+    padding: var(--section-padding-y, 40px) 0;
   }
 
   .inner {

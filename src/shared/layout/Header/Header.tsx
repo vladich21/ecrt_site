@@ -184,7 +184,7 @@ export function Header() {
 
   useEffect(() => {
     const onResize = () => {
-      if (window.matchMedia("(min-width: 1441px)").matches) setMenuOpen(false);
+      if (window.matchMedia("(min-width: 1300px)").matches) setMenuOpen(false);
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);

@@ -1,11 +1,11 @@
 import evs360CatalogHero from "@/assets/presentation/project_train.webp";
 import evs360Showcase from "@/assets/presentation/render-train.webp";
-import ks400ModelShowcase from "@/assets/mat-model_ks/Заставка.webp";
+import ks400ModelShowcase from "@/assets/mat-model_ks/cover.webp";
 import ks400Showcase from "@/assets/presentation/ks-test.webp";
 import lowIntensity0009 from "@/assets/low-intensity-0009/figure2.webp";
 import lowIntensityShowcase from "@/assets/low-intensity-0009/showcase-train.webp";
 import vsm1TrackRender from "@/assets/track-v25-modeling/renderv2.5-showcase.webp";
-import trackLayingHero from "@/assets/presentation/09_Укладка_РШР.webp";
+import trackLayingHero from "@/assets/presentation/09-laying-rshr.webp";
 import hydrogenPreview from "@/assets/presentation/img-35.webp";
 import evs2Showcase from "@/assets/presentation/evs2-02.webp";
 import type { BundledImage } from "@/data/ecrtSite";

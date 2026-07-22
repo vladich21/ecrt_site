@@ -2,11 +2,11 @@
   "hero": {
     "kicker": "Procurement",
     "title": "Procurement",
-    "lead": "Transparent procedures for selecting suppliers of goods, works, and services for ECRT."
+    "lead": "Transparent procedures for selecting suppliers of goods, works, and services"
   },
   "goal": {
     "title": "Purpose and principles",
-    "body": "The main goal of procurement at ECRT is the efficient and timely provision of goods, works, and services required by the company.",
+    "body": "The main goal of procurement is the efficient and timely satisfaction of the Company’s needs for products (goods, works, and services).",
     "items": [
       "Compliance with Russian procurement legislation.",
       "Equal access for participants and documented procedure stages.",
@@ -15,11 +15,11 @@
   },
   "legal": {
     "title": "Legal framework",
-    "body": "Procurement is carried out in accordance with Federal Law No. 223-FZ of 18 July 2011, related regulations, and ECRT internal policies."
+    "body": "Procurement is carried out in accordance with Federal Law No. 223-FZ of 18 July 2011, related regulations, and the company’s internal policies."
   },
   "platforms": {
     "title": "Official information sources",
-    "lead": "ECRT procurement information",
+    "lead": "Procurement notices are published on the following platforms",
     "eis": {
       "title": "Unified procurement information system",
       "body": "The official public procurement portal under Russian law.",
@@ -28,7 +28,7 @@
     },
     "rts": {
       "title": "RTS-tender platform",
-      "body": "Electronic trading platform used for ECRT procurement procedures.",
+      "body": "Electronic trading platform used for procurement procedures.",
       "href": "https://www.rts-tender.ru",
       "cta": "Open rts-tender.ru"
     }

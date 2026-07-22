@@ -43,9 +43,21 @@
   border: none;
   border-radius: 0;
   box-shadow: none;
+  background: #0a0e17;
+}
+
+.videoPoster {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .video {
+  position: relative;
+  z-index: 0;
   display: block;
   width: 100%;
   height: 100%;

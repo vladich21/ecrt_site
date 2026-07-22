@@ -1,10 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
-
 import { trackV25OperationalTestingImages } from "@/data/project-page-images";
-import { preloadStaticImage } from "@/shared/images/preload-static-image";
-import { scheduleIdleWork } from "@/shared/images/network-preload";
 import { ScrollRevealBlock, ScrollRevealSection } from "@/shared/motion/ScrollReveal";
 
 import {
@@ -24,14 +20,6 @@ export function TrackV25OperationalTestingBlock({
 }: TrackV25OperationalTestingBlockProps) {
   const copy = getTrackV25OperationalTestingCopy(locale);
   const sliderUi = getProjectDetailSliderUi(locale);
-
-  useEffect(() => {
-    scheduleIdleWork(() => {
-      for (const image of trackV25OperationalTestingImages) {
-        preloadStaticImage(image);
-      }
-    });
-  }, []);
 
   return (
     <ScrollRevealSection

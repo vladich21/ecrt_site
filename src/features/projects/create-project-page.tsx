@@ -48,11 +48,9 @@ export function createProjectPage() {
     const { locale: rawLocale, projectSlug } = await params;
     const locale = parseLocaleParam(rawLocale) as ProjectDetailLocale;
     const name = resolveProjectTitle(projectSlug, locale);
-    const meta = getProjectDetailMeta(locale);
-    const title = `${name} — ${meta.titleSuffix} | ECRT`;
 
     return buildPageMetadata({
-      title,
+      title: name,
       description: projectDescription(projectSlug, locale),
       path: publicPathForLocale(locale, `/project/${projectSlug}`),
       locale: locale === "en" ? "en_US" : "ru_RU",

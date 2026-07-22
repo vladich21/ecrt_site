@@ -1,4 +1,4 @@
-import heroMedia from "@/assets/presentation/проекты.webp";
+import heroMedia from "@/assets/presentation/projects-hero.webp";
 import { getCopy, type Locale } from "@/content/i18n";
 import { CAREERS_EMAIL, HH_EMPLOYER_URL } from "@/data/careersLinks";
 import { PageHero } from "@/shared/ui/PageHero/PageHero";
