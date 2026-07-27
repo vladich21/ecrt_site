@@ -26,18 +26,12 @@ build:
     name: gcr.io/kaniko-project/executor:v1.23.2-debug
     entrypoint: [""]
   rules:
-    # Semver-теги вроде v1.2.3 — для prod-релизов и image-updater (strategy: semver).
+    # Push в Harbor только на protected semver-тегах (v*).
+    # Push в main/ветки не нужен: prod деплоится только по тегу.
+    # Protected HARBOR_* variables доступны только на protected refs.
     - if: $CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
       variables:
         IMAGE_TAG: "${CI_COMMIT_TAG}"
-    # main — immutable sha-теги (fallback, если релиз без git tag).
-    - if: $CI_COMMIT_BRANCH == "main"
-      variables:
-        IMAGE_TAG: "sha-${CI_COMMIT_SHORT_SHA}"
-    # feature/ci-cd и прочие ветки — dev-сборки для проверки пайплайна.
-    - if: $CI_COMMIT_BRANCH
-      variables:
-        IMAGE_TAG: "dev-${CI_COMMIT_SHORT_SHA}"
   script:
     - test -n "${HARBOR_USER}" && test -n "${HARBOR_PASSWORD}"
     - mkdir -p /kaniko/.docker
