@@ -42,9 +42,28 @@ build:
   script:
     - test -n "${HARBOR_USER}" && test -n "${HARBOR_PASSWORD}"
     - mkdir -p /kaniko/.docker
+    # JSON через username/password — надёжнее auth-строки при спецсимволах в пароле.
+    # HARBOR_USER (robot$site+...) в GitLab CI: снять "Expand variable reference".
     - |
-      AUTH="$(printf '%s:%s' "${HARBOR_USER}" "${HARBOR_PASSWORD}" | base64 | tr -d '\n')"
-      printf '{"auths":{"%s":{"auth":"%s"}}}' "${HARBOR_REGISTRY}" "${AUTH}" > /kaniko/.docker/config.json
+      json_escape() { printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g'; }
+      USER="$(json_escape "${HARBOR_USER}")"
+      PASS="$(json_escape "${HARBOR_PASSWORD}")"
+      REG="${HARBOR_REGISTRY}"
+      cat > /kaniko/.docker/config.json <<EOF
+      {
+        "auths": {
+          "${REG}": {
+            "username": "${USER}",
+            "password": "${PASS}"
+          },
+          "https://${REG}": {
+            "username": "${USER}",
+            "password": "${PASS}"
+          }
+        }
+      }
+      EOF
+    - test -s /kaniko/.docker/config.json
     - |
       /kaniko/executor \
         --context "${CI_PROJECT_DIR}" \
