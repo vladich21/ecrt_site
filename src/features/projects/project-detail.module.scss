@@ -91,9 +91,11 @@
   margin: 0;
   border-radius: 12px;
   overflow: hidden;
+  contain: paint;
   border: 1px solid rgba(255, 255, 255, 0.16);
   position: relative;
   min-height: 220px;
+  aspect-ratio: 16 / 10;
 }
 
 .note {

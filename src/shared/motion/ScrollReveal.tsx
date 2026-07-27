@@ -40,6 +40,13 @@ function observerOptions(viewport: RevealViewport): IntersectionObserverInit {
   return { threshold, rootMargin };
 }
 
+function isNearViewport(element: Element): boolean {
+  const rect = element.getBoundingClientRect();
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  // Already on screen or just below the fold — reveal without waiting for IO.
+  return rect.top < viewportHeight * 1.15 && rect.bottom > -80;
+}
+
 function useRevealInView<T extends Element>(viewport: RevealViewport) {
   const ref = useRef<T>(null);
   const [visible, setVisible] = useState(false);
@@ -49,6 +56,11 @@ function useRevealInView<T extends Element>(viewport: RevealViewport) {
     if (!element || visible) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setVisible(true);
+      return;
+    }
+
+    if (isNearViewport(element)) {
+      startTransition(() => setVisible(true));
       return;
     }
 

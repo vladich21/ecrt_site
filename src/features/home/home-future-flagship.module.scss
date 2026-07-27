@@ -491,6 +491,14 @@
   animation: flagshipLeadCaptionReveal 2.4s cubic-bezier(0.22, 0.8, 0.34, 1) 0.25s forwards;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .flagshipTextInner {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}
+
 /* Подпись на карте: классы только внутри flagshipLead — отдельных «общих» .flagshipTitle/.flagshipDesc нет (не дублируем наследование). */
 .flagshipLead .flagshipTitle {
   margin: 0;

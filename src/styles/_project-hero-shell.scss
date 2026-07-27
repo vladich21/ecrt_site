@@ -2,6 +2,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  contain: paint;
   width: 100%;
   height: var(--project-hero-height);
   max-height: var(--project-hero-max-height);
@@ -15,6 +16,7 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  contain: paint;
 
   > span {
     position: absolute !important;
@@ -22,6 +24,7 @@
     width: 100% !important;
     height: 120% !important;
     display: block !important;
+    overflow: hidden !important;
   }
 
   > span > img {
@@ -34,6 +37,7 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  contain: paint;
   background: #ffffff;
 
   > span {
@@ -42,6 +46,7 @@
     inset: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
   }
 
   > span > img {

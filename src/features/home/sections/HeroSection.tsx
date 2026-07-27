@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 import type { CommonCopy, HomeLocale } from "../home-types";
 
@@ -16,7 +16,7 @@ const HERO_VIDEO_MP4_SRC = "/videos/train_4k_6s_v04.mp4";
 const HERO_VIDEO_POSTER_SRC = "/videos/train_4k_6s_v04-poster.webp";
 const HERO_VIDEO_PLAYBACK_RATE = 0.7;
 const HERO_VIDEO_END_SEC = 6;
-const MOBILE_VIDEO_MQ = "(max-width: 768px)";
+const PLAY_RETRY_LIMIT = 8;
 
 function getStats(commonCopy: CommonCopy) {
   return [
@@ -64,27 +64,39 @@ export function HeroSection({
   const clipEndedRef = useRef(false);
   const stats = getStats(commonCopy);
   const pathPrefix = localePathPrefix(locale);
-  const [preferMobileVideo, setPreferMobileVideo] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia(MOBILE_VIDEO_MQ);
-    const sync = () => setPreferMobileVideo(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
+    let cancelled = false;
+    let attempts = 0;
+    let retryTimer = 0;
+
     clipEndedRef.current = false;
+    video.defaultMuted = true;
     video.muted = true;
+    video.playsInline = true;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
     video.playbackRate = HERO_VIDEO_PLAYBACK_RATE;
-    const play = () => {
-      if (clipEndedRef.current) return;
+
+    const tryPlay = () => {
+      if (cancelled || clipEndedRef.current) return;
+      if (!video.paused && !video.ended) return;
+
+      video.muted = true;
       video.playbackRate = HERO_VIDEO_PLAYBACK_RATE;
-      void video.play().catch(() => {});
+
+      void video.play().catch(() => {
+        if (cancelled || clipEndedRef.current) return;
+        if (attempts >= PLAY_RETRY_LIMIT) return;
+        attempts += 1;
+        window.clearTimeout(retryTimer);
+        retryTimer = window.setTimeout(tryPlay, 200 * attempts);
+      });
     };
+
     const stopAtClipEnd = () => {
       if (clipEndedRef.current || video.paused) return;
       if (video.currentTime >= HERO_VIDEO_END_SEC) {
@@ -92,16 +104,36 @@ export function HeroSection({
         video.pause();
       }
     };
-    play();
-    video.addEventListener("canplay", play, { once: true });
-    video.addEventListener("timeupdate", stopAtClipEnd);
-    const onGesture = () => play();
-    document.addEventListener("pointerdown", onGesture, { capture: true, once: true });
-    return () => {
-      video.removeEventListener("timeupdate", stopAtClipEnd);
-      document.removeEventListener("pointerdown", onGesture, true);
+
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") tryPlay();
     };
-  }, [preferMobileVideo]);
+
+    tryPlay();
+    if (video.readyState < 2) {
+      video.load();
+    }
+
+    video.addEventListener("loadeddata", tryPlay);
+    video.addEventListener("canplay", tryPlay);
+    video.addEventListener("canplaythrough", tryPlay);
+    video.addEventListener("timeupdate", stopAtClipEnd);
+    document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("pageshow", tryPlay);
+    document.addEventListener("pointerdown", tryPlay, { capture: true, once: true });
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(retryTimer);
+      video.removeEventListener("loadeddata", tryPlay);
+      video.removeEventListener("canplay", tryPlay);
+      video.removeEventListener("canplaythrough", tryPlay);
+      video.removeEventListener("timeupdate", stopAtClipEnd);
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("pageshow", tryPlay);
+      document.removeEventListener("pointerdown", tryPlay, true);
+    };
+  }, []);
 
   const onEnded = useCallback(() => {
     videoRef.current?.pause();
@@ -123,7 +155,7 @@ export function HeroSection({
           muted
           playsInline
           poster={HERO_VIDEO_POSTER_SRC}
-          preload={preferMobileVideo ? "metadata" : "auto"}
+          preload="auto"
           controls={false}
           disablePictureInPicture
           onEnded={onEnded}

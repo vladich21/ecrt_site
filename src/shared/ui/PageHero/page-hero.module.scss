@@ -3,17 +3,23 @@
 
   position: relative;
   isolation: isolate;
-  height: auto;
+  /* Explicit height (not only min-height): otherwise absolute media can escape
+     the box on first paint in Chromium/Edge before layout settles. */
+  height: var(--page-hero-height);
   min-height: var(--page-hero-height);
+  max-height: var(--page-hero-height);
   overflow: hidden;
+  contain: paint;
   background: var(--page-hero-bg);
 }
 
 .stage {
   position: relative;
   width: 100%;
-  min-height: inherit;
+  height: 100%;
+  min-height: 100%;
   overflow: hidden;
+  contain: paint;
 }
 
 .heroMediaShell {
@@ -21,14 +27,18 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  contain: paint;
 }
 
+/* Next/Image fill wrapper — keep zoom crop inside the clipped shell. */
 .heroMediaShell > span {
   position: absolute !important;
   inset: -12% 0 !important;
   width: 100% !important;
   height: 124% !important;
+  max-height: none !important;
   display: block !important;
+  overflow: hidden !important;
 }
 
 .heroMedia {
@@ -55,7 +65,8 @@
 
 .overlay {
   position: relative;
-  min-height: inherit;
+  height: 100%;
+  min-height: 100%;
   z-index: 4;
   display: flex;
   align-items: center;

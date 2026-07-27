@@ -2,13 +2,11 @@ import aboutHeroImage from "@/assets/presentation/about-us-hero.webp";
 import purchaseHeroImage from "@/assets/presentation/purchase-hero1.webp";
 import careersHeroImage from "@/assets/presentation/projects-hero.webp";
 import projectsHeroImage from "@/assets/presentation/project_train.webp";
-import type { BundledImage } from "@/data/ecrtSite";
 import { strategicProjects } from "@/data/ecrtSite";
 import { projectCatalogHeroImages } from "@/data/projectMedia";
 
 import {
   preloadHeroImage,
-  staticImageUrl,
   warmStaticImage,
   type StaticImageLike,
 } from "./preload-static-image";
@@ -59,6 +57,7 @@ export function preloadRouteHeroImage(pathOrHref: string): void {
   preloadHeroImage(image, "high");
 }
 
+/** Hover/focus intent: warm next-route hero into cache (no link preload). */
 export function heroPreloadHandlers(href: string) {
   const warm = () => {
     const image = resolveRouteHeroImage(href);
@@ -69,42 +68,4 @@ export function heroPreloadHandlers(href: string) {
     onMouseEnter: warm,
     onFocus: warm,
   };
-}
-
-export function allProjectHeroImages(): StaticImageLike[] {
-  const seen = new Set<string>();
-  const images: StaticImageLike[] = [];
-
-  for (const image of projectHeroBySlug.values()) {
-    const url = staticImageUrl(image);
-    if (seen.has(url)) continue;
-    seen.add(url);
-    images.push(image);
-  }
-
-  return images;
-}
-
-export function warmAllProjectHeroImages(): void {
-  for (const image of allProjectHeroImages()) {
-    warmStaticImage(image);
-  }
-}
-
-export function allRouteHeroImages(): StaticImageLike[] {
-  const seen = new Set<string>();
-  const images: StaticImageLike[] = [];
-
-  const add = (image: BundledImage | StaticImageLike | undefined) => {
-    if (!image) return;
-    const url = staticImageUrl(image);
-    if (seen.has(url)) return;
-    seen.add(url);
-    images.push(image);
-  };
-
-  for (const image of Object.values(pageHeroByPath)) add(image);
-  for (const image of projectHeroBySlug.values()) add(image);
-
-  return images;
 }

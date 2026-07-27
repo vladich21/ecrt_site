@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 
 import type { Locale } from "@/content/i18n/locale";
-import { ProjectHeroIdleWarmup } from "@/shared/images/ProjectHeroIdleWarmup";
 import { Footer } from "@/shared/layout/Footer/Footer";
 import { Header } from "@/shared/layout/Header/Header";
 
@@ -29,7 +28,6 @@ export function SiteShell({
         {children}
       </main>
       <Footer locale={locale} />
-      <ProjectHeroIdleWarmup />
     </div>
   );
 }
