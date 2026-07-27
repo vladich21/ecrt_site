@@ -6,7 +6,6 @@ variables:
   HARBOR_REGISTRY: harbor.sw.loc
   IMAGE: harbor.sw.loc/site/company-site
 
-# GitLab Runner в k8s (namespace gitlab-runner) подхватывает untagged jobs.
 default:
   tags: []
 
@@ -42,8 +41,6 @@ build:
   script:
     - test -n "${HARBOR_USER}" && test -n "${HARBOR_PASSWORD}"
     - mkdir -p /kaniko/.docker
-    # JSON через username/password — надёжнее auth-строки при спецсимволах в пароле.
-    # HARBOR_USER (robot$site+...) в GitLab CI: снять "Expand variable reference".
     - |
       json_escape() { printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g'; }
       USER="$(json_escape "${HARBOR_USER}")"
