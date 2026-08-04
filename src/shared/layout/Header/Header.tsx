@@ -229,24 +229,11 @@ export function Header() {
             />
           </span>
           <span className={styles.brandText}>
-            {brandLines.map((line) => {
-              const justifyLine = line.replace(/\s/g, "").length >= 12;
-              return (
-                <span
-                  key={line}
-                  className={justifyLine ? styles.brandTextLine : styles.brandTextLinePlain}
-                  {...(justifyLine ? { "aria-label": line } : {})}
-                >
-                  {justifyLine
-                    ? Array.from(line).map((char, index) => (
-                        <span key={`${line}-${index}`} aria-hidden>
-                          {char === " " ? "\u00A0" : char}
-                        </span>
-                      ))
-                    : line}
-                </span>
-              );
-            })}
+            {brandLines.map((line) => (
+              <span key={line} className={styles.brandTextLine}>
+                {line}
+              </span>
+            ))}
           </span>
         </Link>
 
